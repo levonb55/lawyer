@@ -1,0 +1,2109 @@
+@media screen and (max-width:1700px) {
+  .navbar {
+    width: 86.5%;
+  }
+
+  .navbar-nav li a{
+    font-size: 18px;
+    margin-left: 90px;
+  }
+  #sign_up{
+  width: 110px;
+  height: 40px;
+  }
+  .lawyers_1{
+    height: 890px;
+  }
+
+  .lawyers_1_size{
+    width: 56%;
+  }
+  .lawyers_1_size h1{
+    font-size: 55px;
+    margin-bottom: 40px;
+  }
+  .lawyers_1_size p{
+    font-size: 20px;
+  }
+  .Reach_the{
+      width: 81%;
+  }
+  .more_more{
+    padding-top: 20px;
+  }
+  .lawyers_1_inputs{
+    width: 66%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  .lawyers_1_inputs input{
+    width: 100%;
+    height: 41px;
+    font-size: 14px;
+    padding-left: 20px
+  }
+  .lawyers_1_inputs button{
+    width: 20%;
+    height: 41px;
+    font-size: 14px;
+  }
+  .law_avatar{
+    width: 36%;
+  }
+  #avatar{
+  left: 10px;
+  padding-right: 10px;
+  }
+  #law_loc{
+  padding-right: 10px;
+  left: 10px;
+  }
+  .lawyers_1_bottom{
+    width: 59%;
+  }
+  .lawyers_1_bottom_box{
+  }
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+  }
+  .lawyers_1_bottom {
+    margin-bottom: 10px;
+  }
+  .Reach_legals h3{
+    font-size: 36px;
+    margin-top: 150px;
+    margin-bottom: 20px;
+  }
+  .Reach_legals p{
+    font-size: 26px;
+    margin-top: 50px;
+    margin-bottom: 80px;
+  }
+  .Reach_legals_div{
+    width: 200px;
+    height: 2px;
+  }
+  .lawyers_2_flex{
+    width: 70.5%;
+  }
+  .lawyers_2_box{
+    width: 30%;
+    padding: 40px 0 60px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .lawyers_2_box button{
+    font-size: 14px;
+    width: 123px;
+    height: 38px;
+    margin-top: 40px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 15px;
+  }
+  .lawyers_2_checkbox p{
+    font-size: 13px;
+  }
+  .lawyers_2_checkbox input{
+    margin-right: 7px;
+    width: 15px;
+    height: 15px;
+  }
+  .lawyers_2_inp{
+    width: 70%;
+  }
+  .lawyers_3{
+    margin-top: 150px;
+    height: 850px;
+  }
+  .lawyers_3 h3{
+    font-size: 30px;
+    margin-bottom: 80px;
+  }
+  .lawyers_3 p{
+    font-size: 29px;
+    width: 60%;
+    margin-bottom: 60px;
+  }
+
+  .lawyers_4_size{
+    width: 86%;
+  }
+
+  .verified p{
+    font-size: 25px;
+    margin: 0 0 0 30px;
+  }
+  .lawyers_4_left_text{
+    padding-left: 80px;
+  }
+  .lawyers_4_left_text {
+  font-size: 19px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 60px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 154px;
+  height: 37px;
+  font-size: 14px;
+  margin-bottom: 50px;
+  }
+
+
+  .lawyers_4_right_box button{
+    width: 154px;
+  height: 37px;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 50px;
+  }
+  .lawyers_4_right_box_top{
+    height: 69px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 25px;
+  }
+  .mo_price{
+    font-size: 75px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 24px;
+  }
+  .poss_price_text{
+    width: 70%;
+    margin: 40px auto;
+  }
+  .lawyers_5_size{
+    width: 90%;
+  }
+  .lawyers_5_right{
+    width: 100%;
+    margin-top: 60px;
+  }
+
+.lawyers_4_right_box_2, .lawyers_4_right_box_3{
+  font-size: 8px;
+}
+  .lawyers_4_right_box_2{
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .lawyers_4_right_box_3{
+    padding: 5px;
+    width: 90%;
+  }
+  .dis_flex_end{
+    margin-bottom: 10px;
+  }
+  #Learn_more{
+    margin-left: 25px;
+  }
+  .lawyers_5_right_right{
+    width: 71%;
+  }
+  .lawyers_5_right_left{
+    width: 24%;
+  }
+  .lawyers_5_right_left img {
+      width: 66%;
+  }
+  .lawyers_6{
+    padding-bottom: 50px;
+  }
+  .lawyers_6_size{
+    width: 60%;
+    margin: 80px auto 0 auto;
+  }
+
+  .slider_box{
+  padding: 50px 10px 30px 10px;
+  }
+  .slider_name{
+  font-size: 15px;
+  }
+  .slider_img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 19px !important;
+    height: 19px !important;
+  }
+  .slider_box_main{
+  width: 90%;
+  }
+  .lawyers_7{
+    height: 440px;
+  }
+  .lawyers_7_size{
+    width: 62%;
+  }
+  .lawyers_7_size h3{
+    font-size: 45px;
+    margin-bottom: 40px;
+  }
+  .lawyers_7_size p{
+    font-size: 19px;
+    margin-bottom: 30px;
+  }
+  .lawyers_7_size input{
+    width: 264px;
+    height: 41px;
+      font-size: 15px;
+      margin-right: 25px;
+  }
+  .lawyers_7_size button{
+    width: 137px;
+    height: 41px;
+     font-size: 15px;
+  }
+  .footer_size{
+    width: 80%;
+      padding: 40px 0 50px 0;
+  }
+  .footer_size p{
+    font-size: 21px;
+    margin-bottom: 20px;
+  }
+  .footer_size ul li{
+      font-size: 19px;
+      margin-bottom: 15px;
+
+  }
+  .footer_size ul li:before{
+
+    width: 10px;
+    height: 10px;
+    left: -20px;
+  }
+  .footer_soc{
+    margin-top: 40px;
+  }
+  .footer_soc img{
+    margin-left: 20px;
+  }
+
+  .lawyers_bottom{
+    height: 51px;
+  }
+  .lawyers_bottom P{
+    font-size: 14px;
+      line-height: 2.37;
+  }
+  .owl-carousel .item{
+    width: 250px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+@media screen and (max-width:1500px) {
+
+  .navbar-nav li a{
+    font-size: 17px;
+    margin-left: 80px;
+  }
+  #sign_up{
+  width: 100px;
+  height: 40px;
+  }
+  .lawyers_1{
+    height: 950px;
+  }
+
+  .lawyers_1_size{
+    width: 57%;
+  }
+  .lawyers_1_size h1{
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  .lawyers_1_size p{
+    font-size: 18px;
+  }
+  .Reach_the{
+      width: 82%;
+  }
+  .more_more{
+    padding-top: 20px;
+  }
+  .lawyers_1_inputs{
+    width: 67%;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  .lawyers_1_inputs input{
+    width: 100%;
+    height: 35px;
+    font-size: 10px;
+    padding-left: 20px
+  }
+  .lawyers_1_inputs button{
+    width: 20%;
+    height: 35px;
+    font-size: 12px;
+  }
+  .law_avatar{
+    width: 30%;
+  }
+  .law_avatar img{
+    width: 10%;
+  }
+  #avatar{
+  left: 8px;
+  padding-right: 5px;
+  }
+  #law_loc{
+  padding-right: 5px;
+  left: 8px;
+  }
+  .lawyers_1_bottom{
+    width: 60%;
+    align-items: center;
+  }
+  .lawyers_1_bottom p{
+    font-size: 16px
+  }
+  .lawyers_1_bottom img{
+    width: 20px;
+  }
+
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+  }
+  .lawyers_1_bottom {
+    margin-bottom: 10px;
+  }
+  .Reach_legals h3{
+    font-size: 32px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  .Reach_legals p{
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+  }
+  .Reach_legals_div{
+    width: 200px;
+    height: 2px;
+  }
+  .lawyers_2_flex{
+    width: 71%;
+  }
+  .lawyers_2_box{
+    width: 28%;
+    padding: 35px 0 40px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .lawyers_2_box button{
+    font-size: 12px;
+    width: 120px;
+    height: 35px;
+    margin-top: 30px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 15px;
+  }
+  .lawyers_2_checkbox p{
+    font-size: 12px;
+  }
+  .lawyers_2_checkbox input{
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+  }
+  .lawyers_2_inp{
+    width: 75%;
+  }
+  .lawyers_3{
+    margin-top: 100px;
+    height: 800px;
+  }
+  .lawyers_3 h3{
+    font-size: 28px;
+    margin-bottom: 80px;
+  }
+  .lawyers_3 p{
+    font-size: 24px;
+    width: 60%;
+    margin-bottom: 60px;
+  }
+
+  .lawyers_4_size{
+    width: 86%;
+  }
+
+  .verified p{
+    font-size: 24px;
+    margin: 0 0 0 30px;
+  }
+  .lawyers_4_left_text{
+    padding-left: 80px;
+  }
+  .lawyers_4_left_text {
+  font-size: 17px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 60px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 130px;
+  height: 30px;
+  font-size: 14px;
+  margin-bottom: 50px;
+  }
+
+
+  .lawyers_4_right_box button{
+    width: 130px;
+  height: 30px;
+  font-size: 14px;
+  margin-bottom: 50px;
+  }
+  .lawyers_4_right_box_top{
+    height: 60px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 23px;
+  }
+  .mo_price{
+    font-size: 75px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 22px;
+  }
+  .poss_price_text{
+    width: 70%;
+    margin: 40px auto;
+  }
+  .lawyers_5_size{
+    width: 90%;
+  }
+  .lawyers_5_right{
+    width: 100%;
+    margin-top: 60px;
+  }
+  .lawyers_4_right_box_2, .lawyers_4_right_box_3{
+    font-size: 8px;
+  }
+
+  .lawyers_4_right_box_2{
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .lawyers_4_right_box_3{
+    padding: 5px;
+    width: 90%;
+  }
+  .dis_flex_end{
+    margin-bottom: 10px;
+  }
+  #Learn_more{
+    margin-left: 25px;
+  }
+  .lawyers_5_right_right{
+    width: 71%;
+  }
+  .lawyers_5_right_left{
+    width: 24%;
+  }
+  .lawyers_5_right_left img {
+      width: 66%;
+  }
+  .lawyers_6{
+    padding-bottom: 50px;
+  }
+  .lawyers_6_size{
+    width: 60%;
+    margin: 60px auto 0 auto;
+  }
+
+  .slider_box{
+  padding: 40px 10px 20px 10px;
+  }
+  .slider_name{
+  font-size: 14px;
+  }
+  .slider_img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .slider_box_main{
+  width: 90%;
+  }
+  .lawyers_7{
+    height: 420px;
+  }
+  .lawyers_7_size{
+    width: 62%;
+  }
+  .lawyers_7_size h3{
+    font-size: 39px;
+    margin-bottom: 40px;
+  }
+  .lawyers_7_size p{
+    font-size: 17px;
+    margin-bottom: 30px;
+  }
+  .lawyers_7_size input{
+    width: 264px;
+    height: 35px;
+      font-size: 12px;
+      margin-right: 25px;
+  }
+  .lawyers_7_size button{
+    width: 130px;
+    height: 35px;
+     font-size: 14px;
+  }
+  .footer_size{
+    width: 80%;
+      padding: 40px 0 50px 0;
+  }
+  .footer_size p{
+    font-size: 19px;
+    margin-bottom: 20px;
+  }
+  .footer_size ul li{
+      font-size: 16px;
+      margin-bottom: 15px;
+
+  }
+  .footer_size ul li:before{
+
+    width: 8px;
+    height: 8px;
+    left: -20px;
+  }
+  .footer_soc{
+    margin-top: 40px;
+  }
+  .footer_soc img{
+    margin-left: 20px;
+  }
+
+  .lawyers_bottom{
+    height: 47px;
+  }
+  .lawyers_bottom P{
+    font-size: 13px;
+      line-height: 2.37;
+  }
+  .owl-carousel .item{
+    width: 230px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+@media screen and (max-width:1370px) {
+  /* header{
+    height: 60px;
+  } */
+  .navbar-brand img{
+    width: 120px;
+  }
+
+  .navbar-nav li a{
+    font-size: 14px;
+  }
+  #sign_up{
+  width: 80px;
+  height: 30px;
+  }
+  .lawyers_1{
+    height: 600px;
+  }
+
+  .lawyers_1_size{
+    width: 57%;
+  }
+  .lawyers_1_size h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .lawyers_1_size p{
+    font-size: 14px;
+  }
+  .Reach_the{
+      width: 82%;
+  }
+  .more_more{
+    padding-top: 20px;
+  }
+  .lawyers_1_inputs{
+    width: 67%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  .lawyers_1_inputs input{
+    width: 100%;
+    height: 25px;
+    font-size: 8px;
+    padding-left: 20px
+  }
+  .lawyers_1_inputs button{
+    width: 20%;
+    height: 25px;
+    font-size: 10px;
+  }
+  .law_avatar{
+    width: 30%;
+  }
+  .law_avatar img{
+    width: 10%;
+  }
+  #avatar{
+  left: 8px;
+  padding-right: 5px;
+  }
+  #law_loc{
+  padding-right: 5px;
+  left: 8px;
+  }
+  .lawyers_1_bottom{
+    width: 60%;
+    align-items:flex-end;
+  }
+  .lawyers_1_bottom p{
+    font-size: 12px
+  }
+  .lawyers_1_bottom img{
+    width: 15px;
+  }
+
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+  }
+  .lawyers_1_bottom {
+    margin-bottom: 10px;
+  }
+  .Reach_legals h3{
+    font-size: 26px;
+    margin-top: 50px;
+    margin-bottom: 15px;
+  }
+  .Reach_legals p{
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .Reach_legals_div{
+    width: 150px;
+    height: 1px;
+  }
+  .lawyers_2_flex{
+    width: 71%;
+  }
+  .lawyers_2_box{
+    width: 28%;
+    padding: 30px 0 30px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .lawyers_2_box button{
+    font-size: 10px;
+    width: 80px;
+    height: 26px;
+    margin-top: 20px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 5px;
+    width: 18px;
+  }
+  .lawyers_2_checkbox p{
+    font-size: 9px;
+    margin: 0;
+  }
+  .lawyers_2_checkbox input{
+    margin-right: 5px;
+    width: 11px;
+    height: 11px;
+  }
+  .lawyers_2_inp{
+    width: 80%;
+  }
+  .lawyers_3{
+    margin-top: 60px;
+    height: 400px;
+  }
+  .lawyers_3 h3{
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  .lawyers_3 p{
+    font-size: 16px;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+
+  .lawyers_4_size{
+    width: 86%;
+  }
+
+  .verified p{
+    font-size: 18px;
+    margin: 0 0 0 30px;
+  }
+  .lawyers_4_left_text{
+    padding-left: 80px;
+  }
+  .lawyers_4_left_text {
+  font-size: 14px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 10px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 130px;
+  height: 30px;
+  font-size: 14px;
+  margin-bottom: 0px;
+  }
+
+  .lawyers_4_right_box_top{
+    height: 35px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 16px;
+  }
+  .mo_price{
+    font-size: 40px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 14px;
+  }
+  .poss_price_text{
+    width: 70%;
+    margin: 20px auto;
+  }
+  .lawyers_5_size{
+    width: 90%;
+  }
+  .lawyers_5_right{
+    width: 100%;
+    margin-top: 60px;
+  }
+  .lawyers_4_right_box_2, .lawyers_4_right_box_3{
+    font-size: 8px;
+  }
+
+  .lawyers_4_right_box_2{
+    padding: 5px;
+    width: 90%;
+    margin-bottom: 7px;
+  }
+  .lawyers_4_right_box_3{
+    padding: 5px;
+    width: 90%;
+  }
+  .dis_flex_end{
+    margin-bottom: 10px;
+  }
+  #Learn_more{
+    margin-left: 25px;
+  }
+  .lawyers_5_right_right{
+    width: 71%;
+  }
+  .lawyers_5_right_left{
+    width: 24%;
+  }
+  .lawyers_5_right_left img {
+      width: 66%;
+  }
+  .lawyers_6{
+    padding-bottom: 40px;
+  }
+  .lawyers_6_size{
+    width: 60%;
+    margin: 60px auto 0 auto;
+  }
+
+  .slider_box{
+  padding: 40px 10px 20px 10px;
+  }
+  .slider_name{
+  font-size: 14px;
+  }
+  .slider_img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 17px !important;
+    height: 17px !important;
+  }
+  .slider_box_main{
+  width: 90%;
+  }
+  .lawyers_7{
+    height: 300px;
+  }
+  .lawyers_7_size{
+    width: 62%;
+  }
+  .lawyers_7_size h3{
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+  .lawyers_7_size p{
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .lawyers_7_size input{
+    width: 200px;
+    height: 30px;
+      font-size: 10px;
+      margin-right: 20px;
+  }
+  .lawyers_7_size button{
+    width: 90px;
+    height: 30px;
+     font-size: 12px;
+  }
+  .footer_size{
+    width: 80%;
+      padding: 40px 0 50px 0;
+  }
+  .footer_size p{
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .footer_size ul li{
+      font-size: 12px;
+      margin-bottom: 15px;
+
+  }
+  .footer_size ul li:before{
+
+    width: 5px;
+    height: 5px;
+    left: -20px;
+  }
+  .footer_soc{
+    margin-top: 40px;
+  }
+  .footer_soc img{
+    margin-left: 20px;
+  }
+
+  .lawyers_bottom{
+    height: 37px;
+  }
+  .lawyers_bottom P{
+    font-size: 10px;
+      line-height: 2.37;
+  }
+  .owl-carousel .item{
+    width: 230px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+
+
+
+
+@media screen and (max-width:1300px) {
+  .book img {
+    width: 50% !important;
+}
+  #image1, #image2 {
+    width: 63%;
+    margin: 0 auto;
+}
+  .lawyers_4_right_box_2, .lawyers_4_right_box_3{
+    font-size: 6px !important;
+    padding: 3px !important;
+  }
+  .lawyers_4_right_box_2 p, .lawyers_4_right_box_3 p{
+margin: 0 !important;
+  }
+  .lawyers_1_inputs input {
+    width: 264px;
+    height: 30px !important;
+}
+
+.lawyers_1_inputs button{
+  width: 100px;
+  height: 30px;
+  font-size: 10px !important;
+}
+.law_avatar {
+    width: 24%;
+}
+  .lawyers_1_inputs{
+    width: 100%;
+    display: flex;
+justify-content: space-between;
+margin-top: 50px;
+margin-bottom: 50px;
+  }
+  .navbar {
+    width: 92%;
+  }
+  .navbar-nav li a{
+    font-size: 18px;
+    margin-left: 60px;
+  }
+  #sign_up{
+    width: 110px;
+  }
+  .lawyers_1{
+    height: 600px;
+  }
+
+  .lawyers_1_size{
+    width: 90%;
+  }
+  .lawyers_1_size h1{
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  .lawyers_1_size p{
+    font-size: 18px;
+  }
+
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+  }
+  .lawyers_1_bottom {
+    margin-bottom: 0px;
+  }
+
+  .Reach_legals h3{
+    font-size: 29px;
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+  .Reach_legals p{
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .Reach_legals_div{
+    width: 150px;
+    height: 2px;
+  }
+  .lawyers_2_flex{
+    width: 92%;
+  }
+  .lawyers_2_box{
+    width: 350px;
+    padding: 30px 0 40px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .lawyers_2_box button{
+    font-size: 14px;
+    width: 110px;
+    height: 35px;
+    margin-top: 30px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 10px;
+  }
+  .lawyers_2_checkbox p{
+    font-size: 14px;
+  }
+  .lawyers_2_checkbox input{
+    margin-right: 6px;
+  }
+  .lawyers_2_inp{
+    width: 80%;
+  }
+  .lawyers_3{
+    margin-top: 80px;
+    height: 400px;
+  }
+  .lawyers_3 h3{
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  .lawyers_3 p{
+    font-size: 18px;
+    width: 90%;
+    margin-bottom: 30px;
+  }
+
+  .lawyers_4_size{
+    width: 92%;
+  }
+  .lawyers_4_left{
+    width: 60% !important;
+  }
+  .verified p{
+    font-size: 20px;
+    margin: 0 0 0 20px;
+  }
+  .lawyers_4_left_text{
+    padding-left: 0px;
+  }
+  .lawyers_4_left_text {
+  font-size: 18px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 30px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 130px;
+  height: 30px;
+  margin-bottom: 30px;
+  }
+  .lawyers_4_right{
+    width: 40% !important;
+  }
+
+  .lawyers_4_right_box button{
+    width: 130px;
+  height: 30px;
+  margin-bottom: 30px;
+  }
+  .lawyers_4_right_box_top{
+    width: 100%;
+    height: 50px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 22px;
+  }
+  .mo_price{
+    font-size: 60px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 22px;
+  }
+  .poss_price_text{
+    width: 90%;
+    margin: 30px auto;
+  }
+  .lawyers_5_size{
+    width: 92%;
+  }
+  .lawyers_5_right{
+    margin-top: 30px;
+  }
+  #Learn_more{
+    margin-left: 20px;
+  }
+  .lawyers_5_right_right{
+    width: 74%;
+  }
+  .lawyers_5_right_left{
+    width: 25%;
+  }
+  .lawyers_5_right_left img {
+      width: 66%;
+  }
+  .lawyers_6{
+    padding-top: 1px;
+    padding-bottom: 30px;
+  }
+  .lawyers_6_size{
+    width: 80% !important;
+    margin: 50px auto 0 auto;
+  }
+
+  .slider_box{
+  padding: 50px 10px 30px 10px;
+  }
+  .slider_name{
+  font-size: 16px;
+  }
+  .slider_img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  .slider_box_main{
+  width: 95%;
+  }
+  .lawyers_7{
+    height: 300px;
+  }
+  .lawyers_7_size{
+    width: 90%;
+  }
+  .lawyers_7_size h3{
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .lawyers_7_size p{
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .lawyers_7_size input{
+    width: 200px;
+    height: 35px;
+    font-size: 14px;
+    margin-right: 20px;
+  }
+  .lawyers_7_size button{
+    width: 100px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .footer_size{
+    width: 92%;
+      padding: 20px 0 30px 0;
+  }
+  .footer_size p{
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .footer_size ul li{
+    font-size: 18px;
+   margin-bottom: 15px;
+
+  }
+  .footer_size ul li:before{
+    width: 8px;
+    height: 8px;
+    left: -15px;
+  }
+  .footer_soc{
+    margin-top: 30px;
+  }
+  .footer_soc img{
+    margin-left: 15px;
+  }
+  .lawyers_bottom{
+    height: 45px;
+  }
+  .lawyers_bottom P{
+    font-size: 14px;
+  }
+  .owl-carousel .item{
+    width: 262px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+@media screen and (max-width:1300px) {
+
+  #sign_up{
+    width: 100px;
+  }
+  .lawyers_1{
+    height: 400px;
+  }
+  .lawyers_1_size{
+    width: 70%;
+  }
+  .lawyers_1_size h1{
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  .lawyers_1_size p{
+    font-size: 14px;
+  }
+  .lawyers_1_inputs{
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .lawyers_1_inputs input{
+    padding-left: 1px;
+  }
+
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+    width: 17px;
+    height: 100%;
+  }
+  .Reach_legals h3{
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+  }
+  .Reach_legals p{
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .Reach_legals_div{
+    width: 120px;
+    height: 1px;
+  }
+
+  .lawyers_2_box{
+    width: 20%;
+    padding: 10px 0 10px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .lawyers_2_box button{
+    font-size: 10px;
+    width: 80px;
+    height: 25px;
+    margin-top: 10px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 5px;
+    width: 15px;
+  }
+  .lawyers_2_checkbox p{
+    font-size: 10px;
+  }
+  .lawyers_2_checkbox input{
+    margin-right: 5px;
+  }
+  .lawyers_2_inp{
+    width: 100%;
+  }
+  .lawyers_3{
+    margin-top: 30px;
+    height: 300px;
+  }
+  .lawyers_3 h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .lawyers_3 p{
+    font-size: 14px;
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .lawyers_4_size{
+    width: 92%;
+  }
+  .lawyers_4_left{
+    width: 71%;
+  }
+  .verified p{
+    font-size: 18px;
+    margin: 0 0 0 20px;
+  }
+  .verified img{
+    width: 25px;
+  }
+  .lawyers_4_left_text {
+  font-size: 12px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 20px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 100px;
+  height: 25px;
+  margin-bottom: 30px;
+  font-size: 10px;
+  }
+  .lawyers_4_right{
+    width: 25%;
+  }
+
+  .lawyers_4_right_box button{
+    width: 100px;
+  height: 25px;
+  margin-bottom: 10px;
+    font-size: 10px;
+  }
+  .lawyers_4_right_box_top{
+    width: 100%;
+    height: 30px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 16px;
+  }
+  .mo_price{
+    font-size: 40px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price {
+    font-size: 14px !important;
+  }
+  .poss_price_text{
+    width: 90%;
+    margin: 10px auto;
+        font-size: 14px !important;
+  }
+.lawyers_4_right_box_2, .lawyers_4_right_box_3{
+  font-size: 8px;
+}
+.book img{
+  width: 75%;
+}
+  .lawyers_5_right{
+    margin-top: 30px;
+  }
+  #Learn_more{
+    margin-left: 15px;
+  }
+  .lawyers_5_right_right{
+    width: 80%;
+  }
+  .lawyers_5_right_left{
+    width: 20%;
+  }
+  .lawyers_5_right_left img {
+      width: 49%;
+  }
+  .lawyers_6{
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  .lawyers_6_size{
+    width: 92%;
+    margin: 20px auto 0 auto;
+  }
+
+  .slider_box{
+  padding: 30px 10px 10px 10px;
+  }
+  .slider_name{
+  font-size: 14px;
+  }
+  .slider_img{
+    width: 100px;
+    height: 100px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .slider_box_main{
+  width: 95%;
+  }
+  .slider_box_main p{
+font-size: 12px;
+  }
+  .lawyers_7{
+    height: 200px;
+  }
+  .lawyers_7_size{
+    width: 90%;
+  }
+  .lawyers_7_size h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .lawyers_7_size p{
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .lawyers_7_size input{
+    width: 150px;
+    height: 25px;
+    font-size: 10px;
+    margin-right: 20px;
+  }
+  .lawyers_7_size button{
+    width: 80px;
+    height: 25px;
+    font-size: 12px;
+  }
+  .footer_size{
+    width: 92%;
+      padding: 20px 0 20px 0;
+  }
+  .footer_size p{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .footer_size ul li{
+    font-size: 14px;
+   margin-bottom: 5px;
+
+  }
+  .footer_size ul li:before{
+    width: 6px;
+    height: 6px;
+    left: -15px;
+  }
+  .footer_soc{
+    margin-top: 30px;
+  }
+  .footer_soc img{
+    margin-left: 15px;
+    width: 25px;
+  }
+  .lawyers_bottom{
+    height: 35px;
+  }
+  .lawyers_bottom P{
+    font-size: 10px;
+  }
+  .owl-carousel .item{
+    width: 200px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+@media screen and (max-width:1200px) {
+  .lawyers_1_inputs input{
+    width: 180px;
+    height: 30px;
+    font-size: 12px;
+  }
+  #avatar{
+    display: none;
+  }
+  #law_loc{
+    display: none;
+  }
+}
+@media screen and (max-width:1000px) {
+  .book img {
+    width: 60% !important;
+}
+  .lawyers_1_bottom{
+    width: 90%;
+  }
+
+  .navbar-nav li a{
+    font-size: 14px;
+    margin-left: 60px;
+  }
+  .lawyers_1{
+    height: 350px;
+  }
+  .lawyers_1_size{
+    width: 90%;
+  }
+  .lawyers_1_size h1{
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .lawyers_1_size p{
+    font-size: 12px;
+  }
+  .lawyers_1_inputs{
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .lawyers_1_inputs input{
+    width: 150px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .lawyers_1_inputs button{
+    width: 80px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+    width: 17px;
+    height: 100%;
+  }
+
+  .Reach_legals h3{
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .Reach_legals p{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .Reach_legals_div{
+    width: 100px;
+    height: 1px;
+  }
+
+  .lawyers_2_box{
+    width: 20%;
+    padding: 10px 0 10px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 12px;
+    margin-top: 0px;
+  }
+  .lawyers_2_box button{
+    font-size: 8px;
+    width: 70px;
+    height: 20px;
+    margin-top: 0px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 5px;
+    width: 12px !important;
+  }
+  .lawyers_2_inp{
+    width: 100%;
+    flex-direction: column;
+
+  }
+  .lawyers_2_checkbox p{
+    font-size: 8px;
+    margin: 0;
+  }
+  .lawyers_2_checkbox {
+    font-size: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .lawyers_2_box img{
+    width: 80px
+      }
+  .lawyers_2_checkbox input{
+    margin-right: 5px;
+  }
+  .lawyers_2_inp{
+    width: 100%;
+  }
+  .lawyers_3{
+    margin-top: 25px;
+    height: 200px;
+  }
+  .lawyers_3 h3{
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  .lawyers_3 p{
+    font-size: 12px;
+    width: 95%;
+    margin-bottom: 0px;
+  }
+
+  .lawyers_4_left{
+    width: 71%;
+  }
+  .verified p{
+    font-size: 14px;
+    margin: 0 0 0 20px;
+  }
+  .verified img{
+    width: 20px;
+  }
+  .lawyers_4_left_text {
+  font-size: 10px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 10px;
+  }
+  .lawyers_4_left_bottom button{
+    width: 80px;
+  height: 20px;
+  font-size: 8px;
+  }
+  .lawyers_4_right{
+    width: 25%;
+  }
+
+  .lawyers_4_right_box button{
+    width: 80px;
+  height: 20px;
+  margin-bottom: 10px;
+    font-size: 8px;
+  }
+  .lawyers_4_right_box_top{
+    width: 100%;
+    height: 25px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 14px;
+  }
+  .mo_price{
+    font-size: 30px !important;
+    margin-left: 10px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 12px !important;
+  }
+  .poss_price_text{
+    width: 90%;
+    margin: 10px auto;
+        font-size: 12px !important;
+  }
+  .lawyers_4_right_box_2, .lawyers_4_right_box_3{
+    font-size: 6px !important;
+    padding: 3px !important;
+  }
+  .lawyers_4_right_box_2 p, .lawyers_4_right_box_3 p{
+margin: 0 !important;
+  }
+.book img{
+  width: 100%;
+}
+  .lawyers_5_right{
+    margin-top: 30px;
+  }
+  #Learn_more{
+    margin-left: 10px;
+  }
+  .lawyers_5_right_right{
+    width: 80%;
+  }
+  .lawyers_5_right_left{
+    width: 20%;
+  }
+  .lawyers_5_right_left img {
+      width: 49%;
+  }
+  .lawyers_6{
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+  .lawyers_6_size{
+    width: 95% !important;
+    margin: 10px auto 0 auto;
+  }
+  .owl-nav{
+    display: none;
+  }
+
+  .slider_box{
+  padding: 30px 10px 10px 10px;
+  }
+  .slider_name{
+  font-size: 12px;
+  }
+  .slider_img{
+    width: 80px;
+    height: 80px;
+    margin-bottom: -30px;
+  }
+
+  .slider_box_top img, .slider_box_bottom img{
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .slider_box_main{
+  width: 95%;
+  }
+  .slider_box_main p{
+font-size: 10px;
+  }
+  .lawyers_7{
+    height: 150px;
+  }
+  .lawyers_7_size{
+    width: 95%;
+  }
+  .lawyers_7_size h3{
+    font-size: 16px;
+    margin-bottom: 0px;
+  }
+  .lawyers_7_size p{
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .lawyers_7_size input{
+    width: 130px;
+    height: 20px;
+    font-size: 8px;
+    margin-right: 10px;
+  }
+  .lawyers_7_size button{
+    width: 60px;
+    height: 20px;
+    font-size: 8px;
+  }
+  .footer_size{
+    width: 92%;
+      padding: 20px 0 10px 0;
+  }
+  .footer_size p{
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .footer_size ul li{
+    font-size: 12px;
+   margin-bottom: 5px;
+
+  }
+  .footer_size ul li:before{
+    width: 4px;
+    height: 4px;
+    left: -15px;
+  }
+  .footer_soc{
+    margin-top: 20px;
+  }
+  .footer_soc img{
+    margin-left: 10px;
+    width: 20px;
+  }
+  .lawyers_bottom{
+    height: 30px;
+  }
+  .lawyers_bottom P{
+    font-size: 8px;
+  }
+  .owl-carousel .item{
+    width: 200px;
+  }
+  .owl-carousel .owl-stage-outer{
+    height: 350px;
+  }
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
+    font-size: 60px;
+  }
+  .owl-carousel .owl-nav button.owl-prev{
+    left: -40px;
+  }
+  .owl-carousel .owl-nav button.owl-next{
+    right: -40px;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .navbar-toggler{
+    padding: 0;
+    border:none;
+  }
+
+  .navbar {
+    padding: 3px 1rem;
+
+  }
+  .navbar-toggler-icon {
+    width: 1.3em;
+    height: 1.3em;
+  }
+  .navbar-brand img{
+    width: 60%;
+  }
+}
+@media screen and (max-width:450px){
+  .book img {
+    width: 80% !important;
+}
+  .lawyers_1_inputs{
+    width: 100% !important;
+  }
+  .lawyers_1_inputs input{
+    width: 110px !important;
+  }
+  .lawyers_1_inputs button{
+    width: 50px !important;
+  }
+}
+@media screen and (max-width:660px) {
+  .owl-carousel .item {
+    width: 150px;
+}
+
+}
+@media screen and (max-width:600px) {
+
+  .lawyers_4_left_bottom {
+    margin-left: 20px
+}
+  #sign_up{
+  width: 80px;
+  height: 30px;
+  text-align: center;
+  }
+  .navbar-nav li a{
+    font-size: 12px;
+    margin-left: 0px;
+
+  }
+  .lawyers_1{
+    height: 250px;
+  }
+  .lawyers_1_size{
+    width: 92%;
+  }
+  .lawyers_1_size h1{
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .lawyers_1_size p{
+    font-size: 10px;
+  }
+  .lawyers_1_inputs{
+    width: 83%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: flex-end;
+  }
+  .lawyers_1_inputs input{
+    width: 120px;
+    height: 20px !important;
+    font-size: 8px;
+  }
+  .lawyers_1_inputs button{
+    width: 60px;
+    height: 20px;
+    font-size: 8px;
+  }
+  .lawyers_1_bottom img{
+    margin-bottom: 10px;
+    width: 12px;
+    height: 100%;
+  }
+  .lawyers_1_bottom_box p{
+  font-size: 9px;
+  }
+
+  .Reach_legals h3{
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .Reach_legals p{
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .Reach_legals_div{
+    width: 80px;
+    height: 1px;
+  }
+.lawyers_2_flex {
+    width: 98%;
+}
+  .lawyers_2_box{
+    width: 30%;
+    padding: 10px 0 10px 0;
+  }
+  .lawyers_2_box p{
+    font-size: 10px;
+    margin-top: 0px;
+  }
+  .lawyers_2_box button{
+    font-size: 8px;
+    width: 60px;
+    height: 20px;
+  }
+  .lawyers_2_stars img{
+    margin-right: 0px;
+    width: 10px !important;
+  }
+
+  .lawyers_2_box img{
+    width: 60px
+      }
+  .lawyers_2_checkbox input{
+    margin-right: 5px;
+  }
+  .lawyers_2_inp{
+    width: 100%;
+  }
+  .lawyers_3{
+    margin-top: 25px;
+    height: 200px;
+  }
+  .lawyers_3 h3{
+    font-size: 14px;
+  }
+  .lawyers_3 p{
+    font-size: 10px;
+  }
+  .lawyers_4_left{
+    width: 60%;
+  }
+  .verified p{
+    font-size: 10px;
+    margin: 0 0 0 5px;
+  }
+  .verified img{
+    width: 15px;
+  }
+  .lawyers_4_left_text {
+  font-size: 8px;
+  }
+  .lawyers_4_left_bottom{
+    margin-top: 8px;
+    text-align: left;
+  }
+  .lawyers_4_left_bottom1{
+    text-align: center;
+  }
+  .lawyers_4_right{
+    width: 39%;
+  }
+.lawyers_4{
+  margin-top: 20px;
+}
+  .lawyers_4_right_box_top{
+    width: 100%;
+    height: 20px;
+  }
+  .lawyers_4_right_box_top p{
+    font-size: 10px;
+  }
+  .mo_price{
+    font-size: 20px !important;
+    margin-left: 5px;
+  }
+  .lawyers_4_right_box_price p{
+    font-size: 10px !important;
+  }
+  .poss_price_text{
+    width: 99%;
+        font-size: 8px !important;
+        margin: 0
+  }
+.lawyers_4_right_box_2 p, .lawyers_4_right_box_3 p{
+  font-size: 6px;
+}
+.lawyers_4_right_box button {
+    width: 60px;
+    height: 20px;
+    margin-bottom: 10px;
+    font-size: 6px;
+}
+.book img{
+  width: 100%;
+}
+  .lawyers_5_right{
+    margin-top: 10px;
+  }
+  #Learn_more{
+    margin-left: 10px;
+  }
+ #image2 {
+    width: 100%;
+    margin: 0 auto;
+}
+  .lawyers_5_right_right{
+    width: 80%;
+  }
+  .lawyers_5_right_left{
+    width: 20%;
+  }
+  .lawyers_5_right_left img {
+      width: 90%;
+  }
+.owl-nav, .owl-dots{
+  display: none;
+}
+.owl-stage-outer{
+  height: 250px !important;
+}
+  .lawyers_7_size h3{
+    font-size: 14px;
+
+  }
+  .lawyers_7_size p{
+    font-size: 8px;
+    margin-bottom: 10px;
+  }
+  .footer_size{
+    width: 95%;
+      padding: 20px 0 10px 0;
+  }
+  .footer_size p{
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 10px
+  }
+  .footer_size ul li{
+    font-size: 12px;
+   margin-bottom: 5px;
+
+  }
+  .footer_size ul li:before{
+    width: 4px;
+    height: 4px;
+    left: -15px;
+  }
+  .footer_soc{
+    margin-top: 20px;
+  }
+  .footer_soc img{
+    margin-left: 10px;
+    width: 20px;
+  }
+  .lawyers_bottom{
+    height: 30px;
+  }
+  .lawyers_bottom P{
+    font-size: 8px;
+  }
+  .footer_size{
+    flex-direction: column;
+  }
+  .footer_1, .footer_2, .footer_3 {
+  margin-left: 50px;
+}
+}

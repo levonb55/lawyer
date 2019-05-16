@@ -1,0 +1,100 @@
+.calendar_btn{
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+}
+.clear {
+    width: 100%;
+    height: 60px;
+}
+.calendar_btn button{
+background-color: #FF9C00;
+width: 281px;
+height: 41px;
+color: #fff;
+}
+
+.fc-right{
+  margin-right: 100px;
+}
+.year_btn{
+  position: absolute;
+  top: 60px;
+  right: 0;
+  display: flex;
+    background-color: #2C3E50;
+          border-radius: 0.25em;
+}
+#Year_array_prev {
+  color: #fff;
+  background-color: #2C3E50;
+  border-color: #2C3E50;
+  width: 46px;
+  height: 41px;
+cursor: pointer;
+      border-radius: 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+          font-size: 1.5em;
+}
+#Year_array_next {
+  color: #fff;
+  background-color: #2C3E50;
+  border-color: #2C3E50;
+  width: 46px;
+  height: 41px;
+cursor: pointer;
+  z-index: 333333333333;
+      border-radius: 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+          font-size: 1.5em ;
+}
+.fc-left{
+  margin-left: 300px;
+}
+.fc-button-primary:disabled {
+  text-transform: capitalize;
+}
+@media screen and (max-width:1200px){
+  .fc-left{
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:500px) {
+  .fc-toolbar{
+    flex-direction: column;
+  }
+  .year_btn {
+    position: absolute;
+    top: 92px;
+    right: 0;
+    display: flex;
+    background-color: #2C3E50;
+    border-radius: 0.25em;
+}
+.clear {
+    width: 100%;
+    height: 60px;
+}
+.fc-toolbar h2 {
+    font-size: 1.75em;
+    margin: 0;
+    margin-bottom: 10px;
+}
+.calendar_btn{
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.calendar_btn button{
+background-color: #FF9C00;
+width: 120px;
+height: 35px;
+color: #fff;
+font-size: 12px
+}
+}

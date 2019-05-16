@@ -1,0 +1,460 @@
+
+.lawyers_3{
+  margin-top: 0;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  height: 600px;
+}
+.lawyers_3 h2{
+  font-family: "Montserrat-Regular";
+  font-size: 62px;
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+.lawyers_3 button{
+  font-family: "Montserrat-Regular";
+  font-size: 13px;
+  color: #ffffff;
+  width: 183px;
+height: 41px;
+border-radius: 10px;
+background-color: #ff9c00;
+}
+.affiliate_tittle{
+  width: 100%;
+  text-align: center;
+}
+.affiliate_tittle p{
+  font-family: "Montserrat-Regular";
+  font-size: 28.5px;
+}
+.affiliate_tittle .affiliate_line{
+  width: 223px;
+  margin: 0 auto;
+  height: 1px;
+  background-color: #000000;
+}
+.affiliate_1{
+  width: 73%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+  margin-bottom: 190px;
+}
+.affiliate_1_left{
+width: 20%;
+}
+.affiliate_1_left img{
+width: 100%;
+}
+.affiliate_1_right{
+width: 69%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.affiliate_1_right h6{
+  font-family: "Montserrat-Regular";
+font-size: 26px;
+margin-bottom: 40px;
+}
+.affiliate_1_right p{
+  font-family: "Montserrat-Regular";
+font-size: 20px;
+margin: 0;
+}
+.affiliate_2{
+  width: 87%;
+  margin: 50px auto 140px auto;
+  box-shadow: 0px 1px 14.9px 0.2px rgba(124, 123, 123, 0.24);
+  padding: 60px 90px 80px 90px;
+}
+.affiliate_2_box{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.affiliate_2_box_left{
+  display: flex;
+  align-items: center;
+}
+.affiliate_2_box_left_circle{
+  color: #ff9c00;
+  font-size: 18px;
+  margin-right: 30px;
+}
+.affiliate_2_box_left_text{
+  font-family: "Montserrat-Regular";
+font-size: 22px;
+}
+.affiliate_2_box_right{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+width: 479px;
+height: 56px;
+border-radius: 10px;
+background-color: #ff9c00;
+}
+.affiliate_2_box_right p{
+  font-family: "Montserrat-Regular";
+font-size: 22px;
+color: #fff;
+margin: 0;
+}
+@media screen and (max-width:1800px){
+  .affiliate_2_box_right{
+  width: 379px;
+  }
+  .lawyers_3{
+    height: 500px;
+  }
+}
+@media screen and (max-width:1700px) {
+  .lawyers_3{
+    margin-bottom: 90px;
+      height: 450px;
+  }
+  .lawyers_3 h2{
+    font-size: 58px;
+    margin-bottom: 45px;
+  }
+  .lawyers_3 button{
+    font-size: 13px;
+    width: 183px;
+  height: 41px;
+  }
+  .affiliate_tittle p{
+    font-size: 27px;
+  }
+  .affiliate_tittle .affiliate_line{
+    width: 210px;
+  }
+  .affiliate_1{
+    width: 73%;
+    margin-top: 90px;
+    margin-bottom: 170px;
+  }
+  .affiliate_1_left{
+  width: 20%;
+  }
+  .affiliate_1_left img{
+  width: 100%;
+  }
+  .affiliate_1_right{
+  width: 69%;
+  }
+  .affiliate_1_right h6{
+  font-size: 25px;
+  margin-bottom: 30px;
+  }
+  .affiliate_1_right p{
+  font-size: 19px;
+  }
+  .affiliate_2{
+    width: 87%;
+    margin: 54px auto 120px auto;
+    padding: 50px 70px 70px 70px;
+  }
+  .affiliate_2_box{
+    margin-top: 19px;
+  }
+
+  .affiliate_2_box_left_circle{
+    font-size: 17px;
+    margin-right: 20px;
+  }
+  .affiliate_2_box_left_text{
+  font-size: 20px;
+  }
+  .affiliate_2_box_right{
+  width: 360px;
+  height: 50px;
+  }
+  .affiliate_2_box_right p{
+  font-size: 20px;
+  }
+}
+@media screen and (max-width:1500px) {
+  .lawyers_3{
+    margin-bottom: 60px;
+    height: 400px;
+  }
+  .lawyers_3 h2{
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+  .lawyers_3 button{
+    font-size: 13px;
+    width: 183px;
+  height: 41px;
+  }
+  .affiliate_tittle p{
+    font-size: 26px;
+  }
+  .affiliate_tittle .affiliate_line{
+    width: 190px;
+  }
+  .affiliate_1{
+    width: 73%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+  }
+  .affiliate_1_left{
+  width: 20%;
+  }
+  .affiliate_1_left img{
+  width: 100%;
+  }
+  .affiliate_1_right{
+  width: 69%;
+  }
+  .affiliate_1_right h6{
+  font-size: 22px;
+  margin-bottom: 20px;
+  }
+  .affiliate_1_right p{
+  font-size: 16px;
+  }
+  .affiliate_2{
+    width: 87%;
+    margin: 50px auto 80px auto;
+    padding: 30px 20px 30px 20px;
+  }
+  .affiliate_2_box{
+    margin-top: 15px;
+  }
+
+  .affiliate_2_box_left_circle{
+    font-size: 15px;
+    margin-right: 20px;
+  }
+  .affiliate_2_box_left_text{
+  font-size: 16px;
+  }
+  .affiliate_2_box_right{
+  width: 250px;
+  height: 30px;
+  }
+  .affiliate_2_box_right p{
+  font-size: 16px;
+  }
+}
+@media screen and (max-width:1100px) {
+  .lawyers_3{
+    margin-bottom: 30px;
+    height: 300px;
+  }
+  .lawyers_3 h2{
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .lawyers_3 button{
+    font-size: 12px;
+    width: 140px;
+  height: 30px;
+  }
+  .affiliate_tittle p{
+    font-size: 20px;
+  }
+  .affiliate_tittle .affiliate_line{
+    width: 100px;
+  }
+  .affiliate_1{
+    width: 92%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+  .affiliate_1_left{
+  width: 20%;
+  }
+  .affiliate_1_left img{
+  width: 100%;
+  }
+  .affiliate_1_right{
+  width: 75%;
+  }
+  .affiliate_1_right h6{
+  font-size: 17px;
+  margin-bottom: 20px;
+  }
+  .affiliate_1_right p{
+  font-size: 14px;
+  }
+  .affiliate_2{
+    width: 95%;
+    margin: 30px auto ;
+    padding: 15px 10px;
+  }
+  .affiliate_2_box{
+    margin-top: 10px;
+  }
+
+  .affiliate_2_box_left_circle{
+    font-size: 10px;
+    margin-right: 5px;
+  }
+  .affiliate_2_box_left_text{
+  font-size: 13px;
+  }
+  .affiliate_2_box_right{
+  width: 200px;
+  height: 25px;
+  }
+  .affiliate_2_box_right p{
+  font-size: 13px;
+  }
+}
+@media screen and (max-width:790px) {
+  .lawyers_3{
+    margin-bottom: 30px;
+      height: 200px;
+  }
+  .lawyers_3 h2{
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .lawyers_3 button{
+    font-size: 12px;
+    width: 140px;
+  height: 30px;
+  }
+  .affiliate_tittle p{
+    font-size: 18px;
+  }
+  .affiliate_tittle .affiliate_line{
+    width: 100px;
+  }
+  .affiliate_1{
+    width: 92%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .affiliate_1_left{
+  width: 20%;
+  }
+  .affiliate_1_left img{
+  width: 100%;
+  }
+  .affiliate_1_right{
+  width: 75%;
+  }
+  .affiliate_1_right h6{
+  font-size: 16px;
+  margin-bottom: 10px;
+  }
+  .affiliate_1_right p{
+  font-size: 13px;
+  }
+  .affiliate_2{
+    width: 95%;
+    margin: 30px auto;
+    padding: 15px 10px;
+  }
+  .affiliate_2_box{
+    margin-top:20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .affiliate_2_box_left_circle{
+    font-size: 10px;
+    margin-right: 0px;
+    margin: 0
+  }
+  .affiliate_2_box_left{
+    margin-bottom: 5px;
+  }
+  .affiliate_2_box_left_text{
+  font-size: 13px;
+  margin: 0;
+  margin-left: 8px
+  }
+  .affiliate_2_box_right{
+  width: 200px;
+  height: 25px;
+  }
+  .affiliate_2_box_right p{
+  font-size: 13px;
+  }
+}
+@media screen and (max-width:530px) {
+  .lawyers_3{
+    margin-bottom: 30px;
+    height: 150px
+  }
+  .lawyers_3 h2{
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .lawyers_3 button{
+    font-size: 12px;
+    width: 140px;
+  height: 30px;
+  }
+  .affiliate_tittle p{
+    font-size: 18px;
+  }
+  .affiliate_tittle .affiliate_line{
+    width: 100px;
+  }
+  .affiliate_1{
+    width: 92%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .affiliate_1_left{
+  width: 27%;
+  display: flex;
+  align-items: center;
+  }
+  .affiliate_1_left img{
+  width: 100%;
+  }
+  .affiliate_1_right{
+  width: 70%;
+  }
+  .affiliate_1_right h6{
+  font-size: 16px;
+  margin-bottom: 10px;
+  }
+  .affiliate_1_right p{
+  font-size: 12px;
+  }
+  .affiliate_2{
+    width: 95%;
+    margin: 30px auto;
+    padding: 15px 5px;
+  }
+  .affiliate_2_box{
+    margin-top:20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .affiliate_2_box_left_circle{
+    font-size: 10px;
+    margin-right: 0px;
+    margin: 0
+  }
+  .affiliate_2_box_left{
+    margin-bottom: 5px;
+  }
+  .affiliate_2_box_left_text{
+  font-size: 13px;
+  margin: 0;
+  margin-left: 8px
+  }
+  .affiliate_2_box_right{
+  width: 200px;
+  height: 25px;
+  }
+  .affiliate_2_box_right p{
+  font-size: 13px;
+  }
+}
