@@ -44,6 +44,23 @@ Route::middleware('lawyer')->group(function () {
 });
 Route::middleware('admin')->group(function () {
     Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-        Route::get('/dashboard','AdminController@index');
+        Route::get('/dashboard','AdminController@index')->name('admin_dashboard');
+        Route::group(['prefix' => 'home','namespace' => 'Home'], function () {
+            //welcome
+            Route::get('/home_first','HomeController@homeFirst')->name('home_first');
+            Route::get('/home_second','HomeController@homeSecond')->name('home_second');
+            Route::get('/home_third','HomeController@homeThird')->name('home_third');
+            //about
+            Route::get('/about_first','HomeController@aboutFirst')->name('about_first');
+            Route::get('/about_second','HomeController@aboutSecond')->name('about_second');
+            Route::get('/about_third','HomeController@aboutThird')->name('about_third');
+            //terms
+            Route::get('/terms','HomeController@terms')->name('admin_terms');
+            //privacy
+            Route::get('/privacy','HomeController@privacy')->name('admin_privacy');
+
+
+            Route::post('/content/update/{id}','HomeController@update')->name('update_home_content');
+        });
     });
 });

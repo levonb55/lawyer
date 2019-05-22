@@ -4,55 +4,57 @@
     <section class="lawyers_1">
         <div class="opacity_bg">
             <div class="lawyers_1_size">
-                <h1>Reach The Right Lawyer Easily</h1>
-                <p class="Reach_the">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis
-                    libero vel tortor</p>
+                @if(isset($first_content))
+                <h1>{{$first_content->main_title}}</h1>
+                <p class="Reach_the">{{$first_content->description}}</p>
+                @endif
                 <div class="lawyers_1_inputs">
                     <div class="law_avatar">
-                        <img src="img/avatar.png" alt="" id="avatar">
+                        <img src="{{asset('assets/site/img/avatar.png')}}" alt="" id="avatar">
                         <input type="text" name="" value="" placeholder="Search Lawyer Name">
                     </div>
                     <div class="law_avatar">
-                        <img src="img/loc.png" alt="" id="law_loc">
+                        <img src="{{asset('assets/site/img/loc.png')}}" alt="" id="law_loc">
                         <input type="text" name="" value="" placeholder="Choose Your City">
                     </div>
                     <button type="button" name="button">Search</button>
                 </div>
                 <div class="lawyers_1_bottom">
                     <div class="lawyers_1_bottom_box">
-                        <img src="img/l_1_1.png" alt="">
+                        <img src="{{asset('assets/site/img/l_1_1.png')}}" alt="">
                         <p> Civil</p>
                     </div>
                     <div class="lawyers_1_bottom_box">
-                        <img src="img/l_1_2.png" alt="">
+                        <img src="{{asset('assets/site/img/l_1_2.png')}}" alt="">
                         <p>Immigration</p>
                     </div>
                     <div class="lawyers_1_bottom_box">
-                        <img src="img/l_1_3.png" alt="">
+                        <img src="{{asset('assets/site/img/l_1_3.png')}}" alt="">
                         <p>Brexit</p>
                     </div>
                     <div class="lawyers_1_bottom_box">
-                        <img src="img/l_1_4.png" alt="">
+                        <img src="{{asset('assets/site/img/l_1_4.png')}}" alt="">
                         <p>Criminal</p>
                     </div>
                     <div class="lawyers_1_bottom_box more_more">
-                        <img src="img/l_1_5.png" alt="">
+                        <img src="{{asset('assets/site/img/l_1_5.png')}}" alt="">
                         <p>More</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section>
-        <div class="Reach_legals">
-            <h3>Reach Legal’s Featured Lawyers </h3>
-            <div class="Reach_legals_div">
-
+    @if(isset($second_content))
+        <section>
+            <div class="Reach_legals">
+                <h3>{{$second_content->main_title}}</h3>
+                <div class="Reach_legals_div">
+                </div>
+                <p>{{$second_content->description}}</p>
             </div>
-            <p>Explore our directory and discover exclusive ratings and reviews of the lawyers near you.</p>
-        </div>
-    </section>
+        </section>
+    @endif
+
     <section class="lawyers_2">
         <div class="lawyers_2_flex">
             <div class="lawyers_2_box">
@@ -144,17 +146,14 @@
             </div>
         </div>
     </section>
+    @if(isset($third_content))
     <section class="lawyers_3">
         <div class="opacity_bg">
-            <h3>We ant to make law accessible for all</h3>
-            <p>Founded in London, UK Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse aliquet metus non lectus porttitor, ac hendrerit odio lacinia.
-                Cras quis libero vel tortor porta suscipit ut in urna. Vestibulum ante ipsum
-                primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer id
-                interdum dolor. Suspendisse ac.</p>
-            <p>-Lorem ipsum dolor sit</p>
+            <p>{{$third_content->description}}</p>
+            <p>{{$third_content->title}}</p>
         </div>
     </section>
+    @endif
     <section>
         <div class="Reach_legals">
             <h3>Reach Legal for Users </h3>
@@ -212,7 +211,6 @@
                         elit. Suspendisse aliquet metus non lectus porttitor, ac</p>
                     <button type="button" name="button">Free 30-Day Trial</button>
                 </div>
-
                 <div class="lawyers_4_right_box" id="image2">
                     <div class="lawyers_4_right_box_2">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -235,7 +233,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="lawyers_4_right_box" id="image3">
 
                     <div class="book">
@@ -253,7 +250,6 @@
         <div class="Reach_legals">
             <h3>Reach Legal’s Featured Lawyers </h3>
             <div class="Reach_legals_div">
-
             </div>
             <p>Explore our directory and discover exclusive ratings and reviews of the lawyers near you.</p>
         </div>
@@ -348,7 +344,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item">         <div class="slider_img">
+                    <div class="item">
+                        <div class="slider_img">
                             <img src="{{asset('assets/site/main/img/slider.png')}}" alt="">
                         </div>
                         <div class="slider_box">
