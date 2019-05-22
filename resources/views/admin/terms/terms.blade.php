@@ -23,7 +23,7 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="{{route('admin_dashboard')}}">Dashboard</a></li>
-                        <li><a href="{{route('terms')}}">Terms</a></li>
+                        <li><a href="{{route('admin_terms')}}">Terms</a></li>
                     </ol>
                 </div>
             </div>
