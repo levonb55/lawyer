@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{asset('assets/site/main/css/single.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/terms.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/single.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/site/main/css/contact.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/site/main/css/ask.css')}}">
 </head>
 <body>
 @include('site.layouts.header')

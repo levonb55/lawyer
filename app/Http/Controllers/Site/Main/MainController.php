@@ -34,4 +34,10 @@ class MainController extends Controller
   public function lawyerProfile(){
         return view('site.profile');
   }
+  public function contact(){
+      return view('site.contact');
+  }
+  public function ask(){
+      return view('site.ask');
+  }
 }

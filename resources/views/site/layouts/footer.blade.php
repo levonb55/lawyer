@@ -15,6 +15,9 @@
                 <li>We Heart Clients</li>
                 <li>SMEs & Agencies</li>
                 <li>Enterprise</li>
+                <li>
+                    <a href="{{route('contact')}}">Contact</a>
+                </li>
             </ul>
         </div>
         <div class="footer_3">
