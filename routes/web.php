@@ -26,6 +26,8 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/single','MainController@single')->name('single');
         Route::get('/terms','MainController@terms')->name('terms');
         Route::get('/privacy','MainController@privacy')->name('privacy');
+        Route::get('/contact','MainController@contact')->name('contact');
+        Route::get('/ask','MainController@ask')->name('ask');
     });
 });
 
