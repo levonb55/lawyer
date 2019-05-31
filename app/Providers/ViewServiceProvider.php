@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\Category;
 use App\Models\Admin\Content;
 use Illuminate\Support\ServiceProvider;
 
@@ -43,6 +44,10 @@ class ViewServiceProvider extends ServiceProvider
         view()->composer('site.privacy', function ($view) {
             $privacy = Content::where('name','privacy')->get();
             $view->with(compact('privacy'));
+        });
+        view()->composer('site.lawyers', function ($view) {
+            $categories = Category::get();
+            $view->with(compact('categories'));
         });
     }
 }

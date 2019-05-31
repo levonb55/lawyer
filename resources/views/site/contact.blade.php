@@ -5,9 +5,9 @@
         <div class="contact_size">
             <div class="contact_size_left">
                 <p>Send a Message</p>
-                <input type="text" name="" value="" placeholder="User Name">
+                <input type="text" name="" value="" placeholder="Name">
                 <input type="text" name="" value="" placeholder="Phone">
-                <input type="text" name="" value="" placeholder="E-mail">
+                <input type="text" name="" value="" placeholder="Message">
                 <textarea name="name"  placeholder="E-mail"></textarea>
                 <button type="button" name="button">Send</button>
             </div>

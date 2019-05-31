@@ -57,12 +57,24 @@ Route::middleware('admin')->group(function () {
             Route::get('/about_second','HomeController@aboutSecond')->name('about_second');
             Route::get('/about_third','HomeController@aboutThird')->name('about_third');
             //terms
-            Route::get('/terms','HomeController@terms')->name('admin_terms');
+            Route::get('/terms','TermsController@index')->name('admin_terms');
+            Route::post('/terms/store','TermsController@store')->name('add_term');
             //privacy
-            Route::get('/privacy','HomeController@privacy')->name('admin_privacy');
-
+            Route::get('/privacy','PrivacyController@index')->name('admin_privacy');
+            Route::post('/privacy/store','PrivacyController@store')->name('add_privacy');
 
             Route::post('/content/update/{id}','HomeController@update')->name('update_home_content');
+            Route::get('/content/delete/{id}','HomeController@delete')->name('delete_content');
+
+
+
         });
+        Route::group(['prefix' => 'categories'], function () {
+            Route::get('/','CategoryController@index')->name('admin_categories');
+            Route::post('/create','CategoryController@store')->name('categories_store');
+            Route::post('/update/{id}','CategoryController@update')->name('categories_update');
+            Route::get('/delete/{id}','CategoryController@delete')->name('categories_delete');
+        });
+
     });
 });

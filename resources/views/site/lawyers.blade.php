@@ -8,72 +8,20 @@
     </section>
     <section class="find_2">
         <div class="find_2_size">
-            <a href="{{route('lawyers_by_category')}}">
-                <div class="find_2_box">
-                    <img src="{{asset('assets/site/main/img/find1.png')}}" alt="" class="find_img">
-                    <div class="find_box_absolute">
-                        <img src="{{asset('assets/site/main/img/f1.png')}}" alt="">
-                        <p>Business <br> Lawyers</p>
-                        <button type="button" name="button">3 Lawyers</button>
-                    </div>
-                </div>
-            </a>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find2.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f6.png')}}" alt="">
-                    <p>Civil Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find3.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f2.png')}}" alt="">
-                    <p>Criminal</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find4.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f3.png')}}" alt="">
-                    <p>Divorce <br> Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find5.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f5.png')}}" alt="">
-                    <p>Employment <br> Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find6.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f4.png')}}" alt="">
-                    <p>Estate <br> Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find7.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f7.png')}}" alt="">
-                    <p>Family <br> Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
-            <div class="find_2_box">
-                <img src="{{asset('assets/site/main/img/find8.png')}}" alt="" class="find_img">
-                <div class="find_box_absolute">
-                    <img src="{{asset('assets/site/main/img/f8.png')}}" alt="">
-                    <p>Immigration <br> Lawyers</p>
-                    <button type="button" name="button">3 Lawyers</button>
-                </div>
-            </div>
+            @if(isset($categories))
+                @foreach($categories as $category)
+                    {{--<a href="{{route('lawyers_by_category')}}">--}}
+                        <div class="find_2_box">
+                            <img src="{{asset('assets/site/main/img/find1.png')}}" alt="" class="find_img">
+                            <div class="find_box_absolute">
+                                <img src="{{asset('assets/site/main/img/f1.png')}}" alt="">
+                                <p>{{$category->name}} <br> Lawyers</p>
+                                <button type="button" name="button">3 Lawyers</button>
+                            </div>
+                        </div>
+                    {{--</a>--}}
+                @endforeach
+            @endif
         </div>
     </section>
 
