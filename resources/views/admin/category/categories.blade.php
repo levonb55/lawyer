@@ -41,42 +41,19 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="{{route('admin_dashboard')}}">Dashboard</a></li>
-                        <li><a href="{{route('admin_privacy')}}">Privacy</a></li>
+                        <li><a href="{{route('admin_categories')}}">Categories</a></li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <strong>Privacy</strong>
-            </div>
-            <div class="card-body card-block">
-                <form action="{{route('update_home_content',$privacy[0]->id)}}" id="update_content{{$privacy[0]->id}}"  method="post"  class="form-horizontal" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Main Title</label></div>
-                        <div class="col-12 col-md-9">
-                            <input type="text" id="text-input" name="main_title"  value="{{$privacy[0]->main_title}}"  class="form-control">
-                        </div>
-                    </div>
-                </form>
-                <div class="card-footer">
-                    <button  form="update_content{{$privacy[0]->id}}" class="btn btn-success btn-sm">
-                        Update
-                    </button>
-                </div>
-            </div>
 
-        </div>
-    </div>
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-md-10"> </div>
                 <div class="col-md-2">
-                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#mediumModal">Add Privacy</a>
+                    <a href="" class="btn btn-primary" data-toggle="modal" data-target="#smallmodal">Add Category</a>
                 </div>
             </div>
             <br>
@@ -91,25 +68,22 @@
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
+                                    <th>name</th>
+
                                     <th>action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($privacy->slice(1) as $policy)
-                                    <form id="works_update" method="post" action="{{route('update_home_content',$policy->id)}}">
+                                @foreach($categories as $categories)
+                                    <form id="works_update" method="post" action="{{route('categories_update',$categories->id)}}">
                                         @csrf
                                         <tr>
                                             <td>
-                                                <textarea name="title" style="width: 400px">{{$policy->title}}</textarea>
-                                            </td>
-                                            <td>
-                                                <textarea name="description" style="width: 400px">{{$policy->description}}</textarea>
+                                                <input type="text" name="name" value="{{$categories->name}}">
                                             </td>
                                             <td>
                                                 <button type="submit" class="btn btn-primary">edit</button>
-                                                <a href="{{route('delete_content',$policy->id)}}" class="btn btn-danger">delete</a>
+                                                <a href="{{route('categories_delete',$categories->id)}}" class="btn btn-danger">delete</a>
                                             </td>
                                         </tr>
                                     </form>
@@ -123,36 +97,25 @@
         </div><!-- .animated -->
     </div>
 
-    <div class="modal fade" id="mediumModal" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="mediumModalLabel">Add Privacy</h5>
+                    <h5 class="modal-title" id="smallmodalLabel">Add Resource</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('add_privacy')}}" method="post" id="save_term" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="{{route('categories_store')}}" method="post" id="add_resource" enctype="multipart/form-data" class="form-horizontal">
                         @csrf
                         <div class="row form-group">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Title</label></div>
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="title" placeholder="Text" class="form-control">
-                                @if ($errors->has('title'))
+                                <input type="text" id="text-input" name="name" placeholder="Text" class="form-control">
+                                @if ($errors->has('name'))
                                     <span class="text-danger">
-		                    	        <strong>{{ $errors->first('title') }}</strong>
-		                            </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col col-md-3"><label for="file-input" class=" form-control-label">Description</label></div>
-                            <div class="col-12 col-md-9">
-                                <textarea type="file" id="file-input" name="description" class="form-control-file" placeholder="Description ..."> </textarea>
-                                @if ($errors->has('description'))
-                                    <span class="text-danger">
-		                    	        <strong>{{ $errors->first('description') }}</strong>
+		                    	        <strong>{{ $errors->first('name') }}</strong>
 		                            </span>
                                 @endif
                             </div>
@@ -161,9 +124,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" form="save_term" class="btn btn-primary">Save</button>
+                    <button type="submit" form="add_resource" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection

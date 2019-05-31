@@ -44,6 +44,6 @@
 
 </footer>
 <section class="lawyers_bottom">
-    <p>Copy right 2019</p>
+    <p>Copy right {{date("Y") }}</p>
 </section>
 

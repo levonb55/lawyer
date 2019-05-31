@@ -52,18 +52,7 @@ class HomeController extends Controller
         return view('admin.about.about_third',compact('third_content'));
     }
     //Terms
-    public function terms()
-    {
-        $terms = $this->model->where('name','terms')->get();
 
-        return view('admin.terms.terms',compact('terms'));
-    }
-    //privacy
-    public function privacy()
-    {
-        $privacy = $this->model->where('name','privacy')->get();
-        return view('admin.privacy.privacy',compact('privacy'));
-    }
     public function update(Request $request,$id)
     {
 
@@ -79,5 +68,10 @@ class HomeController extends Controller
         $this->model->where('id',$id)->update($data);
         return redirect()->back()->with('update','updated');
 
+    }
+
+    public function delete($id){
+        $this->model->where('id',$id)->delete();
+        return redirect()->back()->with('delete','delete terms');
     }
 }
