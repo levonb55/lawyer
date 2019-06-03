@@ -10,7 +10,7 @@
         <div class="find_2_size">
             @if(isset($categories))
                 @foreach($categories as $category)
-                    {{--<a href="{{route('lawyers_by_category')}}">--}}
+                    <a href="{{route('lawyers_by_category')}}">
                         <div class="find_2_box">
                             <img src="{{asset('assets/site/main/img/find1.png')}}" alt="" class="find_img">
                             <div class="find_box_absolute">
@@ -19,7 +19,7 @@
                                 <button type="button" name="button">3 Lawyers</button>
                             </div>
                         </div>
-                    {{--</a>--}}
+                    </a>
                 @endforeach
             @endif
         </div>
