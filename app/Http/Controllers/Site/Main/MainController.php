@@ -4,12 +4,17 @@ namespace App\Http\Controllers\Site\Main;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Lawyer;
 
 class MainController extends Controller
 {
   public function index(){
-      return view('site.welcome');
+
+      $lawyers = Lawyer::take(3)->with('user')->with('category')->get();
+
+      return view('site.welcome', compact('lawyers'));
   }
+
   public function about(){
       return view('site.about');
   }
