@@ -57,10 +57,14 @@
 
     <section class="lawyers_2">
         <div class="lawyers_2_flex">
-            <div class="lawyers_2_box">
+
+            @foreach($lawyers as $lawyer)
+                <div class="lawyers_2_box">
                 <img src="{{asset('assets/site/main/img/lawyer_face.png')}}" alt="">
-                <p>Lawyer Name</p>
-                <p>Lawyer Firm Name</p>
+                <p>
+                    {{$lawyer->user->first_name . ' ' . $lawyer->user->last_name}}
+                </p>
+                <p>{{$lawyer->company}}</p>
                 <div class="lawyers_2_stars">
                     <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
                     <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
@@ -71,79 +75,82 @@
                 <p>3 reviews</p>
                 <p>Area of Law</p>
                 <div class="lawyers_2_inp">
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
+                    {{$lawyer->category->name}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
                 </div>
                 <button type="button" name="button">Contact Me</button>
             </div>
-            <div class="lawyers_2_box">
-                <img src="{{asset('assets/site/main/img/lawyer_face.png')}}" alt="">
-                <p>Lawyer Name</p>
-                <p>Lawyer Firm Name</p>
-                <div class="lawyers_2_stars">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                </div>
-                <p>3 reviews</p>
-                <p>Area of Law</p>
-                <div class="lawyers_2_inp">
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                </div>
-                <button type="button" name="button">Contact Me</button>
-            </div>
-            <div class="lawyers_2_box">
-                <img src="{{asset('assets/site/main/img/lawyer_face.png')}}" alt="">
-                <p>Lawyer Name</p>
-                <p>Lawyer Firm Name</p>
-                <div class="lawyers_2_stars">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                    <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
-                </div>
-                <p>3 reviews</p>
-                <p>Area of Law</p>
-                <div class="lawyers_2_inp">
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                    <div class="lawyers_2_checkbox">
-                        <input type="checkbox" name="" value="">
-                        <p>Lorem</p>
-                    </div>
-                </div>
-                <button type="button" name="button">Contact Me</button>
-            </div>
+            @endforeach
+
+            {{--<div class="lawyers_2_box">--}}
+                {{--<img src="{{asset('assets/site/main/img/lawyer_face.png')}}" alt="">--}}
+                {{--<p>Lawyer Name</p>--}}
+                {{--<p>Lawyer Firm Name</p>--}}
+                {{--<div class="lawyers_2_stars">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                {{--</div>--}}
+                {{--<p>3 reviews</p>--}}
+                {{--<p>Area of Law</p>--}}
+                {{--<div class="lawyers_2_inp">--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<button type="button" name="button">Contact Me</button>--}}
+            {{--</div>--}}
+            {{--<div class="lawyers_2_box">--}}
+                {{--<img src="{{asset('assets/site/main/img/lawyer_face.png')}}" alt="">--}}
+                {{--<p>Lawyer Name</p>--}}
+                {{--<p>Lawyer Firm Name</p>--}}
+                {{--<div class="lawyers_2_stars">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                    {{--<img src="{{asset('assets/site/main/img/star.png')}}" alt="">--}}
+                {{--</div>--}}
+                {{--<p>3 reviews</p>--}}
+                {{--<p>Area of Law</p>--}}
+                {{--<div class="lawyers_2_inp">--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="lawyers_2_checkbox">--}}
+                        {{--<input type="checkbox" name="" value="">--}}
+                        {{--<p>Lorem</p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<button type="button" name="button">Contact Me</button>--}}
+            {{--</div>--}}
         </div>
     </section>
     @if(isset($third_content))
