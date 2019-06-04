@@ -6,7 +6,7 @@
 
     <section  class="login_reg">
         <div class="login_reg_top">
-            <p>Employer Registration</p>
+            <p>Remote Worker Registration</p>
             <div class="login_reg_line"></div>
         </div>
         <div class="login_reg_main">
@@ -15,16 +15,15 @@
 
                 @include('auth.user-input')
 
-                <input type="hidden" name="referral">
+                <input type="text" name="referral" value="" placeholder="Referral code">
+                <input type="hidden" name="role_id" value="3">
 
-                <input type="hidden" name="role_id" value="2">
                 {{--<div class="login_reg_main_remm">--}}
-                    {{--<input type="checkbox" name="remember" value="">--}}
+                    {{--<input type="checkbox" name="" value="">--}}
                     {{--<p>Remember me?</p>--}}
                 {{--</div>--}}
-                <button type="submit" class="login_reg_sign_up">Sign Up</button>
+                <button type="submit" name="button" class="login_reg_sign_up">Sign Up</button>
             </form>
-
             <p class="login_reg_already">Already have an account?</p>
             <button type="button" name="button" class="login_reg_log_btn" data-toggle="modal"
                     data-target="#login_modal">

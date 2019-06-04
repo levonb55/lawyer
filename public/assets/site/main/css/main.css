@@ -806,3 +806,10 @@ text-decoration: underline;
 .Don’t_have {
 margin-bottom: 20px;
 }
+
+.input-error {
+  font-size: 11px;
+  display: block;
+  color: red;
+  margin-bottom: 9px;
+}
