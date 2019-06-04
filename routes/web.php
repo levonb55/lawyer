@@ -14,6 +14,10 @@
 
 
 Auth::routes();
+Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
+//Route::get('users/dashboard','User\UserController@index')->middleware('auth');
+
+
 
 Route::group(['namespace' => 'Site'], function () {
     Route::group(['namespace' => 'Main'], function () {
