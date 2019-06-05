@@ -24,14 +24,14 @@
                             <input type="email" name="email" value="{{ old('email') }}"
                                 placeholder="E-mail address" required autocomplete="email">
                             @error('email')
-                                <span>
+                                <span class="input-error">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
 
                             <input type="password" name="password" placeholder="Password" required>
                             @error('password')
-                                <span>
+                                <span class="input-error">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror

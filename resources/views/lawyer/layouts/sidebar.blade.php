@@ -11,7 +11,7 @@
         <ul>
             <li class="active_page"><a href="#"> <img src="{{asset('assets/site/main/img/dash_1.png')}}" alt=""> Dashboard</a></li>
             <li><a href="#"> <img src="{{asset('assets/site/main/img/dash2.png')}}" alt=""> My profile</a></li>
-            <li><a href="#"><img src="{{asset('assets/site/main/img/dash_3.png')}}" alt=""> Settings</a></li>
+            <li><a href="{{route('lawyer.dashboard', \Auth::id())}}"><img src="{{asset('assets/site/main/img/dash_3.png')}}" alt=""> Settings</a></li>
             <li><a href="{{route('lawyer_messages')}}"><img src="{{asset('assets/site/main/img/dash_4.png')}}" alt=""> Message</a></li>
             <li><a href="{{route('lawyer_calendar')}}"><img src="{{asset('assets/site/main/img/dash_5.png')}}" alt=""> Booking</a></li>
             <li><a href="#"><img src="{{asset('assets/site/main/img/dash_6.png')}}" alt=""> Pricing plan</a></li>

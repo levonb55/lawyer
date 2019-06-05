@@ -108,6 +108,7 @@ input:focus {
     max-width: 465px;
     width:100%;
     overflow: hidden;
+    overflow-y: scroll !important;
     background: #1b2743;;
     box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
     -webkit-transition: all 0.3s ease 0s;
@@ -261,7 +262,9 @@ color: #ffffff;
   height: 60px;
 }
 .dash_img_add{
-  margin-left: 110px;
+  width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 .dash_textarea{
   max-width: 857px;
@@ -441,6 +444,31 @@ border: 1px solid #000;
 
 
 
+#upload_file{
+    font-size: 1.2em;
+    background: #f5f5f5;
+    display: block!important;
+    position: relative;
+    padding: 0;
+    font-weight: bold;
+    border: none;
+    transition: all .15s ease-out;
+    height: 128px !important;
+    width: 150px !important;
+    margin-left: 110px;
+}
+#upload_file::before {
+    content:;
+    position: relative;
+    margin-top: 0px;
+    border: none;
+    border-left-color: inherit;
+}
+
+#upload_file img {
+    height: 100%;
+}
+
 /* drop end */
 @media(max-width: 1600px){
   .dashboard_page-container .sidebar-menu li{
@@ -468,9 +496,9 @@ border: 1px solid #000;
     width: 100%;
     height: 20px;
   }
-  .dash_img_add{
-    margin-left: 100px;
-  }
+  /*.dash_img_add{*/
+    /*margin-left: 100px;*/
+  /*}*/
   .dash_textarea{
     max-width: 600px;
     width: 100%;
@@ -603,6 +631,7 @@ border: 1px solid #000;
     .dashboard_page-container aside {
         max-width: 250px;
         left: -250px;
+        overflow: scroll;
     }
     .dashboard_page-container.sbar_collapsed aside {
         left: 0;
@@ -1039,7 +1068,7 @@ background: #fff !important;
       height: 20px;
     }
     .dash_img_add{
-      margin-left: 100px;
+      /*margin-left: 100px;*/
       width: 150px;
     }
     .faq-section label {
@@ -1119,7 +1148,7 @@ background: #fff !important;
       text-align: center;
     }
     .dash_img_add{
-      margin-left: 0px;
+      /*margin-left: 0px;*/
       width: 130px;
     }
     .faq-section label {

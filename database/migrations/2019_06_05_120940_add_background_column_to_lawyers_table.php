@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddReferralToUsersTable extends Migration
+class AddBackgroundColumnToLawyersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddReferralToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('referral')->after('role_id')->nullable();
+        Schema::table('lawyers', function (Blueprint $table) {
+            $table->text('background')->after('company')->nullable();
         });
     }
 
@@ -25,8 +25,8 @@ class AddReferralToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('referral');
+        Schema::table('lawyers', function (Blueprint $table) {
+            $table->dropColumn('background');
         });
     }
 }
