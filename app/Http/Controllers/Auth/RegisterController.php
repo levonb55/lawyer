@@ -49,7 +49,7 @@ class RegisterController extends Controller
         if($userRoleId == 1){
             return 'admin/dashboard';
         } elseif ($userRoleId == 2){
-            return 'lawyer/dashboard';
+            return 'lawyer/dashboard/' . Auth::id();
         } elseif ($userRoleId == 3){
             return 'user/dashboard';
         }
@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'min:2', 'max:255'],
             'last_name' => ['required', 'string', 'min:2', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
             'role_id' => ['required', 'integer', 'min:2', 'max:3'],
             'referral' => ['nullable', 'string', 'min:2'],
         ]);

@@ -42,6 +42,22 @@ $( document ).ready(function() {
         //   var a = "#" + $(this).attr("data-id");
         //    $(a).css("display","block");
         //     });
-  
+
+
+    //Image upload
+    $(function () {
+        $("#file-input").change(function () {
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.onload = imageIsLoaded;
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    });
+
+    function imageIsLoaded(e) {
+        $('#upload_file .dash_img_add').attr('src', e.target.result);
+    };
+
 
 });

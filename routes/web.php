@@ -42,9 +42,10 @@ Route::middleware('user')->group(function () {
 });
 Route::middleware('lawyer')->group(function () {
     Route::group(['prefix' => 'lawyer','namespace' => 'Lawyer'], function () {
-        Route::get('/dashboard','LawyerController@index');
+        Route::get('/dashboard/{lawyer}','LawyerController@index')->name('lawyer.dashboard');
         Route::get('/messages','LawyerController@messages')->name('lawyer_messages');
         Route::get('/calendar','LawyerController@calendar')->name('lawyer_calendar');
+        Route::put('/{user}','LawyerController@update')->name('lawyer.update');
 
     });
 });

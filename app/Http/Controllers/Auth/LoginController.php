@@ -48,7 +48,7 @@ class LoginController extends Controller
         if($user->role_id == 1){
             return redirect()->intended('admin/dashboard');
         } elseif ($user->role_id == 2){
-            return redirect()->intended('lawyer/dashboard');
+            return redirect()->intended('lawyer/dashboard/' . $user->id);
         } elseif ($user->role_id == 3){
             return redirect()->intended('user/dashboard');
         }
