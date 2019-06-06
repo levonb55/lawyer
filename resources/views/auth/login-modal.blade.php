@@ -9,7 +9,6 @@
 
             <div class="modal-body">
 
-
                 <div class="modal_main">
                     <div class="">
                         <img src="{{asset('assets/site/main/img/logo.png')}}" alt="Logo">
@@ -42,28 +41,24 @@
                             <p>Remember me?</p>
                         </div>
                         <div class="mod_but_sign">
-                            <button type="submit">Sign Up</button>
+                            <button type="submit">Login</button>
                         </div>
                     </form>
                     <div class="mod_already forgot_pass">
-                        <a href="#">Forgot Password?</a>
+                        <a href="{{route('password.request')}}">Forgot Password?</a>
                     </div>
                     <div class="Don’t_have">
                         <a href="#">Don’t have an account yet?</a>
                     </div>
                     <div class="mod_login">
-                        <button type="button" name="button">Login</button>
+                        <button type="button" name="button"  data-dismiss="modal">Sign Up</button>
                     </div>
                     <div class="Privacy_Policy">
                         <a href="{{route('privacy')}}">Privacy Policy</a>
                     </div>
                 </div>
 
-
-
-
             </div>
-
         </div>
     </div>
 </div>
