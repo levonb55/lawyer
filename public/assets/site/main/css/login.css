@@ -54,6 +54,13 @@ background-color: #FF9C00;
   width: 100%;
   padding-bottom: 80px;
 }
+
+.login_reg .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login_reg_top{
   margin-bottom: 35px;
   text-align: center;
@@ -126,6 +133,12 @@ background-color: #FF9C00;
   font-family: "Montserrat-Regular";
   background-color: #fff;
 }
+
+.password-reset .login_reg_log_btn,
+.password-reset-area .login_reg_log_btn {
+  width: initial;
+}
+
 .login_reg_already{
   margin: 30px 0 20px 0;
   font-family: "Montserrat-Regular";

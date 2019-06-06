@@ -7,7 +7,6 @@
     <span></span>
     <span></span>
 </div>
-@include('partials._messages')
 <!-- <div class="dashboard_content">
 
 
@@ -62,6 +61,8 @@
     </div>
 </div> -->
 <div class="clear"></div>
+@include('partials._messages')
+
 <form method="POST" enctype="multipart/form-data"}}" action="{{route('lawyer.update', $lawyer->id)}}">
 
     @csrf
@@ -70,7 +71,7 @@
     <div class="faq-section">
         <input type="checkbox" class="faq-input" id="q1">
 
-        <label for="q1"><img src="{{asset('assets/site/main/img/dbd_1.png')}}" alt="" class="dbd_img">
+        <label for="q1" class="hand"><img src="{{asset('assets/site/main/img/dbd_1.png')}}" alt="" class="dbd_img">
             Add profile photo
         </label>
         <div class="text_align">
@@ -82,7 +83,7 @@
     </div>
     <div class="faq-section">
         <input type="checkbox" class="faq-input" id="q2">
-        <label for="q2">
+        <label for="q2" class="hand">
             <img src="{{asset('assets/site/main/img/dbd_2.png')}}" alt="Person" class="dbd_img">
             Introduce yourself
         </label>
@@ -91,86 +92,20 @@
         </div>
     </div>
 
-    {{--<div class="faq-section">--}}
-        {{--<input type="checkbox" class="faq-input" id="q3">--}}
-        {{--<label for="q3"> <img src="{{asset('assets/site/main/img/dbd_3.png')}}" alt="" class="dbd_img">Your Area of Law</label>--}}
-        {{--<!-- <div class="dis_block"> -->--}}
-
-        {{--<div class="dash_3_blocks">--}}
-            {{--<div class="dash_3_blocks_flex">--}}
-                {{--@foreach($categories as $category)--}}
-                    {{--<div class="dash_3_blocks_size">--}}
-                        {{--<div class="dash_3_blocks_box">--}}
-                            {{--<img src="{{asset('assets/site/main/img/db_1.png')}}" alt="Law">--}}
-                        {{--</div>--}}
-                        {{--<input type="radio" name="category_id" value={{$category->id}}> {{$category->name}}<br>--}}
-{{--                        <p>{{$category->name}} <br> Lawyers</p>--}}
-                    {{--</div>--}}
-                {{--@endforeach--}}
-
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_2.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Civil <br> Lawyers</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_3.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Criminal</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_4.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Employment <br> Lawyers</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_5.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Estate <br> Lawyers</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_6.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Family <br> Lawyers</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_7.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p>Family <br>Lawyers</p>--}}
-                {{--</div>--}}
-                {{--<div class="dash_3_blocks_size">--}}
-                    {{--<div class="dash_3_blocks_box">--}}
-                        {{--<img src="{{asset('assets/site/main/img/db_8.png')}}" alt="">--}}
-                    {{--</div>--}}
-                    {{--<p> Immigration <br>Lawyers </p>--}}
-                {{--</div>--}}
-
-
-
-            {{--</div>--}}
-        {{--</div>--}}
-
-<div class="faq-section">
+<div class="faq-section-area">
     <input type="checkbox" class="faq-input" id="q3">
-    <label for="q3"> <img src="{{asset('assets/site/main/img/dbd_3.png')}}" alt="" class="dbd_img">Your Area of Law</label>
+    <label for="q3" class="hand"> <img src="{{asset('assets/site/main/img/dbd_3.png')}}" alt="" class="dbd_img">Your Area of Law</label>
     <!-- <div class="dis_block"> -->
 
     <div class="dash_3_blocks">
         <div class="dash_3_blocks_flex">
             @foreach($categories as $category)
                 <div class="dash_3_blocks_size">
-                    <label class="dash_3_blocks_box" for="{{$category->id}}">
+                    <label class="dash_3_blocks_box hand" for="{{$category->id}}">
                         <div>
                             <img src="{{asset('assets/site/main/img/db_1.png')}}" alt="Law">
                         </div></label>
                     <input type="radio" id="{{$category->id}}" name="category_id" value="{{$category->id}}"> {{$category->name}}<br>
-                    {{--                        <p>{{$category->name}} <br> Lawyers</p>--}}
                 </div>
             @endforeach
             @error('category_id')
