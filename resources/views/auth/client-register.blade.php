@@ -10,7 +10,7 @@
             <div class="login_reg_line"></div>
         </div>
         <div class="login_reg_main">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" class="register">
                 @csrf
 
                 @include('auth.user-input')
