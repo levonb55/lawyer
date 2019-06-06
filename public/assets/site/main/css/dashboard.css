@@ -340,6 +340,10 @@ border: 1px solid #000;
   width: 90%;
 }
 
+.faq-section-area input {
+    display: none;
+}
+
 .list{
   margin-left:10px;
   font-size: .8em;

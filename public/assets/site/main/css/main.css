@@ -813,3 +813,11 @@ margin-bottom: 20px;
   color: red;
   margin-bottom: 9px;
 }
+
+.success-message {
+  color: red
+}
+
+.hand {
+  cursor: pointer;
+}
