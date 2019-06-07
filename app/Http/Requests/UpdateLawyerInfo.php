@@ -24,9 +24,15 @@ class UpdateLawyerInfo extends FormRequest
     public function rules()
     {
         return [
-            'image'     => 'nullable|image',
-            'background'     => 'nullable|string|min:5|max:500',
-            'category_id'     => 'required|integer'
+            'image'         => 'nullable|image',
+            'background'    => 'nullable|string|min:5|max:500',
+            'category_id'   => 'required|integer',
+            'company'       => 'nullable|string|min:2|max:255',
+            'address'       => 'nullable|string|min:2|max:255',
+            'facebook'      => 'nullable|string|min:5|max:255',
+            'twitter'       => 'nullable|string|min:5|max:255',
+            'instagram'     => 'nullable|string|min:5|max:255',
+            'linkedin'      => 'nullable|string|min:5|max:255'
         ];
     }
 }

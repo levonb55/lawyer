@@ -16,6 +16,7 @@
 Auth::routes();
 Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
 //Route::get('users/dashboard','User\UserController@index')->middleware('auth');
+Route::get('/lawyers/{lawyer}','Lawyer\LawyerController@showLawyerProfile')->name('lawyer.profile');
 
 
 
@@ -26,7 +27,7 @@ Route::group(['namespace' => 'Site'], function () {
         Route::get('/affiliate','MainController@affiliate')->name('affiliate');
         Route::get('/lawyers','MainController@lawyers')->name('all_lawyers');
         Route::get('/lawyers/category','MainController@lawyersCategory')->name('lawyers_by_category');
-        Route::get('/lawyers/profile','MainController@lawyerProfile')->name('lawyer_profile');
+//        Route::get('/lawyers/profile','MainController@lawyerProfile')->name('lawyer_profile');
         Route::get('/single','MainController@single')->name('single');
         Route::get('/terms','MainController@terms')->name('terms');
         Route::get('/privacy','MainController@privacy')->name('privacy');
@@ -43,6 +44,7 @@ Route::middleware('user')->group(function () {
 Route::middleware('lawyer')->group(function () {
     Route::group(['prefix' => 'lawyer','namespace' => 'Lawyer'], function () {
         Route::get('/dashboard/{lawyer}','LawyerController@index')->name('lawyer.dashboard');
+        Route::get('/dashboard/profile/{lawyer}','LawyerController@showLawyerDashboardProfile')->name('lawyer.dashboard-profile');
         Route::get('/messages','LawyerController@messages')->name('lawyer_messages');
         Route::get('/calendar','LawyerController@calendar')->name('lawyer_calendar');
         Route::put('/{user}','LawyerController@update')->name('lawyer.update');

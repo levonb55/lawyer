@@ -10,13 +10,13 @@
 @endif
 @endif
 
- Intro Lines
+
 @foreach ($introLines as $line)
 {{ $line }}
 
 @endforeach
 
- Action Button
+
 @isset($actionText)
 <?php
     switch ($level) {
@@ -33,20 +33,20 @@
 @endcomponent
 @endisset
 
- Outro Lines
+
 @foreach ($outroLines as $line)
 {{ $line }}
 
 @endforeach
 
- Salutation
+ Best
 @if (! empty($salutation))
 {{ $salutation }}
 @else
 @lang('Regards'),<br>{{ config('app.name') }}
 @endif
 
- Subcopy
+
 @isset($actionText)
 @slot('subcopy')
 @lang(
