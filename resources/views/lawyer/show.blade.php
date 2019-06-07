@@ -4,9 +4,9 @@
     <section class="profile_1">
         <div class="profile_1_1">
             @if($lawyer->image)
-                <img src="{{asset('assets/images/profile/' . $lawyer->image)}}" alt="" class="find_2_face">
+                <img src="{{asset('assets/images/profile/' . $lawyer->image)}}" alt="Person" class="find_2_face">
             @else
-                <img src="{{asset('assets/site/main/img/find_2_face.png')}}" alt="" class="find_2_face">
+                <img src="{{asset('assets/images/profile/blank-profile-picture.png')}}" alt="Person" class="find_2_face">
             @endif
             <div class="profile_1_stars">
                 <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
@@ -16,7 +16,9 @@
                 <img src="{{asset('assets/site/main/img/star.png')}}" alt="">
             </div>
             <p class="profile_reviews">3 reviews</p>
-            <button type="button" name="button">Add review</button>
+
+            <a href="#profile_4"><button type="button">Add review</button></a>
+
             <div class="profile_1_1_bottom">
                 <img src="{{asset('assets/site/main/img/p_icon.png')}}" alt="" class="p_icon">
                 <p>Lorem Ipsum</p>
@@ -153,7 +155,7 @@
                 sem ornare elementum. Mauris quis leo sed nunc convallis feugiat. Fusce porttitor</p>
         </div>
     </section>
-    <section class="profile_4">
+    <section class="profile_4" id="profile_4">
         <textarea name="name"  placeholder="Leave John Doe a feedback"></textarea>
         <div class="profile_4_size">
             <div class="profile_4_size_left">

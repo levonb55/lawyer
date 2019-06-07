@@ -42,9 +42,6 @@ class LawyerController extends Controller
      */
     public function update(UpdateLawyerInfo $request, User $user) {
 
-//        dd($request->all());
-
-
         if($request->hasFile('image')) {
 
             $image = $request->file('image');
@@ -64,23 +61,15 @@ class LawyerController extends Controller
             $user->save();
         }
 
-//        $lawyer = Lawyer::where('user_id', $user->id)->first();
-
-//        $lawyer->category_id = $request->input('category_id');
-//        $lawyer->company = $request->input('company');
-//        $lawyer->background = $request->input('background');
-//        $lawyer->facebook = $request->input('facebook');
-//        $lawyer->twitter = $request->input('twitter');
-//        $lawyer->instagram = $request->input('instagram');
-//        $lawyer->linkedin = $request->input('linkedin');
-//        $lawyer->address = $request->input('address');
-//        $lawyer->save();
         Lawyer::updateOrCreate([
             'user_id' => \Auth::id()
         ], [
             'category_id' => $request->input('category_id'),
             'company' => $request->input('company'),
             'address' => $request->input('address'),
+            'company_website' => $request->input('company_website'),
+            'university' => $request->input('university'),
+            'experience' => $request->input('experience'),
             'background' => $request->input('background'),
             'facebook' => $request->input('facebook'),
             'twitter' => $request->input('twitter'),
