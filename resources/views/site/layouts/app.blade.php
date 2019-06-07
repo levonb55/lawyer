@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="{{asset('assets/site/main/css/single.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/contact.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/ask.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/site/main/css/profile.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/site/main/css/bootstrap-glyphicons.min.css')}}">
 </head>
 <body>
 @include('site.layouts.header')

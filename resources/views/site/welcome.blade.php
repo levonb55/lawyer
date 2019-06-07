@@ -89,7 +89,10 @@
                         {{--<p>Lorem</p>--}}
                     {{--</div>--}}
                 </div>
-                <button type="button" name="button">Contact Me</button>
+                {{--<button type="button" name="button">Contact Me</button>--}}
+                <a href="{{route('lawyer.profile', $lawyer->user_id)}}" name="button">
+                    <button type="button" name="button">Contact Me</button>
+                </a>
             </div>
             @endforeach
 

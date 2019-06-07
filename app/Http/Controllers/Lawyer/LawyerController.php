@@ -21,6 +21,13 @@ class LawyerController extends Controller
 
         return view('lawyer.dashboard', compact('lawyer', 'categories'));
     }
+
+    public function showLawyerProfile(User $lawyer) {
+        $category = Category::find($lawyer->lawyer->category_id);
+
+        return view('lawyer.show', compact('lawyer', 'category'));
+    }
+
     public function messages(){
         return view('lawyer.chat');
     }
@@ -54,14 +61,31 @@ class LawyerController extends Controller
             $user->save();
         }
 
-        $lawyer = Lawyer::where('user_id', $user->id)->first();
-        $lawyer->category_id = $request->input('category_id');
-        $lawyer->background = $request->input('background');
-        $lawyer->save();
+        Lawyer::updateOrCreate([
+            'user_id' => \Auth::id()
+        ], [
+            'category_id' => $request->input('category_id'),
+            'company' => $request->input('company'),
+            'address' => $request->input('address'),
+            'company_website' => $request->input('company_website'),
+            'university' => $request->input('university'),
+            'experience' => $request->input('experience'),
+            'background' => $request->input('background'),
+            'facebook' => $request->input('facebook'),
+            'twitter' => $request->input('twitter'),
+            'instagram' => $request->input('instagram'),
+            'linkedin' => $request->input('linkedin')
+        ]);
 
         Session::flash('success', 'You successfully updated your profile!');
 
         return back();
 
+    }
+
+    public function showLawyerDashboardProfile(User $lawyer){
+        $category = Category::find($lawyer->lawyer->category_id);
+
+        return view('lawyer.dashboard-profile', compact('lawyer', 'category'));
     }
 }

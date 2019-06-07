@@ -340,6 +340,10 @@ border: 1px solid #000;
   width: 90%;
 }
 
+.faq-section .profile-image {
+    width: 110px;
+}
+
 .faq-section-area input {
     display: none;
 }

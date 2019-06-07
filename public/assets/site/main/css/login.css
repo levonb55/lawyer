@@ -92,6 +92,7 @@ background-color: #FF9C00;
   box-shadow: 0px 1px 14.6px 0.5px rgba(124, 123, 123, 0.35);
   background-color: #ffffff;
   border: none;
+  margin: 0 auto;
   margin-bottom: 12px;
   padding-left: 20px;
   font-size: 16px;
@@ -137,6 +138,12 @@ background-color: #FF9C00;
 .password-reset .login_reg_log_btn,
 .password-reset-area .login_reg_log_btn {
   width: initial;
+}
+
+.password-reset-area form {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*text-align: center;*/
 }
 
 .login_reg_already{

@@ -21,8 +21,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('all_lawyers')}}">Find Lawyers <span class="sr-only">(current)</span></a>
                     </li>
+                    {{--<li class="nav-item active">--}}
+                        {{--<a class="nav-link" href="{{route('ask')}}">Ask <span class="sr-only">(current)</span></a>--}}
+                    {{--</li>--}}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('ask')}}">Ask <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('lawyer.dashboard', \Auth::id())}}">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo e(route('logout')); ?>"
