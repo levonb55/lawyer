@@ -1,7 +1,6 @@
 @extends('lawyer.layouts.app')
 
 @section('content')
-
 <div class="nav-btn pull-left">
     <span></span>
     <span></span>
@@ -61,6 +60,9 @@
     </div>
 </div> -->
 <div class="clear"></div>
+<a href="{{route('lawyer.profile', $lawyer->id)}}">Your website on Reach Legal</a>
+
+
 @include('partials._messages')
 
 <form method="POST" enctype="multipart/form-data" action="{{route('lawyer.update', $lawyer->id)}}">
@@ -138,6 +140,33 @@
     <div>
         <input type="text" name="address" placeholder="Address" value="{{$lawyer->lawyer->address}}">
         @error('address')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="company_website" placeholder="Company Website" value="{{$lawyer->lawyer->company_website}}">
+        @error('company_website')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="university" placeholder="University" value="{{$lawyer->lawyer->university}}">
+        @error('university')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="experience" placeholder="Number of years practiced" value="{{$lawyer->lawyer->experience}}">
+        @error('experience')
         <span class="input-error">
             <strong>{{ $message }}</strong>
         </span>
