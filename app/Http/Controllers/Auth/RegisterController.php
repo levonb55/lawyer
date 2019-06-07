@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Lawyer;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -82,7 +83,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
@@ -90,6 +91,14 @@ class RegisterController extends Controller
             'role_id' => $data['role_id'],
             'referral' => $data['referral'] && $data['role_id'] == 3 ? $data['referral'] : ''
         ]);
+
+        if($user->role_id == 2) {
+            Lawyer::create([
+                'user_id' => $user->id
+            ]);
+        }
+
+        return $user;
     }
 
     public function registerClient() {

@@ -1872,6 +1872,9 @@ font-size: 10px;
 
 }
 @media screen and (max-width:600px) {
+  .lawyers_2{
+    padding-bottom: 20px;
+  }
 
   .lawyers_4_left_bottom {
     margin-left: 20px
