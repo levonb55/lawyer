@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{asset('assets/site/main/css/dashboard.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/dashboard_message.css')}}">
     <link rel="stylesheet" href="{{asset('assets/site/main/css/dashboard_calendar.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/site/main/css/profile.css')}}">
 
 </head>
 <body>

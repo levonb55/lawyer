@@ -193,6 +193,7 @@ left: 10px;
 }
 .lawyers_2{
   width: 100%;
+  padding-bottom: 50px;
 }
 .lawyers_2_flex{
   display: flex;
@@ -683,9 +684,9 @@ button:focus{
   width: 100%;
   text-align: center;
 }
-.modal-content {
-    width: 135%;
-}
+/*.modal-content {*/
+    /*width: 135%;*/
+/*}*/
 .modal-header {
      padding: 0;
      border: none;
