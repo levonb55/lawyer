@@ -201,6 +201,10 @@ color: #fff;
    box-shadow: 0px 1px 14.9px 0.2px rgba(124, 123, 123, 0.24);
    padding: 60px 50px 1px 50px;
 }
+
+.profile_3 .comment {
+  margin-bottom: 25px;
+}
 .reviews_for_john, .Publications{
    font-size: 28.5px;
    margin: 40px auto 60px auto;
