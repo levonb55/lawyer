@@ -20,11 +20,11 @@ class Lawyer extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Admin\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 }

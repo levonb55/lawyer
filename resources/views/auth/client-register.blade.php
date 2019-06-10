@@ -1,4 +1,6 @@
-@extends('site.layouts.app')
+@extends('main')
+
+@section('title', 'Reach Legal - Register as Client')
 
 @section('content')
 
@@ -43,4 +45,4 @@
     </section>
 @endsection
 
-@include('auth.login-modal')
+@include('partials._login-modal')

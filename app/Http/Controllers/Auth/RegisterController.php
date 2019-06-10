@@ -47,12 +47,18 @@ class RegisterController extends Controller
     {
         $userRoleId = Auth::user()->role_id;
 
+//        if($userRoleId == 1){
+//            return 'admin/dashboard';
+//        } elseif ($userRoleId == 2){
+//            return 'lawyer/dashboard/' . Auth::id();
+//        } elseif ($userRoleId == 3){
+//            return 'user/dashboard';
+//        }
+
         if($userRoleId == 1){
             return 'admin/dashboard';
-        } elseif ($userRoleId == 2){
-            return 'lawyer/dashboard/' . Auth::id();
-        } elseif ($userRoleId == 3){
-            return 'user/dashboard';
+        } else {
+            return 'users/dashboard/' . Auth::id();
         }
     }
 

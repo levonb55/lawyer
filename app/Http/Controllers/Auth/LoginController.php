@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -43,14 +44,21 @@ class LoginController extends Controller
      * @param $user
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function authenticated(Request $request, $user)
+    protected function authenticated(Request $request, User $user)
     {
+//        if($user->role_id == 1){
+//            return redirect()->intended('admin/dashboard');
+//        } elseif ($user->role_id == 2){
+////            return redirect()->intended('lawyer/dashboard/' . $user->id);
+//            return redirect()->intended('users/dashboard/' . $user->id);
+//        } elseif ($user->role_id == 3){
+//            return redirect()->intended('user/dashboard');
+//        }
+
         if($user->role_id == 1){
             return redirect()->intended('admin/dashboard');
-        } elseif ($user->role_id == 2){
-            return redirect()->intended('lawyer/dashboard/' . $user->id);
-        } elseif ($user->role_id == 3){
-            return redirect()->intended('user/dashboard');
+        } else {
+            return redirect()->intended('users/dashboard/' . $user->id);
         }
     }
 }

@@ -12,45 +12,69 @@
 */
 
 
-
-Auth::routes();
+//Public Routes
+Route::get('/','PageController@index')->name('home');
+Route::get('/contact','PageController@getContact')->name('contact');
+Route::get('/about','PageController@getAbout')->name('about');
+Route::get('/terms','PageController@getTerms')->name('terms');
+Route::get('/affiliate','PageController@getAffiliate')->name('affiliate');
+Route::get('/privacy','PageController@getPrivacy')->name('privacy');
+Route::get('/ask','PageController@getAsk')->name('ask');
 Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
-//Route::get('users/dashboard','User\UserController@index')->middleware('auth');
-Route::get('/lawyers/{lawyer}','Lawyer\LawyerController@showLawyerProfile')->name('lawyer.profile');
+Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
+Route::get('/lawyers/category','LawyerController@getLawyersByCategory')->name('lawyers.category');
+Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
+
+//Authentication Routes
+Auth::routes();
+
+//Private Routes
+Route::get('/users/dashboard/{user}','UserController@getUserDashboard')->name('user.dashboard');
+Route::get('/users/settings/{user}','UserController@getUserSettings')->name('user.settings');
+Route::get('/users/messages/{user}','UserController@getUserMessages')->name('user.messages');
+Route::get('/users/bookings/{user}','UserController@getUserBookings')->name('user.bookings');
+Route::put('/users/update/{user}','UserController@update')->name('user.update');
 
 
 
-Route::group(['namespace' => 'Site'], function () {
-    Route::group(['namespace' => 'Main'], function () {
-        Route::get('/','MainController@index')->name('welcome');
-        Route::get('/about','MainController@about')->name('about');
-        Route::get('/affiliate','MainController@affiliate')->name('affiliate');
-        Route::get('/lawyers','MainController@lawyers')->name('all_lawyers');
-        Route::get('/lawyers/category','MainController@lawyersCategory')->name('lawyers_by_category');
-//        Route::get('/lawyers/profile','MainController@lawyerProfile')->name('lawyer_profile');
-        Route::get('/single','MainController@single')->name('single');
-        Route::get('/terms','MainController@terms')->name('terms');
-        Route::get('/privacy','MainController@privacy')->name('privacy');
-        Route::get('/contact','MainController@contact')->name('contact');
-        Route::get('/ask','MainController@ask')->name('ask');
-    });
-});
 
-Route::middleware('user')->group(function () {
-    Route::group(['prefix' => 'user','namespace' => 'User'], function () {
-        Route::get('/dashboard','UserController@index');
-    });
-});
-Route::middleware('lawyer')->group(function () {
-    Route::group(['prefix' => 'lawyer','namespace' => 'Lawyer'], function () {
-        Route::get('/dashboard/{lawyer}','LawyerController@index')->name('lawyer.dashboard');
-        Route::get('/dashboard/profile/{lawyer}','LawyerController@showLawyerDashboardProfile')->name('lawyer.dashboard-profile');
-        Route::get('/messages','LawyerController@messages')->name('lawyer_messages');
-        Route::get('/calendar','LawyerController@calendar')->name('lawyer_calendar');
-        Route::put('/{user}','LawyerController@update')->name('lawyer.update');
-
-    });
-});
+//Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
+////Route::get('users/dashboard','User\UserController@index')->middleware('auth');
+//Route::get('/lawyers/{lawyer}','Lawyer\LawyerController@showLawyerProfile')->name('lawyer.profile');
+//
+//
+//
+//Route::group(['namespace' => 'Site'], function () {
+//    Route::group(['namespace' => 'Main'], function () {
+//        Route::get('/','MainController@index')->name('welcome');
+//        Route::get('/about','MainController@about')->name('about');
+//        Route::get('/affiliate','MainController@affiliate')->name('affiliate');
+//        Route::get('/lawyers','MainController@lawyers')->name('all_lawyers');
+//        Route::get('/lawyers/category','MainController@lawyersCategory')->name('lawyers_by_category');
+////        Route::get('/lawyers/profile','MainController@lawyerProfile')->name('lawyer_profile');
+//        Route::get('/single','MainController@single')->name('single');
+//        Route::get('/terms','MainController@terms')->name('terms');
+//        Route::get('/privacy','MainController@privacy')->name('privacy');
+//        Route::get('/contact','MainController@contact')->name('contact');
+//        Route::get('/ask','MainController@ask')->name('ask');
+//    });
+//});
+//
+//Route::middleware('user')->group(function () {
+//    Route::group(['prefix' => 'user','namespace' => 'User'], function () {
+//        Route::get('/dashboard','UserController@index');
+//    });
+//});
+//Route::middleware('lawyer')->group(function () {
+//    Route::group(['prefix' => 'lawyer','namespace' => 'Lawyer'], function () {
+//        Route::get('/dashboard/{lawyer}','LawyerController@index')->name('lawyer.dashboard');
+//        Route::get('/dashboard/profile/{lawyer}','LawyerController@showLawyerDashboardProfile')->name('lawyer.dashboard-profile');
+//        Route::get('/messages','LawyerController@messages')->name('lawyer_messages');
+//        Route::get('/calendar','LawyerController@calendar')->name('lawyer_calendar');
+//        Route::put('/{user}','LawyerController@update')->name('lawyer.update');
+//
+//    });
+//});
 Route::middleware('admin')->group(function () {
     Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
         Route::get('/dashboard','AdminController@index')->name('admin_dashboard');
