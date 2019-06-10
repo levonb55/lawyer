@@ -17,9 +17,11 @@
                 <img src="{{asset('assets/images/general/star.png')}}" alt="">
                 <img src="{{asset('assets/images/general/star.png')}}" alt="">
             </div>
-            <p class="profile_reviews">3 reviews</p>
+            <p class="profile_reviews">{{count($reviews)}} reviews</p>
 
-            <a href="#profile_4"><button type="button">Add review</button></a>
+            <a href="#reviews">
+                <button type="button">Add review</button>
+            </a>
 
             <div class="profile_1_1_bottom">
                 <img src="{{asset('assets/images/general/p_icon.png')}}" alt="" class="p_icon">
@@ -107,79 +109,80 @@
         </div>
     </section>
     <section class="profile_2">
-        <img src="{{asset('assets/images/general/prof_bg.png')}}" alt="">
+{{--        <img src="{{asset('assets/images/general/prof_bg.png')}}" alt="">--}}
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3156706536!2d-74.26055748786443!3d40.69714774429399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2s!4v1560156911050!5m2!1sen!2s" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+
     </section>
-    <p class="reviews_for_john">3 reviews for John Doe</p>
+    <p class="reviews_for_john" id="reviews">{{count($reviews)}} reviews for John Doe</p>
     <section class="profile_3">
-        <div class="profile_3_box">
-            <div class="profile_3_box_top">
-                <div class="profile_3_box_top_stars">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
+        @foreach($reviews as $review)
+            <div class="profile_3_box">
+                <div class="profile_3_box_top">
+                    <div class="profile_3_box_top_stars">
+
+                        @for ($i = 0; $i < $review->grade; $i++)
+                            <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
+                        @endfor
+
+                    </div>
+                    <p>on {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
                 </div>
-                <p>on August 5, 2017</p>
+                <p class="profile_3_box_text">{{$review->body}}</p>
             </div>
-            <p class="profile_3_box_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mi eget
-                erat dignissim tempor. Proin maximus blandit consequat. Nullam in lectus sed
-                sem ornare elementum. Mauris quis leo sed nunc convallis feugiat. Fusce porttitor</p>
-        </div>
-        <div class="profile_3_box">
-            <div class="profile_3_box_top">
-                <div class="profile_3_box_top_stars">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                </div>
-                <p>on August 5, 2017</p>
-            </div>
-            <p class="profile_3_box_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mi eget
-                erat dignissim tempor. Proin maximus blandit consequat. Nullam in lectus sed
-                sem ornare elementum. Mauris quis leo sed nunc convallis feugiat. Fusce porttitor</p>
-        </div>
-        <div class="profile_3_box">
-            <div class="profile_3_box_top">
-                <div class="profile_3_box_top_stars">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                </div>
-                <p>on August 5, 2017</p>
-            </div>
-            <p class="profile_3_box_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mi eget
-                erat dignissim tempor. Proin maximus blandit consequat. Nullam in lectus sed
-                sem ornare elementum. Mauris quis leo sed nunc convallis feugiat. Fusce porttitor</p>
-        </div>
+        @endforeach
+
+        @guest
+            <div class="comment">Login as client to leave a comment</div>
+        @endguest
+
     </section>
-    <section class="profile_4" id="profile_4">
-        <textarea name="name"  placeholder="Leave John Doe a feedback"></textarea>
-        <div class="profile_4_size">
-            <div class="profile_4_size_left">
-                <div class="profile_4_size_left_inputs">
-                    <input type="text" name="" value="" placeholder="First Name">
-                    <input type="text" name="" value="" placeholder="Last Name">
-                    <input type="text" name="" value="" placeholder="Email">
-                </div>
-                <div class="profile_4_size_left_stars">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                    <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                </div>
-                <button type="button" name="button">Send review</button>
-            </div>
-            <div class="profile_4_size_right">
-                <p>All contact information is private and will be hidden from the public</p>
-            </div>
-        </div>
-    </section>
+
+    @if(Auth::check() && Auth::user()->role_id == 3)
+
+        <section class="profile_4">
+           <form action="{{route('reviews.store', $user->id)}}" method="POST">
+               @csrf
+
+               <textarea name="body"  placeholder="Leave {{$user->full_name}} a feedback" required></textarea>
+               @error('body')
+               <span class="input-error">
+                    <strong>{{ $message }}</strong>
+                </span>
+               @enderror
+               <div class="profile_4_size">
+                   <div class="profile_4_size_left">
+                       {{--<div class="profile_4_size_left_inputs">--}}
+                       {{--<input type="text" name="" value="" placeholder="First Name">--}}
+                       {{--<input type="text" name="" value="" placeholder="Last Name">--}}
+                       {{--<input type="text" name="" value="" placeholder="Email">--}}
+                       {{--</div>--}}
+                       <div class="profile_4_size_left_stars">
+                           {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
+                           {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
+                           {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
+                           {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
+                           {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
+                           <input type="radio" value="1" name="grade">
+                           <input type="radio" value="2" name="grade">
+                           <input type="radio" value="3" name="grade">
+                           <input type="radio" value="4" name="grade">
+                           <input type="radio" value="5" name="grade">
+                           @error('grade')
+                            <span class="input-error">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                           @enderror
+                       </div>
+                       <button type="submit">Send review</button>
+                   </div>
+                   <div class="profile_4_size_right">
+                       <p>All contact information is private and will be hidden from the public</p>
+                   </div>
+               </div>
+           </form>
+       </section>
+   @endif
+
     <p class="Publications">Publications</p>
     <section class="profile_5">
         <div class="profile_5_box">

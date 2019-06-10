@@ -19,20 +19,20 @@
                     {{--My profile--}}
                 {{--</a>--}}
             {{--</li>--}}
-            @if(\Auth::user()->role_id === 2)
+            @if(Auth::user()->role_id == 2)
                 <li class="{{Request::routeIs('user.settings') ? "active_page" : "" }}">
-                    <a href="{{route('user.settings', \Auth::id())}}">
+                    <a href="{{route('user.settings', Auth::id())}}">
                         <img src="{{asset('assets/images/general/dash_3.png')}}" alt="Settings">Settings
                     </a>
                 </li>
             @endif
             <li class="{{Request::routeIs('user.messages') ? "active_page" : "" }}">
-                <a href="{{route('user.messages', \Auth::id())}}">
+                <a href="{{route('user.messages', Auth::id())}}">
                     <img src="{{asset('assets/images/general/dash_4.png')}}" alt="Message">Messages
                 </a>
             </li>
             <li class="{{Request::routeIs('user.bookings') ? "active_page" : "" }}">
-                <a href="{{route('user.bookings', \Auth::id())}}">
+                <a href="{{route('user.bookings', Auth::id())}}">
                     <img src="{{asset('assets/images/general/dash_5.png')}}" alt="">Bookings
                 </a>
             </li>
