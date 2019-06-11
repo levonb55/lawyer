@@ -16,5 +16,6 @@
     @include('partials._footer')
 
     @include('partials._scripts')
+
 </body>
 </html>
