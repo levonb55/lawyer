@@ -9,13 +9,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
 
-                @guest()
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('lawyers.categories')}}">
-                            Find Lawyers <span class="sr-only">(current)</span>
-{{--                            {{route('all_lawyers')}}--}}
-                        </a>
-                    </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('lawyers.categories')}}">
+                        Find Lawyers <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            @guest()
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#login_modal">Login</a>
                     </li>
@@ -23,10 +22,10 @@
                         <a class="nav-link" href="{{route('register')}}" id="sign_up" >Sign up</a>
                     </li>
                 @else
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Find Lawyers <span class="sr-only">(current)</span></a>
+                    {{--<li class="nav-item active">--}}
+                        {{--<a class="nav-link" href="#">Find Lawyers <span class="sr-only">(current)</span></a>--}}
 {{--                        {{route('all_lawyers')}}--}}
-                    </li>
+                    {{--</li>--}}
                     {{--<li class="nav-item active">--}}
                     {{--<a class="nav-link" href="{{route('ask')}}">Ask <span class="sr-only">(current)</span></a>--}}
                     {{--</li>--}}

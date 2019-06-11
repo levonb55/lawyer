@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReview;
 use App\Models\Category;
 use App\Models\Lawyer;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
@@ -18,8 +19,10 @@ class LawyerController extends Controller
      */
     public function show(User $user) {
         $category = Category::find($user->lawyer->category_id);
-        $reviews = DB::select('select body, grade, created_at from reviews where lawyer_id = :lawyer_id ORDER BY created_at DESC',
-            ['lawyer_id' => $user->id]);
+
+        $reviews = Review::where('lawyer_id',$user->id)
+                    ->orderBy('created_at', 'DESC')
+                    ->get();
 
         return view('lawyers.show', compact('user', 'category', 'reviews'));
     }
@@ -46,8 +49,7 @@ class LawyerController extends Controller
      */
     public function storeReviews(StoreReview $request, User $user) {
 
-        DB::insert('insert into reviews (client_id, lawyer_id, body, grade, created_at) 
-            values (:client_id, :lawyer_id, :body, :grade, :created_at)', [
+        Review::create([
             'client_id' => Auth::id(),
             'lawyer_id' => $user->id,
             'body' => $request->input('body'),

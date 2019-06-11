@@ -62,9 +62,13 @@
 
             @foreach($lawyers as $lawyer)
                 <div class="lawyers_2_box">
-                    <img src="{{asset('assets/images/general/lawyer_face.png')}}" alt="">
+                    @if($lawyer->user->image)
+                        <img class="lawyers_2_profile" src="{{asset('assets/images/profile/' . $lawyer->user->image)}}" alt="Person">
+                    @else
+                        <img class="lawyers_2_profile" src="{{asset('assets/images/general/blank-profile-picture.png')}}" alt="Person">
+                    @endif
                     <p>
-                        {{$lawyer->user->first_name . ' ' . $lawyer->user->last_name}}
+                        {{$lawyer->user->full_name}}
                     </p>
                     <p>{{$lawyer->company}}</p>
                     <div class="lawyers_2_stars">
@@ -74,7 +78,7 @@
                         <img src="{{asset('assets/images/general/star.png')}}" alt="">
                         <img src="{{asset('assets/images/general/star.png')}}" alt="">
                     </div>
-                    <p>3 reviews</p>
+                    <p>{{$lawyer->reviews->count()}} reviews</p>
                     <p>Area of Law</p>
                     <div class="lawyers_2_inp">
                         {{$lawyer->category->name}}

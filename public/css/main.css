@@ -191,6 +191,11 @@ left: 10px;
   width: 100%;
   padding-bottom: 50px;
 }
+
+.lawyers_2_profile {
+  width: 140px;
+  border-radius: 67px;
+}
 .lawyers_2_flex{
   display: flex;
   justify-content: space-around;

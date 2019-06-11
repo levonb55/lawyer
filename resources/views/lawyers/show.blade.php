@@ -113,7 +113,7 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3156706536!2d-74.26055748786443!3d40.69714774429399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2s!4v1560156911050!5m2!1sen!2s" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
 
     </section>
-    <p class="reviews_for_john" id="reviews">{{count($reviews)}} reviews for John Doe</p>
+    <p class="reviews_for_john" id="reviews">{{count($reviews)}} reviews for {{$user->full_name}}</p>
     <section class="profile_3">
         @foreach($reviews as $review)
             <div class="profile_3_box">
