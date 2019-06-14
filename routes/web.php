@@ -36,6 +36,7 @@ Route::get('/users/messages/{user}','UserController@getUserMessages')->name('use
 Route::get('/users/bookings/{user}','UserController@getUserBookings')->name('user.bookings');
 Route::put('/users/update/{user}','UserController@update')->name('user.update');
 Route::post('/reviews/lawyers/{user}','LawyerController@storeReviews')->name('reviews.store');
+Route::post('/lawyers/{user}/publications','LawyerController@storePublications')->name('publications.store');
 
 
 

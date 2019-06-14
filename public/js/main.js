@@ -189,4 +189,16 @@ $( document ).ready(function() {
         });
     });
 
+    $("#add-publication").on('click', function () {
+        let publication = `
+             <div class="publication-block">
+                <div>
+                    <input type="text" name="title[]" placeholder="Title">
+                </div>
+
+                <input type="file" name="publication[]" accept="application/pdf">
+            </div>       
+        `;
+        $(".publication-block-wrapper").append(publication);
+    });
 });

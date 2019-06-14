@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReview;
 use App\Models\Category;
 use App\Models\Lawyer;
+use App\Models\Publication;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -87,5 +88,27 @@ class LawyerController extends Controller
 //        ]);
         return response()->json($reviews);
 //        return json_encode($reviews);
+    }
+
+    public function storePublications(Request $request,User $user) {
+        $quant = count($request->title);
+
+        for ($i = 0; $i < $quant; $i++) {
+            if($request->publication['publication']) {
+                $fileName = time() . '.' . $request->publication->extension();
+                $location = $request->publication->move(public_path('assets/publications/'), $fileName);
+                chmod($location,0777);
+            }
+
+            Publication::create([
+                'user_id' => \Auth::id(),
+//                'title' => $request->input('title'),
+                'title' => $request->input('title')[$i],
+//                'publication' => $fileName
+                'publication' => 'hello file'
+            ]);
+        }
+
+        return back();
     }
 }
