@@ -209,4 +209,29 @@
         <button type="submit">Submit</button>
     </div>
 </form>
+<hr/>
+    <div id="publications" class="publications">
+        <h3>Add publications
+            <span id="add-publication" class="hand">
+                <i class="fas fa-plus"></i>
+            </span>
+        </h3>
+        <form method="POST" id="publication-form" enctype="multipart/form-data" action="{{route('publications.store', $user->id)}}">
+            @csrf
+
+            <div class="publication-block-wrapper">
+                <div class="publication-block">
+                    <div>
+                        <input type="text" name="title[]" placeholder="Title">
+                    </div>
+
+                    <input type="file" name="publication[]" accept="application/pdf">
+                </div>
+            </div>
+
+            <div class="dash_btn_bottom">
+                <button type="submit">Publish</button>
+            </div>
+        </form>
+    </div>
 @endsection
