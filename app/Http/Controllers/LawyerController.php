@@ -21,10 +21,14 @@ class LawyerController extends Controller
         $category = Category::find($user->lawyer->category_id);
 
         $reviews = Review::where('lawyer_id',$user->id)
-                    ->orderBy('created_at', 'DESC')
+//                    ->orderBy('created_at', 'DESC')
+                    ->take(4)
                     ->get();
 
-        return view('lawyers.show', compact('user', 'category', 'reviews'));
+        $reviewsNumber = Review::where('lawyer_id',$user->id)->get()->count();
+//        dd($reviewsNumber);
+
+        return view('lawyers.show', compact('user', 'category', 'reviews', 'reviewsNumber'));
     }
 
     /**
@@ -49,14 +53,39 @@ class LawyerController extends Controller
      */
     public function storeReviews(StoreReview $request, User $user) {
 
-        Review::create([
+        $data = Review::create([
             'client_id' => Auth::id(),
             'lawyer_id' => $user->id,
             'body' => $request->input('body'),
             'grade' => $request->input('grade'),
-            'created_at' => date('Y-m-d G:i:s')
+//            'created_at' => date('Y-m-d G:i:s')
         ]);
 
-        return back();
+//        return back();
+
+        return response()->json([
+            'body' => $data->body,
+            'grade' => $data->grade,
+            'created_at' => $data->created_at
+        ]);
+
+    }
+
+    public function paginateReviews(User $user, $page) {
+
+        $pageSkip = ($page * 4) - 4;
+        $reviews = Review::where('lawyer_id',$user->id)
+            ->skip($pageSkip)
+            ->take(4)
+            ->get();
+
+//        dd($reviews);
+//        dump($reviews);
+//        return response()->json([
+//            'name' => 'Abigail',
+//            'state' => $page
+//        ]);
+        return response()->json($reviews);
+//        return json_encode($reviews);
     }
 }

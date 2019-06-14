@@ -5,3 +5,4 @@
 <script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/slider.js')}}"></script>
+@yield('scripts')

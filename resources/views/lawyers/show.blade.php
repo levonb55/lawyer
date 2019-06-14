@@ -17,9 +17,9 @@
                 <img src="{{asset('assets/images/general/star.png')}}" alt="">
                 <img src="{{asset('assets/images/general/star.png')}}" alt="">
             </div>
-            <p class="profile_reviews">{{count($reviews)}} reviews</p>
+            <p class="profile_reviews">{{$reviewsNumber}} reviews</p>
 
-            <a href="#reviews">
+            <a href="#reviews-list">
                 <button type="button">Add review</button>
             </a>
 
@@ -113,23 +113,44 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3156706536!2d-74.26055748786443!3d40.69714774429399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2s!4v1560156911050!5m2!1sen!2s" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
 
     </section>
-    <p class="reviews_for_john" id="reviews">{{count($reviews)}} reviews for {{$user->full_name}}</p>
-    <section class="profile_3">
-        @foreach($reviews as $review)
-            <div class="profile_3_box">
-                <div class="profile_3_box_top">
-                    <div class="profile_3_box_top_stars">
+    <p class="reviews_for_john" id="reviews-list"><span id="reviews-quantity">{{$reviewsNumber}}</span> reviews for {{$user->full_name}}</p>
+    <section class="profile_3" id="reviews-wrapper">
+        <div id="review-wrapper">
+            @foreach($reviews as $review)
+                <div class="profile_3_box">
+                    <div class="profile_3_box_top">
+                        <div class="profile_3_box_top_stars">
 
-                        @for ($i = 0; $i < $review->grade; $i++)
-                            <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
-                        @endfor
+                            @for ($i = 0; $i < $review->grade; $i++)
+                                <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
+                            @endfor
 
+                        </div>
+                        <p>on {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
                     </div>
-                    <p>on {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
+                    <p class="profile_3_box_text">{{$review->body}}</p>
                 </div>
-                <p class="profile_3_box_text">{{$review->body}}</p>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
+
+            {{--<ul id="pagination">--}}
+                {{--<li data-page="1" data-lawyerid="{{$user->id}}">1</li>--}}
+                {{--<li data-page="2" data-lawyerid="{{$user->id}}">2</li>--}}
+                {{--<li data-page="3" data-lawyerid="{{$user->id}}">3</li>--}}
+                {{--<li data-page="4" data-lawyerid="{{$user->id}}">4</li>--}}
+            {{--</ul>--}}
+
+            <ul class="pagination justify-content-center" id="pagination">
+                <li class="page-item" data-page="1" data-lawyerid="{{$user->id}}">
+                    <a class="page-link" href="javascript:void(0);">1</a>
+                </li>
+                <li class="page-item" data-page="2" data-lawyerid="{{$user->id}}">
+                    <a class="page-link" href="javascript:void(0);">2</a>
+                </li>
+                <li class="page-item" data-page="3" data-lawyerid="{{$user->id}}">
+                    <a class="page-link" href="javascript:void(0);">3</a>
+                </li>
+            </ul>
 
         @guest
             <div class="comment">Login as client to leave a comment</div>
@@ -140,9 +161,10 @@
     @if(Auth::check() && Auth::user()->role_id == 3)
 
         <section class="profile_4">
-           <form action="{{route('reviews.store', $user->id)}}" method="POST">
-               @csrf
-
+           <form id="review-form">
+               {{--action="{{route('reviews.store', $user->id)}}" method="POST"--}}
+               {{--@csrf--}}
+               <input type="hidden" id="lawyer-id" value="{{$user->id}}">
                <textarea name="body"  placeholder="Leave {{$user->full_name}} a feedback" required></textarea>
                @error('body')
                <span class="input-error">
@@ -162,11 +184,22 @@
                            {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
                            {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
                            {{--<img src="{{asset('assets/images/general/star.png')}}" alt="">--}}
-                           <input type="radio" value="1" name="grade">
-                           <input type="radio" value="2" name="grade">
-                           <input type="radio" value="3" name="grade">
-                           <input type="radio" value="4" name="grade">
-                           <input type="radio" value="5" name="grade">
+
+
+                           {{--<input type="radio" value="1" name="grade">--}}
+                           {{--<input type="radio" value="2" name="grade">--}}
+                           {{--<input type="radio" value="3" name="grade">--}}
+                           {{--<input type="radio" value="4" name="grade">--}}
+                           {{--<input type="radio" value="5" name="grade">--}}
+
+                           <div class="rating">
+                               <input type="radio" id="star5" name="grade" value="5" /><label for="star5">5 star</label>
+                               <input type="radio" id="star4" name="grade" value="4" /><label for="star4">4 stars</label>
+                               <input type="radio" id="star3" name="grade" value="3" /><label for="star3">3 stars</label>
+                               <input type="radio" id="star2" name="grade" value="2" /><label for="star2">2 stars</label>
+                               <input type="radio" id="star1" name="grade" value="1" /><label for="star1">1 stars</label>
+                           </div>
+
                            @error('grade')
                             <span class="input-error">
                                 <strong>{{ $message }}</strong>
@@ -247,22 +280,22 @@
 
         {{--</div>--}}
     {{--</div>--}}
-    <div class="container text-center">
-        <div class="row">
-            <h2>Open in chat (popup-box chat-popup)</h2>
-            <h4>Click Here</h4>
-            <div class="round hollow text-center">
-                <a href="#" id="addClass"><span class="glyphicon glyphicon-comment"></span> Open in chat </a>
-            </div>
+    {{--<div class="container text-center">--}}
+        {{--<div class="row">--}}
+            {{--<h2>Open in chat (popup-box chat-popup)</h2>--}}
+            {{--<h4>Click Here</h4>--}}
+            {{--<div class="round hollow text-center">--}}
+                {{--<a href="#" id="addClass"><span class="glyphicon glyphicon-comment"></span> Open in chat </a>--}}
+            {{--</div>--}}
 
-            <hr>
+            {{--<hr>--}}
 
-            MORE :
-            <a target="_blank" href="http://bootsnipp.com/snippets/33ejn">Whatsapp Chat Box POPUP</a>,
-            <a target="_blank" href="http://bootsnipp.com/snippets/z4P39"> Creative User Profile  </a>
+            {{--MORE :--}}
+            {{--<a target="_blank" href="http://bootsnipp.com/snippets/33ejn">Whatsapp Chat Box POPUP</a>,--}}
+            {{--<a target="_blank" href="http://bootsnipp.com/snippets/z4P39"> Creative User Profile  </a>--}}
 
-        </div>
-    </div>
+        {{--</div>--}}
+    {{--</div>--}}
 
 
     <div class="popup-box chat-popup" id="qnimate">

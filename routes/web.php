@@ -24,6 +24,7 @@ Route::get('/client-register','Auth\RegisterController@registerClient')->name('c
 Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
 Route::get('/lawyers/category','LawyerController@getLawyersByCategory')->name('lawyers.category');
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
+Route::get('/lawyers/reviews/{user}/page/{number}','LawyerController@paginateReviews')->name('reviews.page');
 
 //Authentication Routes
 Auth::routes();

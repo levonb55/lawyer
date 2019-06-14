@@ -24,8 +24,6 @@ class StoreReview extends FormRequest
     public function rules()
     {
         return [
-//            'client_id' => 'required|integer|min:0',
-//            'lawyer_id' => 'required|integer|min:0',
             'body'      => 'required|string|min:10|max:255',
             'grade'     => 'required|integer|min:1|max:5'
         ];
