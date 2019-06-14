@@ -10,6 +10,6 @@ class Review extends Model
      * @var array
      */
     protected $fillable = [
-        'client_id', 'lawyer_id', 'body', 'grade', 'created_at'
+        'client_id', 'lawyer_id', 'body', 'grade', /*'created_at'*/
     ];
 }
