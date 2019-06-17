@@ -2,6 +2,10 @@
 
 @section('title', 'Reach Legal - ' . $user->full_name)
 
+@section('styles')
+    <link rel="stylesheet" href="{{asset('css/simplePagination.css')}}">
+@endsection
+
 @section('content')
     <section class="profile_1">
         <div class="profile_1_1">
@@ -126,31 +130,15 @@
                             @endfor
 
                         </div>
-                        <p>on {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
+                        <p>in {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
                     </div>
                     <p class="profile_3_box_text">{{$review->body}}</p>
                 </div>
             @endforeach
         </div>
 
-            {{--<ul id="pagination">--}}
-                {{--<li data-page="1" data-lawyerid="{{$user->id}}">1</li>--}}
-                {{--<li data-page="2" data-lawyerid="{{$user->id}}">2</li>--}}
-                {{--<li data-page="3" data-lawyerid="{{$user->id}}">3</li>--}}
-                {{--<li data-page="4" data-lawyerid="{{$user->id}}">4</li>--}}
-            {{--</ul>--}}
 
-            <ul class="pagination justify-content-center" id="pagination">
-                <li class="page-item" data-page="1" data-lawyerid="{{$user->id}}">
-                    <a class="page-link" href="javascript:void(0);">1</a>
-                </li>
-                <li class="page-item" data-page="2" data-lawyerid="{{$user->id}}">
-                    <a class="page-link" href="javascript:void(0);">2</a>
-                </li>
-                <li class="page-item" data-page="3" data-lawyerid="{{$user->id}}">
-                    <a class="page-link" href="javascript:void(0);">3</a>
-                </li>
-            </ul>
+            <div id="reviews-pages" data-lawyerid="{{$user->id}}" data-reviews="{{$reviewsNumber}}"></div>
 
         @guest
             <div class="comment">Login as client to leave a comment</div>
@@ -406,4 +394,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('js/jquery.simplePagination.js')}}"></script>
+
+    <script>
+        $(function() {
+            $('#reviews-pages').pagination({
+                items: @json($reviewsNumber),
+                itemsOnPage: 4,
+                cssStyle: 'light-theme'
+            });
+
+        });
+    </script>
 @endsection

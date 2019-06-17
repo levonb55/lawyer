@@ -23,9 +23,11 @@ class LawyerController extends Controller
 
         $reviews = Review::where('lawyer_id',$user->id)
 //                    ->orderBy('created_at', 'DESC')
+                    ->orderBy('id', 'DESC')
                     ->take(4)
                     ->get();
 
+//        $reviews = $reviews->reverse();
         $reviewsNumber = Review::where('lawyer_id',$user->id)->get()->count();
 //        dd($reviewsNumber);
 
@@ -78,6 +80,7 @@ class LawyerController extends Controller
         $reviews = Review::where('lawyer_id',$user->id)
             ->skip($pageSkip)
             ->take(4)
+            ->orderBy('id', 'DESC')
             ->get();
 
 //        dd($reviews);
