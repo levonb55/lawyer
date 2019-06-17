@@ -27,3 +27,4 @@
 <link rel="stylesheet" href="{{asset('css/ask.css')}}">
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap-glyphicons.min.css')}}">
+@yield('styles')

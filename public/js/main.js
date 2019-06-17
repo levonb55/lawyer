@@ -15,7 +15,7 @@ $( document ).ready(function() {
               items:3
           }
       }
-  })
+  });
 
   // $('.lawyers_items').on("click", function () {
   //   $('.lawyers_4_right_box').css("display", "none");
@@ -72,7 +72,7 @@ $( document ).ready(function() {
         });
     })
 
-
+    //Add review on lawyers page
     $('#review-form').on('submit', function (e) {
 
         e.preventDefault();
@@ -93,7 +93,7 @@ $( document ).ready(function() {
                 }
                 var d = new Date();
 
-                let str = `                                
+                let str = `
                     <div class="profile_3_box">
                         <div class="profile_3_box_top">
                             <div class="profile_3_box_top_stars">
@@ -105,29 +105,27 @@ $( document ).ready(function() {
                     </div>
                 `;
 
-                $('#reviews-wrapper').append(str);
+                $('#review-wrapper').prepend(str);
 
                 let reviewsQuant = $('#reviews-quantity');
                 let num = reviewsQuant.html();
                 reviewsQuant.html(++num);
                 form[0].reset();
+                $('#reviews-list')[0].scrollIntoView();
             }
         });
+
     });
 
-    $('#pagination li').on('click', function () {
+    //Pagination for reviews on lawyers
+    $('#reviews-pages').on('click', function () {
 
-        // console.log(e);
-        // return false;
-        let pageNumber = $(this).data('page');
+        let pageNumber = $(this).pagination('getCurrentPage');
         let lawyerId = $(this).data('lawyerid');
-        // console.log(lawyerId);
-        // console.log(pageNumber);
-       // console.log($(this).data('page'));
-       //  /lawyers/reviews/page/{number}
+
         $.ajax({
-           method: "GET",
-           url:  "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
+            method: "GET",
+            url:  "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
             success: function (data) {
                 let months = ['January','February','March','April','May','June','July','August','September','October',
                     'November','December'];
@@ -135,60 +133,30 @@ $( document ).ready(function() {
                 let reviews = data.map(review => {
                     let images = '';
                     var d = new Date(review.created_at);
-                   for (let i = 0; i < review.grade; i++) {
+                    for (let i = 0; i < review.grade; i++) {
                         images +=  '<img src="/assets/images/general/star.png" alt="Star">';
-                   }
+                    }
 
-                   return `
+                    return `
                         <div class="profile_3_box">
                             <div class="profile_3_box_top">
                                 <div class="profile_3_box_top_stars">        
                                     ${images}
                                 </div>
-                                <p>on ${months[d.getMonth()] + ', ' + d.getFullYear()}</p>
+                                <p>in ${months[d.getMonth()] + ', ' + d.getFullYear()}</p>
                             </div>
                             <p class="profile_3_box_text">${review.body}</p>
                         </div>
                    `;
-               });
-               // let review = `
-               //        <div class="profile_3_box">
-               //          <div class="profile_3_box_top">
-               //          <div class="profile_3_box_top_stars">
-               //
-               //  <img src="/assets/images/general/star.png" alt="Star">
-               //
-               //          </div>
-               //          <p>ddkdk</p>
-               //      </div>
-               //      <p class="profile_3_box_text">djdjdjd</p>
-               //      </div>
-               //
-               // `;
-
-
-                // @foreach($reviews as $review)
-                // <div class="profile_3_box">
-                //         <div class="profile_3_box_top">
-                //         <div class="profile_3_box_top_stars">
-                //
-                //         @for ($i = 0; $i < $review->grade; $i++)
-                // <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
-                //         @endfor
-                //
-                //         </div>
-                //         <p>on {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
-                //     </div>
-                //     <p class="profile_3_box_text">{{$review->body}}</p>
-                //     </div>
-                // @endforeach
-
+                });
                 $('#review-wrapper').empty();
                 $('#review-wrapper').append(reviews);
             }
         });
     });
 
+
+    //Publication addition on lawyers dashboard
     $("#add-publication").on('click', function () {
         let publication = `
              <div class="publication-block">
