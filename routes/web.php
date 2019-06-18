@@ -25,6 +25,7 @@ Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name(
 Route::get('/lawyers/category','LawyerController@getLawyersByCategory')->name('lawyers.category');
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
 Route::get('/lawyers/reviews/{user}/page/{number}','LawyerController@paginateReviews')->name('reviews.page');
+Route::get('/lawyers/publications/{publication}','LawyerController@getPublication')->name('publications.show');
 
 //Authentication Routes
 Auth::routes();

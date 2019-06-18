@@ -119,27 +119,30 @@
     </section>
     <p class="reviews_for_john" id="reviews-list"><span id="reviews-quantity">{{$reviewsNumber}}</span> reviews for {{$user->full_name}}</p>
     <section class="profile_3" id="reviews-wrapper">
+        @if(count($reviews))
         <div id="review-wrapper">
-            @foreach($reviews as $review)
-                <div class="profile_3_box">
-                    <div class="profile_3_box_top">
-                        <div class="profile_3_box_top_stars">
+                @foreach($reviews as $review)
+                    <div class="profile_3_box">
+                        <div class="profile_3_box_top">
+                            <div class="profile_3_box_top_stars">
 
-                            @for ($i = 0; $i < $review->grade; $i++)
-                                <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
-                            @endfor
+                                @for ($i = 0; $i < $review->grade; $i++)
+                                    <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
+                                @endfor
 
+                            </div>
+                            <p>in {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
                         </div>
-                        <p>in {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
+                        <p class="profile_3_box_text">{{$review->body}}</p>
                     </div>
-                    <p class="profile_3_box_text">{{$review->body}}</p>
-                </div>
-            @endforeach
+                @endforeach
+
         </div>
 
-
-            <div id="reviews-pages" data-lawyerid="{{$user->id}}" data-reviews="{{$reviewsNumber}}"></div>
-
+        <div id="reviews-pages" data-lawyerid="{{$user->id}}" data-reviews="{{$reviewsNumber}}"></div>
+        @else
+            <div class="profile_3_box text-center">No reviews.</div>
+        @endif
         @guest
             <div class="comment">Login as client to leave a comment</div>
         @endguest
@@ -205,20 +208,22 @@
    @endif
 
     <p class="Publications">Publications</p>
-    <section class="profile_5">
-        <div class="profile_5_box">
-            <img src="{{asset('assets/images/general/pdf.png')}}" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
-        <div class="profile_5_box">
-            <img src="{{asset('assets/images/general/pdf.png')}}" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
-        <div class="profile_5_box">
-            <img src="{{asset('assets/images/general/pdf.png')}}" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        </div>
-    </section>
+        <section class="profile_5">
+            @if(count($publications))
+                @foreach($publications as $publication)
+                   <div>
+                       <div class="profile_5_box">
+                           <a href="{{route('publications.show', $publication->id)}}" target="_blank">
+                               <img src="{{asset('assets/images/general/pdf.png')}}" alt="Pdf">
+                           </a>
+                           <p>{{$publication->title}}</p>
+                       </div>
+                   </div>
+                @endforeach
+            @else
+                <section>No publication.</section>
+            @endif
+        </section>
 
     <section class="lawyers_7">
         <div class="opacity_bg">
