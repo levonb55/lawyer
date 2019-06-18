@@ -25,7 +25,7 @@ Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name(
 Route::get('/lawyers/category','LawyerController@getLawyersByCategory')->name('lawyers.category');
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
 Route::get('/lawyers/reviews/{user}/page/{number}','LawyerController@paginateReviews')->name('reviews.page');
-Route::get('/lawyers/publications/{publication}','LawyerController@getPublication')->name('publications.show');
+Route::get('/lawyers/publications/{publication}','PublicationController@getPublication')->name('publications.show');
 
 //Authentication Routes
 Auth::routes();
@@ -37,7 +37,8 @@ Route::get('/users/messages/{user}','UserController@getUserMessages')->name('use
 Route::get('/users/bookings/{user}','UserController@getUserBookings')->name('user.bookings');
 Route::put('/users/update/{user}','UserController@update')->name('user.update');
 Route::post('/reviews/lawyers/{user}','LawyerController@storeReviews')->name('reviews.store');
-Route::post('/lawyers/{user}/publications','LawyerController@storePublications')->name('publications.store');
+Route::post('/lawyers/{user}/publications','PublicationController@storePublications')->name('publications.store');
+Route::delete('/lawyers/publications/{publication}','PublicationController@deletePublication')->name('publications.destroy');
 
 
 

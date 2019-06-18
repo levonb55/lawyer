@@ -6,6 +6,7 @@ use App\Http\Requests\StoreReview;
 use App\Http\Requests\UpdateLawyerInfo;
 use App\Models\Category;
 use App\Models\Lawyer;
+use App\Models\Publication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Image;
@@ -33,8 +34,9 @@ class UserController extends Controller
      */
     public function getUserSettings(User $user) {
         $categories = Category::all();
+        $publications = Publication::where('user_id', $user->id)->get();
 
-        return view('users.settings', compact('user', 'categories'));
+        return view('users.settings', compact('user', 'categories', 'publications'));
     }
 
     public function update(UpdateLawyerInfo $request, User $user) {

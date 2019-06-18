@@ -156,7 +156,7 @@ $( document ).ready(function() {
     });
 
 
-    //Publication addition on lawyers dashboard
+    //Add Publication on lawyers dashboard
     $("#add-publication").on('click', function () {
         let publication = `
              <div class="publication-block">
@@ -169,4 +169,23 @@ $( document ).ready(function() {
         `;
         $(".publication-block-wrapper").append(publication);
     });
+
+    //Delete Publication
+    $('.delete-publication').on('submit', function (e) {
+        e.preventDefault();
+        let pubId = $(this).data('pubid');
+        // console.log(pubId);
+        $.ajax({
+           method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+           url: '/lawyers/publications/' + pubId,
+            success: function (data) {
+                // console.log(data.id);
+                console.log('yes');
+            }
+        });
+    });
+
 });
