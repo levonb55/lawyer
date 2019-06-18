@@ -29,6 +29,6 @@ class Lawyer extends Model
     }
 
     public function reviews() {
-        return $this->hasMany('App\Models\Review', 'lawyer_id');
+        return $this->hasMany('App\Models\Review', 'lawyer_id', 'user_id');
     }
 }
