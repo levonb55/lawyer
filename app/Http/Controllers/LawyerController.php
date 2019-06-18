@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePublication;
 use App\Http\Requests\StoreReview;
 use App\Models\Category;
 use App\Models\Lawyer;
@@ -11,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use Session;
 
 class LawyerController extends Controller
 {
@@ -19,19 +21,17 @@ class LawyerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(User $user) {
-        $category = Category::find($user->lawyer->category_id);
+        $category = Category::findOrFail($user->lawyer->category_id);
 
         $reviews = Review::where('lawyer_id',$user->id)
-//                    ->orderBy('created_at', 'DESC')
                     ->orderBy('id', 'DESC')
                     ->take(4)
                     ->get();
 
-//        $reviews = $reviews->reverse();
         $reviewsNumber = Review::where('lawyer_id',$user->id)->get()->count();
-//        dd($reviewsNumber);
+        $publications = Publication::where('user_id', $user->id)->get();
 
-        return view('lawyers.show', compact('user', 'category', 'reviews', 'reviewsNumber'));
+        return view('lawyers.show', compact('user', 'category', 'reviews', 'reviewsNumber', 'publications'));
     }
 
     /**
@@ -60,11 +60,8 @@ class LawyerController extends Controller
             'client_id' => Auth::id(),
             'lawyer_id' => $user->id,
             'body' => $request->input('body'),
-            'grade' => $request->input('grade'),
-//            'created_at' => date('Y-m-d G:i:s')
+            'grade' => $request->input('grade')
         ]);
-
-//        return back();
 
         return response()->json([
             'body' => $data->body,
@@ -83,35 +80,34 @@ class LawyerController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
 
-//        dd($reviews);
-//        dump($reviews);
-//        return response()->json([
-//            'name' => 'Abigail',
-//            'state' => $page
-//        ]);
         return response()->json($reviews);
-//        return json_encode($reviews);
     }
 
-    public function storePublications(Request $request,User $user) {
+    public function storePublications(StorePublication $request,User $user) {
+
         $quant = count($request->title);
 
         for ($i = 0; $i < $quant; $i++) {
-            if($request->publication['publication']) {
-                $fileName = time() . '.' . $request->publication->extension();
-                $location = $request->publication->move(public_path('assets/publications/'), $fileName);
+            if($request->publication[$i]) {
+                $fileName = time(). $i . '.' . $request->publication[$i]->extension();
+                $location = $request->publication[$i]->move(public_path('assets/publications/'), $fileName);
                 chmod($location,0777);
             }
 
             Publication::create([
                 'user_id' => \Auth::id(),
-//                'title' => $request->input('title'),
                 'title' => $request->input('title')[$i],
-//                'publication' => $fileName
-                'publication' => 'hello file'
+                'publication' => $fileName
             ]);
         }
 
+        Session::flash('success', 'You successfully edited your publications!');
+
         return back();
+    }
+
+    public function getPublication(Publication $publication){
+
+        return view('lawyers.publication', compact('publication'));
     }
 }

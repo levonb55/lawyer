@@ -31,7 +31,7 @@
                     {{--</li>--}}
                     @if(\Auth::user()->role_id != 1)
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{route('user.dashboard', \Auth::id())}}">Dashboard <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{route('user.dashboard', \Auth::id())}}">{{Auth::user()->full_name}}<span class="sr-only">(current)</span></a>
                         </li>
                     @else
                         <li class="nav-item active">

@@ -62,10 +62,9 @@
     </div>
 </div> -->
 <div class="clear"></div>
-<a href="{{route('lawyers.show', $user->id)}}">Your website on Reach Legal</a>
-
-
 @include('partials._messages')
+
+<a href="{{route('lawyers.show', $user->id)}}">Your website on Reach Legal</a>
 
 <form method="POST" enctype="multipart/form-data" action="{{route('user.update', $user->id)}}">
 
@@ -223,9 +222,20 @@
                 <div class="publication-block">
                     <div>
                         <input type="text" name="title[]" placeholder="Title">
+                        @error('title')
+                            <span class="input-error">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-
-                    <input type="file" name="publication[]" accept="application/pdf">
+                    <div>
+                        <input type="file" name="publication[]" accept="application/pdf">
+                        @error('publication')
+                            <span class="input-error">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
             </div>
 
