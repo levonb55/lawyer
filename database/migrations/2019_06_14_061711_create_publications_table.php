@@ -17,7 +17,7 @@ class CreatePublicationsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('publication');
+            $table->string('publication')->unique();
             $table->timestamps();
 
             $table->foreign('user_id')
