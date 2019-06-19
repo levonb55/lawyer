@@ -122,10 +122,11 @@ $( document ).ready(function() {
 
         let pageNumber = $(this).pagination('getCurrentPage');
         let lawyerId = $(this).data('lawyerid');
+        let appUrl = $(this).data('appurl');
 
         $.ajax({
             method: "GET",
-            url:  "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
+            url:  appUrl + "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
             success: function (data) {
                 let months = ['January','February','March','April','May','June','July','August','September','October',
                     'November','December'];
