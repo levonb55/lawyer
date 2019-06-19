@@ -126,7 +126,7 @@ $( document ).ready(function() {
 
         $.ajax({
             method: "GET",
-            url:  appUrl + "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
+            url:  "/dev/lawyer/public/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
             success: function (data) {
                 let months = ['January','February','March','April','May','June','July','August','September','October',
                     'November','December'];
