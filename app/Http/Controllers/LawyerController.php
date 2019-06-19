@@ -50,37 +50,4 @@ class LawyerController extends Controller
         return view('categories.lawyers-category');
     }
 
-    /**
-     * @param StoreReview $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function storeReviews(StoreReview $request, User $user) {
-
-        $data = Review::create([
-            'client_id' => Auth::id(),
-            'lawyer_id' => $user->id,
-            'body' => $request->input('body'),
-            'grade' => $request->input('grade')
-        ]);
-
-        return response()->json([
-            'body' => $data->body,
-            'grade' => $data->grade,
-            'created_at' => $data->created_at
-        ]);
-
-    }
-
-    public function paginateReviews(User $user, $page) {
-
-        $pageSkip = ($page * 4) - 4;
-        $reviews = Review::where('lawyer_id',$user->id)
-            ->skip($pageSkip)
-            ->take(4)
-            ->orderBy('id', 'DESC')
-            ->get();
-
-        return response()->json($reviews);
-    }
-
 }
