@@ -1,6 +1,12 @@
 $( document ).ready(function() {
 
-  $('.owl-carousel').owlCarousel({
+    let appUrl = "lawyer.loc";
+
+    if(window.location.hostname !== 'lawyer.loc') {
+        appUrl = 'http://myworks.site/dev/lawyer/public';
+    }
+
+    $('.owl-carousel').owlCarousel({
       loop:true,
       margin:10,
       nav:true,
@@ -82,14 +88,14 @@ $( document ).ready(function() {
         $.ajax({
             method: "POST",
             data: form.serializeArray(),
-            url:  '/reviews/lawyers/' + lawyerId,
+            url:  appUrl + '/reviews/lawyers/' + lawyerId,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (data) {
                 let stars = '';
                 for (let i = 0; i < data.grade; i++) {
-                   stars += '<img src="/assets/images/general/star.png" alt="Star">';
+                   stars += `<img src="${appUrl}/assets/images/general/star.png" alt="Star">`;
                 }
                 var d = new Date();
 
@@ -122,11 +128,10 @@ $( document ).ready(function() {
 
         let pageNumber = $(this).pagination('getCurrentPage');
         let lawyerId = $(this).data('lawyerid');
-        let appUrl = $(this).data('appurl');
 
         $.ajax({
             method: "GET",
-            url:  "/dev/lawyer/public/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
+            url:  appUrl + "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
             success: function (data) {
                 let months = ['January','February','March','April','May','June','July','August','September','October',
                     'November','December'];
@@ -135,7 +140,7 @@ $( document ).ready(function() {
                     let images = '';
                     var d = new Date(review.created_at);
                     for (let i = 0; i < review.grade; i++) {
-                        images +=  '<img src="/assets/images/general/star.png" alt="Star">';
+                        images +=  `<img src="${appUrl}/assets/images/general/star.png" alt="Star">`;
                     }
 
                     return `
@@ -185,7 +190,7 @@ $( document ).ready(function() {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-           url: '/lawyers/publications/' + pubId,
+           url: appUrl + '/lawyers/publications/' + pubId,
             success: function (data) {
                 self.remove();
             }
