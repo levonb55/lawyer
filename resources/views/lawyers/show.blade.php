@@ -139,7 +139,8 @@
 
         </div>
 
-        <div id="reviews-pages" data-lawyerid="{{$user->id}}" data-reviews="{{$reviewsNumber}}" data-appurl="{{config('app.url')}}"></div>
+        <div id="reviews-pages" data-lawyerid="{{$user->id}}" data-reviews="{{$reviewsNumber}}"></div>
+
         @else
             <div class="profile_3_box text-center">No reviews.</div>
         @endif
