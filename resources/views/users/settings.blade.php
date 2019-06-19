@@ -210,13 +210,17 @@
 </form>
 <hr/>
     <div id="publications" class="publications">
+
         @foreach($publications as $publication)
             <form class="delete-publication" data-pubid="{{$publication->id}}">
                 <i class="far fa-file-pdf"></i>
                 <span>{{$publication->title}}</span>
-                <button type="submit"><i class="far fa-window-close"></i></button>
+                <button type="submit" title="Click to remove this publication">
+                    <i class="far fa-window-close"></i>
+                </button>
             </form>
         @endforeach
+
         <h3>Add publications
             <span id="add-publication" class="hand">
                 <i class="fas fa-plus"></i>
@@ -234,6 +238,9 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                        <button title="Click to close this field" class="remove-pub-block">
+                            <i class="far fa-window-close"></i>
+                        </button>
                     </div>
                     <div>
                         <input type="file" name="publication[]" accept="application/pdf">

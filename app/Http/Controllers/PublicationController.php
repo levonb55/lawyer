@@ -7,6 +7,7 @@ use App\Http\Requests\StorePublication;
 use App\Models\Publication;
 use Illuminate\Http\Request;
 use Session;
+use File;
 
 class PublicationController extends Controller
 {
@@ -52,10 +53,11 @@ class PublicationController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function deletePublication(Publication $publication){
-//        dd($publication);
-//        return response()->json('hello');
 
+        $oldImagePath = public_path('assets/publications/'. $publication->publication);
+        File::delete($oldImagePath);
         $publication = Publication::destroy($publication->id);
-        return response()->json($publication->id);
+        return response()->json($publication);
+
     }
 }

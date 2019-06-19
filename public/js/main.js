@@ -162,6 +162,9 @@ $( document ).ready(function() {
              <div class="publication-block">
                 <div>
                     <input type="text" name="title[]" placeholder="Title">
+                    <button title="Click to close this field" class="remove-pub-block">
+                        <i class="far fa-window-close"></i>
+                    </button>
                 </div>
 
                 <input type="file" name="publication[]" accept="application/pdf">
@@ -170,11 +173,12 @@ $( document ).ready(function() {
         $(".publication-block-wrapper").append(publication);
     });
 
-    //Delete Publication
+    //Delete Database Publication
     $('.delete-publication').on('submit', function (e) {
         e.preventDefault();
         let pubId = $(this).data('pubid');
-        // console.log(pubId);
+        let self = $(this);
+
         $.ajax({
            method: 'DELETE',
             headers: {
@@ -182,10 +186,14 @@ $( document ).ready(function() {
             },
            url: '/lawyers/publications/' + pubId,
             success: function (data) {
-                // console.log(data.id);
-                console.log('yes');
+                self.remove();
             }
         });
+    });
+
+    //Remove newly added but not submitted fields
+    $(document).on('click', '.remove-pub-block', function () {
+       $(this).parents('.publication-block').remove();
     });
 
 });
