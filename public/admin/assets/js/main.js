@@ -38,3 +38,18 @@ jQuery(document).ready(function($) {
     // })
 });
 
+//Image upload
+$(function () {
+	$("#category-image").change(function () {
+		if (this.files && this.files[0]) {
+			var reader = new FileReader();
+			reader.onload = imageIsLoaded;
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
+});
+
+function imageIsLoaded(e) {
+	$('#image-input .dash_img_add').attr('src', e.target.result);
+};
+

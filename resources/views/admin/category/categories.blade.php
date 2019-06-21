@@ -5,11 +5,11 @@
 
     <div class="breadcrumbs">
         <div class="col-sm-4">
-            <div class="page-header float-left">
-                <div class="page-title">
-                    <h1>First Content</h1>
-                </div>
-            </div>
+{{--            <div class="page-header float-left">--}}
+{{--                <div class="page-title">--}}
+{{--                    <h1>First Content</h1>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
         <div class="col-sm-8">
             <div class="page-header float-right">
@@ -37,15 +37,15 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Privacy</strong>
+                            <strong class="card-title">Categories</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>name</th>
+                                    <th>Name</th>
                                     <th>Image</th>
-                                    <th>action</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -106,7 +106,7 @@
                             <input type="file" class="form-control-file" name="image">
                             @error('image')
                                 <span class="text-danger">
-                                    <strong>You can upload only image.</strong>
+                                    <strong>You can upload only an image.</strong>
                                 </span>
                             @enderror
                         </div>

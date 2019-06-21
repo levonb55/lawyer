@@ -7,6 +7,7 @@ use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Image;
+use File;
 
 class CategoryController extends Controller
 {
@@ -22,6 +23,11 @@ class CategoryController extends Controller
         $categories = $this->model->get();
         return view('admin.category.categories',compact('categories'));
     }
+
+    /**
+     * @param StoreCategory $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(StoreCategory $request){
         $category = Category::create([
             'name' => $request->input('name')
@@ -49,10 +55,37 @@ class CategoryController extends Controller
     public function edit(Category $category) {
         return view('admin.category.edit', compact('category'));
     }
-    public function update(Request $request,$id){
-        $this->model->where('id',$id)->update($request->except('_token'));
 
-        return redirect()->back()->with('update','updated a category!');
+    /**
+     * @param StoreCategory $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(StoreCategory $request, Category $category){
+
+        Category::updateOrCreate(['id' => $category->id], [
+            'name' => $request->input('name')
+        ]);
+
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $fileName = time() . '.' . $request->image->extension();
+            $location = public_path('assets/images/categories/' . $fileName);
+
+            Image::make($image)->resize(180, 180)->save($location);
+            chmod($location,0777);
+
+            $oldImage = $category->image;
+            $oldImagePath = public_path('assets/images/categories/'. $oldImage);
+            if ($oldImage && $oldImagePath) {
+                File::delete($oldImagePath);
+            }
+
+            $category->image = $fileName;
+            $category->save();
+        }
+
+        return redirect()->route('admin_categories')->with('update','updated a category!');
     }
 //    public function delete(Category $category){
 //        $category->delete();
