@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lawyer;
 use App\Models\User;
-use App\Models\Category;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
