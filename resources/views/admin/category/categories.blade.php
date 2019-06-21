@@ -54,7 +54,9 @@
                                         <tr>
                                             <td>{{$category->name}}</td>
                                             <td>
-                                                <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law">
+                                                @if($category->image)
+                                                    <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law">
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="{{route('categories_edit', $category->id)}}" class="btn btn-primary">

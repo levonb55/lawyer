@@ -17,4 +17,12 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    /**
+     * Get the lawyers for the category.
+     */
+    public function lawyers()
+    {
+        return $this->hasMany('App\Models\Lawyer');
+    }
 }

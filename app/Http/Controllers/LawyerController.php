@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePublication;
 use App\Http\Requests\StoreReview;
-use App\Models\Category;
+use App\Models\Admin\Category;
 use App\Models\Lawyer;
 use App\Models\Publication;
 use App\Models\Review;
@@ -38,7 +38,7 @@ class LawyerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getLawyersCategories() {
-        $categories = Category::all();
+        $categories = Category::with('lawyers')->get();
 
         return view('categories.lawyers-categories', compact('categories'));
     }

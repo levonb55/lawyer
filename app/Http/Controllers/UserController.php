@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReview;
 use App\Http\Requests\UpdateLawyerInfo;
-use App\Models\Category;
+use App\Models\Admin\Category;
 use App\Models\Lawyer;
 use App\Models\Publication;
 use App\Models\User;
