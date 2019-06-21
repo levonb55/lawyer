@@ -1,33 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    @if(session('create'))
-        <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-            <span class="badge badge-pill badge-success">Success</span>
-            You successfully {{session('create')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    @if(session('update'))
-        <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-            <span class="badge badge-pill badge-primary">Success</span>
-            You successfully {{session('update')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-    @if(session('delete'))
-        <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-            <span class="badge badge-pill badge-danger">Success</span>
-            You successfully {{session('delete')}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
+    @include('admin.partials._messages')
+
     <div class="breadcrumbs">
         <div class="col-sm-4">
             <div class="page-header float-left">
@@ -69,24 +44,29 @@
                                 <thead>
                                 <tr>
                                     <th>name</th>
-
+                                    <th>Image</th>
                                     <th>action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $categories)
-                                    <form id="works_update" method="post" action="{{route('categories_update',$categories->id)}}">
+                                @foreach($categories as $category)
                                         @csrf
                                         <tr>
+                                            <td>{{$category->name}}</td>
                                             <td>
-                                                <input type="text" name="name" value="{{$categories->name}}">
+                                                <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law">
                                             </td>
                                             <td>
-                                                <button type="submit" class="btn btn-primary">edit</button>
-                                                <a href="{{route('categories_delete',$categories->id)}}" class="btn btn-danger">delete</a>
+                                                <a href="{{route('categories_edit', $category->id)}}" class="btn btn-primary">
+                                                    Edit
+                                                </a>
+{{--                                                <form method="post" action="{{route('categories_delete',$category->id)}}" class="d-inline">--}}
+{{--                                                    @csrf--}}
+{{--                                                    @method('DELETE')--}}
+{{--                                                    <input class="btn btn-danger" type="submit" value="Delete">--}}
+{{--                                                </form>--}}
                                             </td>
                                         </tr>
-                                    </form>
                                 @endforeach
                                 </tbody>
                             </table>
@@ -101,7 +81,7 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="smallmodalLabel">Add Resource</h5>
+                    <h5 class="modal-title" id="smallmodalLabel">Add Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -112,13 +92,23 @@
                         <div class="row form-group">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Name</label></div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="name" placeholder="Text" class="form-control">
+                                <input type="text" id="text-input" name="name" placeholder="Text" class="form-control" value="{{old('name')}}">
                                 @if ($errors->has('name'))
                                     <span class="text-danger">
 		                    	        <strong>{{ $errors->first('name') }}</strong>
 		                            </span>
                                 @endif
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text-input" class=" form-control-label">Upload image for category</label>
+                            <input type="file" class="form-control-file" name="image">
+                            @error('image')
+                                <span class="text-danger">
+                                    <strong>You can upload only image.</strong>
+                                </span>
+                            @enderror
                         </div>
                     </form>
                 </div>
