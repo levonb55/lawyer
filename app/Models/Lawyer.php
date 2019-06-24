@@ -13,7 +13,7 @@ class Lawyer extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'category_id', 'company', 'address', 'company_website', 'university', 'experience', 'background',
+        'user_id', 'category_id', 'company', 'state', 'city', 'address', 'phone', 'postcode', 'company_website', 'university', 'experience', 'background',
         'facebook', 'twitter', 'instagram', 'linkedin'
     ];
 
