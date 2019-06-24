@@ -7,6 +7,11 @@
 @endsection
 
 @section('content')
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3"></script>
+
     <section class="profile_1">
         <div class="profile_1_1">
             @if($user->image)
@@ -68,26 +73,53 @@
             <p class="profile_1_2_text">{{$user->lawyer->background}}</p>
             <div class="profile_1_2_soc">
 
-                @if($user->lawyer->facebook)
-                    <a href="{{$user->lawyer->facebook}}">
+                <!-- Facebook share button  -->
+                <div data-href="{{route('lawyers.show', $user->id)}}">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flawyer.loc%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
                         <img src="{{asset('assets/images/general/p_facebook.png')}}" alt="Facebook">
                     </a>
-                @endif
-                @if($user->lawyer->twitter)
-                    <a href="{{$user->lawyer->twitter}}">
+                </div>
+{{--                @if($user->lawyer->facebook)--}}
+{{--                    <a href="{{$user->lawyer->facebook}}">--}}
+{{--                        <img src="{{asset('assets/images/general/p_facebook.png')}}" alt="Facebook">--}}
+{{--                    </a>--}}
+{{--                @endif--}}
+
+                <!-- Twitter share button  -->
+                <div>
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="{{route('lawyers.show', $user->id)}}" data-show-count="false">
                         <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">
                     </a>
-                @endif
+
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+{{--                @if($user->lawyer->twitter)--}}
+{{--                    <a href="{{$user->lawyer->twitter}}">--}}
+{{--                        <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">--}}
+{{--                    </a>--}}
+{{--                @endif--}}
                 @if($user->lawyer->instagram)
                     <a href="{{$user->lawyer->instagram}}">
                         <img src="{{asset('assets/images/general/p_insta.png')}}" alt="Instagram">
                     </a>
                 @endif
-                @if($user->lawyer->linkedin)
-                    <a href="{{$user->lawyer->linkedin}}">
-                        <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">
-                    </a>
-                @endif
+
+                <!-- Linkedin share button  -->
+                <div>
+                    <div class="a2a_kit">
+                        <a class="a2a_button_linkedin_share" data-url="{{route('lawyers.show', $user->id)}}">
+                            <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">
+                        </a>
+                    </div>
+
+                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                </div>
+{{--                @if($user->lawyer->linkedin)--}}
+{{--                    <a href="{{$user->lawyer->linkedin}}">--}}
+{{--                        <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">--}}
+{{--                    </a>--}}
+{{--                @endif--}}
 
             </div>
         </div>
