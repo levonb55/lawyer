@@ -139,8 +139,44 @@
     </div>
 
     <div>
+        <input type="text" name="state" placeholder="State" value="">
+        @error('state')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="city" placeholder="City" value="">
+        @error('city')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
         <input type="text" name="address" placeholder="Address" value="{{$user->lawyer->address}}">
         @error('address')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="phone" placeholder="Phone Number" value="">
+        @error('phone')
+        <span class="input-error">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+    <div>
+        <input type="text" name="postcode" placeholder="Postal Code" value="">
+        @error('postcode')
         <span class="input-error">
             <strong>{{ $message }}</strong>
         </span>

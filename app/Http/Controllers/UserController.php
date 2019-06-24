@@ -64,7 +64,11 @@ class UserController extends Controller
         ], [
             'category_id' => $request->input('category_id'),
             'company' => $request->input('company'),
+            'state' => $request->input('state'),
+            'city' => $request->input('city'),
             'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'postcode' => $request->input('postcode'),
             'company_website' => $request->input('company_website'),
             'university' => $request->input('university'),
             'experience' => $request->input('experience'),
