@@ -49,12 +49,10 @@
             <p class="profile_1_2_name">{{$user->full_name}}</p>
             <p class="profile_1_2_fname">{{$user->lawyer->company}}</p>
 
-            @if($user->lawyer->address)
-                <div class="loc_and_text">
-                    <img src="{{asset('assets/images/general/loc.png')}}" alt="Location sign">
-                        <p>{{$user->lawyer->address}}</p>
-                </div>
-            @endif
+            <div class="loc_and_text">
+                <img src="{{asset('assets/images/general/loc.png')}}" alt="Location sign">
+                <p>{{$user->lawyer->state . ', ' . $user->lawyer->city . ', ' . $user->lawyer->address}}</p>
+            </div>
 
             <div class="profile_1_2_block">
                 <div class="">
@@ -87,11 +85,15 @@
 
                 <!-- Twitter share button  -->
                 <div>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="{{route('lawyers.show', $user->id)}}" data-show-count="false">
-                        <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">
-                    </a>
+{{--                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="{{route('lawyers.show', $user->id)}}" data-show-count="false">--}}
+{{--                        <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">--}}
+{{--                    </a>--}}
 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{--                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>--}}
+
+                        <a target="_blank" href="https://twitter.com/intent/tweet?url={{route('lawyers.show', $user->id)}}">
+                            <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">
+                        </a>
                 </div>
 
 {{--                @if($user->lawyer->twitter)--}}
@@ -99,21 +101,26 @@
 {{--                        <img src="{{asset('assets/images/general/p_twit.png')}}" alt="Twitter">--}}
 {{--                    </a>--}}
 {{--                @endif--}}
-                @if($user->lawyer->instagram)
-                    <a href="{{$user->lawyer->instagram}}">
-                        <img src="{{asset('assets/images/general/p_insta.png')}}" alt="Instagram">
-                    </a>
-                @endif
+
+
+{{--                @if($user->lawyer->instagram)--}}
+{{--                    <a href="{{$user->lawyer->instagram}}">--}}
+{{--                        <img src="{{asset('assets/images/general/p_insta.png')}}" alt="Instagram">--}}
+{{--                    </a>--}}
+{{--                @endif--}}
 
                 <!-- Linkedin share button  -->
                 <div>
-                    <div class="a2a_kit">
-                        <a class="a2a_button_linkedin_share" data-url="{{route('lawyers.show', $user->id)}}">
-                            <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">
-                        </a>
-                    </div>
+{{--                    <div class="a2a_kit">--}}
+{{--                        <a class="a2a_button_linkedin_share" data-url="{{route('lawyers.show', $user->id)}}">--}}
+{{--                            <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
-                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+{{--                    <script async src="https://static.addtoany.com/menu/page.js"></script>--}}
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('lawyers.show', $user->id)}}">
+                        <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">
+                    </a>
                 </div>
 {{--                @if($user->lawyer->linkedin)--}}
 {{--                    <a href="{{$user->lawyer->linkedin}}">--}}
