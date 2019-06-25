@@ -132,6 +132,9 @@ height: 18px;
     font-size: 20px;
     margin-bottom: 25px;
 }
+.profile_1_2_soc {
+  display: flex;
+}
 .profile_1_2_soc img{
   margin-right: 25px;
 }

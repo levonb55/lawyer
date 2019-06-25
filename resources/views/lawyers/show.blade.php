@@ -51,7 +51,11 @@
 
             <div class="loc_and_text">
                 <img src="{{asset('assets/images/general/loc.png')}}" alt="Location sign">
-                <p>{{$user->lawyer->state . ', ' . $user->lawyer->city . ', ' . $user->lawyer->address}}</p>
+                <p>
+                    {{ $user->lawyer->state ? $user->lawyer->state . ', '  : ''}}
+                    {{ $user->lawyer->city ? $user->lawyer->city . ', ' : ''}}
+                    {{ $user->lawyer->address ? $user->lawyer->address : ''}}
+                </p>
             </div>
 
             <div class="profile_1_2_block">
