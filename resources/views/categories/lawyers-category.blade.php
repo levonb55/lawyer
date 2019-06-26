@@ -11,11 +11,19 @@
                     Donec quis mi eget erat dignissim temporLorem ipsum dolor sit amet, consectetur
                     adipiscing elit. Donec quis mi eget erat dignissim tempor</p>
                 <div class="find_2_left_inputs">
-                    <input type="text" name="" value="" placeholder="Enter Postcode">
-                    <button type="button" name="button">Search</button>
+                    <form action="{{route('lawyers.search')}}" method="POST">
+                        @csrf
+                        <input type="text" name="search" placeholder="State, City, Postcode or Specialization" class="w-100">
+                        @error('search')
+                            <span class="input-error">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
                 <div class="find_2_left_select">
-                    <p>We found 55 professional lawyers</p>
+                    <p>We found {{$lawyers->count()}} professional lawyers</p>
                     <select class="" name="">
                         <option value="">Rating</option>
                         <option value="">Rating</option>
@@ -24,27 +32,28 @@
                 </div>
                 <div class="find_2_left_block" id="style-2">
 
-                    <div class="find_2_left_box">
+                    @foreach($lawyers as $lawyer)
+                        <div class="find_2_left_box">
                         <div class="find_2_left_box_left">
                             <div class="find_2_left_box_left_img">
-                                <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="">
+                                <img src="{{asset('assets/images/profile/' . $lawyer->user->image)}}" alt="Person">
                             </div>
                             <div class="find_2_left_box_left_names">
-                                <p>Lawyer Name</p>
-                                <p>Lawyer Firm Name</p>
+                                <p>{{ $lawyer->user->full_name }}</p>
+                                <p>{{ $lawyer->company }}</p>
                                 <div class="find_2_left_box_left_names_flex">
                                     <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">
-                                        <p> Civil</p>
+                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
+                                        <p>{{ $lawyer->category->name }}</p>
                                     </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">
-                                        <p>   Immigration</p>
-                                    </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">
-                                        <p> Criminal</p>
-                                    </div>
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">--}}
+{{--                                        <p>   Immigration</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">--}}
+{{--                                        <p> Criminal</p>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
@@ -57,85 +66,87 @@
                                 <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
                             </div>
                             <div class="find_2_left_box_right_btn">
-                                <a href="#"> <button type="button" name="button">View profile </button></a>
-{{--                                {{route('lawyer_profile')}}--}}
+                                <a href="{{route('lawyers.show', $lawyer->user->id)}}">
+                                    <button type="button" name="button">View profile </button>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="find_2_left_box">
-                        <div class="find_2_left_box_left">
-                            <div class="find_2_left_box_left_img">
-                                <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="">
-                            </div>
-                            <div class="find_2_left_box_left_names">
-                                <p>Lawyer Name</p>
-                                <p>Lawyer Firm Name</p>
-                                <div class="find_2_left_box_left_names_flex">
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">
-                                        <p> Civil</p>
-                                    </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">
-                                        <p>   Immigration</p>
-                                    </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">
-                                        <p> Criminal</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="find_2_left_box_right">
-                            <div class="find_2_left_box_right_stars">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                            </div>
-                            <div class="find_2_left_box_right_btn">
-                                <button type="button" name="button">View profile </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="find_2_left_box">
-                        <div class="find_2_left_box_left">
-                            <div class="find_2_left_box_left_img">
-                                <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="">
-                            </div>
-                            <div class="find_2_left_box_left_names">
-                                <p>Lawyer Name</p>
-                                <p>Lawyer Firm Name</p>
-                                <div class="find_2_left_box_left_names_flex">
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">
-                                        <p> Civil</p>
-                                    </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">
-                                        <p>   Immigration</p>
-                                    </div>
-                                    <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">
-                                        <p> Criminal</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="find_2_left_box_right">
-                            <div class="find_2_left_box_right_stars">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                            </div>
-                            <div class="find_2_left_box_right_btn">
-                                <button type="button" name="button">View profile </button>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+{{--                    <div class="find_2_left_box">--}}
+{{--                        <div class="find_2_left_box_left">--}}
+{{--                            <div class="find_2_left_box_left_img">--}}
+{{--                                <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="find_2_left_box_left_names">--}}
+{{--                                <p>Lawyer Name</p>--}}
+{{--                                <p>Lawyer Firm Name</p>--}}
+{{--                                <div class="find_2_left_box_left_names_flex">--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">--}}
+{{--                                        <p> Civil</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">--}}
+{{--                                        <p>   Immigration</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">--}}
+{{--                                        <p> Criminal</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="find_2_left_box_right">--}}
+{{--                            <div class="find_2_left_box_right_stars">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="find_2_left_box_right_btn">--}}
+{{--                                <button type="button" name="button">View profile </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="find_2_left_box">--}}
+{{--                        <div class="find_2_left_box_left">--}}
+{{--                            <div class="find_2_left_box_left_img">--}}
+{{--                                <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="find_2_left_box_left_names">--}}
+{{--                                <p>Lawyer Name</p>--}}
+{{--                                <p>Lawyer Firm Name</p>--}}
+{{--                                <div class="find_2_left_box_left_names_flex">--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">--}}
+{{--                                        <p> Civil</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">--}}
+{{--                                        <p>   Immigration</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
+{{--                                        <img src="{{asset('assets/images/general/find_2_3.png')}}" alt="">--}}
+{{--                                        <p> Criminal</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="find_2_left_box_right">--}}
+{{--                            <div class="find_2_left_box_right_stars">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                            </div>--}}
+{{--                            <div class="find_2_left_box_right_btn">--}}
+{{--                                <button type="button" name="button">View profile </button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="find_2_right">

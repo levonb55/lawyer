@@ -22,10 +22,12 @@ Route::get('/privacy','PageController@getPrivacy')->name('privacy');
 Route::get('/ask','PageController@getAsk')->name('ask');
 Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
 Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
-Route::get('/lawyers/category','LawyerController@getLawyersByCategory')->name('lawyers.category');
+Route::get('/lawyers/categories/{category}','LawyerController@getLawyersByCategory')->name('lawyers.category');
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
 Route::get('/lawyers/reviews/{user}/page/{number}','ReviewController@paginateReviews')->name('reviews.page');
 Route::get('/lawyers/publications/{publication}','PublicationController@getPublication')->name('publications.show');
+Route::post('/lawyers/search','LawyerController@searchLawyers')->name('lawyers.search');
+Route::get('/lawyers/search/{search}','LawyerController@getSearchedLawyers')->name('lawyers.get-search');
 
 //Authentication Routes
 Auth::routes();
