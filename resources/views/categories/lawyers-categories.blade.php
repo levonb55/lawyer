@@ -12,7 +12,7 @@
         <div class="find_2_size">
             @if(isset($categories))
                 @foreach($categories as $category)
-                    <a href="{{route('lawyers.category')}}">
+                    <a href="{{route('lawyers.category', $category->id)}}">
                         <div class="find_2_box">
                             @if($category->image)
                                 <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law" class="find_img">

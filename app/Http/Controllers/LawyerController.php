@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Session;
+use Validator;
 
 class LawyerController extends Controller
 {
@@ -46,8 +47,30 @@ class LawyerController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getLawyersByCategory() {
-        return view('categories.lawyers-category');
+    public function getLawyersByCategory(Category $category) {
+        $lawyers = Lawyer::where('category_id', $category->id)->get();
+
+        return view('categories.lawyers-category', compact('lawyers'));
     }
 
+    public function searchLawyers(Request $request)
+    {
+        $request->validate([
+            'search' => 'required|string|min:2|max:255'
+        ]);
+
+        $search = $request->input('search');
+        return redirect()->route('lawyers.get-search', $search);
+    }
+
+    public function getSearchedLawyers($search) {
+        $lawyers = Lawyer::join('categories', 'lawyers.category_id', '=', 'categories.id')
+            ->where('state', 'like', "%$search%")
+            ->orWhere('city', 'like', "%$search%")
+            ->orWhere('postcode', 'like',"%$search%")
+            ->orWhere('categories.name', 'like', "%$search%")
+            ->get();
+
+        return view('categories.lawyers-category', compact('lawyers'));
+    }
 }
