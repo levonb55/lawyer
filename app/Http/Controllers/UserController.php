@@ -73,10 +73,7 @@ class UserController extends Controller
             'university' => $request->input('university'),
             'experience' => $request->input('experience'),
             'background' => $request->input('background'),
-            'facebook' => $request->input('facebook'),
-            'twitter' => $request->input('twitter'),
             'instagram' => $request->input('instagram'),
-            'linkedin' => $request->input('linkedin')
         ]);
 
         Session::flash('success', 'You successfully updated your profile!');

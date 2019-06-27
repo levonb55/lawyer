@@ -211,33 +211,12 @@
     </div>
 
     <div>
-        <input type="text" placeholder="Facebook" name="facebook" value="{{$user->lawyer->facebook}}">
-        @error('facebook')
-        <span class="input-error">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
-        <input type="text" placeholder="Twitter" name="twitter" value="{{$user->lawyer->twitter}}">
-        @error('twitter')
-        <span class="input-error">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
         <input type="text" placeholder="Instagram" name="instagram" value="{{$user->lawyer->instagram}}">
         @error('instagram')
-        <span class="input-error">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
-        <input type="text" placeholder="Linkedin" name="linkedin" value="{{$user->lawyer->linkedin}}">
-        @error('linkedin')
-        <span class="input-error">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+            <span class="input-error">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror        
     </div>
 
     <div class="dash_btn_bottom">

@@ -107,11 +107,11 @@
 {{--                @endif--}}
 
 
-{{--                @if($user->lawyer->instagram)--}}
-{{--                    <a href="{{$user->lawyer->instagram}}">--}}
-{{--                        <img src="{{asset('assets/images/general/p_insta.png')}}" alt="Instagram">--}}
-{{--                    </a>--}}
-{{--                @endif--}}
+                @if($user->lawyer->instagram)
+                    <a href="{{$user->lawyer->instagram}}" target="_blank">
+                        <img src="{{asset('assets/images/general/p_insta.png')}}" alt="Instagram">
+                    </a>
+                @endif
 
                 <!-- Linkedin share button  -->
                 <div>

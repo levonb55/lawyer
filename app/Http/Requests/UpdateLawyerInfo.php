@@ -36,10 +36,7 @@ class UpdateLawyerInfo extends FormRequest
             'university'    => 'nullable|string|min:2|max:255',
             'experience'    => 'nullable|numeric|min:0',
             'background'    => 'nullable|string|min:5|max:500',
-            'facebook'      => 'nullable|url|min:5|max:255',
-            'twitter'       => 'nullable|url|min:5|max:255',
             'instagram'     => 'nullable|url|min:5|max:255',
-            'linkedin'      => 'nullable|url|min:5|max:255'
         ];
     }
 }
