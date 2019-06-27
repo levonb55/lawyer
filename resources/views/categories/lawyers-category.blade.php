@@ -13,7 +13,7 @@
                 <div class="find_2_left_inputs">
                     <form action="{{route('lawyers.search')}}" method="POST">
                         @csrf
-                        <input type="text" name="search" placeholder="State, City, Postcode or Specialization" class="w-100">
+                        <input type="text" name="search" placeholder="State, City, Postcode or Specialization" value="{{old('search')}}" class="w-100">
                         @error('search')
                             <span class="input-error">
                                 <strong>{{ $message }}</strong>
@@ -24,11 +24,15 @@
                 </div>
                 <div class="find_2_left_select">
                     <p>We found {{$lawyers->count()}} professional lawyers</p>
-                    <select class="" name="">
-                        <option value="">Rating</option>
-                        <option value="">Rating</option>
-                        <option value="">Rating</option>
-                    </select>
+                    <form action="{{route('lawyers.rating')}}" method="POST" id="rating-form">
+                        @csrf
+                        <select name="rating" id="rating">
+                            <option>Rating</option>
+                            <option value="5" {{ old('rating') == 5 ? 'selected' : ''}}>5 star</option>
+                            <option value="4" {{ old('rating') == 4 ? 'selected' : ''}}>4 star</option>
+                            <option value="3" {{ old('rating') == 3 ? 'selected' : ''}}>3 star</option>
+                        </select>
+                    </form>
                 </div>
                 <div class="find_2_left_block" id="style-2">
 
@@ -58,13 +62,13 @@
                             </div>
                         </div>
                         <div class="find_2_left_box_right">
+
                             <div class="find_2_left_box_right_stars">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
+                                @for ($i = 0; $i < $lawyer->rating; $i++)
+                                    <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
+                                @endfor
                             </div>
+
                             <div class="find_2_left_box_right_btn">
                                 <a href="{{route('lawyers.show', $lawyer->user->id)}}">
                                     <button type="button" name="button">View profile </button>
