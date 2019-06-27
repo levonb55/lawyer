@@ -60,7 +60,7 @@ class LawyerController extends Controller
         ]);
 
         $search = $request->input('search');
-        return redirect()->route('lawyers.get-search', $search);
+        return redirect()->route('lawyers.get-search', $search)->withInput();
     }
 
     public function getSearchedLawyers($search) {
