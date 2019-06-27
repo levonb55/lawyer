@@ -202,4 +202,16 @@ $( document ).ready(function() {
        $(this).parents('.publication-block').remove();
     });
 
+    $('#rating-options').on('change', function () {
+        var boxes = document.querySelectorAll('.find_2_left_box');
+
+        for(var i = 0; i<boxes.length; i++){
+            if(boxes[i].dataset.rating != event.target.value){
+                boxes[i].style.display = 'none';
+            }else{
+                boxes[i].style.display = 'inline-block';
+            }
+        }
+    });
+
 });

@@ -24,20 +24,20 @@
                 </div>
                 <div class="find_2_left_select">
                     <p>We found {{$lawyers->count()}} professional lawyers</p>
-{{--                    <form action="{{route('lawyers.rating')}}" method="POST" id="rating-form">--}}
-{{--                        @csrf--}}
-{{--                        <select name="rating" id="rating">--}}
-{{--                            <option>Rating</option>--}}
-{{--                            <option value="5" {{ old('rating') == 5 ? 'selected' : ''}}>5 star</option>--}}
-{{--                            <option value="4" {{ old('rating') == 4 ? 'selected' : ''}}>4 star</option>--}}
-{{--                            <option value="3" {{ old('rating') == 3 ? 'selected' : ''}}>3 star</option>--}}
-{{--                        </select>--}}
-{{--                    </form>--}}
+                    <form  method="POST" id="rating-form">
+                        @csrf
+                        <select id="rating-options">
+                            <option>Rating</option>
+                            <option value="5">5 star</option>
+                            <option value="4">4 star</option>
+                            <option value="3">3 star</option>
+                        </select>
+                    </form>
                 </div>
                 <div class="find_2_left_block" id="style-2">
 
                     @foreach($lawyers as $lawyer)
-                        <div class="find_2_left_box">
+                        <div class="find_2_left_box" data-rating="{{$lawyer->rating}}">
                         <div class="find_2_left_box_left">
                             <div class="find_2_left_box_left_img">
                                 <img src="{{asset('assets/images/profile/' . $lawyer->user->image)}}" alt="Person">
