@@ -72,11 +72,9 @@
                     </p>
                     <p>{{$lawyer->company}}</p>
                     <div class="lawyers_2_stars">
-                        <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                        <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                        <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                        <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                        <img src="{{asset('assets/images/general/star.png')}}" alt="">
+                        @for ($i = 0; $i < $lawyer->rating; $i++)
+                            <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
+                        @endfor
                     </div>
                     <p>{{$lawyer->reviews->count()}} reviews</p>
                     <p>Area of Law</p>

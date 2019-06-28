@@ -20,11 +20,9 @@
                 <img src="{{asset('assets/images/general/blank-profile-picture.png')}}" alt="Person" class="find_2_face">
             @endif
             <div class="profile_1_stars">
-                <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                <img src="{{asset('assets/images/general/star.png')}}" alt="">
-                <img src="{{asset('assets/images/general/star.png')}}" alt="">
+                @for ($i = 0; $i < $user->lawyer->rating; $i++)
+                    <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
+                @endfor
             </div>
             <p class="profile_reviews">{{$reviewsNumber}} reviews</p>
 
