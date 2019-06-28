@@ -139,7 +139,7 @@
     </div>
 
     <div>
-        <input type="text" name="state" placeholder="State" value="">
+        <input type="text" name="state" placeholder="State" value="{{$user->lawyer->state}}">
         @error('state')
         <span class="input-error">
             <strong>{{ $message }}</strong>
@@ -148,7 +148,7 @@
     </div>
 
     <div>
-        <input type="text" name="city" placeholder="City" value="">
+        <input type="text" name="city" placeholder="City" value="{{$user->lawyer->city}}">
         @error('city')
         <span class="input-error">
             <strong>{{ $message }}</strong>
@@ -166,7 +166,7 @@
     </div>
 
     <div>
-        <input type="text" name="phone" placeholder="Phone Number" value="">
+        <input type="text" name="phone" placeholder="Phone Number" value="{{$user->lawyer->phone}}">
         @error('phone')
         <span class="input-error">
             <strong>{{ $message }}</strong>
@@ -175,7 +175,7 @@
     </div>
 
     <div>
-        <input type="text" name="postcode" placeholder="Postal Code" value="">
+        <input type="text" name="postcode" placeholder="Postal Code" value="{{$user->lawyer->postcode}}">
         @error('postcode')
         <span class="input-error">
             <strong>{{ $message }}</strong>
@@ -216,7 +216,7 @@
             <span class="input-error">
                 <strong>{{ $message }}</strong>
             </span>
-        @enderror        
+        @enderror
     </div>
 
     <div class="dash_btn_bottom">
