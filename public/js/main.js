@@ -202,16 +202,23 @@ $( document ).ready(function() {
        $(this).parents('.publication-block').remove();
     });
 
-    $('#rating-options').on('change', function () {
-        var boxes = document.querySelectorAll('.find_2_left_box');
+    $('#rating-options').on('change', function (event) {
+        let targetValue = +event.target.value;
 
-        for(var i = 0; i<boxes.length; i++){
-            if(boxes[i].dataset.rating != event.target.value){
-                boxes[i].style.display = 'none';
-            }else{
-                boxes[i].style.display = 'inline-block';
+        if(!targetValue) {
+            $('.find_2_left_box').show();
+        } else {
+            var boxes = document.querySelectorAll('.find_2_left_box');
+            for(var i = 0; i < boxes.length; i++){
+
+                if(boxes[i].dataset.rating != targetValue){
+                    boxes[i].style.display = 'none';
+                } else {
+                    boxes[i].style.display = 'block';
+                }
             }
         }
+        $("#lawyers-number").html( $('.find_2_left_box:visible').length);
     });
 
 });

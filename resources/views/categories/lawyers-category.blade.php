@@ -23,11 +23,11 @@
                     </form>
                 </div>
                 <div class="find_2_left_select">
-                    <p>We found {{$lawyers->count()}} professional lawyers</p>
+                    <p>We found <span id="lawyers-number">{{$lawyers->count()}}</span> professional lawyers</p>
                     <form  method="POST" id="rating-form">
                         @csrf
                         <select id="rating-options">
-                            <option>Rating</option>
+                            <option value="null">Rating</option>
                             <option value="5">5 star</option>
                             <option value="4">4 star</option>
                             <option value="3">3 star</option>
@@ -154,7 +154,9 @@
                 </div>
             </div>
             <div class="find_2_right">
-                <img src="{{asset('assets/images/general/find_2_map.png')}}" alt="">
+{{--                <img src="{{asset('assets/images/general/find_2_map.png')}}" alt="Map">--}}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3156706536!2d-74.26055748786443!3d40.69714774429399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2s!4v1560156911050!5m2!1sen!2s" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+
             </div>
         </div>
     </section>
