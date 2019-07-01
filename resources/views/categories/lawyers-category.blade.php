@@ -37,7 +37,7 @@
                 <div class="find_2_left_block" id="style-2">
 
                     @foreach($lawyers as $lawyer)
-                        <div class="find_2_left_box" data-rating="{{$lawyer->rating}}">
+                        <div class="find_2_left_box" data-rating="{{ceil($lawyer->rating)}}">
                         <div class="find_2_left_box_left">
                             <div class="find_2_left_box_left_img">
                                 <img src="{{asset('assets/images/profile/' . $lawyer->user->image)}}" alt="Person">
@@ -64,9 +64,17 @@
                         <div class="find_2_left_box_right">
 
                             <div class="find_2_left_box_right_stars">
-                                @for ($i = 0; $i < $lawyer->rating; $i++)
-                                    <img src="{{asset('assets/images/general/find_star.png')}}" alt="">
-                                @endfor
+{{--                                @for ($i = 0; $i < $lawyer->rating; $i++)--}}
+{{--                                    <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
+{{--                                @endfor--}}
+                                <div class="star-ratings-css">
+                                    <div class="star-ratings-css-top" style="width: {{($lawyer->rating / 5) * 100}}%">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                    <div class="star-ratings-css-bottom">
+                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="find_2_left_box_right_btn">

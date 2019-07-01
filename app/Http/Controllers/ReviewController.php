@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReview;
+use App\Models\Lawyer;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,6 +23,10 @@ class ReviewController extends Controller
             'body' => $request->input('body'),
             'grade' => $request->input('grade')
         ]);
+
+        $lawyer = Lawyer::where('user_id',$user->id)->first();
+        $lawyer->rating = ($lawyer->rating + $request->input('grade')) / 2;
+        $lawyer->save();
 
         return response()->json([
             'body' => $data->body,
