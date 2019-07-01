@@ -76,17 +76,7 @@
 {{--                            <img src="{{asset('assets/images/general/star.png')}}" alt="Star">--}}
 {{--                        @endfor--}}
 
-{{--                        @for ($i = 0; $i < 5 - $lawyer->rating; $i++)--}}
-{{--                            <img src="{{asset('assets/images/general/star.png')}}" alt="Star">--}}
-{{--                        @endfor--}}
-                        <div class="star-ratings-css">
-                            <div class="star-ratings-css-top" style="width: {{($lawyer->rating / 5) * 100}}%">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                            <div class="star-ratings-css-bottom">
-                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                            </div>
-                        </div>
+                        @include('partials/rating-stars', ['rating' => $lawyer->rating])
                     </div>
                     <p>{{$lawyer->reviews->count()}} reviews</p>
                     <p>Area of Law</p>
