@@ -174,6 +174,10 @@
                                     <img src="{{asset('assets/images/general/star.png')}}" alt="Star">
                                 @endfor
 
+                                @for ($i = 0; $i < 5 - $review->grade; $i++)
+                                    <img src="{{asset('assets/images/general/star-empty.jpg')}}" alt="Star" class="rating-star">
+                                @endfor
+
                             </div>
                             <p>in {{\Carbon\Carbon::parse($review->created_at)->format('F, Y')}}</p>
                         </div>

@@ -853,3 +853,7 @@ margin-bottom: 20px;
   z-index: 0;
 }
 /*Rating star coloring according to rating end*/
+
+.rating-star {
+  width: 22px !important;
+}

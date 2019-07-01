@@ -143,6 +143,10 @@ $( document ).ready(function() {
                         images +=  `<img src="${appUrl}/assets/images/general/star.png" alt="Star">`;
                     }
 
+                    for (let i = 0; i < 5 - review.grade; i++) {
+                        images +=  `<img src="${appUrl}/assets/images/general/star-empty.jpg" alt="Star" class="rating-star">`;
+                    }
+
                     return `
                         <div class="profile_3_box">
                             <div class="profile_3_box_top">
