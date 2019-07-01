@@ -19,18 +19,9 @@
             @else
                 <img src="{{asset('assets/images/general/blank-profile-picture.png')}}" alt="Person" class="find_2_face">
             @endif
+
             <div class="profile_1_stars">
-{{--                @for ($i = 0; $i < $user->lawyer->rating; $i++)--}}
-{{--                    <img src="{{asset('assets/images/general/star.png')}}" alt="Star">--}}
-{{--                @endfor--}}
-                <div class="star-ratings-css">
-                    <div class="star-ratings-css-top" style="width: {{($user->lawyer->rating / 5) * 100}}%">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                    <div class="star-ratings-css-bottom">
-                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                </div>
+                @include('partials/rating-stars', ['rating' => $user->lawyer->rating])
             </div>
 
             <p>{{$user->lawyer->rating}}</p>

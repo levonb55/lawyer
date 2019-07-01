@@ -64,17 +64,7 @@
                         <div class="find_2_left_box_right">
 
                             <div class="find_2_left_box_right_stars">
-{{--                                @for ($i = 0; $i < $lawyer->rating; $i++)--}}
-{{--                                    <img src="{{asset('assets/images/general/find_star.png')}}" alt="">--}}
-{{--                                @endfor--}}
-                                <div class="star-ratings-css">
-                                    <div class="star-ratings-css-top" style="width: {{($lawyer->rating / 5) * 100}}%">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                    </div>
-                                    <div class="star-ratings-css-bottom">
-                                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                                    </div>
-                                </div>
+                                @include('partials/rating-stars', ['rating' => $lawyer->rating])
                             </div>
 
                             <div class="find_2_left_box_right_btn">
