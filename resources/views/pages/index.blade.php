@@ -10,18 +10,32 @@
                     <h1>{{$first_content->main_title}}</h1>
                     <p class="Reach_the">{{$first_content->description}}</p>
                 @endif
-                <div class="lawyers_1_inputs">
-                    <div class="law_avatar">
-                        <img src="{{asset('assets/images/general/avatar.png')}}" alt="" id="avatar">
-                        <input type="text" name="" value="" placeholder="Search Lawyer Name">
+
+                <form action="{{route('lawyers.search-name')}}" method="POST">
+                    @csrf
+                    <div class="lawyers_1_inputs">
+                        <div class="law_avatar">
+                            <img src="{{asset('assets/images/general/avatar.png')}}" alt="" id="avatar">
+                            <input type="text" name="name" value="" placeholder="Search Lawyer Name">
+                            @error('name')
+                                <span class="input-error">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="law_avatar">
+                            <img src="{{asset('assets/images/general/loc.png')}}" alt="" id="law_loc">
+                            <input type="text" name="city" value="" placeholder="Choose Your City">
+                            @error('city')
+                                <span class="input-error">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <button type="submit">Search</button>
                     </div>
-                    <div class="law_avatar">
-                        <img src="{{asset('assets/images/general/loc.png')}}" alt="" id="law_loc">
-                        <input type="text" name="" value="" placeholder="Choose Your City">
-                    </div>
-                    <button type="button" name="button">Search</button>
-                </div>
-                <div class="lawyers_1_bottom">
+                </form>
+                    <div class="lawyers_1_bottom">
                     <div class="lawyers_1_bottom_box">
                         <img src="{{asset('assets/images/general/l_1_1.png')}}" alt="">
                         <p> Civil</p>

@@ -193,7 +193,7 @@
             <div class="profile_3_box text-center">No reviews.</div>
         @endif
         @guest
-            <div class="comment">Login as client to leave a comment</div>
+            <div class="comment hand" data-toggle="modal" data-target="#login_modal">Login as client to leave a comment</div>
         @endguest
 
     </section>
@@ -464,3 +464,5 @@
         });
     </script>
 @endsection
+
+@include('partials._login-modal')

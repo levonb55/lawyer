@@ -67,10 +67,6 @@ class LawyerController extends Controller
 
     public function getSearchedLawyers(Category $category, $search) {
         $lawyers = Lawyer::join('categories', 'lawyers.category_id', '=', 'categories.id')
-//            ->where('state', 'like', "%$search%")
-//            ->orWhere('city', 'like', "%$search%")
-//            ->orWhere('postcode', 'like',"%$search%")
-//            ->orWhere('categories.name', 'like', "%$search%")
             ->where('categories.name', $category->name)
             ->where(function ($query) use($search) {
                 $query->where('state', 'like', "%$search%")
@@ -82,4 +78,32 @@ class LawyerController extends Controller
 
         return view('categories.lawyers-category', compact('lawyers', 'category'));
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchLawyersByName(Request $request) {
+
+        $name = $request->input('name');
+        $city = $request->input('city');
+
+        $request->validate([
+            'name' => 'required|min:2|max:255',
+            'city' => 'required|min:2|max:255'
+        ]);
+
+
+        $lawyers = User::join('lawyers', 'users.id', '=', 'lawyers.user_id')
+                    ->where('lawyers.city', 'like', "%$city%")
+                    ->where(function ($query) use($name) {
+                        $query->where('users.first_name', 'like',  "%$name%")
+                            ->orWhere('users.last_name', 'like', "%$name%")
+                            ->orWhereRaw("concat(users.first_name, ' ', users.last_name) like '%$name%' ");
+                    })
+                    ->get();
+
+        return view('categories.lawyers-search', ['lawyers' => $lawyers]);
+    }
+
 }
