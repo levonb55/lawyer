@@ -24,15 +24,15 @@
                 </div>
                 <div class="find_2_left_select">
                     <p>We found <span id="lawyers-number">{{$lawyers->count()}}</span> professional lawyers</p>
-                    <form  method="POST" id="rating-form">
-                        @csrf
-                        <select id="rating-options">
-                            <option value="null">Rating</option>
-                            <option value="5">5 star</option>
-                            <option value="4">4 star</option>
-                            <option value="3">3 star</option>
-                        </select>
-                    </form>
+{{--                    <form  method="POST" id="rating-form">--}}
+{{--                        @csrf--}}
+{{--                        <select id="rating-options">--}}
+{{--                            <option value="null">Rating</option>--}}
+{{--                            <option value="5">5 star</option>--}}
+{{--                            <option value="4">4 star</option>--}}
+{{--                            <option value="3">3 star</option>--}}
+{{--                        </select>--}}
+{{--                    </form>--}}
                 </div>
                 <div class="find_2_left_block" id="style-2">
 
