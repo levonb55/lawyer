@@ -26,8 +26,8 @@ Route::get('/lawyers/categories/{category}','LawyerController@getLawyersByCatego
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
 Route::get('/lawyers/reviews/{user}/page/{number}','ReviewController@paginateReviews')->name('reviews.page');
 Route::get('/lawyers/publications/{publication}','PublicationController@getPublication')->name('publications.show');
-Route::post('/lawyers/search','LawyerController@searchLawyers')->name('lawyers.search');
-Route::get('/lawyers/search/{search}','LawyerController@getSearchedLawyers')->name('lawyers.get-search');
+Route::post('/lawyers/search/{category}','LawyerController@searchLawyers')->name('lawyers.search');
+Route::get('/lawyers/search/{category}/{search}','LawyerController@getSearchedLawyers')->name('lawyers.get-search');
 
 //Authentication Routes
 Auth::routes();

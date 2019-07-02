@@ -6,14 +6,14 @@
     <section class="find_2">
         <div class="find_2_size">
             <div class="find_2_left">
-                <h3>Find lawyers in City + Specialization</h3>
+                <h3>Find {{ $category->name }} lawyers</h3>
                 <p class="find_2_left_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec quis mi eget erat dignissim temporLorem ipsum dolor sit amet, consectetur
                     adipiscing elit. Donec quis mi eget erat dignissim tempor</p>
                 <div class="find_2_left_inputs">
-                    <form action="{{route('lawyers.search')}}" method="POST">
+                    <form action="{{route('lawyers.search', $category->id)}}" method="POST">
                         @csrf
-                        <input type="text" name="search" placeholder="State, City, Postcode or Specialization" value="{{old('search')}}" class="w-100">
+                        <input type="text" name="search" placeholder="Enter State, City or Postcode" value="{{old('search')}}" class="w-100">
                         @error('search')
                             <span class="input-error">
                                 <strong>{{ $message }}</strong>
