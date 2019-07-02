@@ -50,27 +50,33 @@ class LawyerController extends Controller
     public function getLawyersByCategory(Category $category) {
         $lawyers = Lawyer::where('category_id', $category->id)->get();
 
-        return view('categories.lawyers-category', compact('lawyers'));
+        return view('categories.lawyers-category', compact('lawyers', 'category'));
     }
 
-    public function searchLawyers(Request $request)
+    public function searchLawyers(Request $request, Category $category)
     {
         $request->validate([
             'search' => 'required|string|min:2|max:255'
         ]);
 
         $search = $request->input('search');
-        return redirect()->route('lawyers.get-search', $search)->withInput();
+        return redirect()->route('lawyers.get-search', ['category' => $category->id, 'search' => $search])->withInput();
     }
 
-    public function getSearchedLawyers($search) {
+    public function getSearchedLawyers(Category $category, $search) {
         $lawyers = Lawyer::join('categories', 'lawyers.category_id', '=', 'categories.id')
-            ->where('state', 'like', "%$search%")
-            ->orWhere('city', 'like', "%$search%")
-            ->orWhere('postcode', 'like',"%$search%")
-            ->orWhere('categories.name', 'like', "%$search%")
+//            ->where('state', 'like', "%$search%")
+//            ->orWhere('city', 'like', "%$search%")
+//            ->orWhere('postcode', 'like',"%$search%")
+//            ->orWhere('categories.name', 'like', "%$search%")
+            ->where('categories.name', $category->name)
+            ->where(function ($query) use($search) {
+                $query->where('state', 'like', "%$search%")
+                    ->orWhere('city', 'like', "%$search%")
+                    ->orWhere('postcode', 'like',"%$search%");
+            })
             ->get();
 
-        return view('categories.lawyers-category', compact('lawyers'));
+        return view('categories.lawyers-category', compact('lawyers', 'category'));
     }
 }
