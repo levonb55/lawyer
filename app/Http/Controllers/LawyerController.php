@@ -48,7 +48,9 @@ class LawyerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getLawyersByCategory(Category $category) {
-        $lawyers = Lawyer::where('category_id', $category->id)->get();
+        $lawyers = Lawyer::where('category_id', $category->id)
+                            ->orderBy('rating', 'DESC')
+                            ->get();
 
         return view('categories.lawyers-category', compact('lawyers', 'category'));
     }
@@ -75,6 +77,7 @@ class LawyerController extends Controller
                     ->orWhere('city', 'like', "%$search%")
                     ->orWhere('postcode', 'like',"%$search%");
             })
+            ->orderBy('rating', 'DESC')
             ->get();
 
         return view('categories.lawyers-category', compact('lawyers', 'category'));
