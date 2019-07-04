@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Lawyer');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Admin\Category', 'category_lawyer', 'lawyer_id', 'category_id');
+    }
+
     /**
      * @return string
      */

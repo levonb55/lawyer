@@ -19,7 +19,7 @@ class CreateCategoryLawyerTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
 
             $table->unsignedBigInteger('lawyer_id');
-            $table->foreign('lawyer_id')->references('id')->on('users');
+            $table->foreign('lawyer_id')->references('id')->on('lawyers');
             $table->timestamps();
         });
     }
