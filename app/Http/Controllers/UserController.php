@@ -35,8 +35,9 @@ class UserController extends Controller
     public function getUserSettings(User $user) {
         $categories = Category::all();
         $publications = Publication::where('user_id', $user->id)->get();
-
-        return view('users.settings', compact('user', 'categories', 'publications'));
+        $collection = collect($user->lawyer->categories);
+        $checkedCategories = $collection->pluck(['pivot'])->pluck('category_id');
+        return view('users.settings', compact('user', 'categories', 'publications', 'checkedCategories'));
     }
 
     public function update(UpdateLawyerInfo $request, User $user) {
@@ -59,10 +60,9 @@ class UserController extends Controller
             $user->save();
         }
 
-        Lawyer::updateOrCreate([
+        $lawyer = Lawyer::updateOrCreate([
             'user_id' => \Auth::id()
         ], [
-            'category_id' => $request->input('category_id'),
             'company' => $request->input('company'),
             'state' => $request->input('state'),
             'city' => $request->input('city'),
@@ -75,6 +75,12 @@ class UserController extends Controller
             'background' => $request->input('background'),
             'instagram' => $request->input('instagram'),
         ]);
+
+        if ($lawyer->categories) {
+            $lawyer->categories()->sync($request->input('category_id'));
+        } else {
+            $lawyer->categories()->sync($request->input('category_id'), false);
+        }
 
         Session::flash('success', 'You successfully updated your profile!');
 

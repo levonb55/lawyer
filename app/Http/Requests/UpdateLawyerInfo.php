@@ -25,7 +25,7 @@ class UpdateLawyerInfo extends FormRequest
     {
         return [
             'image'         => 'nullable|image',
-            'category_id'   => 'required|integer',
+            'category_id'   => 'required|array|max:70',
             'company'       => 'nullable|string|min:2|max:255',
             'state'         => 'nullable|string|min:2|max:255',
             'city'          => 'nullable|string|min:2|max:255',
