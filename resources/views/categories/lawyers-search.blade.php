@@ -48,8 +48,11 @@
                                 <p>{{ $lawyer->company }}</p>
                                 <div class="find_2_left_box_left_names_flex">
                                     <div class="find_2_left_box_left_names_flex_box">
-                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
-                                        <p>{{ $lawyer->name }}</p>
+{{--                                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">--}}
+{{--                                        <p>{{ $lawyer->name }}</p>--}}
+                                        @foreach($lawyer->categories as $category)
+                                            <span>{{ $category->name }}</span>
+                                        @endforeach
                                     </div>
 {{--                                    <div class="find_2_left_box_left_names_flex_box">--}}
 {{--                                        <img src="{{asset('assets/images/general/find_2_2.png')}}" alt="">--}}
