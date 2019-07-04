@@ -58,10 +58,12 @@
             </div>
 
             <div class="profile_1_2_block">
-                <div class="">
-                    <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="">
-                    <p>{{$category ? $category->name : ''}}</p>
-                </div>
+                @foreach($user->lawyer->categories as $category)
+                    <div>
+                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
+                        {{$category->name}}
+                    </div>
+                @endforeach
                 {{--<div class="">--}}
                     {{--<img src="{{asset('assets/site/main/img/find_2_2.png')}}" alt="">--}}
                     {{--<p>Immigration</p>--}}

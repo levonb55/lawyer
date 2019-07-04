@@ -21,8 +21,16 @@ class Category extends Model
     /**
      * Get the lawyers for the category.
      */
+//    public function lawyers()
+//    {
+//        return $this->hasMany('App\Models\Lawyer');
+//    }
+
+    /**
+     * The lawyers that belong to the category.
+     */
     public function lawyers()
     {
-        return $this->hasMany('App\Models\Lawyer');
+        return $this->belongsToMany('App\Models\Lawyer');
     }
 }

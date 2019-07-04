@@ -95,7 +95,9 @@
                     <p>{{$lawyer->reviews->count()}} reviews</p>
                     <p>Area of Law</p>
                     <div class="lawyers_2_inp">
-                        {{$lawyer->category->name}}
+                        @foreach($lawyer->categories as $category)
+                            {{$category->name}}
+                        @endforeach
                         {{--<div class="lawyers_2_checkbox">--}}
                         {{--<input type="checkbox" name="" value="">--}}
                         {{--<p>Lorem</p>--}}

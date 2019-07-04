@@ -114,10 +114,12 @@
                         <label class="dash_3_blocks_box hand" for="{{$category->id}}">
                             <div>
                                 <img src="{{asset('assets/images/general/db_1.png')}}" alt="Law">
-                            </div></label>
-                        <input type="radio" id="{{$category->id}}" name="category_id" value="{{$category->id}}"
-                                {{$category->id === $user->lawyer->category_id ? 'checked' : ''}}>
-                        {{$category->name}}<br>
+                            </div>
+                        </label>
+                        <input type="checkbox" id="{{$category->id}}" name="category_id[]" value="{{$category->id}}"
+{{--                                {{$user->lawyer->categories->contains($category->id) ? 'checked' : ''}}>--}}
+                                {{$checkedCategories->contains($category->id) ? 'checked' : ''}}>
+                                {{$category->name}}<br>
                     </div>
                 @endforeach
                 @error('category_id')

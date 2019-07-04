@@ -13,7 +13,7 @@ class Lawyer extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'category_id', 'company', 'state', 'city', 'address', 'phone', 'postcode', 'company_website', 'university', 'experience', 'background',
+        'user_id', 'company', 'state', 'city', 'address', 'phone', 'postcode', 'company_website', 'university', 'experience', 'background',
         'facebook', 'twitter', 'instagram', 'linkedin'
     ];
 
@@ -23,9 +23,9 @@ class Lawyer extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo('App\Models\Admin\Category');
+        return $this->belongsToMany('App\Models\Admin\Category');
     }
 
     public function reviews() {

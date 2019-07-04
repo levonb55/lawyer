@@ -14,7 +14,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $lawyers = Lawyer::take(3)->with('user')->with('category')->with('reviews')
+        $lawyers = Lawyer::take(3)->with('user')->with('categories')->with('reviews')
                         ->get();
 
         return view('pages.index', compact('lawyers'));
