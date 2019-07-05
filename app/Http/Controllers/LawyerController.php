@@ -22,8 +22,6 @@ class LawyerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(User $user) {
-        $category = Category::findOrFail($user->lawyer->category_id);
-
         $reviews = Review::where('lawyer_id',$user->id)
                     ->orderBy('id', 'DESC')
                     ->take(4)
@@ -31,8 +29,7 @@ class LawyerController extends Controller
 
         $reviewsNumber = Review::where('lawyer_id',$user->id)->get()->count();
         $publications = Publication::where('user_id', $user->id)->get();
-
-        return view('lawyers.show', compact('user', 'category', 'reviews', 'reviewsNumber', 'publications'));
+        return view('lawyers.show', compact('user','reviews', 'reviewsNumber', 'publications'));
     }
 
     /**
@@ -48,11 +45,8 @@ class LawyerController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getLawyersByCategory(Category $category) {
-        $lawyers = Lawyer::where('category_id', $category->id)
-                            ->orderBy('rating', 'DESC')
-                            ->get();
-
-        return view('categories.lawyers-category', compact('lawyers', 'category'));
+        $lawyers = $category->lawyers->sortByDesc('rating');
+        return view('categories.lawyers-category', compact('category', 'lawyers'));
     }
 
     public function searchLawyers(Request $request, Category $category)
@@ -66,8 +60,7 @@ class LawyerController extends Controller
     }
 
     public function getSearchedLawyers(Category $category, $search) {
-        $lawyers = Lawyer::join('categories', 'lawyers.category_id', '=', 'categories.id')
-            ->where('categories.name', $category->name)
+        $lawyers = $category->lawyers()
             ->where(function ($query) use($search) {
                 $query->where('state', 'like', "%$search%")
                     ->orWhere('city', 'like', "%$search%")
