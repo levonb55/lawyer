@@ -225,4 +225,11 @@ $( document ).ready(function() {
         $("#lawyers-number").html( $('.find_2_left_box:visible').length);
     });
 
+    $('.filter-options').on('change', function (e) {
+        let lawyers = $('.find_2_left_box');
+        let optionVal = e.target.value;
+        lawyers.sort(function(a, b){ return $(b).data(optionVal) - $(a).data(optionVal)});
+        $('.find_2_left_block').html(lawyers);
+    });
+
 });

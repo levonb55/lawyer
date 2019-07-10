@@ -87,13 +87,14 @@ class LawyerController extends Controller
         ]);
 
 
-        $lawyers = User::join('lawyers', 'users.id', '=', 'lawyers.user_id')
+        $lawyers = Lawyer::join('users', 'lawyers.user_id', '=', 'users.id')
                     ->where('lawyers.city', 'like', "%$city%")
                     ->where(function ($query) use($name) {
                         $query->where('users.first_name', 'like',  "%$name%")
                             ->orWhere('users.last_name', 'like', "%$name%")
                             ->orWhereRaw("concat(users.first_name, ' ', users.last_name) like '%$name%' ");
                     })
+                    ->orderBy('lawyers.rating', 'DESC')
                     ->get();
 
         return view('categories.lawyers-search', ['lawyers' => $lawyers]);

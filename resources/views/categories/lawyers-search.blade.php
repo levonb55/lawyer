@@ -34,11 +34,17 @@
 {{--                            <option value="3">3 star</option>--}}
 {{--                        </select>--}}
 {{--                    </form>--}}
+                    <div class="form-group">
+                        <select class="form-control w-100 filter-options">
+                            <option value="rating">Highest Rating</option>
+                            <option value="reviews">Highest Number of Reviews</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="find_2_left_block" id="style-2">
 
                     @foreach($lawyers as $lawyer)
-                        <div class="find_2_left_box" data-rating="{{ceil($lawyer->rating)}}">
+                        <div class="find_2_left_box" data-rating="{{ $lawyer->rating }}" data-reviews="{{ $lawyer->reviews->count() }}">
                         <div class="find_2_left_box_left">
                             <div class="find_2_left_box_left_img">
                                 <img src="{{asset('assets/images/profile/' . $lawyer->image)}}" alt="Person">
