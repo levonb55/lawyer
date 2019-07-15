@@ -22,12 +22,31 @@
                     @else
                         <img src="{{asset('assets/images/general/add.png')}}" alt="" class="dash_img_add" width="140" height="140">
                     @endif
-                    <input type="file" class="form-control-file" name="image" id="category-image">
-                    @error('image')
-                        <span class="text-danger">
-                            <strong>You can upload only an image.</strong>
-                        </span>
-                    @enderror
+{{--                    <input type="file" class="form-control-file" name="image" id="category-image">--}}
+{{--                    @error('image')--}}
+{{--                        <span class="text-danger">--}}
+{{--                            <strong>You can upload only an image.</strong>--}}
+{{--                        </span>--}}
+{{--                    @enderror--}}
+                        <div class="form-group">
+                            <label for="category-image" class="form-control-label">Upload image for category</label>
+                            <input type="file" class="form-control-file" name="image" id="category-image">
+                            @error('image')
+                                <span class="text-danger">
+                                    <strong>You can upload only an image.</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category-icon" class="form-control-label">Upload icon for category</label>
+                            <input type="file" class="form-control-file" name="icon" id="category-icon">
+                            @error('icon')
+                                <span class="text-danger">
+                                    <strong>You can upload only an icon.</strong>
+                                </span>
+                            @enderror
+                        </div>
                 </div>
                 <a class="btn" href="{{route('admin_categories')}}">Cancel</a>
                 <button type="submit" class="btn btn-primary">Update</button>

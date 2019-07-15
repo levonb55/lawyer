@@ -43,6 +43,17 @@ class CategoryController extends Controller
 
            $category->image = $fileName;
         }
+
+        if($request->hasFile('icon')) {
+            $image = $request->file('icon');
+            $fileName = time() . '-icon.' . $request->image->extension();
+            $location = public_path('assets/images/categories/' . $fileName);
+
+            Image::make($image)->resize(18, 20)->save($location);
+            chmod($location,0777);
+
+            $category->icon = $fileName;
+        }
         $category->save();
 
         return redirect()->back()->with('create','created a category!');
@@ -82,8 +93,28 @@ class CategoryController extends Controller
             }
 
             $category->image = $fileName;
-            $category->save();
+//            $category->save();
         }
+
+        if($request->hasFile('icon')) {
+            $icon = $request->file('icon');
+            $fileName = time() . '-icon.' . $request->icon->extension();
+            $location = public_path('assets/images/categories/' . $fileName);
+
+            Image::make($icon)->resize(18, 20)->save($location);
+            chmod($location,0777);
+
+            $oldIcon = $category->icon;
+            $oldIconPath = public_path('assets/images/categories/'. $oldIcon);
+            if ($oldIcon && $oldIconPath) {
+                File::delete($oldIconPath);
+            }
+
+            $category->icon = $fileName;
+//            $category->save();
+        }
+
+        $category->save();
 
         return redirect()->route('admin_categories')->with('update','updated a category!');
     }

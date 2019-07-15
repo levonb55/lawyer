@@ -45,6 +45,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Image</th>
+                                    <th>Icon</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -56,6 +57,11 @@
                                             <td>
                                                 @if($category->image)
                                                     <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law">
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($category->icon)
+                                                    <img src="{{asset('assets/images/categories/' . $category->icon)}}" alt="Law">
                                                 @endif
                                             </td>
                                             <td>
@@ -110,6 +116,16 @@
                                 <span class="text-danger">
                                     <strong>You can upload only an image.</strong>
                                 </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="text-input" class=" form-control-label">Upload icon for category</label>
+                            <input type="file" class="form-control-file" name="icon">
+                            @error('icon')
+                            <span class="text-danger">
+                                <strong>You can upload only an icon.</strong>
+                            </span>
                             @enderror
                         </div>
                     </form>
