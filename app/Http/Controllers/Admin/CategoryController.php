@@ -34,26 +34,17 @@ class CategoryController extends Controller
         ]);
 
         if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $fileName = time() . '.' . $request->image->extension();
-            $location = public_path('assets/images/categories/' . $fileName);
-
-            Image::make($image)->resize(180, 180)->save($location);
-            chmod($location,0777);
-
-           $category->image = $fileName;
+            $category->image = $this->storeFile(
+                $request->file('image'), public_path('assets/images/categories/images/'), 180, 180
+            );
         }
 
         if($request->hasFile('icon')) {
-            $image = $request->file('icon');
-            $fileName = time() . '-icon.' . $request->image->extension();
-            $location = public_path('assets/images/categories/' . $fileName);
-
-            Image::make($image)->resize(18, 20)->save($location);
-            chmod($location,0777);
-
-            $category->icon = $fileName;
+            $category->icon = $this->storeFile(
+                $request->file('icon'), public_path('assets/images/categories/icons/'), 18, 20
+            );
         }
+
         $category->save();
 
         return redirect()->back()->with('create','created a category!');
@@ -79,39 +70,27 @@ class CategoryController extends Controller
         ]);
 
         if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $fileName = time() . '.' . $request->image->extension();
-            $location = public_path('assets/images/categories/' . $fileName);
-
-            Image::make($image)->resize(180, 180)->save($location);
-            chmod($location,0777);
-
             $oldImage = $category->image;
-            $oldImagePath = public_path('assets/images/categories/'. $oldImage);
+            $oldImagePath = public_path('assets/images/categories/images/'. $oldImage);
             if ($oldImage && $oldImagePath) {
                 File::delete($oldImagePath);
             }
 
-            $category->image = $fileName;
-//            $category->save();
+            $category->image = $this->storeFile(
+                $request->file('image'), public_path('assets/images/categories/images/'), 180, 180
+            );
         }
 
         if($request->hasFile('icon')) {
-            $icon = $request->file('icon');
-            $fileName = time() . '-icon.' . $request->icon->extension();
-            $location = public_path('assets/images/categories/' . $fileName);
-
-            Image::make($icon)->resize(18, 20)->save($location);
-            chmod($location,0777);
-
             $oldIcon = $category->icon;
-            $oldIconPath = public_path('assets/images/categories/'. $oldIcon);
+            $oldIconPath = public_path('assets/images/categories/icons/'. $oldIcon);
             if ($oldIcon && $oldIconPath) {
                 File::delete($oldIconPath);
             }
 
-            $category->icon = $fileName;
-//            $category->save();
+            $category->icon = $this->storeFile(
+                $request->file('icon'), public_path('assets/images/categories/icons/'), 18, 20
+            );
         }
 
         $category->save();
@@ -122,4 +101,12 @@ class CategoryController extends Controller
 //        $category->delete();
 //        return redirect()->back()->with('delete','deleted a category!');
 //    }
+
+    public function storeFile($image, $path, $width = null, $height = null) {
+        $fileName = time() . '.' . $image->extension();
+        $location = $path . $fileName;
+        Image::make($image)->resize($width, $height)->save($location);
+        chmod($location,0777);
+        return $fileName;
+    }
 }

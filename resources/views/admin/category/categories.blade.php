@@ -56,12 +56,14 @@
                                             <td>{{$category->name}}</td>
                                             <td>
                                                 @if($category->image)
-                                                    <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law">
+                                                    <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law">
                                                 @endif
                                             </td>
                                             <td>
                                                 @if($category->icon)
-                                                    <img src="{{asset('assets/images/categories/' . $category->icon)}}" alt="Law">
+                                                    <img src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="Law">
+                                                @else
+                                                    <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
                                                 @endif
                                             </td>
                                             <td>

@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group" id="image-input">
                     @if($category->image)
-                        <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law" class="dash_img_add" width="140" height="140">
+                        <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law" class="dash_img_add" width="140" height="140">
                     @else
                         <img src="{{asset('assets/images/general/add.png')}}" alt="" class="dash_img_add" width="140" height="140">
                     @endif

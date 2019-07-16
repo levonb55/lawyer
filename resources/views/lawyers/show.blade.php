@@ -60,7 +60,11 @@
             <div class="profile_1_2_block">
                 @foreach($user->lawyer->categories as $category)
                     <div>
-                        <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
+                        @if($category->icon)
+                            <img src="{{asset('assets/images/categories/icons/' . $category->icon )}}" alt="Law">
+                        @else
+                            <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
+                        @endif
                         {{$category->name}}
                     </div>
                 @endforeach
