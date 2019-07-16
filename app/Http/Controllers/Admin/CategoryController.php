@@ -97,10 +97,12 @@ class CategoryController extends Controller
 
         return redirect()->route('admin_categories')->with('update','updated a category!');
     }
-//    public function delete(Category $category){
-//        $category->delete();
-//        return redirect()->back()->with('delete','deleted a category!');
-//    }
+
+    public function delete(Category $category){
+        $category->lawyers()->detach();
+        $category->delete();
+        return redirect()->back()->with('delete','deleted a category!');
+    }
 
     public function storeFile($image, $path, $width = null, $height = null) {
         $fileName = time() . '.' . $image->extension();

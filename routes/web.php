@@ -111,7 +111,7 @@ Route::middleware('admin')->group(function () {
             Route::get('/','CategoryController@index')->name('admin_categories');
             Route::post('/create','CategoryController@store')->name('categories_store');
             Route::put('/update/{category}','CategoryController@update')->name('categories_update');
-//            Route::delete('/delete/{category}','CategoryController@delete')->name('categories_delete');
+            Route::delete('/delete/{category}','CategoryController@delete')->name('categories_delete');
             Route::get('/edit/{category}', 'CategoryController@edit')->name('categories_edit');
         });
 
