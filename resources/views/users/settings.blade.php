@@ -113,7 +113,12 @@
                     <div class="dash_3_blocks_size">
                         <label class="dash_3_blocks_box hand" for="{{$category->id}}">
                             <div>
-                                <img src="{{asset('assets/images/general/db_1.png')}}" alt="Law">
+{{--                                <img src="{{asset('assets/images/general/db_1.png')}}" alt="Law">--}}
+                                @if($category->icon)
+                                    <img src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="Law">
+                                @else
+                                    <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
+                                @endif
                             </div>
                         </label>
                         <input type="checkbox" id="{{$category->id}}" name="category_id[]" value="{{$category->id}}"
