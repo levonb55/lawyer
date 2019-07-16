@@ -70,11 +70,11 @@
                                                 <a href="{{route('categories_edit', $category->id)}}" class="btn btn-primary">
                                                     Edit
                                                 </a>
-{{--                                                <form method="post" action="{{route('categories_delete',$category->id)}}" class="d-inline">--}}
-{{--                                                    @csrf--}}
-{{--                                                    @method('DELETE')--}}
-{{--                                                    <input class="btn btn-danger" type="submit" value="Delete">--}}
-{{--                                                </form>--}}
+                                                <form method="post" action="{{route('categories_delete',$category->id)}}" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                                </form>
                                             </td>
                                         </tr>
                                 @endforeach

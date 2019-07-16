@@ -5,7 +5,8 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Content extends Model
+class
+Content extends Model
 {
     use Notifiable;
 
