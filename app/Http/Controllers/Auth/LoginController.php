@@ -47,9 +47,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, User $user) {
         if ($request->ajax()){
             if($user->role_id == 1){
-                $intended = 'admin/dashboard';
+                $intended = '/admin/dashboard';
             } else {
-                $intended = 'users/dashboard/' . $user->id;
+                $intended = '/users/dashboard/' . $user->id;
             }
             return response()->json([
                 'auth' => auth()->check(),
