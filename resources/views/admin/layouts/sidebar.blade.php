@@ -39,6 +39,9 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="{{route('admin_categories')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Categories Lawyers</a>
                 </li>
+                <li class="menu-item-has-children">
+                    <a href="{{route('admin.referrals')}}"> <i class="menu-icon fa  fa-table"></i>Referral Codes</a>
+                </li>
             </ul>
         </div>
     </nav>
