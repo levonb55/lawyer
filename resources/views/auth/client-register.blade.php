@@ -32,8 +32,7 @@
                 <button type="submit" name="button" class="login_reg_sign_up">Sign Up</button>
             </form>
             <p class="login_reg_already">Already have an account?</p>
-            <button type="button" name="button" class="login_reg_log_btn" data-toggle="modal"
-                    data-target="#login_modal">
+            <button type="button" name="button" class="login_reg_log_btn">
                 Login
             </button>
 

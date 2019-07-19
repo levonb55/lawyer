@@ -41,24 +41,33 @@ class LoginController extends Controller
 
     /**
      * @param Request $request
-     * @param $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function authenticated(Request $request, User $user)
-    {
-//        if($user->role_id == 1){
-//            return redirect()->intended('admin/dashboard');
-//        } elseif ($user->role_id == 2){
-////            return redirect()->intended('lawyer/dashboard/' . $user->id);
-//            return redirect()->intended('users/dashboard/' . $user->id);
-//        } elseif ($user->role_id == 3){
-//            return redirect()->intended('user/dashboard');
-//        }
-
-        if($user->role_id == 1){
-            return redirect()->intended('admin/dashboard');
-        } else {
-            return redirect()->intended('users/dashboard/' . $user->id);
+    protected function authenticated(Request $request, User $user) {
+        if ($request->ajax()){
+            if($user->role_id == 1){
+                $intended = 'admin/dashboard';
+            } else {
+                $intended = 'users/dashboard/' . $user->id;
+            }
+            return response()->json([
+                'auth' => auth()->check(),
+                'intended' => $intended,
+            ]);
         }
     }
+
+    public function login(Request $request)   {
+        $this->validateLogin($request);
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        return response()->json([
+            'error' => 'Credentials do not match, try again.'
+        ], 406);
+    }
+
 }
