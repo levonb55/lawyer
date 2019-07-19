@@ -15,7 +15,7 @@
                     <a href="{{route('lawyers.category', $category->id)}}">
                         <div class="find_2_box">
                             @if($category->image)
-                                <img src="{{asset('assets/images/categories/' . $category->image)}}" alt="Law" class="find_img">
+                                <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law" class="find_img">
                             @else
                                 <img src="{{asset('assets/images/general/find1.png')}}" alt="Law" class="find_img">
                             @endif

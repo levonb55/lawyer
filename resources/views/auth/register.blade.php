@@ -17,7 +17,7 @@
 
                 @include('auth.user-input')
 
-                <input type="hidden" name="referral">
+{{--                <input type="hidden" name="referral">--}}
 
                 <input type="hidden" name="role_id" value="2">
                 {{--<div class="login_reg_main_remm">--}}

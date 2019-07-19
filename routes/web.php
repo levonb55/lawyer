@@ -115,5 +115,7 @@ Route::middleware('admin')->group(function () {
             Route::get('/edit/{category}', 'CategoryController@edit')->name('categories_edit');
         });
 
+        Route::get('referrals', 'AdminController@getReferrals')->name('admin.referrals');
+
     });
 });

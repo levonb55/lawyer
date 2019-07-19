@@ -17,7 +17,12 @@
 
                 @include('auth.user-input')
 
-                <input type="text" name="referral" value="" placeholder="Referral code">
+                <input type="text" name="referral" value="" placeholder="Referral code" required>
+                    @error('referral')
+                        <span class="input-error">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 <input type="hidden" name="role_id" value="3">
 
                 {{--<div class="login_reg_main_remm">--}}

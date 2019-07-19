@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Lawyer;
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -74,10 +74,11 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'min:2', 'max:255'],
             'last_name' => ['required', 'string', 'min:2', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
             'role_id' => ['required', 'integer', 'min:2', 'max:3'],
-            'referral' => ['nullable', 'string', 'min:2'],
+//            'referral' => [$data['role_id'] == 3 ? 'required' : 'nullable', 'string', 'unique:users', 'min:10', 'max:10'],
+            'referral' => ['sometimes', 'required', 'string', 'unique:users', 'min:10', 'max:10'],
         ]);
     }
 
@@ -95,7 +96,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $data['role_id'],
-            'referral' => $data['referral'] && $data['role_id'] == 3 ? $data['referral'] : ''
+//            'referral' => $data['referral'] && $data['role_id'] == 3 ? $data['referral'] : ''
+            'referral' => $data['referral'] ?? ''
         ]);
 
         if($user->role_id == 2) {
