@@ -16,25 +16,25 @@
                     <div class="empty_space">
 
                     </div>
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" id="login">
                         @csrf
 
                         <div class="mod_inputs">
                             <input type="email" name="email" value="{{ old('email') }}"
                                    placeholder="E-mail address" required autocomplete="email">
-                            @error('email')
-                            <span class="input-error">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+{{--                            @error('email')--}}
+{{--                                <span class="input-error">--}}
+{{--                                    <strong>{{ $message }}</strong>--}}
+{{--                                </span>--}}
+{{--                            @enderror--}}
 
                             <input type="password" name="password" placeholder="Password" required>
-                            @error('password')
-                            <span class="input-error">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-
+{{--                            @error('password')--}}
+{{--                            <span class="input-error">--}}
+{{--                                    <strong>{{ $message }}</strong>--}}
+{{--                                </span>--}}
+{{--                            @enderror--}}
+                                <span class="error text-danger pt-3"></span>
                         </div>
                         <div class="mod_remember">
                             <input type="checkbox" name="password" value="">

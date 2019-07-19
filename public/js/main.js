@@ -232,4 +232,23 @@ $( document ).ready(function() {
         $('.find_2_left_block').html(lawyers);
     });
 
+    $('#login').on('submit', function (e) {
+        e.preventDefault();
+        let form = $(this);
+        $.ajax({
+            method: 'POST',
+            data: form.serializeArray(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: appUrl + '/login',
+            success: function (data) {
+                window.location.href = appUrl + data['intended'];
+            },
+            error: function (data) {
+                $('#login_modal .error').html("<strong>" + data.responseJSON.error + "</strong>");
+            }
+        });
+    });
+
 });
