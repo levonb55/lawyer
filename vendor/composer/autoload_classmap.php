@@ -40,6 +40,7 @@ return array(
     'App\\Http\\Requests\\StorePublication' => $baseDir . '/app/Http/Requests/StorePublication.php',
     'App\\Http\\Requests\\StoreReview' => $baseDir . '/app/Http/Requests/StoreReview.php',
     'App\\Http\\Requests\\UpdateLawyerInfo' => $baseDir . '/app/Http/Requests/UpdateLawyerInfo.php',
+    'App\\Message' => $baseDir . '/app/Message.php',
     'App\\Models\\Admin\\Category' => $baseDir . '/app/Models/Admin/Category.php',
     'App\\Models\\Admin\\Content' => $baseDir . '/app/Models/Admin/Content.php',
     'App\\Models\\Lawyer' => $baseDir . '/app/Models/Lawyer.php',
