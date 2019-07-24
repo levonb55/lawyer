@@ -429,6 +429,7 @@ class ComposerStaticInit9d353f4e8dfb1cdbcfa9148209b39a46
         'App\\Http\\Requests\\StorePublication' => __DIR__ . '/../..' . '/app/Http/Requests/StorePublication.php',
         'App\\Http\\Requests\\StoreReview' => __DIR__ . '/../..' . '/app/Http/Requests/StoreReview.php',
         'App\\Http\\Requests\\UpdateLawyerInfo' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateLawyerInfo.php',
+        'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Models\\Admin\\Category' => __DIR__ . '/../..' . '/app/Models/Admin/Category.php',
         'App\\Models\\Admin\\Content' => __DIR__ . '/../..' . '/app/Models/Admin/Content.php',
         'App\\Models\\Lawyer' => __DIR__ . '/../..' . '/app/Models/Lawyer.php',

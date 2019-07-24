@@ -90,9 +90,9 @@ class UserController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getUserMessages() {
-        return view('users.messages');
-    }
+//    public function getUserMessages() {
+//        return view('users.messages');
+//    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

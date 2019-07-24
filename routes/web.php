@@ -34,16 +34,22 @@ Route::post('/lawyers/name/search','LawyerController@searchLawyersByName')->name
 Auth::routes();
 
 //Private Routes
-Route::get('/users/dashboard/{user}','UserController@getUserDashboard')->name('user.dashboard');
-Route::get('/users/settings/{user}','UserController@getUserSettings')->name('user.settings');
-Route::get('/users/messages/{user}','UserController@getUserMessages')->name('user.messages');
-Route::get('/users/bookings/{user}','UserController@getUserBookings')->name('user.bookings');
-Route::put('/users/update/{user}','UserController@update')->name('user.update');
-Route::post('/reviews/lawyers/{user}','ReviewController@storeReview')->name('reviews.store');
-Route::post('/lawyers/{user}/publications','PublicationController@storePublications')->name('publications.store');
-Route::delete('/lawyers/publications/{publication}','PublicationController@deletePublication')->name('publications.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/users/dashboard/{user}','UserController@getUserDashboard')->name('user.dashboard');
+    Route::get('/users/settings/{user}','UserController@getUserSettings')->name('user.settings');
+    Route::get('/users/bookings/{user}','UserController@getUserBookings')->name('user.bookings');
+    Route::put('/users/update/{user}','UserController@update')->name('user.update');
+    Route::post('/reviews/lawyers/{user}','ReviewController@storeReview')->name('reviews.store');
+    Route::post('/lawyers/{user}/publications','PublicationController@storePublications')->name('publications.store');
+    Route::delete('/lawyers/publications/{publication}','PublicationController@deletePublication')->name('publications.destroy');
+
+    //Messages
+//    Route::get('messages/{sender}/{receiver}', 'MessageController@show')->name('messages.show');
+//    Route::get('/users/messages/{user}','UserController@getUserMessages')->name('user.messages');
+    Route::get('/users/{user}/messages','MessageController@show')->name('messages.show');
 
 
+});
 
 //Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
 ////Route::get('users/dashboard','User\UserController@index')->middleware('auth');
