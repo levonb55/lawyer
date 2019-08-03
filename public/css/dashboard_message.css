@@ -109,9 +109,14 @@ clear: both;
 }
 
 .chat_list {
-border-bottom: 1px solid #ddd;
-margin: 0;
-padding: 18px 16px 10px;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
+  padding: 18px 16px 10px;
+  cursor: pointer;
+}
+
+.chat_list:hover {
+  background: #ddd;
 }
 
 .inbox_chat {

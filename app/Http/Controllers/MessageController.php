@@ -9,8 +9,13 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
-    public function show(User $user) {
+    public function getSenders(User $user) {
         $users = Message::groupBy('sender_id')->having('receiver_id', '=', $user->id)->get();
         return view('users.messages', compact('users'));
+    }
+
+    public function show(User $sender) {
+        $messages = Message::where('sender_id', $sender->id)->orWhere('receiver_id', $sender->id)->get();
+        return response()->json($messages);
     }
 }

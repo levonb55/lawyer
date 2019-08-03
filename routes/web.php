@@ -46,7 +46,8 @@ Route::middleware('auth')->group(function () {
     //Messages
 //    Route::get('messages/{sender}/{receiver}', 'MessageController@show')->name('messages.show');
 //    Route::get('/users/messages/{user}','UserController@getUserMessages')->name('user.messages');
-    Route::get('/users/{user}/messages','MessageController@show')->name('messages.show');
+    Route::get('/users/{user}/senders','MessageController@getSenders')->name('senders');
+    Route::get('/users/messages/{sender}','MessageController@show')->name('messages.show');
 
 
 });
