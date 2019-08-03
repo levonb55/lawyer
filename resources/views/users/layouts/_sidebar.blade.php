@@ -27,7 +27,7 @@
                 </li>
             @endif
             <li class="{{Request::routeIs('user.messages') ? "active_page" : "" }}">
-                <a href="{{route('messages.show', Auth::id())}}">
+                <a href="{{route('senders', Auth::id())}}">
                     <img src="{{asset('assets/images/general/dash_4.png')}}" alt="Message">Messages
                 </a>
             </li>
