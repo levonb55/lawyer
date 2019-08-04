@@ -15,7 +15,15 @@ class MessageController extends Controller
     }
 
     public function show(User $sender) {
-        $messagesData = Message::where('sender_id', $sender->id)->orWhere('receiver_id', $sender->id)->get();
+        $messagesData = Message::where(function($q) use ($sender) {
+            $q->where('sender_id', auth()->id());
+            $q->where('receiver_id', $sender->id);
+        })->orWhere(function($q) use ($sender) {
+            $q->where('sender_id', $sender->id);
+            $q->where('receiver_id', auth()->id());
+        })
+        ->get();
+
         foreach($messagesData as $message) {
             $messages[]=[
                 'sender_id' => $message->sender_id,
