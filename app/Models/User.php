@@ -55,4 +55,12 @@ class User extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
+//    /**
+//     * Get the senders for the user.
+//     */
+//    public function senders()
+//    {
+//        return $this->hasMany('App\Models\Message', 'sender_id');
+//    }
+
 }
