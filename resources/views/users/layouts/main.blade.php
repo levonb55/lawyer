@@ -12,8 +12,11 @@
           integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('assets/libs/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/libs/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/css/font-awesome.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/libs/css/owl.carousel.min.css')}}">
+{{--    <link rel="stylesheet" href="{{asset('assets/libs/css/font-awesome.css')}}">--}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+          integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link rel="stylesheet" href="">
+{{--    <link rel="stylesheet" href="{{asset('assets/libs/css/owl.carousel.min.css')}}">--}}
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" href="{{asset('css/media.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">

@@ -94,7 +94,8 @@ width: 11%;
 }
 
 .chat_img img {
-width: 100%
+  width: 100%;
+  border-radius: 50%;
 }
 
 .chat_ib {
@@ -134,7 +135,8 @@ width: 6%;
 }
 
 .incoming_msg_img img {
-width: 100%;
+  width: 100%;
+  border-radius: 50%;
 }
 
 .received_msg {

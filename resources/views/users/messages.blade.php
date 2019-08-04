@@ -26,10 +26,19 @@
                     </div>
                 </div>
                 <div class="inbox_chat scroll">
+                    @if(!$users->count())
+                        <div class="text-center mt-4">No Contact yet.</div>
+                    @endif
                     @foreach($users as $user)
                         <div class="chat_list" data-sender="{{ $user->sender->id }}">
                             <div class="chat_people">
-                                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                <div class="chat_img">
+                                    @if($user->senders->image)
+                                        <img src="{{asset('assets/images/profile/' . $user->senders->image)}}" alt="sunil">
+                                    @else
+                                        <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                    @endif
+                                </div>
                                 <div class="chat_ib">
                                     <h5>{{ $user->sender->full_name }} <span class="chat_date"></span></h5>
     {{--                                <p>Test, which is a new approach to have all solutions--}}
@@ -168,14 +177,5 @@
 
 @section('extra-scripts')
     <script src="{{ asset('js/message.js') }}"></script>
-    <script>
-        $('.chat_list').on('click', function () {
-            $(".chat_list").removeClass('active_chat');
-            $(this).addClass("active_chat");
-            let sender = $(this).data('sender');
-            message.show(sender);
-        });
-
-    </script>
-
+    <script src="{{ asset('js/components/MessageDashboard.js') }}" ></script>
 @endsection
