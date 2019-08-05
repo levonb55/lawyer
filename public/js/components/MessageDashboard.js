@@ -18,7 +18,7 @@ $('.chat_list').on('click', function () {
             let image = '';
             let d = new Date(message.created_at);
             if(message.image) {
-                image = `/assets/images/profile/${message.image}`;
+                image = appUrl + `/assets/images/profile/${message.image}`;
             } else {
                 image = 'https://ptetutorials.com/images/user-profile.png';
             }
