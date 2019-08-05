@@ -1,14 +1,8 @@
 class Message {
-    constructor() {
-        this.appUrl = "";
-        if(window.location.hostname !== 'lawyer.loc') {
-            this.appUrl = 'http://myworks.site/dev/lawyer/public';
-        }
-    }
 
     //Gets Messages specific to user and receiver
     show(sender, component) {
-       $.get(this.appUrl + '/users/messages/' + sender)
+       $.get(appUrl + '/users/messages/' + sender)
             .then(response => {
                 component(response);
             })

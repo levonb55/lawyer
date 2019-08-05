@@ -49,6 +49,12 @@
 
 {{--<script src="{{asset('assets/site/main/node_modules/@fullcalendar/core/main.js')}}"></script>--}}
 {{--<script src="{{asset('assets/site/main/node_modules/@fullcalendar/daygrid/main.js')}}"></script>--}}
+<script>
+    let appUrl = "";
+    if(window.location.hostname !== 'lawyer.loc') {
+        appUrl = 'http://myworks.site/dev/lawyer/public';
+    }
+</script>
 @yield('extra-scripts')
 </body>
 </html>
