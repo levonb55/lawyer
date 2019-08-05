@@ -2,6 +2,8 @@ $('.chat_list').on('click', function () {
     if($(this).hasClass('active_chat')) {
         return;
     }
+    $('.msg_history').html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
+
     var months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"

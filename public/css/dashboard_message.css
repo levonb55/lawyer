@@ -186,11 +186,13 @@ width: 100%;
 .outgoing_msg {
 overflow: hidden;
 margin: 26px 0 26px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .sent_msg {
-float: right;
 width: 46%;
+  margin-left: 15px;
 }
 
 .input_msg_write input {
@@ -229,4 +231,9 @@ padding: 0 0 50px 0;
 .msg_history {
 height: 516px;
 overflow-y: auto;
+}
+
+.msg_history .spinner {
+  color: #ff9c00;
+  font-size: 60px;
 }
