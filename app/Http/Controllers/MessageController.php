@@ -9,8 +9,18 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
-    public function getSenders(User $user) {
-        $users = Message::groupBy('sender_id')->having('receiver_id', '=', $user->id)->get();
+    public function index() {
+        $messages = Message::select('sender_id', 'receiver_id')
+                        ->where('sender_id', auth()->id())
+                        ->orWhere('receiver_id', auth()->id())
+                        ->get();
+        foreach($messages as $message) {
+           $res[]= $message->sender_id;
+           $res[]= $message->receiver_id;
+        }
+        $res = array_unique($res);
+        $users = User::find($res);
+
         return view('users.messages', compact('users'));
     }
 
