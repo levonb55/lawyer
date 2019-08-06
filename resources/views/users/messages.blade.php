@@ -30,17 +30,20 @@
                         <div class="text-center mt-4">No Contact yet.</div>
                     @endif
                     @foreach($users as $user)
-                        <div class="chat_list" data-sender="{{ $user->sender->id }}">
+                        @if($user->id == auth()->id())
+                            @continue;
+                        @endif
+                        <div class="chat_list" data-sender="{{ $user->id }}">
                             <div class="chat_people">
                                 <div class="chat_img">
-                                    @if($user->senders->image)
-                                        <img src="{{asset('assets/images/profile/' . $user->senders->image)}}" alt="sunil">
+                                    @if($user->image)
+                                        <img src="{{asset('assets/images/profile/' . $user->image)}}" alt="sunil">
                                     @else
                                         <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
                                     @endif
                                 </div>
                                 <div class="chat_ib">
-                                    <h5>{{ $user->sender->full_name }} <span class="chat_date"></span></h5>
+                                    <h5>{{ $user->full_name }} <span class="chat_date"></span></h5>
     {{--                                <p>Test, which is a new approach to have all solutions--}}
     {{--                                    astrology under one roof.</p>--}}
                                 </div>
