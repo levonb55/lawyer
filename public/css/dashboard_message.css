@@ -121,8 +121,8 @@ clear: both;
 }
 
 .inbox_chat {
-height: 550px;
-overflow-y: scroll;
+  height: 550px;
+  overflow-y: auto;
 }
 
 .active_chat {
@@ -208,6 +208,7 @@ outline:none;
 .type_msg {
 border-top: 1px solid #c4c4c4;
 position: relative;
+  display: none;
 }
 
 .msg_send_btn {
