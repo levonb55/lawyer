@@ -44,11 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/lawyers/publications/{publication}','PublicationController@deletePublication')->name('publications.destroy');
 
     //Messages
-//    Route::get('messages/{sender}/{receiver}', 'MessageController@show')->name('messages.show');
-//    Route::get('/users/messages/{user}','UserController@getUserMessages')->name('user.messages');
     Route::get('/messages','MessageController@index')->name('messages');
+    Route::post('/messages/store','MessageController@store')->name('messages.store');
     Route::get('/users/messages/{sender}','MessageController@show')->name('messages.show');
-
 
 });
 

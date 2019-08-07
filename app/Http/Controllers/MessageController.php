@@ -9,11 +9,13 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
+    //Gets all messages
     public function index() {
         $messages = Message::select('sender_id', 'receiver_id')
                         ->where('sender_id', auth()->id())
                         ->orWhere('receiver_id', auth()->id())
                         ->get();
+        $res = [];
         foreach($messages as $message) {
            $res[]= $message->sender_id;
            $res[]= $message->receiver_id;
@@ -24,6 +26,7 @@ class MessageController extends Controller
         return view('users.messages', compact('users'));
     }
 
+    //Gets a specific message
     public function show(User $sender) {
         $messagesData = Message::where(function($q) use ($sender) {
             $q->where('sender_id', auth()->id());
@@ -43,5 +46,22 @@ class MessageController extends Controller
             ];
         }
         return response()->json($messages);
+    }
+
+    //Stores a new message to the database
+    public function store(Request $request) {
+        if ($request->ajax()){
+            $message = Message::create([
+                'sender_id' => auth()->id(),
+                'receiver_id' => $request->input('receiver'),
+                'content' => $request->input('content')
+            ]);
+
+            return response()->json([
+                'image' => auth()->user()->image,
+                'content' => $message->content,
+                'created_at' => $message->created_at
+            ]);
+        }
     }
 }
