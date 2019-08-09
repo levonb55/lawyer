@@ -41,7 +41,7 @@ class MessageController extends Controller
             $messages[]=[
                 'sender_id' => $message->sender_id,
                 'content' => $message->content,
-                'image' => $message->senders->image,
+                'image' => $message->sender->image,
                 'created_at' => $message->created_at
             ];
         }

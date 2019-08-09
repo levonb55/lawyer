@@ -56,8 +56,8 @@
                 <div class="type_msg">
                     <div class="input_msg_write">
                         <form id="message-form">
-                            <input type="text" name="content" class="write_msg" placeholder="Type a message" autofocus />
                             <input type="hidden" name="receiver" id="receiver">
+                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>
                             <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                         </form>
                     </div>
