@@ -1,14 +1,22 @@
+let conversation = {
+    messageHistory: $('.msg_history'),
+    months: [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+};
+
 //Gets messages of a conversation
 $('.chat_list').on('click', function () {
+
+    $('#content').val('');
+
     if($(this).hasClass('active_chat')) {
         return;
     }
-    $('.msg_history').html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
 
-    var months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
+    conversation.messageHistory.html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
+
     //Adds background color on click
     $(".chat_list").removeClass('active_chat');
     $(this).addClass("active_chat");
@@ -33,7 +41,7 @@ $('.chat_list').on('click', function () {
                         <div class="received_withd_msg">
                             <p>${message.content}</p>
                             <span class="time_date">
-                                ${d.getHours() + ':' + d.getMinutes() + ' | ' + months[d.getMonth()] + ' ' + d.getDate()}
+                                ${d.getHours() + ':' + d.getMinutes() + ' | ' + conversation.months[d.getMonth()] + ' ' + d.getDate()}
                             </span>
                         </div>
                     </div>
@@ -41,7 +49,8 @@ $('.chat_list').on('click', function () {
             `;
         });
 
-        $('.msg_history').html(messagesFeed);
+        conversation.messageHistory.html(messagesFeed);
+        scrollToBottom('.msg_history');
     }
 
     //Gets sender id
@@ -57,12 +66,12 @@ $('.chat_list').on('click', function () {
 $('#message-form').on('submit', function (e) {
     e.preventDefault();
 
+    if(!$('#content').val()) {
+        return;
+    }
     //Component for the sent message
     let sentMessage = messageData => {
-        var months = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
-        ];
+
         let d = new Date(messageData.created_at);
         if(messageData.image) {
             image = appUrl + `/assets/images/profile/${messageData.image}`;
@@ -78,15 +87,22 @@ $('#message-form').on('submit', function (e) {
                     <div class="received_withd_msg">
                         <p>${messageData.content}</p>
                         <span class="time_date">
-                            ${d.getHours() + ':' + d.getMinutes() + ' | ' + months[d.getMonth()] + ' ' + d.getDate()}
+                            ${d.getHours() + ':' + d.getMinutes() + ' | ' + conversation.months[d.getMonth()] + ' ' + d.getDate()}
                         </span>
                     </div>
                 </div>
             </div>
         `;
 
-        $('.msg_history').append(message);
+        $('#content').val('');
+        conversation.messageHistory.append(message);
+        scrollToBottom('.msg_history');
     };
 
     message.store($(this).serialize(), sentMessage);
 });
+
+//Scrolls the element to the bottom
+function scrollToBottom(el) {
+    document.querySelector(el).scrollTo(0, document.querySelector(el).scrollHeight);
+}
