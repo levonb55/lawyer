@@ -57,6 +57,8 @@ class MessageController extends Controller
                 'content' => $request->input('content')
             ]);
 
+            $message = Message::find($message->id);
+
             return response()->json([
                 'image' => auth()->user()->image,
                 'content' => $message->content,
