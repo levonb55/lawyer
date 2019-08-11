@@ -6,11 +6,29 @@ let messages = {
     ]
 };
 
-//Gets messages of a messages
+//listens to the new message broadcasting
+Echo.channel('messages.' +  $('#user').val())
+    .listen('NewMessage', (message) => {
+        // if(message.image) {
+        //     image = appUrl + `/assets/images/profile/${messageData.image}`;
+        // } else {
+            image = 'https://ptetutorials.com/images/user-profile.png';
+        // }
+        if($('#contact').val() == message.sender_id) {
+            messages.history.append(incomingMessage(image, message.content, new Date(message.created_at)));
+            scrollToBottom('.msg_history');
+        } else {
+            alert(message.content);
+        }
+    });
+
+//Gets a conversation
 $('.chat_list').on('click', function () {
 
+    //Removes an unsent message from the message field when switching to another contact
     $('#content').val('');
 
+    //Stops sending duplicate request from the same contact in a row
     if($(this).hasClass('active_chat')) {
         return;
     }
@@ -56,14 +74,13 @@ $('.chat_list').on('click', function () {
 $('#message-form').on('submit', function (e) {
     e.preventDefault();
 
+    //Makes message field required
     if(!$('#content').val()) {
         return;
     }
 
     //Component for the sent message
     let sentMessage = messageData => {
-        let userId = $('#user').val();
-
         let image = '';
         if(messageData.image) {
             image = appUrl + `/assets/images/profile/${messageData.image}`;
@@ -74,22 +91,6 @@ $('#message-form').on('submit', function (e) {
         $('#content').val('');
         messages.history.append(outgoingMessage(image, messageData.content, new Date(messageData.created_at)));
         scrollToBottom('.msg_history');
-
-        //listens new message broadcast
-        Echo.channel('messages.' +  userId)
-            .listen('NewMessage', (message) => {
-                if(message.image) {
-                    image = appUrl + `/assets/images/profile/${messageData.image}`;
-                } else {
-                    image = 'https://ptetutorials.com/images/user-profile.png';
-                }
-                if($('#contact').val() == message.sender_id) {
-                    messages.history.append(incomingMessage(image, message.content, new Date(message.created_at)));
-                    scrollToBottom('.msg_history');
-                } else {
-                    alert('New Message');
-                }
-            });
     };
 
     message.store($(this).serialize(), sentMessage);
