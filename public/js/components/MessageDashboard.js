@@ -7,7 +7,7 @@ let messages = {
 };
 
 //listens to the new message broadcasting
-Echo.channel('messages.' +  $('#user').val())
+Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
         // if(message.image) {
         //     image = appUrl + `/assets/images/profile/${messageData.image}`;
