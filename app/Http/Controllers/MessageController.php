@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,18 +22,18 @@ class MessageController extends Controller
            $res[]= $message->receiver_id;
         }
         $res = array_unique($res);
-        $users = User::find($res);
+        $contacts = User::find($res);
 
-        return view('users.messages', compact('users'));
+        return view('users.messages', compact('contacts'));
     }
 
-    //Gets a specific message
-    public function show(User $sender) {
-        $messagesData = Message::where(function($q) use ($sender) {
+    //Gets a conversation
+    public function show(User $contact) {
+        $messagesData = Message::where(function($q) use ($contact) {
             $q->where('sender_id', auth()->id());
-            $q->where('receiver_id', $sender->id);
-        })->orWhere(function($q) use ($sender) {
-            $q->where('sender_id', $sender->id);
+            $q->where('receiver_id', $contact->id);
+        })->orWhere(function($q) use ($contact) {
+            $q->where('sender_id', $contact->id);
             $q->where('receiver_id', auth()->id());
         })
         ->get();
@@ -53,11 +54,12 @@ class MessageController extends Controller
         if ($request->ajax()){
             $message = Message::create([
                 'sender_id' => auth()->id(),
-                'receiver_id' => $request->input('receiver'),
+                'receiver_id' => $request->input('contact'),
                 'content' => $request->input('content')
             ]);
 
             $message = Message::find($message->id);
+            broadcast(new NewMessage($message))->toOthers();
 
             return response()->json([
                 'image' => auth()->user()->image,
