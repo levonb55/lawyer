@@ -1,12 +1,12 @@
-let conversation = {
-    messageHistory: $('.msg_history'),
+let messages = {
+    history: $('.msg_history'),
     months: [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]
 };
 
-//Gets messages of a conversation
+//Gets messages of a messages
 $('.chat_list').on('click', function () {
 
     $('#content').val('');
@@ -15,7 +15,7 @@ $('.chat_list').on('click', function () {
         return;
     }
 
-    conversation.messageHistory.html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
+    messages.history.html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
 
     //Adds background color on click
     $(".chat_list").removeClass('active_chat');
@@ -33,15 +33,15 @@ $('.chat_list').on('click', function () {
             }
 
             return `
-                <div class="${ message.sender_id == sender ? 'incoming_msg' : 'outgoing_msg' }">
+                <div class="${ message.sender_id == contactId ? 'incoming_msg' : 'outgoing_msg' }">
                     <div class="incoming_msg_img">
                         <img src="${image}" alt="sunil">
                     </div>
-                    <div class="${ message.sender_id == sender ? 'received_msg' : 'sent_msg' }"">
+                    <div class="${ message.sender_id == contactId ? 'received_msg' : 'sent_msg' }"">
                         <div class="received_withd_msg">
                             <p>${message.content}</p>
                             <span class="time_date">
-                                ${d.getHours() + ':' + d.getMinutes() + ' | ' + conversation.months[d.getMonth()] + ' ' + d.getDate()}
+                                ${d.getHours() + ':' + d.getMinutes() + ' | ' + messages.months[d.getMonth()] + ' ' + d.getDate()}
                             </span>
                         </div>
                     </div>
@@ -49,17 +49,17 @@ $('.chat_list').on('click', function () {
             `;
         });
 
-        conversation.messageHistory.html(messagesFeed);
+        messages.history.html(messagesFeed);
         scrollToBottom('.msg_history');
     }
 
-    //Gets sender id
-    let sender = $(this).data('sender');
+    //Gets contact id
+    let contactId = $(this).data('contact');
 
     $('.type_msg').show();
-    $('#receiver').val(sender);
+    $('#contact').val(contactId);
 
-    message.show(sender, messagesComponent);
+    message.show(contactId, messagesComponent);
 });
 
 //Stores messages
@@ -69,34 +69,51 @@ $('#message-form').on('submit', function (e) {
     if(!$('#content').val()) {
         return;
     }
+
     //Component for the sent message
     let sentMessage = messageData => {
+        let image = '';
+        userId = $('#user').val();
 
-        let d = new Date(messageData.created_at);
+        // let d = new Date(messageData.created_at);
         if(messageData.image) {
             image = appUrl + `/assets/images/profile/${messageData.image}`;
         } else {
             image = 'https://ptetutorials.com/images/user-profile.png';
         }
-        let message = `
-            <div class="outgoing_msg">
-                <div class="incoming_msg_img">
-                    <img src="${image}" alt="sunil">
-                </div>
-                <div class="sent_msg">
-                    <div class="received_withd_msg">
-                        <p>${messageData.content}</p>
-                        <span class="time_date">
-                            ${d.getHours() + ':' + d.getMinutes() + ' | ' + conversation.months[d.getMonth()] + ' ' + d.getDate()}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        `;
+        // let message = `
+        //     <div class="outgoing_msg">
+        //         <div class="incoming_msg_img">
+        //             <img src="${image}" alt="sunil">
+        //         </div>
+        //         <div class="sent_msg">
+        //             <div class="received_withd_msg">
+        //                 <p>${messageData.content}</p>
+        //                 <span class="time_date">
+        //                     ${d.getHours() + ':' + d.getMinutes() + ' | ' + messages.months[d.getMonth()] + ' ' + d.getDate()}
+        //                 </span>
+        //             </div>
+        //         </div>
+        //     </div>
+        // `;
 
         $('#content').val('');
-        conversation.messageHistory.append(message);
+        messages.history.append(outgoingMessage(image, messageData.content, new Date(messageData.created_at)));
         scrollToBottom('.msg_history');
+
+        //listens new message broadcast
+        Echo.channel('messages.' +  userId)
+            .listen('NewMessage', (message) => {
+                if(message.image) {
+                    image = appUrl + `/assets/images/profile/${messageData.image}`;
+                } else {
+                    image = 'https://ptetutorials.com/images/user-profile.png';
+                }
+                if($('#contact').val() == message.sender_id) {
+                    messages.history.append(incomingMessage(image, message.content, new Date(message.created_at)));
+                    scrollToBottom('.msg_history');
+                }
+            });
     };
 
     message.store($(this).serialize(), sentMessage);
@@ -106,3 +123,40 @@ $('#message-form').on('submit', function (e) {
 function scrollToBottom(el) {
     document.querySelector(el).scrollTo(0, document.querySelector(el).scrollHeight);
 }
+
+function outgoingMessage(image, content, createdAt) {
+    return `
+        <div class="outgoing_msg">
+            <div class="incoming_msg_img">
+                <img src="${image}" alt="sunil">
+            </div>
+            <div class="sent_msg">
+                <div class="received_withd_msg">
+                    <p>${content}</p>
+                    <span class="time_date">
+                        ${createdAt.getHours() + ':' + createdAt.getMinutes() + ' | ' + messages.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function incomingMessage(image, content, createdAt) {
+    return `
+        <div class="incoming_msg">
+            <div class="incoming_msg_img">
+                <img src="${image}" alt="sunil">
+            </div>
+            <div class="received_msg">
+                <div class="received_withd_msg">
+                    <p>${content}</p>
+                    <span class="time_date">
+                        ${createdAt.getHours() + ':' + createdAt.getMinutes() + ' | ' + messages.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
+                    </span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
