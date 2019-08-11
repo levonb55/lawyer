@@ -34,7 +34,7 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('messages.' . $this->message->receiver_id);
+        return new Channel('messages.' . auth()->id());
     }
 
     public function broadcastWith() {
