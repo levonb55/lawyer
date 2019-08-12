@@ -15,6 +15,8 @@ use File;
 
 class UserController extends Controller
 {
+    const DEFAULT_IMAGE = 'default.png';
+
     /**
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -53,7 +55,9 @@ class UserController extends Controller
             $oldImagePath = public_path('assets/images/profile/'. $oldImage);
 
             if ($oldImage && $oldImagePath) {
-                File::delete($oldImagePath);
+                if($user->image !== self::DEFAULT_IMAGE) {
+                    File::delete($oldImagePath);
+                }
             }
 
             $user->image = $fileName;

@@ -9,13 +9,8 @@ let messages = {
 //listens to the new message broadcasting
 Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
-        // if(message.image) {
-        //     image = appUrl + `/assets/images/profile/${messageData.image}`;
-        // } else {
-            image = 'https://ptetutorials.com/images/user-profile.png';
-        // }
         if($('#contact').val() == message.sender_id) {
-            messages.history.append(incomingMessage(image, message.content, new Date(message.created_at)));
+            messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
             scrollToBottom('.msg_history');
         } else {
             alert(message.content);
@@ -42,19 +37,11 @@ $('.chat_list').on('click', function () {
     //Component to put messages data into
     let messagesComponent = messagesData => {
         let messagesFeed = messagesData.map(message => {
-            let image = '';
-            if(message.image) {
-                image = appUrl + `/assets/images/profile/${message.image}`;
-            } else {
-                image = 'https://ptetutorials.com/images/user-profile.png';
-            }
-
             if(message.sender_id == contactId) {
-                return incomingMessage(image, message.content, new Date(message.created_at));
+                return incomingMessage(message.image, message.content, new Date(message.created_at));
             } else {
-                return outgoingMessage(image, message.content, new Date(message.created_at));
+                return outgoingMessage(message.image, message.content, new Date(message.created_at));
             }
-
         });
 
         messages.history.html(messagesFeed);
@@ -81,15 +68,8 @@ $('#message-form').on('submit', function (e) {
 
     //Component for the sent message
     let sentMessage = messageData => {
-        let image = '';
-        if(messageData.image) {
-            image = appUrl + `/assets/images/profile/${messageData.image}`;
-        } else {
-            image = 'https://ptetutorials.com/images/user-profile.png';
-        }
-
         $('#content').val('');
-        messages.history.append(outgoingMessage(image, messageData.content, new Date(messageData.created_at)));
+        messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at)));
         scrollToBottom('.msg_history');
     };
 
@@ -105,7 +85,7 @@ function outgoingMessage(image, content, createdAt) {
     return `
         <div class="outgoing_msg">
             <div class="incoming_msg_img">
-                <img src="${image}" alt="sunil">
+                <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
             </div>
             <div class="sent_msg">
                 <div class="received_withd_msg">
@@ -123,7 +103,7 @@ function incomingMessage(image, content, createdAt) {
     return `
         <div class="incoming_msg">
             <div class="incoming_msg_img">
-                <img src="${image}" alt="sunil">
+                <img src="${appUrl}/assets/images/profile/${image}" + ${image} alt="sunil">
             </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
