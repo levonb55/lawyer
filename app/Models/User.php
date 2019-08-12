@@ -29,6 +29,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'image' => 'default.png',
+    ];
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
