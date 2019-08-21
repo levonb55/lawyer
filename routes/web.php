@@ -124,3 +124,8 @@ Route::middleware('admin')->group(function () {
 
     });
 });
+
+//Artisan commands
+Route::get('/route-clear', function () {
+    $exitCode = \Illuminate\Support\Facades\Artisan::call('route:clear');
+});
