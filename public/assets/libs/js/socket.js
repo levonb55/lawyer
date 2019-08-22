@@ -10349,6 +10349,7 @@ __webpack_require__.r(__webpack_exports__);
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  authEndpoint: appUrl + '/broadcasting/auth',
   broadcaster: 'pusher',
   key: '94601e3f1268c05f59ac',
   cluster: 'us2',
@@ -10364,7 +10365,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\lawyer-testing\resources\js\socket.js */"./resources/js/socket.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\lawyer\resources\js\socket.js */"./resources/js/socket.js");
 
 
 /***/ })
