@@ -43,6 +43,7 @@
                                 <div class="chat_ib">
                                     <h5>{{ $contact->full_name }} <span class="chat_date"></span></h5>
                                 </div>
+                                <span class="badge badge-warning unread unread-{{ $contact->id }}"></span>
                             </div>
                         </div>
                     @endforeach

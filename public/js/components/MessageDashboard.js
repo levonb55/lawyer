@@ -13,7 +13,8 @@ Echo.private('messages.' +  $('#user').val())
             messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
             scrollToBottom('.msg_history');
         } else {
-            alert(message.content);
+            let sender = $('.unread-'+message.sender_id);
+            sender.text(+sender.text() + 1);
         }
     });
 
@@ -53,6 +54,7 @@ $('.chat_list').on('click', function () {
 
     $('.type_msg').show();
     $('#contact').val(contactId);
+    $(this).find('.unread').text('');
 
     message.show(contactId, messagesComponent);
 });
