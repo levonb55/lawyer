@@ -1,8 +1,8 @@
 class Message {
 
     //Gets Messages specific to a user and receiver
-    show(contact, component) {
-       $.get(appUrl + '/users/messages/' + contact)
+    show(contact, component, scroll) {
+       $.get(appUrl + '/users/messages/' + contact + '/' + scroll)
             .then(response => {
                 component(response);
             })

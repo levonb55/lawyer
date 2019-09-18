@@ -28,15 +28,24 @@ class MessageController extends Controller
     }
 
     //Gets a conversation
-    public function show(User $contact) {
+    public function show(User $contact, $scroll) {
+        $messages = [];
+
         $messagesData = Message::where(function($q) use ($contact) {
             $q->where('sender_id', auth()->id());
             $q->where('receiver_id', $contact->id);
         })->orWhere(function($q) use ($contact) {
             $q->where('sender_id', $contact->id);
             $q->where('receiver_id', auth()->id());
-        })
-        ->get();
+        });
+
+        $messagesCount = $messagesData->count();
+        $messagesSkip = $scroll * 10;
+        $messagesData = $messagesData
+            ->orderBy('id', 'DESC')
+            ->skip($messagesSkip)
+            ->take(10)
+            ->get();
 
         foreach($messagesData as $message) {
             $messages[]=[
@@ -46,7 +55,8 @@ class MessageController extends Controller
                 'created_at' => $message->created_at
             ];
         }
-        return response()->json($messages);
+
+        return response()->json(['messages' => $messages, 'messagesCount' => $messagesCount]);
     }
 
     //Stores a new message to the database

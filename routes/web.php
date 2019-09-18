@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     //Messages
     Route::get('/messages','MessageController@index')->name('messages');
     Route::post('/messages/store','MessageController@store')->name('messages.store');
-    Route::get('/users/messages/{contact}','MessageController@show')->name('messages.show');
+    Route::get('/users/messages/{contact}/{scroll}','MessageController@show')->name('messages.show');
 
 });
 
