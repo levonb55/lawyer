@@ -58,7 +58,7 @@
                 <div class="type_msg">
                     <div class="input_msg_write">
                         <form id="message-form">
-                            <input type="hidden" name="contact" id="contact" value="0">
+                            <input type="hidden" name="contact" id="contact">
                             <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
                             <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>
                             <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
