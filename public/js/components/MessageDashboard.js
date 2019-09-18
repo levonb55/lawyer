@@ -4,13 +4,14 @@ let messages = {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ],
+    activeContact: '',
     scrollNumber: 0
 };
 
 //listens to the new message broadcasting
 Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
-        if($('#contact').val() == message.sender_id) {
+        if(messages.activeContact == message.sender_id) {
             messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
             scrollToBottom('.msg_history');
         } else {
@@ -23,14 +24,13 @@ Echo.private('messages.' +  $('#user').val())
 $('.chat_list').on('click', function () {
 
     messages.scrollNumber = 0;
+    messages.activeContact = $(this).data('contact');
 
     //Removes an unsent message from the message field when switching to another contact
     $('#content').val('');
 
     //Stops sending duplicate request from the same contact in a row
-    if($(this).hasClass('active_chat')) {
-        return;
-    }
+    if($(this).hasClass('active_chat')) { return; }
 
     messages.history.html('<div class="spinner text-center mt-4"><i class="fa fa-spinner fa-spin"></i></div>');
 
@@ -43,7 +43,7 @@ $('.chat_list').on('click', function () {
         messages.history.data('messages', messagesData.messagesCount);
 
         let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
-            if(message.sender_id == contactId) {
+            if(message.sender_id == messages.activeContact) {
                 return incomingMessage(message.image, message.content, new Date(message.created_at));
             } else {
                 return outgoingMessage(message.image, message.content, new Date(message.created_at));
@@ -54,14 +54,11 @@ $('.chat_list').on('click', function () {
         scrollToBottom('.msg_history');
     }
 
-    //Gets contact id
-    let contactId = $(this).data('contact');
-
     $('.type_msg').show();
-    $('#contact').val(contactId);
+    $('#contact').val(messages.activeContact);
     $(this).find('.unread').text('');
 
-    message.show(contactId, messagesComponent, messages.scrollNumber);
+    message.show(messages.activeContact, messagesComponent, messages.scrollNumber);
 });
 
 //Stores messages
@@ -69,9 +66,7 @@ $('#message-form').on('submit', function (e) {
     e.preventDefault();
 
     //Makes message field required
-    if(!$('#content').val()) {
-        return;
-    }
+    if(!$('#content').val()) { return; }
 
     //Component for the sent message
     let sentMessage = messageData => {
@@ -110,7 +105,7 @@ function incomingMessage(image, content, createdAt) {
     return `
         <div class="incoming_msg messages">
             <div class="incoming_msg_img">
-                <img src="${appUrl}/assets/images/profile/${image}" + ${image} alt="sunil">
+                <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
             </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
@@ -132,7 +127,7 @@ messages.history.on('scroll', function () {
            //Component to put messages data into
            let messagesComponent = messagesData => {
                let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
-                   if(message.sender_id == $('.active_chat').data('contact')) {
+                   if(message.sender_id == messages.activeContact) {
                        return incomingMessage(message.image, message.content, new Date(message.created_at));
                    } else {
                        return outgoingMessage(message.image, message.content, new Date(message.created_at));
@@ -146,7 +141,7 @@ messages.history.on('scroll', function () {
                }
            }
 
-           message.show(+$('#contact').val(), messagesComponent, ++messages.scrollNumber);
+           message.show(+messages.activeContact, messagesComponent, ++messages.scrollNumber);
        }
    }
 });
