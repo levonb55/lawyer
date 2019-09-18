@@ -238,3 +238,7 @@ overflow-y: auto;
   color: #ff9c00;
   font-size: 60px;
 }
+
+.load-messages {
+  visibility: hidden;
+}

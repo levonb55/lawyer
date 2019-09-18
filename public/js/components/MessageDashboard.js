@@ -3,7 +3,8 @@ let messages = {
     months: [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
-    ]
+    ],
+    scrollNumber: 0
 };
 
 //listens to the new message broadcasting
@@ -21,6 +22,8 @@ Echo.private('messages.' +  $('#user').val())
 //Gets a conversation
 $('.chat_list').on('click', function () {
 
+    messages.scrollNumber = 0;
+
     //Removes an unsent message from the message field when switching to another contact
     $('#content').val('');
 
@@ -37,7 +40,9 @@ $('.chat_list').on('click', function () {
 
     //Component to put messages data into
     let messagesComponent = messagesData => {
-        let messagesFeed = messagesData.map(message => {
+        messages.history.data('messages', messagesData.messagesCount);
+
+        let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
             if(message.sender_id == contactId) {
                 return incomingMessage(message.image, message.content, new Date(message.created_at));
             } else {
@@ -56,7 +61,7 @@ $('.chat_list').on('click', function () {
     $('#contact').val(contactId);
     $(this).find('.unread').text('');
 
-    message.show(contactId, messagesComponent);
+    message.show(contactId, messagesComponent, messages.scrollNumber);
 });
 
 //Stores messages
@@ -85,7 +90,7 @@ function scrollToBottom(el) {
 
 function outgoingMessage(image, content, createdAt) {
     return `
-        <div class="outgoing_msg">
+        <div class="outgoing_msg messages">
             <div class="incoming_msg_img">
                 <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
             </div>
@@ -103,7 +108,7 @@ function outgoingMessage(image, content, createdAt) {
 
 function incomingMessage(image, content, createdAt) {
     return `
-        <div class="incoming_msg">
+        <div class="incoming_msg messages">
             <div class="incoming_msg_img">
                 <img src="${appUrl}/assets/images/profile/${image}" + ${image} alt="sunil">
             </div>
@@ -119,3 +124,29 @@ function incomingMessage(image, content, createdAt) {
     `;
 }
 
+messages.history.on('scroll', function () {
+   if($(this).scrollTop() == 0) {
+       if(messages.scrollNumber * 10 < messages.history.data('messages')) {
+           $('.load-messages').css('visibility', 'visible');
+
+           //Component to put messages data into
+           let messagesComponent = messagesData => {
+               let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
+                   if(message.sender_id == $('.active_chat').data('contact')) {
+                       return incomingMessage(message.image, message.content, new Date(message.created_at));
+                   } else {
+                       return outgoingMessage(message.image, message.content, new Date(message.created_at));
+                   }
+               });
+
+               messages.history.prepend(messagesFeed);
+               $('.load-messages').css('visibility', 'hidden');
+               if($('.messages')[10]) {
+                   $('.messages')[10].scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+               }
+           }
+
+           message.show(+$('#contact').val(), messagesComponent, ++messages.scrollNumber);
+       }
+   }
+});
