@@ -48,7 +48,7 @@ class User extends Authenticatable
 
     public function lawyer()
     {
-        return $this->hasOne('App\Models\Lawyer');
+        return $this->hasOne('App\Models\Lawyer')->withDefault();
     }
 
     public function categories()

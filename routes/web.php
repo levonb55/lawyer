@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/messages','MessageController@index')->name('messages');
     Route::post('/messages/store','MessageController@store')->name('messages.store');
     Route::get('/users/messages/{contact}/{scroll}','MessageController@show')->name('messages.show');
+    Route::put('/messages/{message}/read','MessageController@markAsRead')->name('messages.read');
 
 });
 

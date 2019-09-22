@@ -27,10 +27,8 @@
                     @if(!$contacts->count())
                         <div class="text-center mt-4">No Contact yet.</div>
                     @endif
+
                     @foreach($contacts as $contact)
-                        @if($contact->id == auth()->id())
-                            @continue;
-                        @endif
                         <div class="chat_list" data-contact="{{ $contact->id }}">
                             <div class="chat_people">
                                 <div class="chat_img">
@@ -43,7 +41,7 @@
                                 <div class="chat_ib">
                                     <h5>{{ $contact->full_name }} <span class="chat_date"></span></h5>
                                 </div>
-                                <span class="badge badge-warning unread unread-{{ $contact->id }}"></span>
+                                <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                             </div>
                         </div>
                     @endforeach
