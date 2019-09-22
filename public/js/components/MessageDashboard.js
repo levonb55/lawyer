@@ -8,12 +8,16 @@ let messages = {
     scrollNumber: 0
 };
 
+let messageClone = message;
+
 //listens to the new message broadcasting
 Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
         if(messages.activeContact == message.sender_id) {
             messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
             scrollToBottom('.msg_history');
+            messageClone.markAsRead(message.id);
+
         } else {
             let sender = $('.unread-'+message.sender_id);
             sender.text(+sender.text() + 1);

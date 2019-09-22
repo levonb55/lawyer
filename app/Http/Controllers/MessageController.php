@@ -10,19 +10,39 @@ use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
+
+    const READ = true;
+
     //Gets all messages
     public function index() {
         $messages = Message::select('sender_id', 'receiver_id')
                         ->where('sender_id', auth()->id())
                         ->orWhere('receiver_id', auth()->id())
                         ->get();
+
+        $unreadIds = Message::select(\DB::raw('`sender_id`, count(`sender_id`) as messages_count'))
+            ->where('receiver_id', auth()->id())
+            ->where('read', false)
+            ->groupBy('sender_id')
+            ->get();
+
         $res = [];
         foreach($messages as $message) {
            $res[]= $message->sender_id;
            $res[]= $message->receiver_id;
         }
+
         $res = array_unique($res);
-        $contacts = User::find($res);
+
+        $contacts = User::find($res)->except(auth()->id());
+
+        // add an unread key to each contact with the count of unread messages
+        $contacts = $contacts->map(function($contact) use ($unreadIds) {
+            $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
+            $contact->unread = $contactUnread ? $contactUnread->messages_count : '';
+
+            return $contact;
+        });
 
         return view('users.messages', compact('contacts'));
     }
@@ -38,6 +58,9 @@ class MessageController extends Controller
             $q->where('sender_id', $contact->id);
             $q->where('receiver_id', auth()->id());
         });
+
+        //Marks all messages as read
+        $messagesData->update(['read' => self::READ]);
 
         $messagesCount = $messagesData->count();
         $messagesSkip = $scroll * 10;
@@ -77,5 +100,11 @@ class MessageController extends Controller
                 'created_at' => $message->created_at
             ]);
         }
+    }
+
+    public function markAsRead(Message $message)
+    {
+        $message->update(['read' => self::READ]);
+        return response()->json('Read');
     }
 }

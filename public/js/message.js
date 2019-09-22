@@ -33,6 +33,17 @@ class Message {
     deleteMessage() {
 
     }
+
+    markAsRead(id) {
+        $.ajax({
+            method: 'PUT',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: appUrl + `/messages/${id}/read`
+        })
+        .catch(() => {
+            console.log('An error happened while marking a message as read.');
+        });
+    }
 }
 
 let message = new Message();
