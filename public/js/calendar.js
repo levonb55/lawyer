@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calendar.render();
 
-    setTimeout
-    var data_parent = document.queryselector('.fc-view-container');
+    var data_parent = document.querySelector('.fc-view-container');
 
-    console.log(data_parent)
    });

@@ -6,9 +6,9 @@
 
     <div class="profile_1_2">
         @if($user->image)
-            <img src="{{asset('assets/images/profile/' . $user->image)}}" alt="" class="find_2_face">
+            <img src="{{asset('assets/images/profile/' . $user->image)}}" alt="" class="find_2_face1">
         @else
-            <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="" class="find_2_face">
+            <img src="{{asset('assets/images/general/find_2_face.png')}}" alt="" class="find_2_face1">
         @endif
         <p class="profile_1_2_name">{{$user->first_name . ' ' . $user->last_name}}</p>
 
