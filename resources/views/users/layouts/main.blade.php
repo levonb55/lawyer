@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/dashboard_message.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard_calendar.css')}}">
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+    @yield('extra-styles')
 
 </head>
 <body>

@@ -39,9 +39,16 @@
                                     @endif
                                 </div>
                                 <div class="chat_ib">
-                                    <h5>{{ $contact->full_name }} <span class="chat_date"></span></h5>
+                                    <h5>
+                                        {{ $contact->full_name }}
+                                        <span class="chat_date"></span>
+                                        <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
+                                    </h5>
+                                    <div class="onlineBox">
+{{--                                        <div class="onlineOrOffline"></div>--}}
+                                    </div>
                                 </div>
-                                <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
+
                             </div>
                         </div>
                     @endforeach

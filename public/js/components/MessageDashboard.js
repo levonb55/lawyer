@@ -107,7 +107,7 @@ function outgoingMessage(image, content, createdAt) {
 
 function incomingMessage(image, content, createdAt) {
     return `
-        <div class="incoming_msg messages">
+        <div class="incoming_msg messages" style="margin: 15px 0;">
             <div class="incoming_msg_img">
                 <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
             </div>

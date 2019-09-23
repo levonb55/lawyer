@@ -64,7 +64,7 @@
 <div class="clear"></div>
 @include('partials._messages')
 
-<a href="{{route('lawyers.show', $user->id)}}">Your website on Reach Legal</a>
+<a href="{{route('lawyers.show', $user->id)}}">Your profile on Reach Legal</a>
 
 <form method="POST" enctype="multipart/form-data" action="{{route('user.update', $user->id)}}">
 
