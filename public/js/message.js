@@ -11,7 +11,7 @@ class Message {
             });
     }
 
-    store(messsageInput, component) {
+    store(messsageInput, component, failedMessage) {
         $.ajax({
             method: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -22,7 +22,8 @@ class Message {
             component(response);
         })
         .fail(function() {
-            $('.msg_history').after('<div class="text-danger mb-3">An error happened while posting a message!</div>');
+            let errorMessage = 'An error happened while posting a message!';
+            failedMessage(errorMessage);
         });
     }
 
