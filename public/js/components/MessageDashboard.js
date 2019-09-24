@@ -1,9 +1,5 @@
 let messages = {
     history: $('.msg_history'),
-    months: [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ],
     activeContact: '',
     scrollNumber: 0
 };
@@ -15,7 +11,7 @@ Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
         if(messages.activeContact == message.sender_id) {
             messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
-            scrollToBottom('.msg_history');
+            app.scrollToBottom('.msg_history');
             messageClone.markAsRead(message.id);
 
         } else {
@@ -46,7 +42,7 @@ $('.chat_list').on('click', function () {
     let messagesComponent = messagesData => {
         messages.history.data('messages', messagesData.messagesCount);
 
-        let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
+        let messagesFeed = messagesData.messages.reverse().map(message => {
             if(message.sender_id == messages.activeContact) {
                 return incomingMessage(message.image, message.content, new Date(message.created_at));
             } else {
@@ -55,7 +51,7 @@ $('.chat_list').on('click', function () {
         });
 
         messages.history.html(messagesFeed);
-        scrollToBottom('.msg_history');
+        app.scrollToBottom('.msg_history');
     }
 
     $('.type_msg').show();
@@ -76,16 +72,11 @@ $('#message-form').on('submit', function (e) {
     let sentMessage = messageData => {
         $('#content').val('');
         messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at)));
-        scrollToBottom('.msg_history');
+        app.scrollToBottom('.msg_history');
     };
 
     message.store($(this).serialize(), sentMessage);
 });
-
-//Scrolls the element to the bottom
-function scrollToBottom(el) {
-    document.querySelector(el).scrollTo(0, document.querySelector(el).scrollHeight);
-}
 
 function outgoingMessage(image, content, createdAt) {
     return `
@@ -97,7 +88,7 @@ function outgoingMessage(image, content, createdAt) {
                 <div class="received_withd_msg">
                     <p>${content}</p>
                     <span class="time_date">
-                        ${createdAt.getHours() + ':' + createdAt.getMinutes() + ' | ' + messages.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
+                        ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
                 </div>
             </div>
@@ -115,7 +106,7 @@ function incomingMessage(image, content, createdAt) {
                 <div class="received_withd_msg">
                     <p>${content}</p>
                     <span class="time_date">
-                        ${createdAt.getHours() + ':' + createdAt.getMinutes() + ' | ' + messages.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
+                        ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
                 </div>
             </div>
@@ -130,7 +121,7 @@ messages.history.on('scroll', function () {
 
            //Component to put messages data into
            let messagesComponent = messagesData => {
-               let messagesFeed = messagesData.messages.slice(0).reverse().map(message => {
+               let messagesFeed = messagesData.messages.reverse().map(message => {
                    if(message.sender_id == messages.activeContact) {
                        return incomingMessage(message.image, message.content, new Date(message.created_at));
                    } else {

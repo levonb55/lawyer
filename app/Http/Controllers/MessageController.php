@@ -73,6 +73,7 @@ class MessageController extends Controller
         foreach($messagesData as $message) {
             $messages[]=[
                 'sender_id' => $message->sender_id,
+                'name' => $message->sender->full_name,
                 'content' => $message->content,
                 'image' => $message->sender->image,
                 'created_at' => $message->created_at
