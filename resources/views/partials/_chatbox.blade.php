@@ -81,13 +81,17 @@
         </div>
     </div>
     <div class="popup-messages-footer">
-        <textarea id="status_message" placeholder="Type a message..." rows="10" cols="40" name="message"></textarea>
-        <div class="btn-footer">
-            {{--                    <button class="bg_none"><i class="glyphicon glyphicon-film"></i> </button>--}}
-            {{--                    <button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>--}}
-            {{--                    <button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>--}}
-            {{--                    <button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>--}}
-            <button class="bg_none pull-right"><i class="glyphicon glyphicon-send"></i></button>
-        </div>
+        <form id="chatbox-form">
+            <input type="hidden" name="contact" id="contact">
+            <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
+            <textarea class="message-content" placeholder="Type a message..." name="message"></textarea>
+            <div class="btn-footer">
+                {{--                    <button class="bg_none"><i class="glyphicon glyphicon-film"></i> </button>--}}
+                {{--                    <button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>--}}
+                {{--                    <button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>--}}
+                {{--                    <button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>--}}
+                <button class="bg_none pull-right"><i class="glyphicon glyphicon-send"></i></button>
+            </div>
+        </form>
     </div>
 </div>

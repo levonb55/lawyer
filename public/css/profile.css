@@ -681,6 +681,11 @@ body
   visibility: hidden;
 }
 
+.message-content  {
+  width: 100%;
+  resize: none;
+}
+
 .direct-chat-reply-name {
   color: #fff;
   font-size: 15px;
