@@ -1,9 +1,11 @@
 let chatBox =  {
     history: $('.direct-chat-messages'),
     profileNumber: $('.chat-popup').data('profile'),
+    content: $('.message-content'),
     scrollNumber: 0
 };
 
+//Opens popup chat window
 $('.Message_now').on('click', function () {
 
     chatBox.history.html('<div class="loading">Loading ...</div>');
@@ -22,6 +24,53 @@ $('.Message_now').on('click', function () {
 
     message.show(chatBox.profileNumber, messagesComponent, chatBox.scrollNumber);
 });
+
+
+//Loads messages on scroll
+$('.popup-messages').on('scroll', function () {
+    if($(this).scrollTop() == 0) {
+        if(chatBox.scrollNumber * 10 < chatBox.history.data('messages')) {
+            $('.load-messages').css('visibility', 'visible');
+
+            //Component to put messages data into
+            let messagesComponent = messagesData => {
+                let messagesFeed = messagesData.messages.reverse().map(message => {
+                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                });
+
+                chatBox.history.prepend(messagesFeed);
+                $('.load-messages').css('visibility', 'hidden');
+                if($('.chat-box-single-line')[10]) {
+                    $('.chat-box-single-line')[10].scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+                }
+            };
+
+            message.show(chatBox.profileNumber, messagesComponent, ++chatBox.scrollNumber);
+        }
+    }
+});
+
+//Stores messages
+$('#chatbox-form').on('submit', function (e) {
+    e.preventDefault();
+
+    // //Makes message field required
+    if(!chatBox.content.val()) { return; }
+
+    //Component for the sent message
+    let sentMessage = messageData => {
+        chatBox.content.val('');
+        chatBox.history.append(incomingMessage(messageData.image, messageData.name, messageData.content, new Date(messageData.created_at)));
+        app.scrollToBottom('.popup-messages');
+    };
+
+    let failedMessage = (errorMessage) => {
+        chatBox.history.after(`<div class="text-white">${errorMessage}</div>`);
+    };
+
+    message.store($(this).serialize(), sentMessage, failedMessage);
+});
+
 
 function incomingMessage(image, name, content, createdAt) {
     return `
@@ -45,26 +94,3 @@ function incomingMessage(image, name, content, createdAt) {
     `;
 
 }
-
-$('.popup-messages').on('scroll', function () {
-    if($(this).scrollTop() == 0) {
-        if(chatBox.scrollNumber * 10 < chatBox.history.data('messages')) {
-            $('.load-messages').css('visibility', 'visible');
-
-            //Component to put messages data into
-            let messagesComponent = messagesData => {
-                let messagesFeed = messagesData.messages.reverse().map(message => {
-                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
-                });
-
-                chatBox.history.prepend(messagesFeed);
-                $('.load-messages').css('visibility', 'hidden');
-                if($('.chat-box-single-line')[10]) {
-                    $('.chat-box-single-line')[10].scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
-                }
-            };
-
-            message.show(chatBox.profileNumber, messagesComponent, ++chatBox.scrollNumber);
-        }
-    }
-});

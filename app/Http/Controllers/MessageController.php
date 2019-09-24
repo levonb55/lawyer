@@ -96,6 +96,7 @@ class MessageController extends Controller
             broadcast(new NewMessage($message))->toOthers();
 
             return response()->json([
+                'name' => auth()->user()->full_name,
                 'image' => auth()->user()->image,
                 'content' => $message->content,
                 'created_at' => $message->created_at

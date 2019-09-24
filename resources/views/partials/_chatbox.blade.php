@@ -82,15 +82,15 @@
     </div>
     <div class="popup-messages-footer">
         <form id="chatbox-form">
-            <input type="hidden" name="contact" id="contact">
+            <input type="hidden" name="contact" id="contact" value="{{ $user->id }}">
             <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
-            <textarea class="message-content" placeholder="Type a message..." name="message"></textarea>
+            <textarea class="message-content" placeholder="Type a message..." name="content"></textarea>
             <div class="btn-footer">
                 {{--                    <button class="bg_none"><i class="glyphicon glyphicon-film"></i> </button>--}}
                 {{--                    <button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>--}}
                 {{--                    <button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>--}}
                 {{--                    <button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>--}}
-                <button class="bg_none pull-right"><i class="glyphicon glyphicon-send"></i></button>
+                <button type="submit" class="bg_none pull-right" title="Send"><i class="glyphicon glyphicon-send"></i></button>
             </div>
         </form>
     </div>

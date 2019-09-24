@@ -75,7 +75,11 @@ $('#message-form').on('submit', function (e) {
         app.scrollToBottom('.msg_history');
     };
 
-    message.store($(this).serialize(), sentMessage);
+    let failedMessage = (errorMessage) => {
+        $('.msg_history').after(`<div class="text-danger mb-3">${errorMessage}</div>`);
+    };
+
+    message.store($(this).serialize(), sentMessage, failedMessage);
 });
 
 function outgoingMessage(image, content, createdAt) {
