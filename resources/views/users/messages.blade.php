@@ -25,18 +25,14 @@
                 </div>
                 <div class="inbox_chat scroll">
                     @if(!$contacts->count())
-                        <div class="text-center mt-4">No Contact yet.</div>
+                        <div class="text-center mt-4 no-contact">No Contact yet.</div>
                     @endif
 
                     @foreach($contacts as $contact)
                         <div class="chat_list" data-contact="{{ $contact->id }}">
                             <div class="chat_people">
                                 <div class="chat_img">
-                                    @if($contact->image)
-                                        <img src="{{asset('assets/images/profile/' . $contact->image)}}" alt="sunil">
-                                    @else
-                                        <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
-                                    @endif
+                                    <img src="{{asset('assets/images/profile/' . $contact->image)}}" alt="sunil">
                                 </div>
                                 <div class="chat_ib">
                                     <h5>
