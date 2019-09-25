@@ -5,24 +5,42 @@ let chatBox =  {
     scrollNumber: 0
 };
 
+//Listens to the new message broadcasting
+Echo.private('messages.' +  $('#user').val())
+    .listen('NewMessage', (message) => {
+        if(chatBox.profileNumber == message.sender_id) {
+            chatBox.history.append(incomingMessage(message.image, message.name, message.content, new Date(message.created_at)));
+        }
+    });
+
 //Opens popup chat window
 $('.Message_now').on('click', function () {
 
-    chatBox.history.html('<div class="loading">Loading ...</div>');
+    if(!$(this).hasClass('active')) {
 
-    //Component to put messages data into
-    let messagesComponent = messagesData => {
-        chatBox.history.data('messages', messagesData.messagesCount);
+        chatBox.history.html('<div class="loading">Loading ...</div>');
 
-        let messagesFeed = messagesData.messages.reverse().map(message => {
-            return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
-        });
+        //Component to put messages data into
+        let messagesComponent = messagesData => {
+            if(messagesData.messages.length > 0) {
+                chatBox.history.data('messages', messagesData.messagesCount);
 
-        chatBox.history.html(messagesFeed);
-        app.scrollToBottom('.popup-messages');
-    };
+                let messagesFeed = messagesData.messages.reverse().map(message => {
+                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                });
 
-    message.show(chatBox.profileNumber, messagesComponent, chatBox.scrollNumber);
+                chatBox.history.html(messagesFeed);
+                app.scrollToBottom('.popup-messages');
+            } else {
+                chatBox.history.html('<div class="text-white no-message">No message to show.</div>');
+            }
+        };
+
+        message.show(chatBox.profileNumber, messagesComponent, chatBox.scrollNumber);
+    }
+
+    $(this).addClass('active');
+
 });
 
 
@@ -59,6 +77,7 @@ $('#chatbox-form').on('submit', function (e) {
 
     //Component for the sent message
     let sentMessage = messageData => {
+        $('.no-message').remove();
         chatBox.content.val('');
         chatBox.history.append(incomingMessage(messageData.image, messageData.name, messageData.content, new Date(messageData.created_at)));
         app.scrollToBottom('.popup-messages');

@@ -40,8 +40,10 @@ class NewMessage implements ShouldBroadcast
     public function broadcastWith() {
         return [
             'id' => $this->message->id,
+            'name' => auth()->user()->full_name,
             'image' => auth()->user()->image,
             'sender_id' => $this->message->sender_id,
+            'unread' => $this->message->read,
             'content' => $this->message->content,
             'created_at' => $this->message->created_at
         ];

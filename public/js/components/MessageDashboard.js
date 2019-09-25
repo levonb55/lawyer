@@ -6,9 +6,21 @@ let messages = {
 
 let messageClone = message;
 
-//listens to the new message broadcasting
+//Listens to the new message broadcasting
 Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
+        let contactList = $(".chat_list").map(function() {
+            return $(this).data("contact");
+        }).get();
+
+        //Adds contact to the list if doesn't exist on incoming messaging
+        if(!contactList.find(function (contactId) {
+            return contactId === message.sender_id;
+        })) {
+            $('.no-contact').remove();
+            $('.inbox_chat').prepend(getContactComponent(message.sender_id, message.name, message.image));
+        }
+
         if(messages.activeContact == message.sender_id) {
             messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
             app.scrollToBottom('.msg_history');
@@ -21,7 +33,7 @@ Echo.private('messages.' +  $('#user').val())
     });
 
 //Gets a conversation
-$('.chat_list').on('click', function () {
+$(document).on('click','.chat_list', function () {
 
     messages.scrollNumber = 0;
     messages.activeContact = $(this).data('contact');
@@ -112,6 +124,29 @@ function incomingMessage(image, content, createdAt) {
                     <span class="time_date">
                         ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+//Gets contact mark up
+function getContactComponent(senderId, name, image) {
+    return `
+        <div class="chat_list" data-contact="${senderId}">
+            <div class="chat_people">
+                <div class="chat_img">
+                    <img src="/assets/images/profile/${image}" alt="sunil">
+                </div>
+                <div class="chat_ib">
+                    <h5>
+                        ${name}
+                        <span class="chat_date"></span>
+                        <span class="badge badge-warning unread unread-${senderId}">0</span>
+                    </h5>
+                    <div class="onlineBox">
+<!--                                       <div class="onlineOrOffline"></div>-->
+                    </div>
                 </div>
             </div>
         </div>
