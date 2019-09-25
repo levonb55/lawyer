@@ -10,6 +10,7 @@ Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
         if(chatBox.profileNumber == message.sender_id) {
             chatBox.history.append(incomingMessage(message.image, message.name, message.content, new Date(message.created_at)));
+            app.scrollToBottom('.popup-messages');
         }
     });
 
@@ -26,7 +27,12 @@ $('.Message_now').on('click', function () {
                 chatBox.history.data('messages', messagesData.messagesCount);
 
                 let messagesFeed = messagesData.messages.reverse().map(message => {
-                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                    if(message.sender_id == chatBox.profileNumber) {
+                        return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                    }
+
+                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), 'direct-chat-text1');
+
                 });
 
                 chatBox.history.html(messagesFeed);
@@ -52,14 +58,15 @@ $('.popup-messages').on('scroll', function () {
 
             //Component to put messages data into
             let messagesComponent = messagesData => {
+                let messagesLength = messagesData.messages.length - 1;
                 let messagesFeed = messagesData.messages.reverse().map(message => {
                     return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
                 });
 
                 chatBox.history.prepend(messagesFeed);
                 $('.load-messages').css('visibility', 'hidden');
-                if($('.chat-box-single-line')[10]) {
-                    $('.chat-box-single-line')[10].scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+                if($('.direct-chat-msg')[messagesLength]) {
+                    $('.direct-chat-msg')[messagesLength].scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
                 }
             };
 
@@ -79,19 +86,20 @@ $('#chatbox-form').on('submit', function (e) {
     let sentMessage = messageData => {
         $('.no-message').remove();
         chatBox.content.val('');
-        chatBox.history.append(incomingMessage(messageData.image, messageData.name, messageData.content, new Date(messageData.created_at)));
+        chatBox.history.append(incomingMessage(messageData.image, messageData.name, messageData.content, new Date(messageData.created_at), 'direct-chat-text1'));
         app.scrollToBottom('.popup-messages');
     };
 
     let failedMessage = (errorMessage) => {
         chatBox.history.after(`<div class="text-white">${errorMessage}</div>`);
+        app.scrollToBottom('.popup-messages');
     };
 
     message.store($(this).serialize(), sentMessage, failedMessage);
 });
 
 
-function incomingMessage(image, name, content, createdAt) {
+function incomingMessage(image, name, content, createdAt, outgoingMessage = '') {
     return `
         <div class="chat-box-single-line">
             <abbr class="timestamp">${app.months[createdAt.getMonth()] + ' ' + createdAt.getDate() + ', ' + createdAt.getFullYear()}</abbr>
@@ -104,7 +112,7 @@ function incomingMessage(image, name, content, createdAt) {
             
             <img alt="message user image" src="${appUrl}/assets/images/profile/${image}" class="direct-chat-img">
             
-            <div class="direct-chat-text">${content}</div>
+            <div class="direct-chat-text ${outgoingMessage}">${content}</div>
             
             <div class="direct-chat-info clearfix">
                 <span class="direct-chat-timestamp pull-right">${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes())}</span>
