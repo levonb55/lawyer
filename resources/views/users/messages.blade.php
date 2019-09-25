@@ -61,7 +61,8 @@
                         <form id="message-form">
                             <input type="hidden" name="contact" id="contact">
                             <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
-                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>
+{{--                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>--}}
+                            <textarea class="message-content" name="content" id="content" placeholder="Type a message ..." autofocus></textarea>
                             <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                         </form>
                     </div>
