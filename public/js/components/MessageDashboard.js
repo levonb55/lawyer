@@ -136,7 +136,7 @@ function getContactComponent(senderId, name, image) {
         <div class="chat_list" data-contact="${senderId}">
             <div class="chat_people">
                 <div class="chat_img">
-                    <img src="/assets/images/profile/${image}" alt="sunil">
+                    <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
                 </div>
                 <div class="chat_ib">
                     <h5>
