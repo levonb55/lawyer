@@ -2,7 +2,7 @@ let chatBox =  {
     history: $('.direct-chat-messages'),
     profileNumber: $('.chat-popup').data('profile'),
     content: $('.message-content'),
-    scrollNumber: 0
+    scrollNumber: 1
 };
 
 //Listens to the new message broadcasting
@@ -38,7 +38,7 @@ $('.Message_now').on('click', function () {
                 chatBox.history.html(messagesFeed);
                 app.scrollToBottom('.popup-messages');
             } else {
-                chatBox.history.html('<div class="text-white no-message">No message to show.</div>');
+                chatBox.history.html('<div class="no-message">No message to show.</div>');
             }
         };
 

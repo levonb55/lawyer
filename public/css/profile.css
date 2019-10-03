@@ -507,6 +507,7 @@ body
   padding: 7px 10px;
   width: 100%;
   font-family: Oswald;
+  border-bottom: 1px solid #b0b0b0;
 }
 .bg_none i {
   border: 1px solid #ff6701;
@@ -573,7 +574,7 @@ body
 
 
 .popup-box .popup-messages {
-  background: #3f9684 none repeat scroll 0 0;
+  background: #fff none repeat scroll 0 0;
   height: 275px;
   overflow: auto;
   padding-bottom: 25px;
@@ -621,12 +622,12 @@ body
 }
 
 .popup-messages abbr.timestamp {
-  background: #3f9684  none repeat scroll 0 0;
-  color: #fff;
+  background: #fff  none repeat scroll 0 0;
+  color: #000;
   padding: 0 11px;
 }
 .popup-messages .chat-box-single-line {
-  border-bottom: 1px solid #a4c6b5;
+  border-bottom: 1px solid #ccc;
   height: 12px;
   margin: 7px 0 20px;
   position: relative;
@@ -636,7 +637,7 @@ body
   height: auto;
 }
 .popup-messages .direct-chat-text {
-  background: #dfece7 none repeat scroll 0 0;
+  background: #ff9c00 none repeat scroll 0 0;
   border: 1px solid #dfece7;
   border-radius: 2px;
   color: #1f2121;
@@ -675,7 +676,6 @@ body
 .popup-messages .loading {
   text-align: center;
   line-height: 13;
-  color: white;
 }
 
 .load-messages {
@@ -747,7 +747,7 @@ body
   -moz-border-left-colors: none;
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
-  border-color: transparent #d2d6de transparent transparent;
+  border-color: transparent #ff9c00 transparent transparent;
   border-image: none;
   border-style: solid;
   border-width: medium;
@@ -764,7 +764,7 @@ body
   margin-top: -5px;
 }
 .popup-messages .direct-chat-text {
-  background: #dfece7 none repeat scroll 0 0;
+  background: #ff9c00 none repeat scroll 0 0;
   border: 1px solid #dfece7;
   border-radius: 2px;
   color: #1f2121;
@@ -780,6 +780,24 @@ body
 }
 .direct-chat-text1{
   background-color: #ffe37e !important;
+}
+.direct-chat-text1::before {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent #ffe37e transparent transparent !important;
+  z-index: 99999;
+  border-image: none;
+  border-style: solid;
+  border-width: 5px;
+  content: " ";
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 100%;
+  top: 10px;
+  width: 0;
 }
 /*end*/
 

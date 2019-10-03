@@ -373,7 +373,7 @@
 @endsection
 
 @section('extra-scripts')
-    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>
+{{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
     <script src="{{ asset('js/message.js') }}"></script>
     <script src="{{ asset('js/components/ChatBox.js') }}" ></script>
 @endsection
