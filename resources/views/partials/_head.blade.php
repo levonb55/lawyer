@@ -27,4 +27,7 @@
 <link rel="stylesheet" href="{{asset('css/ask.css')}}">
 <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap-glyphicons.min.css')}}">
+@section('newMessage-popup-style')
+    <link rel="stylesheet" href="{{ asset('css/newmessage-popup.css') }}">
+@show
 @yield('styles')

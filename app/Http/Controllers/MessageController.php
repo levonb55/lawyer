@@ -63,7 +63,7 @@ class MessageController extends Controller
         $messagesData->update(['read' => self::READ]);
 
         $messagesCount = $messagesData->count();
-        $messagesSkip = $scroll * 10;
+        $messagesSkip = ($scroll * 10) - 10;
         $messagesData = $messagesData
             ->orderBy('id', 'DESC')
             ->skip($messagesSkip)

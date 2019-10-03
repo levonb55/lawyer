@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{asset('css/dashboard_message.css')}}">
     <link rel="stylesheet" href="{{asset('css/dashboard_calendar.css')}}">
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
+    @section('newMessage-popup-style')
+        <link rel="stylesheet" href="{{ asset('css/newmessage-popup.css') }}">
+    @show
     @yield('extra-styles')
 
 </head>
@@ -40,11 +43,14 @@
 
     </div>
 
+    @include('partials._newmessage-popup')
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('assets/libs/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('assets/libs/js/popper.min.js')}}"></script>
 <script src="{{asset('assets/libs/js/bootstrap.min.js')}}"></script>
-{{--<script src="{{asset('assets/libs/js/wow.min.js')}}"></script>--}}
+<script src="{{ asset('assets/libs/js/socket.js') }}"></script>
+    {{--<script src="{{asset('assets/libs/js/wow.min.js')}}"></script>--}}
 {{--<script src="{{asset('assets/libs/js/owl.carousel.min.js')}}"></script>--}}
 {{--<script src="{{asset('js/main.js')}}"></script>--}}
 {{--<script src="{{asset('js/dashboard.js')}}"></script>--}}
@@ -52,11 +58,15 @@
 {{--<script src="{{asset('assets/site/main/node_modules/@fullcalendar/core/main.js')}}"></script>--}}
 {{--<script src="{{asset('assets/site/main/node_modules/@fullcalendar/daygrid/main.js')}}"></script>--}}
 <script>
+    let authUser = @json(auth()->id());
     let appUrl = "";
     if(window.location.hostname !== 'lawyer.loc') {
         appUrl = 'http://myworks.site/dev/lawyer/public';
     }
 </script>
+@section('newMessage-popup-script')
+    <script src="{{ asset('js/components/NewMessagePopup.js') }}"></script>
+@show
 @yield('extra-scripts')
 </body>
 </html>

@@ -1,0 +1,59 @@
+/*mesaage pop up*/
+.newMessagePopUp{
+    width: 300px;
+    position: fixed;
+    z-index: 9999;
+    bottom: 60%;
+    /*top: 10%;*/
+    /*bottom: 40%;*/
+    /*bottom: 30%;*/
+    right: -350px;
+    transition: .3s;
+    border: 1px solid  #ccc;
+    padding: 15px 0  ;
+    background-color: #fff;
+    /*right: 10px;*/
+}
+.newMessageTop{
+    border-bottom: 1px solid  #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+.newMessageTop p{
+    font-size: 18px ;
+    font-weight: bold;
+    color: #ff9c00;
+    margin-left: 15px;
+}
+.newMessageTop i{
+    font-size: 20px ;
+    font-weight: bold;
+    margin-right: 15px;
+}
+.newMessageUser{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.newMessageUser img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.newMessageUser p{
+    font-size: 18px;
+}
+.newMessageText {
+    margin: 0 15px;
+    font-size: 16px;
+    width: 60%;
+    height: 20px;
+    overflow: hidden;
+}
+
+.newMessage-hide {
+    cursor: pointer;
+}
+/*mesaage pop up end*/

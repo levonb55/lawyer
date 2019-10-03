@@ -2,6 +2,9 @@
 
 @section('title', 'Messages')
 
+@section('newMessage-popup-style')
+@endsection
+
 @section('content')
 
     <div class="nav-btn pull-left">
@@ -75,7 +78,9 @@
 @endsection
 
 @section('extra-scripts')
-    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>
+{{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
     <script src="{{ asset('js/message.js') }}"></script>
     <script src="{{ asset('js/components/MessageDashboard.js') }}" ></script>
+    @section('newMessage-popup-script')
+    @endsection
 @endsection
