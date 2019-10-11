@@ -112,7 +112,7 @@ function incomingMessage(image, name, content, createdAt, outgoingMessage = '') 
             
             <img alt="message user image" src="${appUrl}/assets/images/profile/${image}" class="direct-chat-img">
             
-            <div class="direct-chat-text ${outgoingMessage}">${content}</div>
+            <div class="direct-chat-text ${outgoingMessage}"> <p>${content}</p> </div>
             
             <div class="direct-chat-info clearfix">
                 <span class="direct-chat-timestamp pull-right">${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes())}</span>
@@ -121,3 +121,5 @@ function incomingMessage(image, name, content, createdAt, outgoingMessage = '') 
     `;
 
 }
+
+app.goToNewLine($('.message-content'), $('#chatbox-form'));

@@ -139,7 +139,7 @@ height: 18px;
   margin-right: 25px;
 }
 .Message_now{
-  margin: 30px auto;
+  margin: 0 auto 30px;
   font-size: 17px;
   font-weight: bold;
   color: #fff;
@@ -173,11 +173,12 @@ color: #fff;
   font-weight: bold;
     font-family: "Montserrat-Regular";
 }
-.profile_1_3{
-width: 20%;
-box-shadow: 0px 1px 14.9px 0.2px rgba(124, 123, 123, 0.24);
-background-color: #ffffff;
-text-align: center;
+.profile_1_3 {
+  width: 20%;
+  padding-top: 30px;
+  box-shadow: 0px 1px 14.9px 0.2px rgba(124, 123, 123, 0.24);
+  background-color: #ffffff;
+  text-align: center;
 }
 .profile_1_3_inputs input{
   width: 90%;
@@ -768,6 +769,10 @@ body
   border: 1px solid #dfece7;
   border-radius: 2px;
   color: #1f2121;
+}
+.direct-chat-text, .direct-chat-text1 {
+  white-space: pre-line;
+  word-break: break-all;
 }
 .direct-chat-text {
   background: #d2d6de none repeat scroll 0 0;

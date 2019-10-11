@@ -142,7 +142,9 @@
         <div class="profile_1_3">
             <!-- <p class="Message_now"  data-toggle="modal" data-target="#chat">Message Now</p> -->
             @if(Auth::check())
-                <button type="button" name="button" class="Message_now"  data-toggle="modal" data-target="#chat">Message Now</button>
+                @if(auth()->id() !== $user->id)
+                    <button type="button" name="button" class="Message_now"  data-toggle="modal" data-target="#chat">Message Now</button>
+                @endif
             @else
                 <button class="Message_now" data-toggle="modal" data-target="#login_modal">Log in to send a message.</button>
             @endif
