@@ -179,3 +179,5 @@ messages.history.on('scroll', function () {
        }
    }
 });
+
+app.goToNewLine($('.message-content'), $('#message-form'));

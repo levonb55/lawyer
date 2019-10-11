@@ -14,5 +14,27 @@ let app = {
         }
 
         return createdAt;
+    },
+
+    // Goes to new line when pressing Ctrl + Enter
+    goToNewLine: function (element, form) {
+        element.keydown(function (e) {
+            if (e.keyCode === 13 && e.ctrlKey) {
+                $(this).val(function(i,val){
+                    return val + "\n";
+                });
+
+                element[0].scrollBy(0, 25);
+            }
+        }).keypress(function(e){
+            if (e.keyCode === 13 && !e.ctrlKey) {
+                form.submit();
+                return false;
+            }
+        }).keyup(function (e){
+            if (e.keyCode === 17) {
+                ctrlKeyDown = false;
+            }
+        });
     }
 };
