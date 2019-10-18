@@ -90,6 +90,13 @@
                 {{--                    <button class="bg_none"><i class="glyphicon glyphicon-camera"></i> </button>--}}
                 {{--                    <button class="bg_none"><i class="glyphicon glyphicon-paperclip"></i> </button>--}}
                 {{--                    <button class="bg_none pull-right"><i class="glyphicon glyphicon-thumbs-up"></i> </button>--}}
+                <label class="btnFooterLabel">
+                    <input type="file" class="message-file d-none">
+                    <span class="bg_none text-center hand" title="Attach a file"><i class="glyphicon glyphicon-paperclip"></i></span>
+                </label>
+                <div class="progress  upload-progress">
+                    <div class="progress-bar bg-success upload-progress-number"></div>
+                </div>
                 <button type="submit" class="bg_none pull-right" title="Send"><i class="glyphicon glyphicon-send"></i></button>
             </div>
         </form>

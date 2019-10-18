@@ -2,7 +2,8 @@ let chatBox =  {
     history: $('.direct-chat-messages'),
     profileNumber: $('.chat-popup').data('profile'),
     content: $('.message-content'),
-    scrollNumber: 1
+    scrollNumber: 1,
+    form: $('#chatbox-form')
 };
 
 //Listens to the new message broadcasting
@@ -28,10 +29,10 @@ $('.Message_now').on('click', function () {
 
                 let messagesFeed = messagesData.messages.reverse().map(message => {
                     if(message.sender_id == chatBox.profileNumber) {
-                        return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                        return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), null, message.original_name, message.new_name);
                     }
 
-                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), 'direct-chat-text1');
+                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), 'direct-chat-text1', message.original_name, message.new_name);
 
                 });
 
@@ -60,7 +61,12 @@ $('.popup-messages').on('scroll', function () {
             let messagesComponent = messagesData => {
                 let messagesLength = messagesData.messages.length - 1;
                 let messagesFeed = messagesData.messages.reverse().map(message => {
-                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                    // return incomingMessage(message.image, message.name, message.content, new Date(message.created_at));
+                    if(message.sender_id == chatBox.profileNumber) {
+                        return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), null, message.original_name, message.new_name);
+                    }
+
+                    return incomingMessage(message.image, message.name, message.content, new Date(message.created_at), 'direct-chat-text1', message.original_name, message.new_name);
                 });
 
                 chatBox.history.prepend(messagesFeed);
@@ -76,10 +82,10 @@ $('.popup-messages').on('scroll', function () {
 });
 
 //Stores messages
-$('#chatbox-form').on('submit', function (e) {
+chatBox.form.on('submit', function (e) {
     e.preventDefault();
 
-    // //Makes message field required
+    //Makes message field required
     if(!chatBox.content.val()) { return; }
 
     //Component for the sent message
@@ -99,7 +105,14 @@ $('#chatbox-form').on('submit', function (e) {
 });
 
 
-function incomingMessage(image, name, content, createdAt, outgoingMessage = '') {
+function incomingMessage(image, name, content, createdAt, outgoingMessage = '', original_name =  '', new_name = '') {
+    let messageContent = '';
+    if(original_name) {
+        messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
+    } else {
+        messageContent = content;
+    }
+
     return `
         <div class="chat-box-single-line">
             <abbr class="timestamp">${app.months[createdAt.getMonth()] + ' ' + createdAt.getDate() + ', ' + createdAt.getFullYear()}</abbr>
@@ -112,14 +125,38 @@ function incomingMessage(image, name, content, createdAt, outgoingMessage = '') 
             
             <img alt="message user image" src="${appUrl}/assets/images/profile/${image}" class="direct-chat-img">
             
-            <div class="direct-chat-text ${outgoingMessage}"> <p>${content}</p> </div>
+            <div class="direct-chat-text ${outgoingMessage}"> <p>${messageContent}</p> </div>
             
             <div class="direct-chat-info clearfix">
                 <span class="direct-chat-timestamp pull-right">${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes())}</span>
             </div>
         </div>
     `;
-
 }
 
-app.goToNewLine($('.message-content'), $('#chatbox-form'));
+app.goToNewLine(chatBox.content, chatBox.form);
+
+//Makes a file attachment
+$('.message-file').on('change', function () {
+    let contactId = $('#contact');
+
+    //Component for the sent message
+    let sentMessage = messageData => {
+        $('.no-message').remove();
+        chatBox.content.val('');
+        chatBox.history.append(incomingMessage(messageData.image, messageData.name, messageData.content, new Date(messageData.created_at), 'direct-chat-text1',  messageData.original_name, messageData.new_name));
+        app.scrollToBottom('.popup-messages');
+    };
+
+    let failedMessage = (errorMessage) => {
+        chatBox.history.after(`<div class="text-white">${errorMessage}</div>`);
+        app.scrollToBottom('.popup-messages');
+    };
+
+    let file = $(this)[0].files[0];
+    let formData = new FormData();
+    formData.set("file", file);
+    formData.set("contact", contactId.val());
+    message.store(formData, sentMessage, failedMessage, false, false);
+    $('#chatbox-form')[0].reset();
+});

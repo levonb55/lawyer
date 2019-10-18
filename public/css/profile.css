@@ -383,6 +383,31 @@ margin-top: 60px;
 }
 
 
+.uploadAndSendBtn{
+position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+.msg_send_btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.btnFooterLabe2{
+    position: absolute;
+    left: 60px;
+    top: 0;
+}
+.upload-progress2{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 100px;
+}
 /*!*  chat*!*/
 /*.modal-backdrop*/
 /*{*/
@@ -535,7 +560,8 @@ body
 .popup-box .popup-head .popup-head-right {
   margin: 11px 7px 0;
 }
-.popup-box .popup-messages {
+.chat-popup .upload-progress {
+    width: 100px;
 }
 .popup-head-left img {
   border: 1px solid #7b7b7b;
@@ -560,6 +586,12 @@ body
   overflow: hidden;
   padding: 2px 5px 10px 6px;
   width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btnFooterLabel {
+    margin-bottom: 0 !important;
 }
 .simple_round {
   background: #d1d1d1 none repeat scroll 0 0;
@@ -687,7 +719,10 @@ body
   width: 100%;
   resize: none;
 }
-
+.chat_people{
+    display: flex;
+    align-items: center;
+}
 .direct-chat-reply-name {
   color: #fff;
   font-size: 15px;

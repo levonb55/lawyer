@@ -75,6 +75,8 @@ class MessageController extends Controller
                 'sender_id' => $message->sender_id,
                 'name' => $message->sender->full_name,
                 'content' => $message->content,
+                'original_name' => $message->original_name,
+                'new_name' => $message->new_name,
                 'image' => $message->sender->image,
                 'created_at' => $message->created_at
             ];
@@ -86,21 +88,46 @@ class MessageController extends Controller
     //Stores a new message to the database
     public function store(Request $request) {
         if ($request->ajax()){
-            $message = Message::create([
-                'sender_id' => auth()->id(),
-                'receiver_id' => $request->input('contact'),
-                'content' => $request->input('content')
-            ]);
+            if($request->hasFile('file')) {
+                $file = $request->file('file');
+                $fileName = time() . '.' . $request->file->extension();
+                $location = public_path('assets/attachments/');
+                $file->move($location, $fileName);
 
-            $message = Message::find($message->id);
-            broadcast(new NewMessage($message))->toOthers();
+                $message = Message::create([
+                    'sender_id' => auth()->id(),
+                    'receiver_id' => $request->input('contact'),
+                    'original_name' => $file->getClientOriginalName(),
+                    'new_name' => $fileName
+                ]);
 
-            return response()->json([
-                'name' => auth()->user()->full_name,
-                'image' => auth()->user()->image,
-                'content' => $message->content,
-                'created_at' => $message->created_at
-            ]);
+                $message = Message::find($message->id);
+                broadcast(new NewMessage($message))->toOthers();
+
+                return response()->json([
+                    'name' => auth()->user()->full_name,
+                    'image' => auth()->user()->image,
+                    'original_name' => $message->original_name,
+                    'new_name' => $message->new_name,
+                    'created_at' => $message->created_at
+                ]);
+            } else {
+                $message = Message::create([
+                    'sender_id' => auth()->id(),
+                    'receiver_id' => $request->input('contact'),
+                    'content' => $request->input('content')
+                ]);
+
+                $message = Message::find($message->id);
+                broadcast(new NewMessage($message))->toOthers();
+
+                return response()->json([
+                    'name' => auth()->user()->full_name,
+                    'image' => auth()->user()->image,
+                    'content' => $message->content,
+                    'created_at' => $message->created_at
+                ]);
+            }
         }
     }
 
