@@ -857,3 +857,11 @@ margin-bottom: 20px;
 .rating-star {
   width: 22px !important;
 }
+
+.hand {
+    cursor: pointer;
+}
+
+.upload-progress {
+    display: none;
+}

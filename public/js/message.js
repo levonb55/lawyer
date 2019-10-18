@@ -11,14 +11,32 @@ class Message {
             });
     }
 
-    store(messsageInput, component, failedMessage) {
+    store(messageInput, component, failedMessage, processData = true, contentType) {
         $.ajax({
             method: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: appUrl + '/messages/store',
-            data: messsageInput
+            data: messageInput,
+            processData: processData,
+            contentType: contentType,
+            xhr: function() {
+                let xhr = $.ajaxSettings.xhr();
+                if(!processData) {
+                    xhr.upload.onprogress = function (e) {
+                        $('.upload-progress').show();
+                        // For uploads
+                        if (e.lengthComputable) {
+                            let progressNumber = Math.round(e.loaded / e.total) * 100 + '%';
+                            $('.upload-progress-number').text(progressNumber).css('width', progressNumber);
+                        }
+                    };
+                }
+
+                return xhr;
+            }
         })
         .done(function(response) {
+            $('.upload-progress').hide();
             component(response);
         })
         .fail(function() {

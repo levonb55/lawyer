@@ -66,7 +66,16 @@
                             <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
 {{--                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>--}}
                             <textarea class="message-content" name="content" id="content" placeholder="Type a message ..." autofocus></textarea>
-                            <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                            <div class="uploadAndSendBtn">
+                                <label class="btnFooterLabel btnFooterLabe2">
+                                  <input type="file" class="message-file d-none">
+                                  <span class="bg_none text-center hand" title="Attach a file"><i class="fas fa-paperclip"></i></span>
+                                </label>
+                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                <div class="progress  upload-progress upload-progress2">
+                                  <div class="progress-bar bg-success upload-progress-number"></div>
+                                </div>
+                          </div>
                         </form>
                     </div>
                 </div>
