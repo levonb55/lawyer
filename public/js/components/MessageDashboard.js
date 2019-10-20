@@ -2,6 +2,16 @@ let messages = {
     history: $('.msg_history'),
     activeContact: '',
     scrollNumber: 0
+    // checkMessageContent: function (original_name, new_name) {
+    //     let messageContent = '';
+    //     if(original_name) {
+    //         messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
+    //     } else {
+    //         messageContent = content;
+    //     }
+    //
+    //     return messageContent;
+    // }
 };
 
 let messageClone = message;
@@ -22,7 +32,7 @@ Echo.private('messages.' +  $('#user').val())
         }
 
         if(messages.activeContact == message.sender_id) {
-            messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at)));
+            messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name));
             app.scrollToBottom('.msg_history');
             messageClone.markAsRead(message.id);
 
@@ -56,9 +66,9 @@ $(document).on('click','.chat_list', function () {
 
         let messagesFeed = messagesData.messages.reverse().map(message => {
             if(message.sender_id == messages.activeContact) {
-                return incomingMessage(message.image, message.content, new Date(message.created_at));
+                return incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
             } else {
-                return outgoingMessage(message.image, message.content, new Date(message.created_at));
+                return outgoingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
             }
         });
 
@@ -94,7 +104,31 @@ $('#message-form').on('submit', function (e) {
     message.store($(this).serialize(), sentMessage, failedMessage);
 });
 
-function outgoingMessage(image, content, createdAt) {
+//Makes a file attachment
+$('.message-file').on('change', function () {
+    let contactId = $('#contact').val();
+
+    //Component for the sent message
+    let sentMessage = messageData => {
+        $('#content').val('');
+        messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at), messageData.original_name, messageData.new_name));
+        app.scrollToBottom('.msg_history');
+    };
+
+    let failedMessage = (errorMessage) => {
+        $('.msg_history').after(`<div class="text-danger mb-3">${errorMessage}</div>`);
+    };
+
+    let file = $(this)[0].files[0];
+    let formData = new FormData();
+    formData.set("file", file);
+    formData.set("contact", contactId);
+    message.store(formData, sentMessage, failedMessage, false, false);
+    $('#message-form')[0].reset();
+});
+
+function outgoingMessage(image, content, createdAt, original_name =  '', new_name = '') {
+
     return `
         <div class="outgoing_msg messages">
             <div class="incoming_msg_img">
@@ -102,7 +136,7 @@ function outgoingMessage(image, content, createdAt) {
             </div>
             <div class="sent_msg">
                 <div class="received_withd_msg">
-                    <p>${content}</p>
+                    <p>${message.checkMessageContent(content, original_name, new_name)}</p>
                     <span class="time_date">
                         ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
@@ -112,7 +146,8 @@ function outgoingMessage(image, content, createdAt) {
     `;
 }
 
-function incomingMessage(image, content, createdAt) {
+function incomingMessage(image, content, createdAt, original_name =  '', new_name = '') {
+
     return `
         <div class="incoming_msg messages" style="margin: 15px 0;">
             <div class="incoming_msg_img">
@@ -120,7 +155,7 @@ function incomingMessage(image, content, createdAt) {
             </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
-                    <p>${content}</p>
+                    <p>${message.checkMessageContent(content, original_name, new_name)}</p>
                     <span class="time_date">
                         ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
@@ -162,9 +197,9 @@ messages.history.on('scroll', function () {
            let messagesComponent = messagesData => {
                let messagesFeed = messagesData.messages.reverse().map(message => {
                    if(message.sender_id == messages.activeContact) {
-                       return incomingMessage(message.image, message.content, new Date(message.created_at));
+                       return incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
                    } else {
-                       return outgoingMessage(message.image, message.content, new Date(message.created_at));
+                       return outgoingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
                    }
                });
 
