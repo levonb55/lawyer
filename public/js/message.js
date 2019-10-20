@@ -12,6 +12,9 @@ class Message {
     }
 
     store(messageInput, component, failedMessage, processData = true, contentType) {
+        let progressBar = $('.upload-progress');
+        let progressBarNumber = $('.upload-progress-number');
+
         $.ajax({
             method: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -23,11 +26,11 @@ class Message {
                 let xhr = $.ajaxSettings.xhr();
                 if(!processData) {
                     xhr.upload.onprogress = function (e) {
-                        $('.upload-progress').show();
+                        progressBar.show();
                         // For uploads
                         if (e.lengthComputable) {
-                            let progressNumber = Math.round(e.loaded / e.total) * 100 + '%';
-                            $('.upload-progress-number').text(progressNumber).css('width', progressNumber);
+                            let progressNumber = ((e.loaded / e.total) * 100).toFixed() + '%';
+                            progressBarNumber.text(progressNumber).css('width', progressNumber);
                         }
                     };
                 }
@@ -36,7 +39,8 @@ class Message {
             }
         })
         .done(function(response) {
-            $('.upload-progress').hide();
+            progressBar.hide();
+            progressBarNumber.width(0);
             component(response);
         })
         .fail(function() {
@@ -62,6 +66,18 @@ class Message {
         .catch(() => {
             console.log('An error happened while marking a message as read.');
         });
+    }
+
+    //Checks whether a message is a file attachment or a text
+    checkMessageContent(content, original_name, new_name) {
+        let messageContent = '';
+        if(original_name) {
+            messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
+        } else {
+            messageContent = content;
+        }
+
+        return messageContent;
     }
 }
 

@@ -10,7 +10,7 @@ let chatBox =  {
 Echo.private('messages.' +  $('#user').val())
     .listen('NewMessage', (message) => {
         if(chatBox.profileNumber == message.sender_id) {
-            chatBox.history.append(incomingMessage(message.image, message.name, message.content, new Date(message.created_at)));
+            chatBox.history.append(incomingMessage(message.image, message.name, message.content, new Date(message.created_at), '', message.original_name, message.new_name));
             app.scrollToBottom('.popup-messages');
         }
     });
@@ -106,12 +106,6 @@ chatBox.form.on('submit', function (e) {
 
 
 function incomingMessage(image, name, content, createdAt, outgoingMessage = '', original_name =  '', new_name = '') {
-    let messageContent = '';
-    if(original_name) {
-        messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
-    } else {
-        messageContent = content;
-    }
 
     return `
         <div class="chat-box-single-line">
@@ -125,7 +119,7 @@ function incomingMessage(image, name, content, createdAt, outgoingMessage = '', 
             
             <img alt="message user image" src="${appUrl}/assets/images/profile/${image}" class="direct-chat-img">
             
-            <div class="direct-chat-text ${outgoingMessage}"> <p>${messageContent}</p> </div>
+            <div class="direct-chat-text ${outgoingMessage}"> <p>${message.checkMessageContent(content, original_name, new_name)}</p> </div>
             
             <div class="direct-chat-info clearfix">
                 <span class="direct-chat-timestamp pull-right">${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes())}</span>

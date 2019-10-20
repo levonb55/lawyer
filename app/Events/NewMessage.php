@@ -45,6 +45,8 @@ class NewMessage implements ShouldBroadcast
             'sender_id' => $this->message->sender_id,
             'unread' => $this->message->read,
             'content' => $this->message->content,
+            'original_name' => $this->message->original_name,
+            'new_name' => $this->message->new_name,
             'created_at' => $this->message->created_at
         ];
     }
