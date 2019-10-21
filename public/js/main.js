@@ -3,7 +3,7 @@ $( document ).ready(function() {
     let appUrl = "";
 
     if(window.location.hostname !== 'lawyer.loc') {
-        appUrl = 'http://myworks.site/dev/lawyer/public';
+        appUrl = 'http://greatexpertdev.site/laravel/lawyer/public';
     }
 
     $('.owl-carousel').owlCarousel({
