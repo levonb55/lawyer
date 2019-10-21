@@ -69,10 +69,10 @@ class Message {
     }
 
     //Checks whether a message is a file attachment or a text
-    checkMessageContent(content, original_name, new_name) {
+    checkMessageContent(content, file_original_name, file_new_name) {
         let messageContent = '';
-        if(original_name) {
-            messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
+        if(file_original_name) {
+            messageContent = `<a href="${appUrl}/assets/attachments/${file_new_name}" target="_blank">${file_original_name}</a>`;
         } else {
             messageContent = content;
         }

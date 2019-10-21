@@ -1,17 +1,16 @@
 let messages = {
     history: $('.msg_history'),
     activeContact: '',
-    scrollNumber: 0
-    // checkMessageContent: function (original_name, new_name) {
-    //     let messageContent = '';
-    //     if(original_name) {
-    //         messageContent = `<a href="${appUrl}/assets/attachments/${new_name}" target="_blank">${original_name}</a>`;
-    //     } else {
-    //         messageContent = content;
-    //     }
-    //
-    //     return messageContent;
-    // }
+    scrollNumber: 0,
+    failedMessage: function (errorMessage) {
+        messages.history.after(`<div class="text-danger mb-3">${errorMessage}</div>`);
+    },
+    //Component for the sent message
+    sentMessage: function (messageData) {
+        $('#content').val('');
+        messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at), messageData.file_original_name, messageData.file_new_name));
+        app.scrollToBottom('.msg_history');
+    }
 };
 
 let messageClone = message;
@@ -32,7 +31,7 @@ Echo.private('messages.' +  $('#user').val())
         }
 
         if(messages.activeContact == message.sender_id) {
-            messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name));
+            messages.history.append(incomingMessage(message.image, message.content, new Date(message.created_at), message.file_original_name, message.file_new_name));
             app.scrollToBottom('.msg_history');
             messageClone.markAsRead(message.id);
 
@@ -66,9 +65,9 @@ $(document).on('click','.chat_list', function () {
 
         let messagesFeed = messagesData.messages.reverse().map(message => {
             if(message.sender_id == messages.activeContact) {
-                return incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
+                return incomingMessage(message.image, message.content, new Date(message.created_at), message.file_original_name, message.file_new_name);
             } else {
-                return outgoingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
+                return outgoingMessage(message.image, message.content, new Date(message.created_at), message.file_original_name, message.file_new_name);
             }
         });
 
@@ -90,44 +89,22 @@ $('#message-form').on('submit', function (e) {
     //Makes message field required
     if(!$('#content').val()) { return; }
 
-    //Component for the sent message
-    let sentMessage = messageData => {
-        $('#content').val('');
-        messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at)));
-        app.scrollToBottom('.msg_history');
-    };
-
-    let failedMessage = (errorMessage) => {
-        $('.msg_history').after(`<div class="text-danger mb-3">${errorMessage}</div>`);
-    };
-
-    message.store($(this).serialize(), sentMessage, failedMessage);
+    message.store($(this).serialize(), messages.sentMessage, messages.failedMessage);
 });
 
 //Makes a file attachment
 $('.message-file').on('change', function () {
     let contactId = $('#contact').val();
-
-    //Component for the sent message
-    let sentMessage = messageData => {
-        $('#content').val('');
-        messages.history.append(outgoingMessage(messageData.image, messageData.content, new Date(messageData.created_at), messageData.original_name, messageData.new_name));
-        app.scrollToBottom('.msg_history');
-    };
-
-    let failedMessage = (errorMessage) => {
-        $('.msg_history').after(`<div class="text-danger mb-3">${errorMessage}</div>`);
-    };
-
     let file = $(this)[0].files[0];
     let formData = new FormData();
     formData.set("file", file);
     formData.set("contact", contactId);
-    message.store(formData, sentMessage, failedMessage, false, false);
+
+    message.store(formData, messages.sentMessage, messages.failedMessage, false, false);
     $('#message-form')[0].reset();
 });
 
-function outgoingMessage(image, content, createdAt, original_name =  '', new_name = '') {
+function outgoingMessage(image, content, createdAt, file_original_name =  '', file_new_name = '') {
 
     return `
         <div class="outgoing_msg messages">
@@ -136,7 +113,7 @@ function outgoingMessage(image, content, createdAt, original_name =  '', new_nam
             </div>
             <div class="sent_msg">
                 <div class="received_withd_msg">
-                    <p>${message.checkMessageContent(content, original_name, new_name)}</p>
+                    <p>${message.checkMessageContent(content, file_original_name, file_new_name)}</p>
                     <span class="time_date">
                         ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
@@ -146,7 +123,7 @@ function outgoingMessage(image, content, createdAt, original_name =  '', new_nam
     `;
 }
 
-function incomingMessage(image, content, createdAt, original_name =  '', new_name = '') {
+function incomingMessage(image, content, createdAt, file_original_name =  '', file_new_name = '') {
 
     return `
         <div class="incoming_msg messages" style="margin: 15px 0;">
@@ -155,7 +132,7 @@ function incomingMessage(image, content, createdAt, original_name =  '', new_nam
             </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
-                    <p>${message.checkMessageContent(content, original_name, new_name)}</p>
+                    <p>${message.checkMessageContent(content, file_original_name, file_new_name)}</p>
                     <span class="time_date">
                         ${app.appendZero(createdAt.getHours()) + ':' + app.appendZero(createdAt.getMinutes()) + ' | ' + app.months[createdAt.getMonth()] + ' ' + createdAt.getDate()}
                     </span>
@@ -197,9 +174,9 @@ messages.history.on('scroll', function () {
            let messagesComponent = messagesData => {
                let messagesFeed = messagesData.messages.reverse().map(message => {
                    if(message.sender_id == messages.activeContact) {
-                       return incomingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
+                       return incomingMessage(message.image, message.content, new Date(message.created_at), message.file_original_name, message.file_new_name);
                    } else {
-                       return outgoingMessage(message.image, message.content, new Date(message.created_at), message.original_name, message.new_name);
+                       return outgoingMessage(message.image, message.content, new Date(message.created_at), message.file_original_name, message.file_new_name);
                    }
                });
 

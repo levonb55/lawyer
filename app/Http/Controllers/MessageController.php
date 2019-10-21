@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
+use App\Http\Requests\StoreMessage;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -75,8 +76,8 @@ class MessageController extends Controller
                 'sender_id' => $message->sender_id,
                 'name' => $message->sender->full_name,
                 'content' => $message->content,
-                'original_name' => $message->original_name,
-                'new_name' => $message->new_name,
+                'file_original_name' => $message->file_original_name,
+                'file_new_name' => $message->file_new_name,
                 'image' => $message->sender->image,
                 'created_at' => $message->created_at
             ];
@@ -86,7 +87,7 @@ class MessageController extends Controller
     }
 
     //Stores a new message to the database
-    public function store(Request $request) {
+    public function store(StoreMessage $request) {
         if ($request->ajax()){
             if($request->hasFile('file')) {
                 $file = $request->file('file');
@@ -97,8 +98,8 @@ class MessageController extends Controller
                 $message = Message::create([
                     'sender_id' => auth()->id(),
                     'receiver_id' => $request->input('contact'),
-                    'original_name' => $file->getClientOriginalName(),
-                    'new_name' => $fileName
+                    'file_original_name' => $file->getClientOriginalName(),
+                    'file_new_name' => $fileName
                 ]);
 
                 $message = Message::find($message->id);
@@ -107,8 +108,8 @@ class MessageController extends Controller
                 return response()->json([
                     'name' => auth()->user()->full_name,
                     'image' => auth()->user()->image,
-                    'original_name' => $message->original_name,
-                    'new_name' => $message->new_name,
+                    'file_original_name' => $message->file_original_name,
+                    'file_new_name' => $message->file_new_name,
                     'created_at' => $message->created_at
                 ]);
             } else {
