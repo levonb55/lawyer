@@ -61,7 +61,7 @@
     let authUser = @json(auth()->id());
     let appUrl = "";
     if(window.location.hostname !== 'lawyer.loc') {
-        appUrl = 'http://myworks.site/dev/lawyer/public';
+        appUrl = 'http://greatexpertdev.site/laravel/lawyer/public';
     }
 </script>
 @section('newMessage-popup-script')

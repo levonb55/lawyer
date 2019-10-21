@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://myworks.site/dev/lawyer/public'),
+    'url' => env('APP_URL', 'http://greatexpertdev.site/laravel/lawyer/public'),
 
     'asset_url' => env('ASSET_URL', null),
 
