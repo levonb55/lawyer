@@ -43,9 +43,8 @@ class Message {
             progressBarNumber.width(0);
             component(response);
         })
-        .fail(function() {
-            let errorMessage = 'An error happened while posting a message!';
-            failedMessage(errorMessage);
+        .fail(function(error) {
+            failedMessage(error.responseJSON.errors.content);
         });
     }
 
