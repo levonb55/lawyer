@@ -18,7 +18,9 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('receiver_id');
             $table->boolean('read')->default(false);
-            $table->string('content');
+            $table->text('content')->nullable();
+            $table->string('file_original_name')->nullable();
+            $table->string('file_new_name')->nullable();
 
             $table->foreign('sender_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');

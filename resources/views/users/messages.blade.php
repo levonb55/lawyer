@@ -68,7 +68,7 @@
                             <textarea class="message-content" name="content" id="content" placeholder="Type a message ..." autofocus></textarea>
                             <div class="uploadAndSendBtn">
                                 <label class="btnFooterLabel btnFooterLabe2">
-                                  <input type="file" class="message-file d-none">
+                                  <input type="file" class="message-file d-none" name="file">
                                   <span class="bg_none text-center hand" title="Attach a file"><i class="fas fa-paperclip"></i></span>
                                 </label>
                                 <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
