@@ -14,6 +14,22 @@
     </div>
 
     <div class="messaging">
+
+        <div class="callingBox outgoing-call">
+            <p>Calling to</p>
+            <p class="callingBoxTitle"> Cristiano Ronaldo </p>
+            <button class="callingBoxPhone" title="Cancel"><i class="fas fa-phone"></i></button>
+        </div>
+
+        <div class="callingBox incoming-call">
+            <p class="callingBoxTitle"> Cristiano Ronaldo </p>
+            <p>is calling</p>
+            <div class="callingBoxFlex">
+                <button class="callingBoxPhone" title="Decline"><i class="fas fa-phone"></i></button>
+                <button class="callingBoxPhone callingBoxPhone2" title="Accept"><i class="fas fa-phone"></i></button>
+            </div>
+        </div>
+
         <div class="inbox_msg">
             <div class="inbox_people">
                 <div class="headind_srch">
@@ -22,7 +38,7 @@
                     </div>
                     <div class="srch_bar">
                         <div class="stylish-input-group">
-                            <input type="text" class="search-bar"  placeholder="Search" >
+                            <input type="text" class="search-bar" placeholder="Search">
                         </div>
                     </div>
                 </div>
@@ -44,7 +60,8 @@
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                                     </h5>
                                     <div class="onlineBox">
-{{--                                        <div class="onlineOrOffline"></div>--}}
+                                        <div class="contact-phone" title="Make a call"><i class="fa fa-phone"></i></div>
+                                        <div class="onlineOrOffline" title="Online"></div>
                                     </div>
                                 </div>
 
@@ -64,18 +81,21 @@
                         <form id="message-form">
                             <input type="hidden" name="contact" id="contact">
                             <input type="hidden" name="user" value="{{ auth()->id() }}" id="user">
-{{--                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>--}}
-                            <textarea class="message-content" name="content" id="content" placeholder="Type a message ..." autofocus></textarea>
+                            {{--                            <input type="text" name="content" id="content" class="write_msg" placeholder="Type a message" autofocus autocomplete="off"/>--}}
+                            <textarea class="message-content" name="content" id="content"
+                                      placeholder="Type a message ..." autofocus></textarea>
                             <div class="uploadAndSendBtn">
                                 <label class="btnFooterLabel btnFooterLabe2">
-                                  <input type="file" class="message-file d-none" name="file">
-                                  <span class="bg_none text-center hand" title="Attach a file"><i class="fas fa-paperclip"></i></span>
+                                    <input type="file" class="message-file d-none" name="file">
+                                    <span class="bg_none text-center hand" title="Attach a file"><i
+                                                class="fas fa-paperclip"></i></span>
                                 </label>
-                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane"
+                                                                              aria-hidden="true"></i></button>
                                 <div class="progress  upload-progress upload-progress2">
-                                  <div class="progress-bar bg-success upload-progress-number"></div>
+                                    <div class="progress-bar bg-success upload-progress-number"></div>
                                 </div>
-                          </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -87,9 +107,9 @@
 @endsection
 
 @section('extra-scripts')
-{{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
+    {{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
     <script src="{{ asset('js/message.js') }}"></script>
-    <script src="{{ asset('js/components/MessageDashboard.js') }}" ></script>
-    @section('newMessage-popup-script')
-    @endsection
+    <script src="{{ asset('js/components/MessageDashboard.js') }}"></script>
+@section('newMessage-popup-script')
+@endsection
 @endsection

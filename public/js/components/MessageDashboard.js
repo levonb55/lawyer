@@ -193,3 +193,9 @@ messages.history.on('scroll', function () {
 });
 
 app.goToNewLine($('.message-content'), $('#message-form'));
+
+$('.contact-phone').on('click', function (e) {
+    e.stopPropagation();
+
+    $('.outgoing-call').show();
+});
