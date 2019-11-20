@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\NewMessage;
+use App\Events\NewVideoCall;
 use App\Http\Requests\StoreMessage;
 use App\Models\Message;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -136,5 +138,26 @@ class MessageController extends Controller
     {
         $message->update(['read' => self::READ]);
         return response()->json('Read');
+    }
+
+    public function authenticate(Request $request)
+    {
+//        return response()->json('Hello World');
+//        return response()->json($request->input('receiver'));
+//        return response()->json('hello');
+//        $socketId = $request->socket_id;
+//        $channelName = $request->channel_name;
+//
+//        $pusher = new Pusher('25f1d7860e5065c8d63e', 'ba357731c2635240846b', '898860', [
+//            'cluster' => 'eu',
+//            'useTLS' => true
+//        ]);
+//
+//        $presence_data = ['name' => auth()->user()->name];
+//        $key = $pusher->presence_auth($channelName,$socketId, auth()->id(), $presence_data);
+//
+//        return response($key);
+        broadcast(new NewVideoCall($request->input('receiver'), $request->input('data')))->toOthers();
+        return response()->json('Connected');
     }
 }

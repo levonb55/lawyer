@@ -60,8 +60,8 @@
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                                     </h5>
                                     <div class="onlineBox">
-                                        <div class="contact-phone" title="Make a call"><i class="fa fa-phone"></i></div>
-                                        <div class="onlineOrOffline" title="Online"></div>
+                                        <div class="contact-phone" title="Make a call" onclick="video.callTo({{ $contact->id }})"><i class="fa fa-phone"></i></div>
+{{--                                        <div class="onlineOrOffline" title="Online"></div>--}}
                                     </div>
                                 </div>
 
@@ -104,12 +104,211 @@
     </div>
 
     <div class="clear"></div>
+    <div class="container">
+        <div class="video-container">
+            <video id="my-video" style="background: red; width: 200px; height: 200px;" class="my-video"></video>
+            <video id="user-video" class="user-video"></video>
+        </div>
+    </div>
 @endsection
 
 @section('extra-scripts')
     {{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
     <script src="{{ asset('js/message.js') }}"></script>
     <script src="{{ asset('js/components/MessageDashboard.js') }}"></script>
+    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.6.0/simplepeer.min.js"></script>
+    <script>
+
+        class Video {
+
+            user = window.user;
+            userStream = null;
+            hasMedia = false;
+            peers = {};
+            otherUserId = '';
+            channel = '';
+            peer = '' ;
+
+            constructor() {
+                this.getPermission();
+                // this.setupPusher();
+                this.setupLaravelEcho();
+            }
+            //
+            // get APP_KEY() {
+            //     return '25f1d7860e5065c8d63e';
+            // }
+            //
+            getPermission() {
+                navigator.mediaDevices.getUserMedia({video: true, audio: false})
+                    .then((stream) => {
+                        let myVideo = document.getElementById('my-video')
+                        this.hasMedia = true;
+                        this.userStream = stream;
+
+                        try {
+                            myVideo.srcObject = stream;
+                        } catch (e) {
+                            myVideo.src = URL.createObjectURL(stream);
+                        }
+                        myVideo.play();
+                    })
+                    .catch(err => {
+                        throw new Error(`Unable to fetch stream ${err}`);
+                    });
+            }
+
+            startPeer(userId, initiator = true) {
+                const peer = new SimplePeer({
+                    initiator,
+                    stream: this.userStream,
+                    trickle: false
+                });
+
+
+                peer.on('signal', (data) => {
+                    console.log(userId, data);
+					$.ajax({
+                    method: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: appUrl + '/pusher/auth',
+                    data: {receiver: userId, data: {
+                            type: 'signal',
+                            userId: userId,
+                            callId: @json(auth()->id()),
+                            data: data
+                        }}
+                })
+                .then((response) => {
+                    // console.log(response);
+                });
+                    // console.log(this.channel);
+                    // this.channel.trigger(`client-signal-${userId}`, {
+                    //     type: 'signal',
+                    //     userId: this.user.id,
+                    //     data: data
+                    // })
+
+                    // this.channel.trigger(`call.${userId}`, {
+                    //     type: 'signal',
+                    //     userId: this.user.id,
+                    //     data: data
+                    // })
+                });
+
+                peer.on('stream', (stream) => {
+                    console.log(stream);
+                    let userVideo = document.getElementById('user-video');
+
+                    try {
+                        userVideo.srcObject = stream;
+                    } catch (e) {
+                        userVideo.src = URL.createObjectURL(stream);
+                    }
+                    userVideo.play();
+                });
+
+                peer.on('close', () => {
+                    let peer = this.peers[userId];
+                    if(peer !== undefined) {
+                        peer.destroy();
+                    }
+                    this.peers[userId] = undefined;
+                    document.querySelector('.video-container').remove();
+                });
+
+                return peer;
+            }
+
+            callTo(userId)  {
+                // this.setupPusher(userId);
+                // this.getPermission();
+
+
+                this.peers[userId] = this.startPeer(userId);
+            }
+
+            {{--setupPusher(receiver) {--}}
+            {{--    $.ajax({--}}
+            {{--        method: 'POST',--}}
+            {{--        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
+            {{--        url: appUrl + '/pusher/auth',--}}
+            {{--        data: {receiver: receiver}--}}
+            {{--    })--}}
+            {{--    .then((response) => {--}}
+            {{--        --}}{{--Echo.private('call.' +  @json(auth()->id()))--}}
+            {{--        --}}{{--    .listen('NewVideoCall', (message) => {--}}
+            {{--        --}}{{--        console.log(message);--}}
+            {{--        --}}{{--    });--}}
+            {{--        --}}{{--Echo.channel('call.' +  @json(auth()->id()))--}}
+            {{--        --}}{{--    .listen('NewVideoCall', (message) => {--}}
+            {{--        --}}{{--        console.log(message);--}}
+            {{--        --}}{{--    });--}}
+            {{--        // console.log(response);--}}
+            {{--    });--}}
+            {{--    // window.Echo = new Echo({--}}
+            {{--    //     authEndpoint: '/pusher/auth',--}}
+            {{--    //     broadcaster: 'socket.io',--}}
+            {{--    //     host: window.location.hostname + ':6001',--}}
+            {{--    // });--}}
+
+            {{--    --}}{{--Echo.private('call.' +  @json(auth()->id()))--}}
+            {{--    --}}{{--    .listen('NewVideoCall', (message) => {--}}
+            {{--    --}}{{--        console.log(message);--}}
+            {{--    --}}{{--    });--}}
+            {{--    // var pusher = new Pusher(this.APP_KEY, {--}}
+            {{--    //     authEndpoint: '/pusher/auth',--}}
+            {{--    //     cluster: 'eu',--}}
+            {{--    //     auth: {--}}
+            {{--    //         params: this.user,--}}
+            {{--    //         headers: {--}}
+            {{--    //             'X-CSRF-Token': window.csrfToken--}}
+            {{--    //         }--}}
+            {{--    //     }--}}
+            {{--    // });--}}
+            {{--    //--}}
+            {{--    // this.channel = pusher.subscribe('presence-video-channel');--}}
+            {{--    //--}}
+            {{--    // this.channel.bind(`client-signal-${this.user.id}`, (signal) => {--}}
+            {{--    //     this.peer = this.peers[signal.userId];--}}
+            {{--    //--}}
+            {{--    //     //if peer doesn't already exist, we got an incoming call--}}
+            {{--    //     if(this.peer === undefined) {--}}
+            {{--    //         this.otherUserId = signal.userId;--}}
+            {{--    //         this.peer = this.startPeer(signal.userId, false);--}}
+            {{--    //     }--}}
+            {{--    //--}}
+            {{--    //     this.peer.signal(signal.data);--}}
+            {{--    // });--}}
+            {{--}--}}
+
+            setupLaravelEcho()  {
+                Echo.channel('call.' +  @json(auth()->id()))
+                    .listen('NewVideoCall', (message) => {
+                        console.log(message);
+                        var callId = message.data.callId;
+                        this.peer = this.peers[callId];
+                        if(this.peer === undefined) {
+                            this.otherUserId = callId;
+                            this.peer = this.startPeer(callId, false);
+                        }
+                        console.log(message.data);
+                        message.data.data.sdp += "\n";
+                        this.peer.signal(message.data.data);
+                    });
+            }
+
+            removePeer() {
+                document.querySelector('.video-container').remove();
+                if(this.peer) {
+                    this.peer.destroy();
+                }
+            }
+        }
+
+        let video = new Video();
+    </script>
 @section('newMessage-popup-script')
 @endsection
 @endsection
