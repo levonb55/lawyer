@@ -132,14 +132,9 @@
 
             constructor() {
                 this.getPermission();
-                // this.setupPusher();
                 this.setupLaravelEcho();
             }
-            //
-            // get APP_KEY() {
-            //     return '25f1d7860e5065c8d63e';
-            // }
-            //
+
             getPermission() {
                 navigator.mediaDevices.getUserMedia({video: true, audio: false})
                     .then((stream) => {
@@ -159,46 +154,32 @@
                     });
             }
 
-            startPeer(userId, initiator = true) {
+            startPeer(receiver, initiator = true) {
                 const peer = new SimplePeer({
                     initiator,
                     stream: this.userStream,
                     trickle: false
                 });
 
-
                 peer.on('signal', (data) => {
-                    console.log(userId, data);
-					$.ajax({
-                    method: 'POST',
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: appUrl + '/pusher/auth',
-                    data: {receiver: userId, data: {
+                    $.ajax({
+                        method: 'POST',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url: appUrl + '/calling',
+                        data: {
                             type: 'signal',
-                            userId: userId,
-                            callId: @json(auth()->id()),
+                            caller: @json(auth()->id()),
+                            receiver: receiver,
                             data: data
-                        }}
-                })
-                .then((response) => {
-                    // console.log(response);
-                });
-                    // console.log(this.channel);
-                    // this.channel.trigger(`client-signal-${userId}`, {
-                    //     type: 'signal',
-                    //     userId: this.user.id,
-                    //     data: data
-                    // })
-
-                    // this.channel.trigger(`call.${userId}`, {
-                    //     type: 'signal',
-                    //     userId: this.user.id,
-                    //     data: data
-                    // })
+                        }
+                    })
+                    .then(() => {})
+                    .catch(() => {
+                        console.log('Call Failed!');
+                    });
                 });
 
                 peer.on('stream', (stream) => {
-                    console.log(stream);
                     let userVideo = document.getElementById('user-video');
 
                     try {
@@ -210,92 +191,32 @@
                 });
 
                 peer.on('close', () => {
-                    let peer = this.peers[userId];
+                    let peer = this.peers[receiver];
                     if(peer !== undefined) {
                         peer.destroy();
                     }
-                    this.peers[userId] = undefined;
+                    this.peers[receiver] = undefined;
                     document.querySelector('.video-container').remove();
                 });
 
                 return peer;
             }
 
-            callTo(userId)  {
-                // this.setupPusher(userId);
-                // this.getPermission();
-
-
-                this.peers[userId] = this.startPeer(userId);
+            callTo(receiver)  {
+                this.peers[receiver] = this.startPeer(receiver);
             }
-
-            {{--setupPusher(receiver) {--}}
-            {{--    $.ajax({--}}
-            {{--        method: 'POST',--}}
-            {{--        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},--}}
-            {{--        url: appUrl + '/pusher/auth',--}}
-            {{--        data: {receiver: receiver}--}}
-            {{--    })--}}
-            {{--    .then((response) => {--}}
-            {{--        --}}{{--Echo.private('call.' +  @json(auth()->id()))--}}
-            {{--        --}}{{--    .listen('NewVideoCall', (message) => {--}}
-            {{--        --}}{{--        console.log(message);--}}
-            {{--        --}}{{--    });--}}
-            {{--        --}}{{--Echo.channel('call.' +  @json(auth()->id()))--}}
-            {{--        --}}{{--    .listen('NewVideoCall', (message) => {--}}
-            {{--        --}}{{--        console.log(message);--}}
-            {{--        --}}{{--    });--}}
-            {{--        // console.log(response);--}}
-            {{--    });--}}
-            {{--    // window.Echo = new Echo({--}}
-            {{--    //     authEndpoint: '/pusher/auth',--}}
-            {{--    //     broadcaster: 'socket.io',--}}
-            {{--    //     host: window.location.hostname + ':6001',--}}
-            {{--    // });--}}
-
-            {{--    --}}{{--Echo.private('call.' +  @json(auth()->id()))--}}
-            {{--    --}}{{--    .listen('NewVideoCall', (message) => {--}}
-            {{--    --}}{{--        console.log(message);--}}
-            {{--    --}}{{--    });--}}
-            {{--    // var pusher = new Pusher(this.APP_KEY, {--}}
-            {{--    //     authEndpoint: '/pusher/auth',--}}
-            {{--    //     cluster: 'eu',--}}
-            {{--    //     auth: {--}}
-            {{--    //         params: this.user,--}}
-            {{--    //         headers: {--}}
-            {{--    //             'X-CSRF-Token': window.csrfToken--}}
-            {{--    //         }--}}
-            {{--    //     }--}}
-            {{--    // });--}}
-            {{--    //--}}
-            {{--    // this.channel = pusher.subscribe('presence-video-channel');--}}
-            {{--    //--}}
-            {{--    // this.channel.bind(`client-signal-${this.user.id}`, (signal) => {--}}
-            {{--    //     this.peer = this.peers[signal.userId];--}}
-            {{--    //--}}
-            {{--    //     //if peer doesn't already exist, we got an incoming call--}}
-            {{--    //     if(this.peer === undefined) {--}}
-            {{--    //         this.otherUserId = signal.userId;--}}
-            {{--    //         this.peer = this.startPeer(signal.userId, false);--}}
-            {{--    //     }--}}
-            {{--    //--}}
-            {{--    //     this.peer.signal(signal.data);--}}
-            {{--    // });--}}
-            {{--}--}}
 
             setupLaravelEcho()  {
                 Echo.channel('call.' +  @json(auth()->id()))
-                    .listen('NewVideoCall', (message) => {
-                        console.log(message);
-                        var callId = message.data.callId;
-                        this.peer = this.peers[callId];
+                    .listen('NewVideoCall', (call) => {
+                        var caller = call.caller;
+                        this.peer = this.peers[caller];
                         if(this.peer === undefined) {
-                            this.otherUserId = callId;
-                            this.peer = this.startPeer(callId, false);
+                            this.otherUserId = caller;
+                            this.peer = this.startPeer(caller, false);
                         }
-                        console.log(message.data);
-                        message.data.data.sdp += "\n";
-                        this.peer.signal(message.data.data);
+                        call.data.sdp += "\n";
+                        this.peer.signal(call.data);
                     });
             }
 

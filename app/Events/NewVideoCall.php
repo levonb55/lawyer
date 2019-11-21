@@ -43,8 +43,8 @@ class NewVideoCall implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'caller' => auth()->user()->first_name,
-            'receiver' => $this->receiver,
+            'caller' => auth()->id(),
+            'callerName' => auth()->user()->first_name,
             'data' => $this->data
         ];
     }
