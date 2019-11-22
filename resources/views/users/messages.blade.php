@@ -26,7 +26,7 @@
             <p>is calling</p>
             <div class="callingBoxFlex">
                 <button class="callingBoxPhone" title="Decline"><i class="fas fa-phone"></i></button>
-                <button class="callingBoxPhone callingBoxPhone2" title="Accept"><i class="fas fa-phone"></i></button>
+                <button class="callingBoxPhone callingBoxPhone2 accept" title="Accept"><i class="fas fa-phone"></i></button>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                                     </h5>
                                     <div class="onlineBox">
-                                        <div class="contact-phone" title="Make a call" onclick="video.callTo({{ $contact->id }})"><i class="fa fa-phone"></i></div>
+                                        <div class="contact-phone" title="Make a call"><i class="fa fa-phone"></i></div>
 {{--                                        <div class="onlineOrOffline" title="Online"></div>--}}
                                     </div>
                                 </div>
@@ -122,13 +122,17 @@
 
         class Video {
 
-            user = window.user;
             userStream = null;
             hasMedia = false;
             peers = {};
             otherUserId = '';
             channel = '';
             peer = '' ;
+            callInitiator = '';
+            call = '';
+            waitingCall = null;
+            outGoingCall = $('.outgoing-call');
+            inComingCall = $('.incoming-call');
 
             constructor() {
                 this.getPermission();
@@ -138,16 +142,7 @@
             getPermission() {
                 navigator.mediaDevices.getUserMedia({video: true, audio: false})
                     .then((stream) => {
-                        let myVideo = document.getElementById('my-video')
-                        this.hasMedia = true;
-                        this.userStream = stream;
-
-                        try {
-                            myVideo.srcObject = stream;
-                        } catch (e) {
-                            myVideo.src = URL.createObjectURL(stream);
-                        }
-                        myVideo.play();
+                        this.showMyVideo(stream);
                     })
                     .catch(err => {
                         throw new Error(`Unable to fetch stream ${err}`);
@@ -180,14 +175,7 @@
                 });
 
                 peer.on('stream', (stream) => {
-                    let userVideo = document.getElementById('user-video');
-
-                    try {
-                        userVideo.srcObject = stream;
-                    } catch (e) {
-                        userVideo.src = URL.createObjectURL(stream);
-                    }
-                    userVideo.play();
+                    this.showUserVideo(stream);
                 });
 
                 peer.on('close', () => {
@@ -203,21 +191,57 @@
             }
 
             callTo(receiver)  {
+                this.outGoingCall.show();
+                this.callInitiator = authUser;
                 this.peers[receiver] = this.startPeer(receiver);
             }
 
             setupLaravelEcho()  {
-                Echo.channel('call.' +  @json(auth()->id()))
+                Echo.channel('call-' +  @json(auth()->id()))
                     .listen('NewVideoCall', (call) => {
-                        var caller = call.caller;
-                        this.peer = this.peers[caller];
-                        if(this.peer === undefined) {
-                            this.otherUserId = caller;
-                            this.peer = this.startPeer(caller, false);
+                        if(call.data.type === 'answer'){
+                            this.peerSignal(call);
+                            this.outGoingCall.hide();
+                        } else if (call.data.type === 'offer'){
+                            this.waitingCall = call;
+                            this.inComingCall.show();
                         }
-                        call.data.sdp += "\n";
-                        this.peer.signal(call.data);
                     });
+            }
+
+            peerSignal(call) {
+                let caller = call.caller;
+                this.peer = this.peers[caller];
+                if(this.peer === undefined) {
+                    this.otherUserId = caller;
+                    this.peer = this.startPeer(caller, false);
+                }
+                call.data.sdp += "\n";
+                this.peer.signal(call.data);
+            }
+
+            showMyVideo(stream) {
+                let myVideo = document.getElementById('my-video');
+                this.hasMedia = true;
+                this.userStream = stream;
+
+                try {
+                    myVideo.srcObject = stream;
+                } catch (e) {
+                    myVideo.src = URL.createObjectURL(stream);
+                }
+                myVideo.play();
+            }
+
+            showUserVideo(stream) {
+                let userVideo = document.getElementById('user-video');
+
+                try {
+                    userVideo.srcObject = stream;
+                } catch (e) {
+                    userVideo.src = URL.createObjectURL(stream);
+                }
+                userVideo.play();
             }
 
             removePeer() {
@@ -229,6 +253,18 @@
         }
 
         let video = new Video();
+
+        $('.contact-phone').on('click', function (e) {
+            e.stopPropagation();
+            video.callTo($(this).parents('.chat_list').data('contact'));
+        });
+
+        $('.accept').on('click', function (e) {
+            video.inComingCall.hide();
+            if(video.waitingCall){
+                video.peerSignal(video.waitingCall)
+            }
+        });
     </script>
 @section('newMessage-popup-script')
 @endsection
