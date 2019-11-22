@@ -44,7 +44,7 @@ class NewVideoCall implements ShouldBroadcast
     {
         return [
             'caller' => auth()->id(),
-            'callerName' => auth()->user()->first_name,
+            'callerName' => auth()->user()->full_name,
             'receiver' => $this->receiver,
             'data' => $this->data
         ];

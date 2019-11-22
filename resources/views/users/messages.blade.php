@@ -17,12 +17,12 @@
 
         <div class="callingBox outgoing-call">
             <p>Calling to</p>
-            <p class="callingBoxTitle"> Cristiano Ronaldo </p>
+            <p class="callingBoxTitle receiver"> Cristiano Ronaldo </p>
             <button class="callingBoxPhone" title="Cancel"><i class="fas fa-phone"></i></button>
         </div>
 
         <div class="callingBox incoming-call">
-            <p class="callingBoxTitle"> Cristiano Ronaldo </p>
+            <p class="callingBoxTitle caller"> Cristiano Ronaldo </p>
             <p>is calling</p>
             <div class="callingBoxFlex">
                 <button class="callingBoxPhone" title="Decline"><i class="fas fa-phone"></i></button>
@@ -54,7 +54,7 @@
                                     <img src="{{asset('assets/images/profile/' . $contact->image)}}" alt="sunil">
                                 </div>
                                 <div class="chat_ib">
-                                    <h5>
+                                    <h5 class="full_name">
                                         {{ $contact->full_name }}
                                         <span class="chat_date"></span>
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
@@ -116,7 +116,7 @@
     {{--    <script src="{{ asset('assets/libs/js/socket.js') }}"></script>--}}
     <script src="{{ asset('js/message.js') }}"></script>
     <script src="{{ asset('js/components/MessageDashboard.js') }}"></script>
-    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+{{--    <script src="https://js.pusher.com/5.0/pusher.min.js"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-peer/9.6.0/simplepeer.min.js"></script>
     <script>
 
@@ -128,8 +128,6 @@
             otherUserId = '';
             channel = '';
             peer = '' ;
-            callInitiator = '';
-            call = '';
             waitingCall = null;
             outGoingCall = $('.outgoing-call');
             inComingCall = $('.incoming-call');
@@ -190,9 +188,9 @@
                 return peer;
             }
 
-            callTo(receiver)  {
+            callTo(receiver, receiverName)  {
+                $('.receiver').text(receiverName);
                 this.outGoingCall.show();
-                this.callInitiator = authUser;
                 this.peers[receiver] = this.startPeer(receiver);
             }
 
@@ -204,6 +202,7 @@
                             this.outGoingCall.hide();
                         } else if (call.data.type === 'offer'){
                             this.waitingCall = call;
+                            $('.caller').text(call.callerName);
                             this.inComingCall.show();
                         }
                     });
@@ -256,13 +255,14 @@
 
         $('.contact-phone').on('click', function (e) {
             e.stopPropagation();
-            video.callTo($(this).parents('.chat_list').data('contact'));
+            let chatList = $(this).parents('.chat_list');
+            video.callTo(chatList.data('contact'), chatList.find('.full_name').text());
         });
 
-        $('.accept').on('click', function (e) {
+        $('.accept').on('click', function () {
             video.inComingCall.hide();
             if(video.waitingCall){
-                video.peerSignal(video.waitingCall)
+                video.peerSignal(video.waitingCall);
             }
         });
     </script>
