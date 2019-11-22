@@ -37,7 +37,7 @@ class NewVideoCall implements ShouldBroadcast
     public function broadcastOn()
     {
 //        return new PrivateChannel('call.' . auth()->id());
-        return new Channel('call.' . $this->receiver);
+        return new Channel('call-' . $this->receiver);
     }
 
     public function broadcastWith()
@@ -45,6 +45,7 @@ class NewVideoCall implements ShouldBroadcast
         return [
             'caller' => auth()->id(),
             'callerName' => auth()->user()->first_name,
+            'receiver' => $this->receiver,
             'data' => $this->data
         ];
     }
