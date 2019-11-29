@@ -19,11 +19,7 @@
 
     <script>
         let authUser = @json(auth()->id());
-        let appUrl = "";
-
-        if(window.location.hostname !== 'lawyer.loc') {
-            appUrl = 'http://greatexpertdev.site/laravel/lawyer/public';
-        }
+        let appUrl = @json(config('app.url'));
     </script>
 
     @include('partials._scripts')

@@ -17,12 +17,12 @@
 
         <div class="callingBox outgoing-call">
             <p>Calling to</p>
-            <p class="callingBoxTitle receiver"> Cristiano Ronaldo </p>
+            <p class="callingBoxTitle receiver"></p>
             <button class="callingBoxPhone" title="Cancel"><i class="fas fa-phone"></i></button>
         </div>
 
         <div class="callingBox incoming-call">
-            <p class="callingBoxTitle caller"> Cristiano Ronaldo </p>
+            <p class="callingBoxTitle caller"></p>
             <p>is calling</p>
             <div class="callingBoxFlex">
                 <button class="callingBoxPhone" title="Decline"><i class="fas fa-phone"></i></button>
@@ -161,7 +161,7 @@
                         url: appUrl + '/calling',
                         data: {
                             type: 'signal',
-                            caller: @json(auth()->id()),
+                            caller: authUser,
                             receiver: receiver,
                             data: data
                         }
@@ -195,7 +195,7 @@
             }
 
             setupLaravelEcho()  {
-                Echo.channel('call-' +  @json(auth()->id()))
+                Echo.channel(`call-${authUser}`)
                     .listen('NewVideoCall', (call) => {
                         if(call.data.type === 'answer'){
                             this.peerSignal(call);
