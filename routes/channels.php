@@ -11,9 +11,9 @@
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
-});
+//Broadcast::channel('App.User.{id}', function ($user, $id) {
+//    return (int) $user->id === (int) $id;
+//});
 
 // Channel for new message
 Broadcast::channel('messages.{id}', function ($user, $id) {
@@ -21,9 +21,9 @@ Broadcast::channel('messages.{id}', function ($user, $id) {
 });
 
 // Channel for new video call
-//Broadcast::channel('call.{id}', function ($user, $id) {
-//    return (int) $user->id === (int) $id;
-//});
+Broadcast::channel('call.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
+});
 
 //Broadcast::channel('lawyer_database_private-messages.{id}', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
