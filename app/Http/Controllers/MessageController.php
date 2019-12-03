@@ -140,7 +140,7 @@ class MessageController extends Controller
         return response()->json('Read');
     }
 
-    public function getCall(Request $request)
+    public function makeCall(Request $request)
     {
         broadcast(new NewVideoCall($request->input('receiver'), $request->input('data')))->toOthers();
         return response()->json('Connected');

@@ -123,24 +123,32 @@
         class Video {
 
             userStream = null;
-            hasMedia = false;
             peers = {};
-            otherUserId = '';
-            channel = '';
             peer = '' ;
             waitingCall = null;
             outGoingCall = $('.outgoing-call');
             inComingCall = $('.incoming-call');
 
             constructor() {
-                this.getPermission();
                 this.setupLaravelEcho();
             }
 
-            getPermission() {
+            getPermission(receiver = null, receiverName = null) {
                 navigator.mediaDevices.getUserMedia({video: true, audio: false})
                     .then((stream) => {
                         this.showMyVideo(stream);
+
+                        if(receiver) {
+                            $('.receiver').text(receiverName);
+                            this.outGoingCall.show();
+                            this.peers[receiver] = this.startPeer(receiver);
+                        } else {
+                            this.inComingCall.hide();
+                            if(this.waitingCall){
+                                this.peerSignal(this.waitingCall);
+                            }
+                        }
+
                     })
                     .catch(err => {
                         throw new Error(`Unable to fetch stream ${err}`);
@@ -189,13 +197,11 @@
             }
 
             callTo(receiver, receiverName)  {
-                $('.receiver').text(receiverName);
-                this.outGoingCall.show();
-                this.peers[receiver] = this.startPeer(receiver);
+                this.getPermission(receiver, receiverName);
             }
 
             setupLaravelEcho()  {
-                Echo.channel(`call-${authUser}`)
+                Echo.private(`call.${authUser}`)
                     .listen('NewVideoCall', (call) => {
                         if(call.data.type === 'answer'){
                             this.peerSignal(call);
@@ -212,7 +218,6 @@
                 let caller = call.caller;
                 this.peer = this.peers[caller];
                 if(this.peer === undefined) {
-                    this.otherUserId = caller;
                     this.peer = this.startPeer(caller, false);
                 }
                 call.data.sdp += "\n";
@@ -221,7 +226,6 @@
 
             showMyVideo(stream) {
                 let myVideo = document.getElementById('my-video');
-                this.hasMedia = true;
                 this.userStream = stream;
 
                 try {
@@ -260,10 +264,7 @@
         });
 
         $('.accept').on('click', function () {
-            video.inComingCall.hide();
-            if(video.waitingCall){
-                video.peerSignal(video.waitingCall);
-            }
+            video.getPermission();
         });
     </script>
 @section('newMessage-popup-script')

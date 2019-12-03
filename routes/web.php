@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/messages/store','MessageController@store')->name('messages.store');
     Route::get('/users/messages/{contact}/{scroll}','MessageController@show')->name('messages.show');
     Route::put('/messages/{message}/read','MessageController@markAsRead')->name('messages.read');
-    Route::post('/calling', 'MessageController@getCall');
+    Route::post('/calling', 'MessageController@makeCall');
 });
 
 //Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');

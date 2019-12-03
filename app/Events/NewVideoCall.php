@@ -36,8 +36,7 @@ class NewVideoCall implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-//        return new PrivateChannel('call.' . auth()->id());
-        return new Channel('call-' . $this->receiver);
+        return new PrivateChannel('call.' . $this->receiver);
     }
 
     public function broadcastWith()
