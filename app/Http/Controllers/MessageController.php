@@ -145,4 +145,9 @@ class MessageController extends Controller
         broadcast(new NewVideoCall($request->input('receiver'), $request->input('data')))->toOthers();
         return response()->json('Connected');
     }
+
+    public function rejectCall(Request $request) {
+        broadcast(new NewVideoCall($request->input('contact'), $request->input('type')))->toOthers();
+        return response()->json('Connection Rejected');
+    }
 }
