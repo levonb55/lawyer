@@ -18,15 +18,15 @@
         <div class="callingBox outgoing-call">
             <p>Calling to</p>
             <p class="callingBoxTitle receiver"></p>
-            <button class="callingBoxPhone" title="Cancel"><i class="fas fa-phone"></i></button>
+            <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>
         </div>
 
         <div class="callingBox incoming-call">
             <p class="callingBoxTitle caller"></p>
             <p>is calling</p>
             <div class="callingBoxFlex">
-                <button class="callingBoxPhone" title="Decline"><i class="fas fa-phone"></i></button>
-                <button class="callingBoxPhone callingBoxPhone2 accept" title="Accept"><i class="fas fa-phone"></i></button>
+                <button class="callingBoxPhone decline-call" title="Decline"><i class="fas fa-phone"></i></button>
+                <button class="callingBoxPhone callingBoxPhone2 accept-call" title="Accept"><i class="fas fa-phone"></i></button>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                                     </h5>
                                     <div class="onlineBox">
-                                        <div class="contact-phone" title="Make a call"><i class="fa fa-phone"></i></div>
+                                        <div class="make-call" title="Make a call"><i class="fa fa-phone"></i></div>
 {{--                                        <div class="onlineOrOffline" title="Online"></div>--}}
                                     </div>
                                 </div>
@@ -128,6 +128,8 @@
             waitingCall = null;
             outGoingCall = $('.outgoing-call');
             inComingCall = $('.incoming-call');
+            contact = '';
+            callingSound = '';
 
             constructor() {
                 this.setupLaravelEcho();
@@ -139,6 +141,7 @@
                         this.showMyVideo(stream);
 
                         if(receiver) {
+                            this.makeCallingSound();
                             $('.receiver').text(receiverName);
                             this.outGoingCall.show();
                             this.peers[receiver] = this.startPeer(receiver);
@@ -150,8 +153,12 @@
                         }
 
                     })
-                    .catch(err => {
-                        throw new Error(`Unable to fetch stream ${err}`);
+                    .catch(() => {
+                        if(!receiver) {
+                            this.stopCallingSound();
+                            this.inComingCall.hide();
+                            this.rejectCall(this.contact, 'reject');
+                        }
                     });
             }
 
@@ -198,18 +205,33 @@
 
             callTo(receiver, receiverName)  {
                 this.getPermission(receiver, receiverName);
+                this.contact = receiver;
             }
 
             setupLaravelEcho()  {
                 Echo.private(`call.${authUser}`)
                     .listen('NewVideoCall', (call) => {
                         if(call.data.type === 'answer'){
+                            this.stopCallingSound();
                             this.peerSignal(call);
                             this.outGoingCall.hide();
                         } else if (call.data.type === 'offer'){
+                            this.makeCallingSound();
                             this.waitingCall = call;
                             $('.caller').text(call.callerName);
                             this.inComingCall.show();
+                            this.contact = call.caller;
+                            this.peer = '';
+                            this.peers = {};
+                        }
+                    });
+
+                Echo.private(`reject-call.${authUser}`)
+                    .listen('NewVideoCall', (call) => {
+                        if(call.data === 'reject') {
+                            this.stopOutgoingCall();
+                        } else if (call.data === 'cancel') {
+                            this.stopIncomingCall();
                         }
                     });
             }
@@ -218,6 +240,7 @@
                 let caller = call.caller;
                 this.peer = this.peers[caller];
                 if(this.peer === undefined) {
+                    this.stopCallingSound();
                     this.peer = this.startPeer(caller, false);
                 }
                 call.data.sdp += "\n";
@@ -253,18 +276,75 @@
                     this.peer.destroy();
                 }
             }
+
+            rejectCall(contact, type) {
+                $.ajax({
+                    method: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: appUrl + '/reject-call',
+                    data: {
+                        contact : contact,
+                        type: type
+                    }
+                })
+                .then(() => {})
+                .catch(() => {
+                    console.log('Call Failed!');
+                });
+            }
+
+            makeCallingSound() {
+                // this.callingSound = new Audio('/assets/sounds/calling.mp3');
+                // let playMusic = this.callingSound.play();
+                // playMusic.then(() => {
+                //     console.log('playing');
+                // }).catch(() => {
+                //     console.log('blocked');
+                // });
+            }
+
+            stopCallingSound() {
+                // this.callingSound.pause();
+            }
+
+            makeDropSound() {
+                // let audio = new Audio('/assets/sounds/drop.mp3');
+                // audio.play();
+            }
+
+            stopIncomingCall() {
+                this.makeDropSound();
+                this.stopCallingSound();
+                this.inComingCall.hide();
+            }
+
+            stopOutgoingCall() {
+                this.makeDropSound();
+                this.stopCallingSound();
+                this.outGoingCall.hide();
+            }
         }
 
         let video = new Video();
 
-        $('.contact-phone').on('click', function (e) {
+        $('.make-call').on('click', function (e) {
             e.stopPropagation();
             let chatList = $(this).parents('.chat_list');
             video.callTo(chatList.data('contact'), chatList.find('.full_name').text());
         });
 
-        $('.accept').on('click', function () {
+        $('.accept-call').on('click', function () {
             video.getPermission();
+        });
+
+        $('.decline-call').on('click', function () {
+            video.stopIncomingCall();
+            video.rejectCall(video.contact, 'reject');
+        });
+
+        $('.cancel-call').on('click', function () {
+            video.stopOutgoingCall();
+            video.rejectCall(video.contact, 'cancel');
         });
     </script>
 @section('newMessage-popup-script')

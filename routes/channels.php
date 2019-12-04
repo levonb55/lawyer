@@ -25,6 +25,11 @@ Broadcast::channel('call.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
+// Channel for rejected video call
+Broadcast::channel('reject-call.{id}', function ($user, $id) {
+    return (int) $user->id === (int) $id;
+});
+
 //Broadcast::channel('lawyer_database_private-messages.{id}', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
 //});
