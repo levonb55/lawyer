@@ -14,7 +14,20 @@
     </div>
 
     <div class="messaging">
-
+        <div class="video-container">
+            <div class="video-containerBlock">
+              <div class="video_containerBlockBottom">
+                  <video id="my-video"  class="my-video"></video>
+                  <div class="video_containerBlockBottomControls">
+                      <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>
+                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-microphone"></i></button>
+                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-video"></i></button>
+                  </div>
+                  <div></div>
+              </div>
+                <video id="user-video" class="user-video"></video>
+            </div>
+        </div>
         <div class="callingBox outgoing-call">
             <p>Calling to</p>
             <p class="callingBoxTitle receiver"></p>
@@ -104,12 +117,7 @@
     </div>
 
     <div class="clear"></div>
-    <div class="container">
-        <div class="video-container">
-            <video id="my-video" style="background: red; width: 200px; height: 200px;" class="my-video"></video>
-            <video id="user-video" class="user-video"></video>
-        </div>
-    </div>
+
 @endsection
 
 @section('extra-scripts')
