@@ -90,11 +90,11 @@
 
 .chat_img {
     float: left;
-    width: 11%;
+    width: 40px;
 }
 
 .chat_img img {
-    width: 100%;
+    width: 40px;
     border-radius: 50%;
 }
 
@@ -131,9 +131,12 @@
     align-items: center;
     justify-content: center;
     color: #fff;
-    background: red;
+    background: #ff0c09;
     border-radius: 50%;
     transform: rotate(220deg);
+}
+.callingBoxPhone:hover {
+    background: #ff3c0d;
 }
 .callingBoxPhone2{
     background: #4ccc4c !important;
@@ -279,7 +282,63 @@
 .messaging {
     padding: 0 0 50px 0;
 }
+.video-container {
+    width: 40%;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto ;
+    z-index: 999;
+}
+.video-container:hover .video_containerBlockBottomControls{
+display: flex;
+    justify-content: center;
+}
+.videoCallIcon{
+    background: #242524;
+    transform: rotate(0deg);
+    margin-left: 15px;
+}
+.videoCallIcon:hover{
+    background: #151515;
+}
 
+.video_containerBlockBottomControls{
+    display: none;
+}
+
+.video_containerBlockBottomControls{
+
+}
+.video-containerBlock{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+.my-video{
+    width: 20%;
+    /*height: 33%;*/
+}
+.user-video{
+    width: 100%;
+    height: 100%;
+    background-image: url("http://globbos.com/wp-content/uploads/2010/02/megan-fox-militar-casual.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.video_containerBlockBottom{
+    position: absolute;
+    bottom: 0px;
+    z-index: 9999;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .msg_history {
     height: 516px;
     overflow-y: auto;
