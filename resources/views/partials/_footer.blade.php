@@ -1,31 +1,25 @@
 <footer>
     <div class="footer_size">
         <div class="footer_1">
-            <p>Freelancers</p>
+            <p>Reach Legal</p>
             <ul>
-                <li>We Heart Freelancers</li>
-                <li>Our Creative Disciplines</li>
-                <li>The Freelancer Awards</li>
-                <li>Average Day Rates</li>
+                <li><a href="{{route('about')}}">About Us</a></li>
+                <li><a href="{{route('contact')}}">Contact</a></li>
+                <li><a href="{{route('privacy')}}">Privacy and Terms</a></li>
             </ul>
         </div>
         <div class="footer_2">
-            <p>Clients</p>
+            <p>Discover</p>
             <ul>
-                <li>We Heart Clients</li>
-                <li>SMEs & Agencies</li>
-                <li>Enterprise</li>
-                <li>
-                    <a href="{{route('contact')}}">Contact</a>
-                </li>
+                <li><a href="{{route('lawyers.categories')}}">Find Lawyers</a></li>
             </ul>
         </div>
         <div class="footer_3">
-            <p>About</p>
+            <p>Lawyers</p>
             <ul>
-                <li><a href="{{route('about')}}">About Us</a></li>
-                <li><a href="{{route('terms')}}">Terms</a></li>
-                <li><a href="{{route('privacy')}}">Privacy</a></li>
+                @guest
+                    <li><a href="{{route('register')}}">Sign up</a></li>
+                @endguest
                 <li><a href="{{route('affiliate')}}">Affiliate</a></li>
             </ul>
         </div>

@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="terms_title">
-        <p>terms and conditions</p>
+        <p>Terms and Conditions</p>
         <div class="terms_title_line">
 
         </div>
