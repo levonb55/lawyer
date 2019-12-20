@@ -1,6 +1,12 @@
 .find_2{
   width: 100%;
 }
+
+.find_2 form {
+    display: flex;
+    flex-grow: 1;
+}
+
 .find_2_size{
   width: 100%;
   display: flex;
@@ -74,7 +80,7 @@ font-size: 31px;
 }
 .find_2_left_block{
   height: 550px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 .find_2_left_box{
   width: 100%;

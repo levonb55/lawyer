@@ -34,7 +34,7 @@
 {{--                        </select>--}}
 {{--                    </form>--}}
 
-                    <div class="form-group">
+                    <div>
                         <select class="form-control w-100 filter-options">
                             <option value="rating">Highest Rating</option>
                             <option value="reviews">Highest Number of Reviews</option>
