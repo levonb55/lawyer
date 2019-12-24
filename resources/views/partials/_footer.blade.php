@@ -20,6 +20,7 @@
                 @guest
                     <li><a href="{{route('register')}}">Sign up</a></li>
                 @endguest
+                <li><a href="{{route('why')}}">Why Reach Legal</a></li>
                 <li><a href="{{route('affiliate')}}">Affiliate</a></li>
             </ul>
         </div>
