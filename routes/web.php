@@ -20,6 +20,7 @@ Route::get('/terms','PageController@getTerms')->name('terms');
 Route::get('/affiliate','PageController@getAffiliate')->name('affiliate');
 Route::get('/privacy','PageController@getPrivacy')->name('privacy');
 Route::get('/ask','PageController@getAsk')->name('ask');
+Route::get('/why','PageController@getWhyPage')->name('why');
 Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
 Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
 Route::get('/lawyers/categories/{category}','LawyerController@getLawyersByCategory')->name('lawyers.category');
