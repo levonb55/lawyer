@@ -9,6 +9,8 @@ class Category extends Model
 {
     use Notifiable;
 
+    const IMAGE = 'default.png';
+    const ICON = 'default.png';
     /**
      * The attributes that are mass assignable.
      *
@@ -16,6 +18,11 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
+    ];
+
+    protected $attributes = [
+        'image' => self::IMAGE,
+        'icon' => self::ICON,
     ];
 
     /**

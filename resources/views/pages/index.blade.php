@@ -35,27 +35,33 @@
                         <button type="submit">Search</button>
                     </div>
                 </form>
-                    <div class="lawyers_1_bottom">
-                    <div class="lawyers_1_bottom_box">
-                        <img src="{{asset('assets/images/general/l_1_1.png')}}" alt="">
-                        <p> Civil</p>
-                    </div>
-                    <div class="lawyers_1_bottom_box">
-                        <img src="{{asset('assets/images/general/l_1_2.png')}}" alt="">
-                        <p>Immigration</p>
-                    </div>
-                    <div class="lawyers_1_bottom_box">
-                        <img src="{{asset('assets/images/general/l_1_3.png')}}" alt="">
-                        <p>Brexit</p>
-                    </div>
-                    <div class="lawyers_1_bottom_box">
-                        <img src="{{asset('assets/images/general/l_1_4.png')}}" alt="">
-                        <p>Criminal</p>
-                    </div>
-                    <div class="lawyers_1_bottom_box more_more">
+                <div class="lawyers_1_bottom">
+{{--                    <a  href="#" class="lawyers_1_bottom_box">--}}
+{{--                        <img src="{{asset('assets/images/general/l_1_1.png')}}" alt="">--}}
+{{--                        <p> Civil</p>--}}
+{{--                    </a>--}}
+{{--                    <a  href="#" class="lawyers_1_bottom_box">--}}
+{{--                        <img src="{{asset('assets/images/general/l_1_2.png')}}" alt="">--}}
+{{--                        <p>Immigration</p>--}}
+{{--                    </a>--}}
+{{--                    <a  href="#" class="lawyers_1_bottom_box">--}}
+{{--                        <img src="{{asset('assets/images/general/l_1_3.png')}}" alt="">--}}
+{{--                        <p>Brexit</p>--}}
+{{--                    </a>--}}
+{{--                    <a  href="#" class="lawyers_1_bottom_box">--}}
+{{--                        <img src="{{asset('assets/images/general/l_1_4.png')}}" alt="">--}}
+{{--                        <p>Criminal</p>--}}
+{{--                    </a>--}}
+                    @foreach($categories as $category)
+                        <a  href="{{route('lawyers.category', $category->id)}}" class="lawyers_1_bottom_box">
+                            <img src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="">
+                            <p>{{ $category->name }}</p>
+                        </a>
+                    @endforeach
+                    <a  href="{{route('lawyers.categories')}}" class="lawyers_1_bottom_box more_more">
                         <img src="{{asset('assets/images/general/l_1_5.png')}}" alt="">
                         <p>More</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

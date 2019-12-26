@@ -40,7 +40,7 @@
                             <strong class="card-title">Categories</strong>
                         </div>
                         <div class="card-body">
-                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <table id="bootstrap-data-table" class="table table-bordered categories-table">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -55,16 +55,16 @@
                                         <tr>
                                             <td>{{$category->name}}</td>
                                             <td>
-                                                @if($category->image)
-                                                    <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law">
-                                                @endif
+{{--                                                @if($category->image)--}}
+                                                    <img class="category-img" src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law">
+{{--                                                @endif--}}
                                             </td>
                                             <td>
-                                                @if($category->icon)
-                                                    <img src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="Law">
-                                                @else
-                                                    <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">
-                                                @endif
+{{--                                                @if($category->icon)--}}
+                                                    <img class="category-icon" src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="Law">
+{{--                                                @else--}}
+{{--                                                    <img src="{{asset('assets/images/general/find_2_1.png')}}" alt="Law">--}}
+{{--                                                @endif--}}
                                             </td>
                                             <td>
                                                 <a href="{{route('categories_edit', $category->id)}}" class="btn btn-primary">

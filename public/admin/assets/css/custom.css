@@ -1,0 +1,17 @@
+.categories-table {
+    text-align: center;
+    background-color: #f1f2f2;
+}
+
+.categories-table td {
+    line-height: 130px;
+}
+
+.categories-table .category-img {
+    width: 160px;
+    height: 150px;
+}
+
+.categories-table .category-icon {
+    width: 80px;
+}
