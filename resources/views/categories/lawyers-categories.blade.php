@@ -14,13 +14,9 @@
                 @foreach($categories as $category)
                     <a href="{{route('lawyers.category', $category->id)}}">
                         <div class="find_2_box">
-                            @if($category->image)
-                                <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law" class="find_img">
-                            @else
-                                <img src="{{asset('assets/images/general/find1.png')}}" alt="Law" class="find_img">
-                            @endif
+                            <img src="{{asset('assets/images/categories/images/' . $category->image)}}" alt="Law" class="find_img">
                             <div class="find_box_absolute">
-                                <img src="{{asset('assets/images/general/f1.png')}}" alt="">
+                                <img src="{{asset('assets/images/categories/icons/' . $category->icon)}}" alt="">
                                 <p>{{$category->name}} <br> Lawyers</p>
                                 <button type="button" name="button">{{$category->lawyers->count()}} Lawyers</button>
                             </div>

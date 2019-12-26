@@ -16,8 +16,9 @@ class PageController extends Controller
     public function index() {
         $lawyers = Lawyer::take(3)->with('user')->with('categories')->with('reviews')
                         ->get();
+        $categories = Category::limit(4)->get();
 
-        return view('pages.index', compact('lawyers'));
+        return view('pages.index', compact('lawyers', 'categories'));
     }
 
     /**

@@ -159,10 +159,16 @@ left: 10px;
   align-items: center;
 }
 .lawyers_1_bottom img{
-  margin-bottom: 10px;
+    margin-bottom: 10px;
+    width: 30px;
 }
+
 .lawyers_1_bottom {
   margin-bottom: 10px;
+}
+
+.lawyers_1_bottom  a {
+    text-decoration: none;
 }
 .Reach_legals{
   width: 100%;

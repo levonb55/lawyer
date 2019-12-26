@@ -309,13 +309,13 @@ margin-right: 35px;
 cursor: pointer;
 
 }
-.dash_3_blocks_box:hover{
-  background-color: #ff9c00;
+.dash_3_blocks_box:hover {
+  background-color: #d4b687;
 }
+
 .dash_3_blocks_size:hover p{
   color: #ff9c00;
 }
-
 
 .dash_3_blocks_size p{
     font-family: "Montserrat-Regular";
@@ -323,14 +323,14 @@ padding: 0 !important;
 font-size: 16px;
 color: #000;
 }
-.dash_3_blocks_box{
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  width: 73px;
-height: 65px;
-background-color: #fff;
-border: 1px solid #000;
+.dash_3_blocks_box {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 73px;
+    height: 65px;
+    background-color: #ff9c00;
+    border: 1px solid #000;
 }
 .dbd_img{
   margin-left: 50px;

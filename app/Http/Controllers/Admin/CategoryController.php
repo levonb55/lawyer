@@ -70,11 +70,8 @@ class CategoryController extends Controller
         ]);
 
         if($request->hasFile('image')) {
-            $oldImage = $category->image;
-            $oldImagePath = public_path('assets/images/categories/images/'. $oldImage);
-            if ($oldImage && $oldImagePath) {
-                File::delete($oldImagePath);
-            }
+
+            $this->deleteImage($category->image, 'images', Category::IMAGE);
 
             $category->image = $this->storeFile(
                 $request->file('image'), public_path('assets/images/categories/images/'), 180, 180
@@ -82,14 +79,11 @@ class CategoryController extends Controller
         }
 
         if($request->hasFile('icon')) {
-            $oldIcon = $category->icon;
-            $oldIconPath = public_path('assets/images/categories/icons/'. $oldIcon);
-            if ($oldIcon && $oldIconPath) {
-                File::delete($oldIconPath);
-            }
+
+            $this->deleteImage($category->icon, 'icons', Category::ICON);
 
             $category->icon = $this->storeFile(
-                $request->file('icon'), public_path('assets/images/categories/icons/'), 18, 20
+                $request->file('icon'), public_path('assets/images/categories/icons/'), 50, 50
             );
         }
 
@@ -99,9 +93,22 @@ class CategoryController extends Controller
     }
 
     public function delete(Category $category){
+        $this->deleteImage($category->image, 'images', Category::IMAGE);
+        $this->deleteImage($category->icon, 'icons', Category::ICON);
+
         $category->lawyers()->detach();
         $category->delete();
+
         return redirect()->back()->with('delete','deleted a category!');
+    }
+
+    private function deleteImage($image, $imageFolder, $defaultImage)
+    {
+        $imagePath = public_path('assets/images/categories/' . $imageFolder . '/'. $image);
+
+        if ($image && $imagePath && ($image !== $defaultImage)) {
+            File::delete($imagePath);
+        }
     }
 
     public function storeFile($image, $path, $width = null, $height = null) {

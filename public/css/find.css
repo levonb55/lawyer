@@ -26,10 +26,10 @@ margin: 32px auto 55px auto;
     margin-bottom: 160px;
 }
 .find_2_box{
-  position: relative;
-  width: 380px;
-height: 299px;
-margin: 50px 10px 0 10px;
+    position: relative;
+    width: 90%;
+    height: 290px;
+    margin: 50px 10px 0 10px;
 }
 .find_img{
   width: 100%;
@@ -39,8 +39,11 @@ margin: 50px 10px 0 10px;
 margin: 0 auto;
 width: 87%;
 display: flex;
-justify-content: space-between;
+justify-content: flex-start;
 flex-wrap: wrap;
+}
+.find_2_size a{
+    width: 25%;
 }
 .find_2_box img{
 object-fit: cover;
