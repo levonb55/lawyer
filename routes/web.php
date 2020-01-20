@@ -93,28 +93,27 @@ Route::middleware('auth')->group(function () {
 Route::middleware('admin')->group(function () {
     Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
         Route::get('/dashboard','AdminController@index')->name('admin_dashboard');
-        Route::group(['prefix' => 'home','namespace' => 'Home'], function () {
-            //welcome
-            Route::get('/home_first','HomeController@homeFirst')->name('home_first');
-            Route::get('/home_second','HomeController@homeSecond')->name('home_second');
-            Route::get('/home_third','HomeController@homeThird')->name('home_third');
-            //about
-            Route::get('/about_first','HomeController@aboutFirst')->name('about_first');
-            Route::get('/about_second','HomeController@aboutSecond')->name('about_second');
-            Route::get('/about_third','HomeController@aboutThird')->name('about_third');
-            //terms
-            Route::get('/terms','TermsController@index')->name('admin_terms');
-            Route::post('/terms/store','TermsController@store')->name('add_term');
-            //privacy
-            Route::get('/privacy','PrivacyController@index')->name('admin_privacy');
-            Route::post('/privacy/store','PrivacyController@store')->name('add_privacy');
 
-            Route::post('/content/update/{id}','HomeController@update')->name('update_home_content');
-            Route::get('/content/delete/{id}','HomeController@delete')->name('delete_content');
+//        Route::group(['prefix' => 'home','namespace' => 'Home'], function () {
+//            //welcome
+//            Route::get('/home_first','HomeController@homeFirst')->name('home_first');
+//            Route::get('/home_second','HomeController@homeSecond')->name('home_second');
+//            Route::get('/home_third','HomeController@homeThird')->name('home_third');
+//            //about
+//            Route::get('/about_first','HomeController@aboutFirst')->name('about_first');
+//            Route::get('/about_second','HomeController@aboutSecond')->name('about_second');
+//            Route::get('/about_third','HomeController@aboutThird')->name('about_third');
+//            //terms
+//            Route::get('/terms','TermsController@index')->name('admin_terms');
+//            Route::post('/terms/store','TermsController@store')->name('add_term');
+//            //privacy
+//            Route::get('/privacy','PrivacyController@index')->name('admin_privacy');
+//            Route::post('/privacy/store','PrivacyController@store')->name('add_privacy');
+//
+//            Route::post('/content/update/{id}','HomeController@update')->name('update_home_content');
+//            Route::get('/content/delete/{id}','HomeController@delete')->name('delete_content');
+//        });
 
-
-
-        });
         Route::group(['prefix' => 'categories'], function () {
             Route::get('/','CategoryController@index')->name('admin_categories');
             Route::post('/create','CategoryController@store')->name('categories_store');
@@ -123,6 +122,9 @@ Route::middleware('admin')->group(function () {
             Route::get('/edit/{category}', 'CategoryController@edit')->name('categories_edit');
         });
 
+        Route::get('/content', 'VariableController@index')->name('admin.variables.index');
+        Route::get('/content/{variable}/edit', 'VariableController@edit')->name('admin.variables.edit');
+        Route::put('/content/{variable}/', 'VariableController@update')->name('admin.variables.update');
         Route::get('referrals', 'AdminController@getReferrals')->name('admin.referrals');
 
     });
