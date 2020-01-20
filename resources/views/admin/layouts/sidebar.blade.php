@@ -11,31 +11,36 @@
                 <li class="active">
                     <h3 class="menu-title">Admin</h3><
                 </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-bars"></i><a href="{{route('home_first')}}">First Content</a></li>
-                        <li><i class="fa fa-bars"></i><a href="{{route('home_second')}}">Second Content</a></li>
-                        <li><i class="fa fa-bars"></i><a href="{{route('home_third')}}">third Content</a></li>
-                        {{--<li><i class="fa fa-bars"></i><a href="{{route('home_fourth')}}">Fourth Content</a></li>--}}
-                        {{--<li><i class="fa fa-bars"></i><a href="{{route('home_fifth')}}">Fifth Content</a></li>--}}
-                    </ul>
+                <li class="menu-item-has-children">
+                    <a href="{{ route('admin.variables.index') }}">
+                        <i class="menu-icon fa  fa-table"></i>Content
+                    </a>
                 </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>About</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-bars"></i><a href="{{route('about_first')}}">First Content</a></li>
-                        <li><i class="fa fa-bars"></i><a href="{{route('about_second')}}">Second Content</a></li>
-                        <li><i class="fa fa-bars"></i><a href="{{route('about_third')}}">third Content</a></li>
-                    </ul>
-                </li>
-                </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="{{route('admin_terms')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Terms</a>
-                </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="{{route('admin_privacy')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Privacy</a>
-                </li>
+{{--                <li class="menu-item-has-children dropdown">--}}
+{{--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Home</a>--}}
+{{--                    <ul class="sub-menu children dropdown-menu">--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('home_first')}}">First Content</a></li>--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('home_second')}}">Second Content</a></li>--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('home_third')}}">third Content</a></li>--}}
+{{--                        --}}{{--<li><i class="fa fa-bars"></i><a href="{{route('home_fourth')}}">Fourth Content</a></li>--}}
+{{--                        --}}{{--<li><i class="fa fa-bars"></i><a href="{{route('home_fifth')}}">Fifth Content</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                <li class="menu-item-has-children dropdown">--}}
+{{--                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>About</a>--}}
+{{--                    <ul class="sub-menu children dropdown-menu">--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('about_first')}}">First Content</a></li>--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('about_second')}}">Second Content</a></li>--}}
+{{--                        <li><i class="fa fa-bars"></i><a href="{{route('about_third')}}">third Content</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+{{--                </li>--}}
+{{--                <li class="menu-item-has-children dropdown">--}}
+{{--                    <a href="{{route('admin_terms')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Terms</a>--}}
+{{--                </li>--}}
+{{--                <li class="menu-item-has-children dropdown">--}}
+{{--                    <a href="{{route('admin_privacy')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Privacy</a>--}}
+{{--                </li>--}}
                 <li class="menu-item-has-children dropdown">
                     <a href="{{route('admin_categories')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Categories Lawyers</a>
                 </li>
