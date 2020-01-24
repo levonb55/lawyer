@@ -7,9 +7,7 @@
         <div class="find_2_size">
             <div class="find_2_left">
                 <h3>Find {{ $category->name }} lawyers</h3>
-                <p class="find_2_left_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec quis mi eget erat dignissim temporLorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Donec quis mi eget erat dignissim tempor</p>
+                <p class="find_2_left_text">{{ $variables['category-text'] }}</p>
                 <div class="find_2_left_inputs">
                     <form action="{{route('lawyers.search', $category->id)}}" method="POST">
                         @csrf
@@ -168,19 +166,6 @@
         </div>
     </section>
 
-    <section class="lawyers_7">
-        <div class="opacity_bg">
-            <div class="lawyers_7_size">
-                <h3>Join the community </h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis
-                    libero vel tortor porta suscipit ut in urna. Vestibulum ante ipsum primis
-                    in faucibus orci luctus et</p>
-                <div class="">
-                    <input type="text" name="" value="" placeholder="Enter your email">
-                    <button type="button" name="button">Join</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('partials._join-community')
+
 @endsection

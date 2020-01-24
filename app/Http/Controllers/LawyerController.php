@@ -9,6 +9,7 @@ use App\Models\Lawyer;
 use App\Models\Publication;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Variable;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -46,7 +47,15 @@ class LawyerController extends Controller
      */
     public function getLawyersByCategory(Category $category) {
         $lawyers = $category->lawyers->sortByDesc('rating');
-        return view('categories.lawyers-category', compact('category', 'lawyers'));
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'category-text')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('categories.lawyers-category', compact('category', 'lawyers', 'variables'));
     }
 
     public function searchLawyers(Request $request, Category $category)

@@ -113,18 +113,25 @@ height: 18px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
 .profile_1_2_block div{
-  margin-right: 10px;
-  width: 95px;
-  height: 50px;
-  border-radius: 10px;
-  border: solid 1px #ff9c00;
-  font-size: 13px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    margin-right: 10px;
+    width: 95px;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 1px #ff9c00;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ccc5c5;
 }
+
+.profile_1_2_block img {
+    width: 18px;
+}
+
 .profile_1_2_block p{
   margin: 0;
 }

@@ -33,7 +33,19 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getAbout() {
-        return view('pages.about');
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'about-who-we-are-subheader')
+            ->orWhere('key', 'about-who-we-are-text')
+            ->orWhere('key', 'about-who-we-do-subheader')
+            ->orWhere('key', 'about-what-we-do-text')
+            ->orWhere('key', 'about-our-team-text')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('pages.about', compact('variables'));
     }
 
     /**

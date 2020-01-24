@@ -15,17 +15,22 @@
                     @csrf
                     <div class="lawyers_1_inputs">
                         <div class="law_avatar">
-                            <img src="{{asset('assets/images/general/avatar.png')}}" alt="" id="avatar">
-                            <input type="text" name="name" value="" placeholder="Search Lawyer Name">
+                            <div class="law_avatarBlocks">
+                                <img src="{{asset('assets/images/general/avatar.png')}}" alt="Person" id="avatar">
+                                <input type="text" name="name" value="{{ old('name') }}" placeholder="Search Lawyer Name">
+                            </div>
                             @error('name')
                                 <span class="input-error">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
                         <div class="law_avatar">
-                            <img src="{{asset('assets/images/general/loc.png')}}" alt="" id="law_loc">
-                            <input type="text" name="city" value="" placeholder="Choose Your City">
+                            <div class="law_avatarBlocks">
+                                <img src="{{asset('assets/images/general/loc.png')}}" alt="Location" id="law_loc">
+                                <input type="text" name="city" value="{{ old('city') }}" placeholder="Choose Your City">
+                            </div>
                             @error('city')
                                 <span class="input-error">
                                     <strong>{{ $message }}</strong>
