@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <textarea class="form-control" rows="3" name="value" id="textarea">{{ $variable->value }}</textarea>
                     </div>
-                    <a href="{{ route('admin.variables.index') }}" type="button" class="btn">Cancel</a>
+                    <a href="{{ route('admin.variables.index') }}" type="button" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
