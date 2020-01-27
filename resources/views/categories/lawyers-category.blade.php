@@ -6,11 +6,17 @@
     <section class="find_2">
         <div class="find_2_size">
             <div class="find_2_left">
-                <h3>Find {{ $category->name }} lawyers</h3>
+                @isset($category)
+                    <h3>Find {{ $category->name }} lawyers</h3>
+                @endisset
                 <p class="find_2_left_text">{{ $variables['category-text'] }}</p>
                 <div class="find_2_left_inputs">
-                    <form action="{{route('lawyers.search', $category->id)}}" method="POST">
-                        @csrf
+{{--                    <form action="{{route('lawyers.search', $category->id)}}" method="POST">--}}
+                    @if(isset($category))
+                        <form action="{{ route('lawyers.category', $category->id) }}" method="GET">
+                    @else
+                        <form action="{{ route('lawyers.category') }}" method="GET">
+                    @endif
                         <input type="text" name="search" placeholder="Enter State, City or Postcode" value="{{old('search')}}" class="w-100">
                         @error('search')
                             <span class="input-error">

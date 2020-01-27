@@ -45,40 +45,18 @@ class LawyerController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getLawyersByCategory(Category $category) {
-        $lawyers = $category->lawyers->sortByDesc('rating');
-        $variableData = Variable::select('key', 'value')
-            ->where('key', 'category-text')
-            ->get();
-
-        foreach($variableData as $data) {
-            $variables[$data->key] = $data->value;
+    public function getLawyersByCategory(Category $category = null, Request $request)
+    {
+        $search = $request->input('search');
+        if ($category) {
+            $lawyers = $category->lawyers()->found($search);
+        } else {
+            $lawyers = Lawyer::found($search);
         }
 
+        $variables = $this->getVariablesData();
+
         return view('categories.lawyers-category', compact('category', 'lawyers', 'variables'));
-    }
-
-    public function searchLawyers(Request $request, Category $category)
-    {
-        $request->validate([
-            'search' => 'required|string|min:2|max:255'
-        ]);
-
-        $search = $request->input('search');
-        return redirect()->route('lawyers.get-search', ['category' => $category->id, 'search' => $search])->withInput();
-    }
-
-    public function getSearchedLawyers(Category $category, $search) {
-        $lawyers = $category->lawyers()
-            ->where(function ($query) use($search) {
-                $query->where('state', 'like', "%$search%")
-                    ->orWhere('city', 'like', "%$search%")
-                    ->orWhere('postcode', 'like',"%$search%");
-            })
-            ->orderBy('rating', 'DESC')
-            ->get();
-
-        return view('categories.lawyers-category', compact('lawyers', 'category'));
     }
 
     /**
@@ -106,7 +84,22 @@ class LawyerController extends Controller
                     ->orderBy('lawyers.rating', 'DESC')
                     ->get();
 
-        return view('categories.lawyers-search', ['lawyers' => $lawyers]);
+        $variables = $this->getVariablesData();
+
+        return view('categories.lawyers-category', compact( 'lawyers', 'variables'));
     }
 
+    public function getVariablesData()
+    {
+        $variables = [];
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'category-text')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return $variables;
+    }
 }

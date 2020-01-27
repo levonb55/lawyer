@@ -31,4 +31,16 @@ class Lawyer extends Model
     public function reviews() {
         return $this->hasMany('App\Models\Review', 'lawyer_id', 'user_id');
     }
+
+    public function scopeFound($query, $search)
+    {
+        return $query
+            ->where(function ($query) use ($search) {
+                $query->where('state', 'like', "%$search%")
+                    ->orWhere('city', 'like', "%$search%")
+                    ->orWhere('postcode', 'like', "%$search%");
+            })
+            ->orderBy('rating', 'DESC')
+            ->get();
+    }
 }
