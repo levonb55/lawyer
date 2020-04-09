@@ -502,7 +502,8 @@
                                 <img src="{{asset('assets/images/general/slider3.png')}}" alt="">
                             </div>
                         </div></div>
-                    <div class="item">         <div class="slider_img">
+                    <div class="item">
+                        <div class="slider_img">
                             <img src="{{asset('assets/images/general/slider.png')}}" alt="">
                         </div>
                         <div class="slider_box">
@@ -535,4 +536,8 @@
 
     @include('partials._join-community')
 
+@endsection
+
+@section('extra-scripts')
+    <script src="{{asset('js/slider.js')}}"></script>
 @endsection
