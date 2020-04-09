@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
              RolesTableSeeder::class,
              ContentsTableSeeder::class,
              CategoriesTableSeeder::class,
-             LawyersTableSeeder::class
+             LawyersTableSeeder::class,
+             VariablesTableSeeder::class
          ]);
     }
 }

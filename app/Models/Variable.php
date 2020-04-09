@@ -12,6 +12,6 @@ class Variable extends Model
      * @var array
      */
     protected $fillable = [
-        'value'
+        'name', 'key', 'value'
     ];
 }
