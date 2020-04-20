@@ -9,7 +9,7 @@
                 @isset($category)
                     <h3>Find {{ $category->name }} lawyers</h3>
                 @endisset
-                <p class="find_2_left_text">{{ $variables['category-text'] }}</p>
+                <p class="find_2_left_text">{!! $variables['category-text'] !!}</p>
                 <div class="find_2_left_inputs">
 {{--                    <form action="{{route('lawyers.search', $category->id)}}" method="POST">--}}
                     @if(isset($category))

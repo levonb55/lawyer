@@ -28,15 +28,12 @@ class ViewServiceProvider extends ServiceProvider
     {
         view()->composer('partials._join-community', function ($view) {
             $variableData = Variable::select('key', 'value')
-                ->where('key', 'join-community-header')
-                ->orWhere('key', 'join-community-text')
-                ->get();
+                ->where('key', 'join-community')
+                ->first();
 
-            foreach($variableData as $data) {
-                $variables[$data->key] = $data->value;
-            }
+            $variable[$variableData['key']] = $variableData['value'];
 
-            $view->with(compact('variables'));
+            $view->with(compact('variable'));
         });
     }
 }
