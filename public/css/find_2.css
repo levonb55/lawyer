@@ -28,8 +28,9 @@
  margin-top: 80px;
 }
 .find_2_left_inputs{
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
 }
 .find_2_left_inputs input{
   width: 208px;

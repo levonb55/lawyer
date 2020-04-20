@@ -34,11 +34,9 @@ class PageController extends Controller
      */
     public function getAbout() {
         $variableData = Variable::select('key', 'value')
-            ->where('key', 'about-who-we-are-subheader')
-            ->orWhere('key', 'about-who-we-are-text')
-            ->orWhere('key', 'about-who-we-do-subheader')
-            ->orWhere('key', 'about-what-we-do-text')
-            ->orWhere('key', 'about-our-team-text')
+            ->where('key', 'about-who-we-are')
+            ->orWhere('key', 'about-what-we-do')
+            ->orWhere('key', 'about-our-team')
             ->get();
 
         foreach($variableData as $data) {
@@ -81,6 +79,15 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getPrivacy() {
-        return view('pages.privacy');
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'privacy-policy-header')
+            ->orWhere('key', 'privacy-policy-text')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('pages.privacy', compact('variables'));
     }
 }
