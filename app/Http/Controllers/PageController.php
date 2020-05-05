@@ -19,7 +19,15 @@ class PageController extends Controller
                         ->get();
         $categories = Category::limit(4)->get();
 
-        return view('pages.index', compact('lawyers', 'categories'));
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'home-slider-1')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('pages.index', compact('lawyers', 'categories', 'variables'));
     }
 
     /**
