@@ -22,7 +22,7 @@ class VariableController extends Controller
     public function update(Request $request, Variable $variable)
     {
         $request->validate([
-            'value' => 'max:10000'
+            'value' => 'max:20000'
         ]);
 
         Variable::updateOrCreate(['id' => $variable->id], request(['value']));

@@ -171,8 +171,14 @@ padding-right: 10px;
     text-decoration: none;
 }
 .Reach_legals{
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
+    padding-top: 150px;
+    padding-bottom: 20px;
+}
+
+.legal-for-users {
+    font-family: "Montserrat-Bold";
 }
 
 .Reach_legals h3{
