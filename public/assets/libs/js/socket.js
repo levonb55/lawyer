@@ -11810,7 +11810,7 @@ __webpack_require__.r(__webpack_exports__);
  // window.Pusher = require('pusher-js');
 //
 // window.Echo = new Echo({
-//     authEndpoint : appUrl + '/broadcasting/auth',
+//     authEndpoint : '/broadcasting/auth',
 //     broadcaster: 'pusher',
 //     key: '94601e3f1268c05f59ac',
 //     cluster: 'us2',

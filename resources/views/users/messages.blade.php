@@ -181,7 +181,7 @@
                     $.ajax({
                         method: 'POST',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        url: appUrl + '/calling',
+                        url: '/calling',
                         data: {
                             type: 'signal',
                             caller: authUser,
@@ -289,7 +289,7 @@
                 $.ajax({
                     method: 'POST',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: appUrl + '/reject-call',
+                    url: '/reject-call',
                     data: {
                         contact : contact,
                         type: type

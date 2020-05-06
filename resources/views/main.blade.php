@@ -19,7 +19,6 @@
 
     <script>
         let authUser = @json(auth()->id());
-        let appUrl = @json(config('app.url'));
     </script>
 
     @include('partials._scripts')
