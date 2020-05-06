@@ -2,7 +2,7 @@ class Message {
 
     //Gets Messages specific to a user and receiver
     show(contact, component, scroll) {
-       $.get(appUrl + '/users/messages/' + contact + '/' + scroll)
+       $.get('/users/messages/' + contact + '/' + scroll)
             .then(response => {
                 component(response);
             })
@@ -18,7 +18,7 @@ class Message {
         $.ajax({
             method: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: appUrl + '/messages/store',
+            url: '/messages/store',
             data: messageInput,
             processData: processData,
             contentType: contentType,
@@ -60,7 +60,7 @@ class Message {
         $.ajax({
             method: 'PUT',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: appUrl + `/messages/${id}/read`
+            url: `/messages/${id}/read`
         })
         .catch(() => {
             console.log('An error happened while marking a message as read.');
@@ -71,7 +71,7 @@ class Message {
     checkMessageContent(content, file_original_name, file_new_name) {
         let messageContent = '';
         if(file_original_name) {
-            messageContent = `<a href="${appUrl}/assets/attachments/${file_new_name}" target="_blank">${file_original_name}</a>`;
+            messageContent = `<a href="/assets/attachments/${file_new_name}" target="_blank">${file_original_name}</a>`;
         } else {
             messageContent = content;
         }

@@ -1,11 +1,5 @@
 $( document ).ready(function() {
 
-    let appUrl = "";
-
-    if(window.location.hostname !== 'lawyer.loc') {
-        appUrl = 'http://greatexpertdev.site/laravel/lawyer/public';
-    }
-
     $('.owl-carousel').owlCarousel({
       loop:true,
       margin:10,
@@ -88,14 +82,14 @@ $( document ).ready(function() {
         $.ajax({
             method: "POST",
             data: form.serializeArray(),
-            url:  appUrl + '/reviews/lawyers/' + lawyerId,
+            url: '/reviews/lawyers/' + lawyerId,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (data) {
                 let stars = '';
                 for (let i = 0; i < data.grade; i++) {
-                   stars += `<img src="${appUrl}/assets/images/general/star.png" alt="Star">`;
+                   stars += `<img src="/assets/images/general/star.png" alt="Star">`;
                 }
                 var d = new Date();
 
@@ -131,7 +125,7 @@ $( document ).ready(function() {
 
         $.ajax({
             method: "GET",
-            url:  appUrl + "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
+            url: "/lawyers/reviews/" + lawyerId +"/page/" + pageNumber,
             success: function (data) {
                 let months = ['January','February','March','April','May','June','July','August','September','October',
                     'November','December'];
@@ -140,11 +134,11 @@ $( document ).ready(function() {
                     let images = '';
                     var d = new Date(review.created_at);
                     for (let i = 0; i < review.grade; i++) {
-                        images +=  `<img src="${appUrl}/assets/images/general/star.png" alt="Star">`;
+                        images +=  `<img src="/assets/images/general/star.png" alt="Star">`;
                     }
 
                     for (let i = 0; i < 5 - review.grade; i++) {
-                        images +=  `<img src="${appUrl}/assets/images/general/star-empty.jpg" alt="Star" class="rating-star">`;
+                        images +=  `<img src="/assets/images/general/star-empty.jpg" alt="Star" class="rating-star">`;
                     }
 
                     return `
@@ -194,7 +188,7 @@ $( document ).ready(function() {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-           url: appUrl + '/lawyers/publications/' + pubId,
+           url: '/lawyers/publications/' + pubId,
             success: function (data) {
                 self.remove();
             }
@@ -241,9 +235,9 @@ $( document ).ready(function() {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: appUrl + '/login',
+            url: '/login',
             success: function (data) {
-                window.location.href = appUrl + data['intended'];
+                window.location.href = data['intended'];
             },
             error: function (data) {
                 $('#login_modal .error').html("<strong>" + data.responseJSON.error + "</strong>");

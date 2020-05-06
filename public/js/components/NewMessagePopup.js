@@ -24,7 +24,7 @@ Echo.private('messages.' +  authUser)
         let newPopup = () => {
             return `
                 <div class="newMessageUser">
-                    <img src="${appUrl}/assets/images/profile/${message.image}" alt="Person">
+                    <img src="/assets/images/profile/${message.image}" alt="Person">
                     <p class="newMessageUserName"> ${message.name} </p>
                 </div>
                 <div class="newMessageText">

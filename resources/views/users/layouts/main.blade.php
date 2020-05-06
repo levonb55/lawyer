@@ -59,7 +59,6 @@
 {{--<script src="{{asset('assets/site/main/node_modules/@fullcalendar/daygrid/main.js')}}"></script>--}}
 <script>
     let authUser = @json(auth()->id());
-    let appUrl = @json(config('app.url'));
 </script>
 @section('newMessage-popup-script')
     <script src="{{ asset('js/components/NewMessagePopup.js') }}"></script>

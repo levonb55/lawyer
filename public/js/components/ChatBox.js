@@ -127,7 +127,7 @@ function incomingMessage(image, name, content, createdAt, outgoingMessage = '', 
                 <span class="direct-chat-name pull-left">${name}</span>
             </div>
             
-            <img alt="message user image" src="${appUrl}/assets/images/profile/${image}" class="direct-chat-img">
+            <img alt="message user image" src="/assets/images/profile/${image}" class="direct-chat-img">
             
             <div class="direct-chat-text ${outgoingMessage}"> <p>${message.checkMessageContent(content, file_original_name, file_new_name)}</p> </div>
             

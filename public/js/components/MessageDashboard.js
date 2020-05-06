@@ -109,7 +109,7 @@ function outgoingMessage(image, content, createdAt, file_original_name =  '', fi
     return `
         <div class="outgoing_msg messages">
             <div class="incoming_msg_img">
-                <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
+                <img src="/assets/images/profile/${image}" alt="sunil">
             </div>
             <div class="sent_msg">
                 <div class="received_withd_msg">
@@ -128,7 +128,7 @@ function incomingMessage(image, content, createdAt, file_original_name =  '', fi
     return `
         <div class="incoming_msg messages" style="margin: 15px 0;">
             <div class="incoming_msg_img">
-                <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
+                <img src="/assets/images/profile/${image}" alt="sunil">
             </div>
             <div class="received_msg">
                 <div class="received_withd_msg">
@@ -148,7 +148,7 @@ function getContactComponent(senderId, name, image) {
         <div class="chat_list" data-contact="${senderId}">
             <div class="chat_people">
                 <div class="chat_img">
-                    <img src="${appUrl}/assets/images/profile/${image}" alt="sunil">
+                    <img src="/assets/images/profile/${image}" alt="sunil">
                 </div>
                 <div class="chat_ib">
                     <h5>
