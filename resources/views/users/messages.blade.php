@@ -14,34 +14,34 @@
     </div>
 
     <div class="messaging">
-        <div class="video-container">
-            <div class="video-containerBlock">
-              <div class="video_containerBlockBottom">
-                  <video id="my-video"  class="my-video"></video>
-                  <div class="video_containerBlockBottomControls">
-                      <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>
-                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-microphone"></i></button>
-                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-video"></i></button>
-                  </div>
-                  <div></div>
-              </div>
-                <video id="user-video" class="user-video"></video>
-            </div>
-        </div>
-        <div class="callingBox outgoing-call">
-            <p>Calling to</p>
-            <p class="callingBoxTitle receiver"></p>
-            <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>
-        </div>
+{{--        <div class="video-container">--}}
+{{--            <div class="video-containerBlock">--}}
+{{--              <div class="video_containerBlockBottom">--}}
+{{--                  <video id="my-video"  class="my-video"></video>--}}
+{{--                  <div class="video_containerBlockBottomControls">--}}
+{{--                      <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>--}}
+{{--                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-microphone"></i></button>--}}
+{{--                      <button class="callingBoxPhone videoCallIcon" title="Cancel"><i class="fas fa-video"></i></button>--}}
+{{--                  </div>--}}
+{{--                  <div></div>--}}
+{{--              </div>--}}
+{{--                <video id="user-video" class="user-video"></video>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="callingBox outgoing-call">--}}
+{{--            <p>Calling to</p>--}}
+{{--            <p class="callingBoxTitle receiver"></p>--}}
+{{--            <button class="callingBoxPhone cancel-call" title="Cancel"><i class="fas fa-phone"></i></button>--}}
+{{--        </div>--}}
 
-        <div class="callingBox incoming-call">
-            <p class="callingBoxTitle caller"></p>
-            <p>is calling</p>
-            <div class="callingBoxFlex">
-                <button class="callingBoxPhone decline-call" title="Decline"><i class="fas fa-phone"></i></button>
-                <button class="callingBoxPhone callingBoxPhone2 accept-call" title="Accept"><i class="fas fa-phone"></i></button>
-            </div>
-        </div>
+{{--        <div class="callingBox incoming-call">--}}
+{{--            <p class="callingBoxTitle caller"></p>--}}
+{{--            <p>is calling</p>--}}
+{{--            <div class="callingBoxFlex">--}}
+{{--                <button class="callingBoxPhone decline-call" title="Decline"><i class="fas fa-phone"></i></button>--}}
+{{--                <button class="callingBoxPhone callingBoxPhone2 accept-call" title="Accept"><i class="fas fa-phone"></i></button>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <div class="inbox_msg">
             <div class="inbox_people">
@@ -72,10 +72,10 @@
                                         <span class="chat_date"></span>
                                         <span class="badge badge-warning unread unread-{{ $contact->id }}">{{ $contact->unread }}</span>
                                     </h5>
-                                    <div class="onlineBox">
-                                        <div class="make-call" title="Make a call"><i class="fa fa-phone"></i></div>
+{{--                                    <div class="onlineBox">--}}
+{{--                                        <div class="make-call" title="Make a call"><i class="fa fa-phone"></i></div>--}}
 {{--                                        <div class="onlineOrOffline" title="Online"></div>--}}
-                                    </div>
+{{--                                    </div>--}}
                                 </div>
 
                             </div>
@@ -140,7 +140,7 @@
             callingSound = '';
 
             constructor() {
-                this.setupLaravelEcho();
+                // this.setupLaravelEcho();
             }
 
             getPermission(receiver = null, receiverName = null) {
