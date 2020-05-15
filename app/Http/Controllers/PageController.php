@@ -21,6 +21,7 @@ class PageController extends Controller
 
         $variableData = Variable::select('key', 'value')
             ->where('key', 'home-slider-1')
+            ->orWhere('key','home-slider-2')
             ->get();
 
         foreach($variableData as $data) {
