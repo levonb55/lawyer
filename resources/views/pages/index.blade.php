@@ -295,71 +295,75 @@
 {{--            <a href="{{route('register')}}"></a>  <button type="button" name="button">Get Started</button>--}}
 {{--        </div>--}}
 {{--    </section>--}}
-    <section>
-        <div class="Reach_legals">
-            <h3>Reach Legal’s Featured Lawyers </h3>
-            <div class="Reach_legals_div">
-            </div>
-            <p>Explore our directory and discover exclusive ratings and reviews of the lawyers near you.</p>
-        </div>
-    </section>
-    <section  class="lawyers_4">
-        <div class="lawyers_4_size">
-            <div class="lawyers_4_right1 ">
-                <div class="lawyers_4_right_box1" id="image4">
-                    <img src="{{asset('assets/images/general/Polygon.png')}}" alt="">
-                </div>
-                <div class="lawyers_4_right_box1" id="image5">
-                    <img src="{{asset('assets/images/general/search.png')}}" alt="">
-                </div>
-                <div class="lawyers_4_right_box1" id="image6">
-                    <img src="{{asset('assets/images/general/share.png')}}" alt="">
-                </div>
-            </div>
-            <div class="lawyers_4_left">
-                <div class="lawyers_items1" id='lawyers_items4' data-id="image4">
-                    <div class="verified">
-                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <div class="lawyers_4_left_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis
-                            libero vel tortor porta suscipit ut in urna.</p>
-                    </div>
-                </div>
-                <div class="lawyers_items1" id='lawyers_items6' data-id="image5" >
-                    <div class="verified">
-                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <div class="lawyers_4_left_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis
-                            libero vel tortor porta suscipit ut in urna.</p>
-                    </div>
-                </div>
-                <div class="lawyers_items1" id='lawyers_items5'  data-id="image6">
-                    <div class="verified">
-                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <div class="lawyers_4_left_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis
-                            libero vel tortor porta suscipit ut in urna.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="lawyers_4_left_bottom lawyers_4_left_bottom1">
-            <a href="{{route('register')}}" ><button type="button" name="button">Get Started</button></a>
-            <a href="">
-                <button type="button" name="button" class="Learn_more">Learn more</button>
+
+    {!! $variables['home-slider-2'] !!}
+
+{{--    <section>--}}
+{{--        <div class="Reach_legals">--}}
+{{--            <h3>Reach Legal’s Featured Lawyers </h3>--}}
+{{--            <div class="Reach_legals_div">--}}
+{{--            </div>--}}
+{{--            <p>Explore our directory and discover exclusive ratings and reviews of the lawyers near you.</p>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    --}}
+{{--    <section  class="lawyers_4">--}}
+{{--        <div class="lawyers_4_size">--}}
+{{--            <div class="lawyers_4_right1 ">--}}
+{{--                <div class="lawyers_4_right_box1" id="image4">--}}
+{{--                    <img src="{{asset('assets/images/general/Polygon.png')}}" alt="">--}}
+{{--                </div>--}}
+{{--                <div class="lawyers_4_right_box1" id="image5">--}}
+{{--                    <img src="{{asset('assets/images/general/search.png')}}" alt="">--}}
+{{--                </div>--}}
+{{--                <div class="lawyers_4_right_box1" id="image6">--}}
+{{--                    <img src="{{asset('assets/images/general/share.png')}}" alt="">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="lawyers_4_left">--}}
+{{--                <div class="lawyers_items1" id='lawyers_items4' data-id="image4">--}}
+{{--                    <div class="verified">--}}
+{{--                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">--}}
+{{--                        <p>Lorem ipsum dolor sit amet</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="lawyers_4_left_text">--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse--}}
+{{--                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis--}}
+{{--                            libero vel tortor porta suscipit ut in urna.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="lawyers_items1" id='lawyers_items6' data-id="image5" >--}}
+{{--                    <div class="verified">--}}
+{{--                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">--}}
+{{--                        <p>Lorem ipsum dolor sit amet</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="lawyers_4_left_text">--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse--}}
+{{--                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis--}}
+{{--                            libero vel tortor porta suscipit ut in urna.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="lawyers_items1" id='lawyers_items5'  data-id="image6">--}}
+{{--                    <div class="verified">--}}
+{{--                        <img src="{{asset('assets/images/general/verified.png')}}" alt="">--}}
+{{--                        <p>Lorem ipsum dolor sit amet</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="lawyers_4_left_text">--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse--}}
+{{--                            aliquet metus non lectus porttitor, ac hendrerit odio lacinia. Cras quis--}}
+{{--                            libero vel tortor porta suscipit ut in urna.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="lawyers_4_left_bottom lawyers_4_left_bottom1">--}}
+{{--            <a href="{{route('register')}}" ><button type="button" name="button">Get Started</button></a>--}}
+{{--            <a href="">--}}
+{{--                <button type="button" name="button" class="Learn_more">Learn more</button>--}}
 {{--                {{route('single')}}--}}
-            </a>
-        </div>
-    </section>
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
 
     <section class="lawyers_6">
