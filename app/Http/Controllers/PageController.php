@@ -81,7 +81,15 @@ class PageController extends Controller
      */
     public function getWhyPage()
     {
-        return view('pages.why');
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'why-reach-legal')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('pages.why', compact('variables'));
     }
 
     /**
