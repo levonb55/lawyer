@@ -66,7 +66,15 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getAffiliate() {
-        return view('pages.affiliate');
+        $variableData = Variable::select('key', 'value')
+            ->where('key', 'affiliate')
+            ->get();
+
+        foreach($variableData as $data) {
+            $variables[$data->key] = $data->value;
+        }
+
+        return view('pages.affiliate', compact('variables'));
     }
 
     /**
