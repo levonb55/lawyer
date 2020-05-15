@@ -10,19 +10,20 @@ $('.newMessage-hide').on('click', function () {
 });
 
 //Listens to the new message broadcasting
-Echo.private('messages.' +  authUser)
-    .listen('NewMessage', (message) => {
+if(authUser) {
+    Echo.private('messages.' +  authUser)
+        .listen('NewMessage', (message) => {
 
-        if(typeof chatBox !== 'undefined') {
-            if(message.sender_id === chatBox.profileNumber) { return; }
-        }
+            if(typeof chatBox !== 'undefined') {
+                if(message.sender_id === chatBox.profileNumber) { return; }
+            }
 
-        setTimeout(function () {
-            newMessage.posPopup('-350px')
-        }, 3000);
-        newMessage.posPopup('10px');
-        let newPopup = () => {
-            return `
+            setTimeout(function () {
+                newMessage.posPopup('-350px')
+            }, 3000);
+            newMessage.posPopup('10px');
+            let newPopup = () => {
+                return `
                 <div class="newMessageUser">
                     <img src="/assets/images/profile/${message.image}" alt="Person">
                     <p class="newMessageUserName"> ${message.name} </p>
@@ -31,6 +32,7 @@ Echo.private('messages.' +  authUser)
                     <p> ${message.content.slice(0,15)} </p>
                 </div>
             `;
-        };
-        $('.newMessageBody').html(newPopup());
-    });
+            };
+            $('.newMessageBody').html(newPopup());
+        });
+}
