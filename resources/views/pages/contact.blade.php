@@ -7,11 +7,11 @@
         <div class="contact_size">
             <div class="contact_size_left">
                 <p>Send a Message</p>
-                <input type="text" name="" value="" placeholder="Name">
-                <input type="text" name="" value="" placeholder="Phone">
-                <input type="text" name="" value="" placeholder="Message">
-                <textarea name="name"  placeholder="E-mail"></textarea>
-                <button type="button" name="button">Send</button>
+                <input type="text" name="name" value="" placeholder="Name">
+                <input type="text" name="phone" value="" placeholder="Phone">
+                <input type="email" name="email" value="" placeholder="E-mail">
+                <textarea name="message"  placeholder="Message"></textarea>
+                <button type="submit" name="button">Send</button>
             </div>
             <div class="contact_size_right">
                 <p class="ContactInfo">Contact Info</p>
