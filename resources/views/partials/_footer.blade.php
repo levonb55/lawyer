@@ -27,9 +27,21 @@
         <div class="footer_4">
             <p>Follow Us</p>
             <div class="footer_soc">
-                <img src="{{asset('assets/images/general/facebook.png')}}" alt="Facebook">
-                <img src="{{asset('assets/images/general/twitter.png')}}" alt="Twitter">
-                <img src="{{asset('assets/images/general/instagram.png')}}" alt="Instagram">
+                @if($variables['facebook'])
+                    <a href="{{ strip_tags($variables['facebook']) }}" target="_blank">
+                        <img src="{{asset('assets/images/general/facebook.png')}}" alt="Facebook">
+                    </a>
+                @endif
+                @if($variables['twitter'])
+                    <a href="{{ strip_tags($variables['twitter']) }}" target="_blank">
+                        <img src="{{asset('assets/images/general/twitter.png')}}" alt="Twitter">
+                    </a>
+                @endif
+                @if($variables['instagram'])
+                    <a href="{{ strip_tags($variables['instagram']) }}" target="_blank">
+                        <img src="{{asset('assets/images/general/instagram.png')}}" alt="Instagram">
+                    </a>
+                @endif
             </div>
         </div>
     </div>

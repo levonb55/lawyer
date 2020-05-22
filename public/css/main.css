@@ -627,9 +627,20 @@ padding: 0;
 .footer_soc{
   margin-top: 40px;
 }
-.footer_soc img{
-  margin-left: 20px;
+
+.footer_soc a:not(:last-child) {
+    margin-right: 20px;
 }
+
+.footer_soc a:hover {
+    text-decoration: none;
+}
+
+.footer_soc img:hover {
+    -ms-transform: translate(0, -5px); /* IE 9 */
+    transform: translate(0, -5px); /* Standard syntax */
+}
+
 .footer_4{
   text-align: center;
 }
