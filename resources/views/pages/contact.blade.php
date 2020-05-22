@@ -28,11 +28,11 @@
                             <p>{!! $variables['email'] !!}</p>
                         </div>
                     @endif
-                    @if($variables['location'])
+                    @if($variables['address'])
                         <div class="ContactInfo_box">
                             {{--  <img src="{{asset('assets/images/general/contact3.png')}}" alt="Globe">--}}
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>{!! $variables['location'] !!}</p>
+                            <p>{!! $variables['address'] !!}</p>
                         </div>
                     @endif
                 </div>
