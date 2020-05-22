@@ -38,7 +38,7 @@ class PageController extends Controller
         $variableData = Variable::select('key', 'value')
             ->where('key', 'phone')
             ->orWhere('key','email')
-            ->orWhere('key','location')
+            ->orWhere('key','address')
             ->get();
 
         foreach($variableData as $data) {
