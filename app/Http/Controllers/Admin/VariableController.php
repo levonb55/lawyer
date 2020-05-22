@@ -10,7 +10,7 @@ class VariableController extends Controller
 {
     public function index()
     {
-        $variables = Variable::all();
+        $variables = Variable::paginate(10);
         return view('admin.variables.index', compact('variables'));
     }
 

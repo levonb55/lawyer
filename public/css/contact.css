@@ -75,17 +75,23 @@ text-align: center;
     font-weight: bold;
     margin: 40px 0 50px 0;
 }
+
+.ContactInfoBody {
+    width: 180px;
+    margin: 0 auto;
+}
+
 .ContactInfo_box{
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   align-items: center;
     font-size: 15px;
     margin-bottom: 30px;
 }
-.ContactInfo_box img{
-  width: 14px;
-height: 14px;
-margin-right: 12px
+.ContactInfo_box img, i{
+    width: 14px;
+    height: 14px;
+    margin-right: 12px
 }
 .ContactInfo_box p{
   font-size: 15px;

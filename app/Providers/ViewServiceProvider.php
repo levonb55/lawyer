@@ -35,5 +35,19 @@ class ViewServiceProvider extends ServiceProvider
 
             $view->with(compact('variable'));
         });
+
+        view()->composer('partials._footer', function ($view) {
+            $variableData = Variable::select('key', 'value')
+                ->where('key', 'facebook')
+                ->orWhere('key', 'twitter')
+                ->orWhere('key', 'instagram')
+                ->get();
+
+            foreach($variableData as $data) {
+                $variables[$data->key] = $data->value;
+            }
+
+            $view->with(compact('variables'));
+        });
     }
 }

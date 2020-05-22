@@ -15,22 +15,33 @@
             </div>
             <div class="contact_size_right">
                 <p class="ContactInfo">Contact Info</p>
-                <div class="ContactInfo_box">
-                    <img src="{{asset('assets/images/general/contact1.png')}}" alt="Phone">
-                    <p>+000 123 456 789</p>
+                <div class="ContactInfoBody">
+                    @if($variables['phone'])
+                        <div class="ContactInfo_box">
+                            <img src="{{asset('assets/images/general/contact1.png')}}" alt="Phone">
+                            <p>{!! $variables['phone'] !!}</p>
+                        </div>
+                    @endif
+                    @if($variables['email'])
+                        <div class="ContactInfo_box">
+                            <img src="{{asset('assets/images/general/contact2.png')}}" alt="Envelope">
+                            <p>{!! $variables['email'] !!}</p>
+                        </div>
+                    @endif
+                    @if($variables['location'])
+                        <div class="ContactInfo_box">
+                            {{--  <img src="{{asset('assets/images/general/contact3.png')}}" alt="Globe">--}}
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>{!! $variables['location'] !!}</p>
+                        </div>
+                    @endif
                 </div>
-                <div class="ContactInfo_box">
-                    <img src="{{asset('assets/images/general/contact2.png')}}" alt="Envelope">
-                    <p>example.@gmail.com</p>
-                </div>
-                <div class="ContactInfo_box">
-                    <img src="{{asset('assets/images/general/contact3.png')}}" alt="Globe">
-                    <p>lorem ipsum.com</p>
-                </div>
-                <div class="contact_size_right_line">
+{{--                <div class="contact_size_right_line">--}}
 
-                </div>
-                <p class="contact_size_right_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mi mi, efficitur ut lorem sed, bibendum congue</p>
+{{--                </div>--}}
+{{--                <p class="contact_size_right_text">--}}
+{{--                    {!! $variables['contact-additional-info'] !!}--}}
+{{--                </p>--}}
             </div>
             <div class="contact_size_map">
 

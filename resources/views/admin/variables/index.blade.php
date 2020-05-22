@@ -35,6 +35,9 @@
                     </div>
                 </div>
 
+                <div class="mx-auto">
+                    {{$variables->links()}}
+                </div>
 
             </div>
         </div><!-- .animated -->
