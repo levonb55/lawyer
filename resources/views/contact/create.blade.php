@@ -4,15 +4,19 @@
 
 @section('content')
     <section class="contact_main">
+
+        @include('partials._messages')
+
         <div class="contact_size">
-            <div class="contact_size_left">
+            <form action="{{route('contact.send')}}" method="POST" class="contact_size_left">
+                @csrf
                 <p>Send a Message</p>
-                <input type="text" name="name" value="" placeholder="Name">
-                <input type="text" name="phone" value="" placeholder="Phone">
-                <input type="email" name="email" value="" placeholder="E-mail">
-                <textarea name="message"  placeholder="Message"></textarea>
-                <button type="submit" name="button">Send</button>
-            </div>
+                <input type="text" name="name" placeholder="Name" required autofocus autocomplete="off">
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="text" name="subject" placeholder="Subject" autocomplete="off">
+                <textarea name="message"  placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
             <div class="contact_size_right">
                 <p class="ContactInfo">Contact Info</p>
                 <div class="ContactInfoBody">

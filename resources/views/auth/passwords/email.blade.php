@@ -1,4 +1,4 @@
-@extends('site.layouts.app')
+@extends('main')
 
 @section('content')
     <section  class="login_reg password-reset">

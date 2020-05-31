@@ -4,7 +4,7 @@
             <p>Reach Legal</p>
             <ul>
                 <li><a href="{{route('about')}}">About Us</a></li>
-                <li><a href="{{route('contact')}}">Contact</a></li>
+                <li><a href="{{route('contact.create')}}">Contact</a></li>
                 <li><a href="{{route('privacy')}}">Privacy and Terms</a></li>
             </ul>
         </div>

@@ -34,23 +34,6 @@ class PageController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getContact() {
-        $variableData = Variable::select('key', 'value')
-            ->where('key', 'phone')
-            ->orWhere('key','email')
-            ->orWhere('key','address')
-            ->get();
-
-        foreach($variableData as $data) {
-            $variables[$data->key] = $data->value;
-        }
-
-        return view('pages.contact', compact('variables'));
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function getAbout() {
         $variableData = Variable::select('key', 'value')
             ->where('key', 'about-who-we-are')

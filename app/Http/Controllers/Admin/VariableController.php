@@ -26,6 +26,6 @@ class VariableController extends Controller
         ]);
 
         Variable::updateOrCreate(['id' => $variable->id], request(['value']));
-        return redirect()->route('admin.variables.index');
+        return redirect($request->input('url'));
     }
 }
