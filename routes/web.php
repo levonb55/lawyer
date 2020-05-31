@@ -14,7 +14,8 @@
 
 //Public Routes
 Route::get('/','PageController@index')->name('home');
-Route::get('/contact','PageController@getContact')->name('contact');
+Route::get('/contact','ContactController@create')->name('contact.create');
+Route::post('/contact','ContactController@send')->name('contact.send');
 Route::get('/about','PageController@getAbout')->name('about');
 Route::get('/terms','PageController@getTerms')->name('terms');
 Route::get('/affiliate','PageController@getAffiliate')->name('affiliate');

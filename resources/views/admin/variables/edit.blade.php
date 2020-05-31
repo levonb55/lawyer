@@ -25,6 +25,7 @@
         <form action="{{ route('admin.variables.update', $variable->id) }}" method="POST">
             @csrf
             @method('PUT')
+            <input type="hidden" name="url" value="{{URL::previous()}}">
             <h4 class="variable-form-header">{{ $variable->name }}</h4>
             <div class="form-group">
                 <textarea class="form-control" rows="3" name="value" id="textarea">{{ $variable->value }}</textarea>
@@ -36,7 +37,7 @@
                 </span>
             @enderror
 
-            <a href="{{ route('admin.variables.index') }}" type="button" class="btn btn-secondary">Cancel</a>
+            <a href="{{ URL::previous() }}" type="button" class="btn btn-secondary">Cancel</a>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
