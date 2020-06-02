@@ -99,7 +99,7 @@ class CategoryController extends Controller
         $category->lawyers()->detach();
         $category->delete();
 
-        return redirect()->back()->with('delete','deleted a category!');
+        return redirect()->back()->with('delete','You deleted a category!');
     }
 
     private function deleteImage($image, $imageFolder, $defaultImage)

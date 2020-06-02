@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubscribeNewsLetter;
+use App\Mail\NewsSubscriberWelcome;
 use App\Models\Lawyer;
+use App\Models\NewsSubscriber;
 use App\Models\User;
 use App\Models\Admin\Category;
 use App\Models\Variable;
 use Illuminate\Http\Request;
+use Mail;
 
 class PageController extends Controller
 {
@@ -107,5 +111,20 @@ class PageController extends Controller
         }
 
         return view('pages.privacy', compact('variables'));
+    }
+
+    public function subscribeToNewsLetter(SubscribeNewsLetter $request)
+    {
+        if($request->ajax()) {
+            $validated = $request->validated();
+
+            $subscriber = NewsSubscriber::create([
+                'email' => $validated['email']
+            ]);
+
+            Mail::send(new NewsSubscriberWelcome($subscriber));
+
+            return response()->json(['message' => 'You successfully subscribed to our newsletter.']);
+        }
     }
 }

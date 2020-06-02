@@ -245,4 +245,30 @@ $( document ).ready(function() {
         });
     });
 
+    $('#news-subscribe-form').on('submit', function (e) {
+        e.preventDefault();
+        let form = $(this);
+        const newsMessage = $('.news-message');
+        const sbmtBtn = form.find('button[type=submit]');
+        sbmtBtn.attr('disabled', true);
+
+        $.ajax({
+            method: 'POST',
+            data: form.serializeArray(),
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/subscribe-to-newsletter'
+        })
+        .then(res => {
+            newsMessage.html(res.message);
+            form[0].reset();
+            setTimeout(function() { newsMessage.empty()}, 4000);
+            sbmtBtn.attr('disabled', false);
+        }).catch(err => {
+            newsMessage.html(err.responseJSON.errors.email[0]);
+            sbmtBtn.attr('disabled', false);
+        });
+    });
+
 });

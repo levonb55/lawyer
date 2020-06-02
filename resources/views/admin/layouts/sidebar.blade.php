@@ -47,6 +47,9 @@
                 <li class="menu-item-has-children">
                     <a href="{{route('admin.referrals')}}"> <i class="menu-icon fa  fa-table"></i>Referral Codes</a>
                 </li>
+                <li class="menu-item-has-children">
+                    <a href="{{ route('admin.news-subscribers.index') }}"> <i class="menu-icon fa fa-users"></i>News Subscribers</a>
+                </li>
             </ul>
         </div>
     </nav>

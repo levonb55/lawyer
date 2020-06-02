@@ -14,14 +14,15 @@
 
 //Public Routes
 Route::get('/','PageController@index')->name('home');
-Route::get('/contact','ContactController@create')->name('contact.create');
-Route::post('/contact','ContactController@send')->name('contact.send');
 Route::get('/about','PageController@getAbout')->name('about');
 Route::get('/terms','PageController@getTerms')->name('terms');
 Route::get('/affiliate','PageController@getAffiliate')->name('affiliate');
 Route::get('/privacy','PageController@getPrivacy')->name('privacy');
 Route::get('/ask','PageController@getAsk')->name('ask');
 Route::get('/why','PageController@getWhyPage')->name('why');
+Route::post('/subscribe-to-newsletter','PageController@subscribeToNewsletter')->name('subscribe.newsletter');
+Route::get('/contact','ContactController@create')->name('contact.create');
+Route::post('/contact','ContactController@send')->name('contact.send');
 Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
 Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
 Route::get('/lawyers/category/{category?}','LawyerController@getLawyersByCategory')->name('lawyers.category');
@@ -125,7 +126,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/content/{variable}/edit', 'VariableController@edit')->name('admin.variables.edit');
         Route::put('/content/{variable}/', 'VariableController@update')->name('admin.variables.update');
         Route::get('referrals', 'AdminController@getReferrals')->name('admin.referrals');
-
+        Route::get('news-subscribers', 'NewsSubscriberController@index')->name('admin.news-subscribers.index');
+        Route::delete('news-subscribers/{newsSubscriber}', 'NewsSubscriberController@destroy')->name('admin.news-subscribers.destroy');
     });
 });
 

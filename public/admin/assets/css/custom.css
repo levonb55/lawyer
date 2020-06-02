@@ -20,3 +20,9 @@
     text-align: center;
     margin: 20px 0;
 }
+
+.no-subscriber {
+    height: 200px;
+    text-align: center;
+    line-height: 11;
+}

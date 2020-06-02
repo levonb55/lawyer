@@ -14,7 +14,6 @@
 
 @if(session('delete'))
     <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
-        <span class="badge badge-pill badge-danger">Success</span>
-        You successfully {{session('delete')}}
+        {{session('delete')}}
     </div>
 @endif
