@@ -53,6 +53,21 @@ margin-right: 40px;
   margin: 0;
   font-size: 20px;
 }
+
+.why .sign-up-btn-wrapper {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.why .sign-up-btn {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ff9c00;
+    font-size: 16.5px;
+    color: #fff;
+    font-weight: 600;
+}
+
 @media screen and (max-width:1700px) {
 
 .single_1{

@@ -127,7 +127,7 @@
 {{--                    </div>--}}
 
 {{--                    <script async src="https://static.addtoany.com/menu/page.js"></script>--}}
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{route('lawyers.show', $user->id)}}">
+                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{route('lawyers.show', $user->id)}}">
                         <img src="{{asset('assets/images/general/p_link.png')}}" alt="Linkedin">
                     </a>
                 </div>
