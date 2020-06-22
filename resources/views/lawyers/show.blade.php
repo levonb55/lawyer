@@ -165,7 +165,7 @@
                 <input type="text" name="" value="" placeholder="Phone">
                 <input type="date" name="" value="" placeholder="">
                 <input type="time" name="" value="" placeholder="">
-                <button type="button" name="button">Book it</button>
+                <button type="button" name="button">Book</button>
             </div>
         </div>
     </section>

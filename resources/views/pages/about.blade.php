@@ -28,7 +28,7 @@
         <section class="about_3">
             <div class="about_3_size">
                 <div class="about_3_left">
-                    <img src="{{asset('assets/images/general/about1.png')}}" alt="">
+                    <img src="{{asset('assets/images/general/jeevanunedited_44.jpg')}}" alt="">
                 </div>
                 <div class="about_3_right">
                     <p>{!! $variables['about-what-we-do'] !!}</p>
