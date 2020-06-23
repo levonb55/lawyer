@@ -11,7 +11,7 @@
                 <li class="active">
                     <h3 class="menu-title">Admin</h3><
                 </li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children {{Request::routeIs('admin.variables.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.variables.index') }}">
                         <i class="menu-icon fa  fa-table"></i>Content
                     </a>
@@ -41,13 +41,13 @@
 {{--                <li class="menu-item-has-children dropdown">--}}
 {{--                    <a href="{{route('admin_privacy')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Privacy</a>--}}
 {{--                </li>--}}
-                <li class="menu-item-has-children dropdown">
+                <li class="menu-item-has-children dropdown {{Request::routeIs('admin_categories') ? 'active' : '' }}">
                     <a href="{{route('admin_categories')}}" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa  fa-table"></i>Categories Lawyers</a>
                 </li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children {{Request::routeIs('admin.referrals') ? 'active' : '' }}">
                     <a href="{{route('admin.referrals')}}"> <i class="menu-icon fa  fa-table"></i>Referral Codes</a>
                 </li>
-                <li class="menu-item-has-children">
+                <li class="menu-item-has-children {{Request::routeIs('admin.news-subscribers.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.news-subscribers.index') }}"> <i class="menu-icon fa fa-users"></i>News Subscribers</a>
                 </li>
             </ul>

@@ -6,11 +6,6 @@
     <section class="lawyers_1">
         <div class="opacity_bg">
             <div class="lawyers_1_size">
-                @if(isset($first_content))
-                    <h1>{{$first_content->main_title}}</h1>
-                    <p class="Reach_the">{{$first_content->description}}</p>
-                @endif
-
                 <form action="{{route('lawyers.search-name')}}" method="POST">
                     @csrf
                     <div class="lawyers_1_inputs">
@@ -71,16 +66,6 @@
             </div>
         </div>
     </section>
-    @if(isset($second_content))
-        <section>
-            <div class="Reach_legals">
-                <h3>{{$second_content->main_title}}</h3>
-                <div class="Reach_legals_div">
-                </div>
-                <p>{{$second_content->description}}</p>
-            </div>
-        </section>
-    @endif
 
     <section class="lawyers_2">
         <div class="lawyers_2_flex">

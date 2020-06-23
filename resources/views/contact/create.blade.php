@@ -40,12 +40,6 @@
                         </div>
                     @endif
                 </div>
-{{--                <div class="contact_size_right_line">--}}
-
-{{--                </div>--}}
-{{--                <p class="contact_size_right_text">--}}
-{{--                    {!! $variables['contact-additional-info'] !!}--}}
-{{--                </p>--}}
             </div>
             <div class="contact_size_map">
 
