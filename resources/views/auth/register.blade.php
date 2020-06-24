@@ -37,5 +37,3 @@
         </div>
     </section>
 @endsection
-
-@include('partials._login-modal')
