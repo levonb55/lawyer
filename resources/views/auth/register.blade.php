@@ -8,22 +8,14 @@
 
     <section  class="login_reg">
         <div class="login_reg_top">
-            <p>Employer Registration</p>
+            <p id="user-registration">User Registration</p>
             <div class="login_reg_line"></div>
         </div>
         <div class="login_reg_main">
             <form method="POST" action="{{ route('register') }}" class="register">
                 @csrf
-
                 @include('auth.user-input')
-
-{{--                <input type="hidden" name="referral">--}}
-
                 <input type="hidden" name="role_id" value="2">
-                {{--<div class="login_reg_main_remm">--}}
-                    {{--<input type="checkbox" name="remember" value="">--}}
-                    {{--<p>Remember me?</p>--}}
-                {{--</div>--}}
                 <button type="submit" class="login_reg_sign_up">Sign Up</button>
             </form>
 

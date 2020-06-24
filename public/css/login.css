@@ -35,19 +35,22 @@ margin-bottom: 20px;
 font-family: "Montserrat-Regular";
 font-size: 18px;
 }
-.login_left button{
-  width: 264px;
-  height: 41px;
-margin-bottom: 50px;
-margin-top: 20px;
-font-family: "Montserrat-Regular";
-font-size: 18px;
-color: #fff;
-border: none;
-outline: none;
-cursor: pointer;
-border-radius: 10px;
-background-color: #FF9C00;
+.login_left a {
+    display: inline-block;
+    width: 264px;
+    height: 41px;
+    line-height: 41px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    font-family: "Montserrat-Regular";
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #FF9C00;
+    text-decoration: none;
 }
 
 .login_reg{

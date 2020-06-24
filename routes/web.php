@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Artisan;
 
 //Public Routes
 Route::get('/','PageController@index')->name('home');
@@ -23,7 +24,7 @@ Route::get('/why','PageController@getWhyPage')->name('why');
 Route::post('/subscribe-to-newsletter','PageController@subscribeToNewsletter')->name('subscribe.newsletter');
 Route::get('/contact','ContactController@create')->name('contact.create');
 Route::post('/contact','ContactController@send')->name('contact.send');
-Route::get('/client-register','Auth\RegisterController@registerClient')->name('client.register');
+Route::get('/lawyer-register','Auth\RegisterController@registerClient')->name('client.register');
 Route::get('/lawyers/categories','LawyerController@getLawyersCategories')->name('lawyers.categories');
 Route::get('/lawyers/category/{category?}','LawyerController@getLawyersByCategory')->name('lawyers.category');
 Route::get('/lawyers/{user}','LawyerController@show')->name('lawyers.show');
@@ -77,5 +78,6 @@ Route::middleware('admin')->group(function () {
 
 //Artisan commands
 Route::get('/route-clear', function () {
-    $exitCode = \Illuminate\Support\Facades\Artisan::call('route:clear');
+    Artisan::call('route:clear');
+    return 'Route is cleared';
 });

@@ -8,7 +8,7 @@
 
     <section  class="login_reg">
         <div class="login_reg_top">
-            <p>Remote Worker Registration</p>
+            <p id="lawyer-registration">Lawyer Registration</p>
             <div class="login_reg_line"></div>
         </div>
         <div class="login_reg_main">
@@ -25,10 +25,6 @@
                     @enderror
                 <input type="hidden" name="role_id" value="3">
 
-                {{--<div class="login_reg_main_remm">--}}
-                    {{--<input type="checkbox" name="" value="">--}}
-                    {{--<p>Remember me?</p>--}}
-                {{--</div>--}}
                 <button type="submit" name="button" class="login_reg_sign_up">Sign Up</button>
             </form>
             <p class="login_reg_already">Already have an account?</p>
